@@ -1,0 +1,107 @@
+SOURCE_ID: intelligence-curse
+AUTHOR: Luke Drago & Rudolf Laine
+TITLE: The Intelligence Curse
+YEAR: 2025
+TYPE: essay
+URL: https://intelligence-curse.ai/
+NOTE: PARTIAL. The essay series has 7 chapters (Introduction; Pyramid Replacement; Capital, AGI, and Human Ambition; Defining the Intelligence Curse; Shaping the Social Contract; Breaking the Intelligence Curse; History is Yours to Write). Root page fetch timed out; full text below is chapter 4, "Defining the Intelligence Curse" (https://intelligence-curse.ai/defining/), which states the core thesis. An earlier version was published on lukedrago.substack.com.
+====
+
+DEFINING THE INTELLIGENCE CURSE
+
+Summary: With AGI, powerful actors will lose their incentive to invest in regular people - just as resource-rich states today neglect their citizens because their wealth comes from natural resources rather than taxing human labor. This is the intelligence curse.
+
+Economists are used to modeling AI as a tool, so they don't get how it could make people irrelevant. Past technological revolutions have driven human potential further. The agrarian revolution birthed civilizations; the industrial revolution let us scale them.
+
+But AGI looks a lot more like coal or oil than the plow, steam engine, or computer. Like those resources:
+- It will require immense capital to discover and harness.
+- Control will likely be concentrated in the hands of a few players: the labs that produce AI, the states where they reside, and the companies that manufacture the raw materials, the chips, and the robots, and the electricity they all need.
+- The states and companies that earn rents mostly or entirely from AI won't need to rely on people for revenue.
+
+This problem looks a lot like the plague that affects rentier states, or states that predominantly rely on rents from a resource for their wealth instead of taxes from their citizens. These states suffer from the resource curse—despite having a natural source of income, they do worse than their economically diverse peers at improving their ordinary citizens' living standards.
+
+Powerful actors that adopt labor-replacing AI systems will face rentier state-like incentives with far higher stakes. Because their revenues will come from intelligence on tap instead of people, they won't receive returns on investments like education to prepare people for employment, employment and salaries, or a welfare state for the unemployed. As a result, they won't invest – and their people will be unable to sustain themselves as a result. Humans need not apply, and so humans will not get paid.
+
+This is the intelligence curse – when powerful actors create and implement general intelligence, they will lose their incentives to invest in people.
+
+WHY POWERFUL ACTORS CARE ABOUT YOU
+
+By powerful actors, we mean large organizations such as states, corporations, and bureaucracies that command significant resources, enabling them to shape the world we live in and how we interact with it.
+
+Powerful actors don't care about you out of the goodness of their heart. They care about you for two reasons:
+1. You offer a return on investment, usually through taxes or profits.
+2. You impact their ability to retain power, either through democratic means like voting or through credible threats to a regime.
+
+Most states in the modern world are diversified economies, meaning value comes from many different sectors and human activities, rather than a single or handful of sources. They rely on taxing people and corporations to generate revenue, so they increase their revenue by increasing their citizens' productivity. The state is incentivized to produce engineers, entrepreneurs, innovators, and other economically productive workers and create an environment for them to return on the investment. To do so, they tend to: establish good schools, research institutions, and universities; build infrastructure like roads and public transportation; set up reliable governing systems and courts to protect property rights; protect speech and the flow of information; support small business formation; foster competitive markets; create social safety nets to support risk-taking.
+
+These increase the productivity of citizens and increase the surface area of luck for innovation to occur. Equally importantly, these are the kinds of things that lift people out of abject poverty, increase living standards, and institute political and economic freedoms. With good schools, infrastructure, and competitive markets, a citizen can train for and find a high-paying job that exceeds their basic needs. And with reliable governing systems, fair courts, and free speech, a citizen can petition their government for their needs without the fear of becoming a political prisoner. They gain bargaining power through their votes and their economic output, so they can force changes that raise their standards of living. As a result, sometimes states capitulate to citizens' demands even if it will cost them.
+
+A similar phenomenon affects corporations. Take, for example, the exorbitant salaries of Silicon Valley. Tech workers have a skill set companies desperately need to make more money. [Footnote: At least, this was true until the recent improvements in AI's programming capabilities.] Those workers are a hot commodity and competition to attract them is fierce. To win them over, companies pay large salaries, offer stock options, purchase pool tables, offer 24-7 free meals from a Michelin star chef, and do their laundry. No one is seriously arguing that the company laundry service is 10x'ing revenue, but it might win over a potential employee or keep an otherwise unsatisfied one from leaving for a competitor. The employees have bargaining power, so they can demand lavish perks that improve their quality of life.
+
+This creates a feedback loop – as regular people make powerful actors more money, they are more likely to cater to them. Will education increase your population's (and thus the state's) lifetime earnings? Build the schools. Will offering paid family leave get better employees for your company? Change the policy.
+
+THE RESOURCE CURSE
+
+We already have societies that divorce their nation's economic output from their human capital. They're called rentier states. These states – including Venezuela, Saudi Arabia, Norway, and Oman – derive most of their earnings from resources (usually oil), rather than the productive output of their citizens.
+
+The Democratic Republic of Congo has over $24 trillion worth of untapped minerals in their ground. How have their citizens fared? According to the World Bank: "Most people in DRC have not benefited from this wealth. ... DRC is among the five poorest nations in the world. An estimated 73.5% of Congolese people lived on less than $2.15 a day in 2024."
+
+What's going on here? How can it be that trillions in total available resources have resulted in abject poverty?
+
+Economists and political scientists call this the resource curse. Countries with abundant natural resources tend to experience poorer economic growth and higher rates of poverty than their economically diverse peers. There are many factors that lead to the resource curse, but a core one is the incentives they create to stop caring about your people's economic well being.
+
+Because they earn money from resources, rentier states have no incentive to pay regular people today or invest in them for tomorrow. Building better schools doesn't earn them more money. They invest just as much as it takes to move the oil out of the ground, onto trucks, and out to the ports. It's not that their citizens couldn't do anything worth taxing, it's that there's no reason to develop them into a taxable population. Why ask your people for money when you can get it from the ground?
+
+Without money, regular people struggle to make demands. In autocracies, there's no incentive to care about them unless they credibly threaten your power. Those who control the rents can extract wealth without worrying about everyone else.
+
+[Quotes from Eibl & Hertog (APSR) on rentier states, contrasting Oman's expansive welfare with Equatorial Guinea's kleptocracy, omitted here for brevity; the authors conclude:] Occasionally, rentier states result in large social safety nets. But in many cases, they result in abject poverty for all but the few who control streams of rent.
+
+EXPLAINING THE INTELLIGENCE CURSE
+
+The intelligence curse describes the incentives in a post-AGI economy that will drive powerful actors to invest in artificial intelligence instead of humans. If AI can do your job cheaper and faster, there isn't a reason to hire you. But more importantly, there isn't an economic reason to invest in your lifelong productivity, take care of you, or keep you around. We could produce unparalleled value with a fully automated economy, but if the spoils are distributed like the worst rentier states it will not result in prosperity for the masses.
+
+The intelligence curse will likely be stronger than the resource curse, as AI will keep improving. Rather than just providing the government an alternative income stream that still requires humans to manage, AI and robotics will replace the need for humans across the economy, military, and government bureaucracy entirely. You also can't "run out" of AI like you can with oil. The rentier states still have a long-term incentive to diversify their economies, but this will not apply to post-AGI states.
+
+A common rebuttal is that some jobs can never be automated because we will demand humans do them. For example, teachers. Most parents would probably strongly prefer a real, human teacher to watch their kids throughout the day. But this argument totally misses the bigger picture: it's not that there won't be a demand for teachers, it's that there won't be an incentive to fund schools. This argument repeats ad nauseam for anything that invests in regular people's productive capacity, any luxury that relies on their surplus income, or any good that keeps them afloat. By default, powerful actors won't build things that employ humans or provide them resources, because they won't have to.
+
+Taxes will still be a relevant form of income for governments, but only those from corporations. Likewise, corporations will make money from their AI systems, not from the work people produce. The investments that the developed world associates with a high quality of life — salaries, education, infrastructure, stable governance, etc — will no longer provide a return. People won't make powerful actors any money.
+
+Where might the powerful actors get their money from instead?
+
+States will earn money from corporate taxes. Companies that produce advanced AI systems and companies that use them will generate large revenues. As they get bigger, states will tax them more. In 2022, corporate taxes made up 11.5% of the average OECD state's revenue – a sample of high-performing, diverse economies. Like Norway (about 30% of state revenue from oil), Saudi Arabia (75%), and the Democratic Republic of the Congo (about 1/3rd of state revenue from resource mining), states will rely less on income taxes and more on taxes from AI companies or other companies that enable powerful actors to accomplish goals. When state revenue breakdowns look more like these countries than the OECD average, you'll know the intelligence curse is taking hold.
+
+AI labs will make money by becoming the new rentiers. The stated goals of the AI labs are to build AGI. OpenAI is already changing their corporate structure to remove limits on how much of AGI profits they can capture for themselves. This is despite a corporate structure originally built to ensure that if AGI becomes most of the economy, OpenAI would distribute profits above some amount to the world. Once the labs have an AI system that can do it all, they'll become a horizontal layer of the economy, extracting rents from all economic activity by selling it to companies and states who use it to replace their workers. They'll also try as hard as possible to consume the economy vertically too. If they succeed, they will wield economic power that was previously exclusive to states. Anthropic's CEO Dario Amodei has compared the effects of AI to "a country of geniuses in a data center". Note the language—a country of geniuses. If the labs achieve this vision, it is less like just another company playing in the economy, and more like an entire foreign nation popped up into existence, that is more populous than any country, and inhabited by workers who are much cheaper, smarter, and faster than any human. [Footnote: Instead of imagining a foreign country popping into existence, you could also imagine a billion smarter, cheaper, faster immigrants popping out of the ground, overnight, in your country.]
+
+Companies will trade amongst themselves and other powerful actors. Land, energy, compute, manufacturing hubs, data centers, and robots will continue having value since they enable powerful actors to accomplish their goals. The cafe chain and the marketing firm will be irrelevant, but the landlord and energy company will be able to make more money than ever before. Powerful actors, likely human-controlled (at least for a while), will extract the vast majority of value from these sources.
+
+So what will happen to most regular people, assuming powerful actors follow the default trajectory?
+
+- Companies will be incentivized to fire them, and never hire new ones. They won't produce anything they can value. For a short time they might rely on them as consumers, but most people-facing companies will fizzle out as their demand base loses economic power.
+- States will be incentivized to decimate public funding. Remember, their revenue base will shift towards other powerful actors. They will derive no value from their labor and are thus incentivized against building things that turn them into productive workers. ROI – capital, power, and resilience – comes from ensuring the AI labs can build better models and the companies using them can do things in the world. Also, the taxes to fund human investment would come in large part from AGI labs. Competition between states means that if any tries to set up a UBI with this tax, they could fall behind other states.
+- Regular people will not be able to support themselves. The vast majority of people will not have the economic power necessary to make any demands. They won't be able to incentivize resource-controlling actors to invest in them. That means (at best) they'll rely on benevolent charity from powerful actors. At worst, they won't be able to earn even subsistence wages, and no one will step in to save them.
+
+For a while, they might be able to generate some value. Rentier states require some humans to move things in the physical world – someone has to get the oil out of the ground. It could be that humans are paid for manual labor while agents are limited to virtual forms. As robotics improves, the need for them will decrease. They won't be able to participate in the economy because they won't be able to do anything better, faster, cheaper, or more reliably than their artificial replacers.
+
+In rentier states, value is derived primarily from raw materials or physical goods, which are then sold to foreign buyers – usually other states or businesses. A few humans are involved in the raw production or management of this, but most don't benefit. You should expect a similar scenario here. This leads to an obvious question: who are powerful actors producing anything for?
+
+CAN THE ECONOMY SIDELINE HUMAN CONSUMPTION?
+
+Powerful actors have goals, and therefore so will the economy's production. States want control over territory and companies want to enrich their owners. Individuals who have accrued significant capital will also have goals. Maybe they'll want to use their newfound power to colonize Mars or excavate the oceans. It could be less historic – plenty of ultra-wealthy people are content to live their lives maximizing their own pleasure. All of them will want to ensure their newfound place in society is secure, and this could require vast amounts of power and resources.
+
+More fundamentally, without regular people in the value production loop, there is no incentive for spoils to go to them. As humans stop being producers, they stop earning the economic power that lets them direct the economy with their consumption choices. The economy will increasingly sideline them. In the limit, much of the economy could run in loops that avoid human consumers entirely.
+
+BREAKING THE RESOURCE CURSE
+
+There are two main ways states completely break the resource curse: effective governance to redistribute resources, and economic diversification to create incentives for states to care about their people.
+
+First, a state can build effective institutions to manage a lucrative resource. Masi and Ricciuti 2019 found that, after discovering oil, most states became less democratic. However, states with existing, relatively high levels of democracy avoided negative impacts. Take Norway as an example. If anything, Norway has achieved a resource miracle. It's one of the wealthiest countries in the world, and its people have directly benefited from its resource wealth. Norway's Human Development Index is the second highest in the world. Its sovereign wealth fund, which invests their vast oil rents, is worth over $1.7 trillion, or over $300k per person. Norway broke the resource curse through excellent governance alone, but many caution about trying to replicate their success. They built a strong democracy with high bureaucratic capacity before discovering oil. Few states are as democratic, functional, and low-corruption as Norway. This path is narrow and ever-shrinking; 2024 marked the 19th consecutive year of global freedom backsliding.
+
+Second, a state can diversify the economy, putting human labor at the center so that no one resource can dominate it. For example, as the world moves closer to peak oil production, many petrostates have started diversifying. Saudi Arabia's Vision 2030 aims to provide "a supportive business environment for businesses of all sizes". It is no surprise that as Saudi Arabia has moved towards diversification, it has simultaneously attempted to reform its treatment of women. However, as discussed, AGI is not a limited resource like oil. This means the incentive to diversify will be far lower once we hit labor-replacing AI.
+
+There is a third way, but it's less relevant. Eibl and Hertog 2023 outline that in autocratic states, credible threats of revolt prime powerful actors to capitulate to the masses by building welfare states. We have three objections to this avenue as a model for autocratic states in the midst of the intelligence curse. First, we think this is not "breaking" the resource curse, because the incentives still exist for states to deprioritize people. Second, we relatedly expect that capitulation is not stable. Regimes which successfully co-opt their people after threats of revolt could always revert back to repression. Third, we think this is much less likely to be effective for advanced AI because we expect states to have far more infrastructural power as AI advances, in line with Bullock, Hammond, and Krier's conception of the AGI-powered "Despotic Leviathan". As such, powerful actors could spot nearly all major threats to their power. Moreover, new technologies like cheap and very effective autonomous drones could also change the balance of power such that armed uprisings cannot threaten the state. For all these reasons, we expect autocracies with labor-replacing AI to succumb to the intelligence curse; democracy is likely a necessary precondition for breaking it.
+
+To summarize: the resource curse disincentivizes states from investing in their people, often to disastrous results. To break it, we have two relevant approaches: trusting institutions to control the resource and stay anchored to the public good; and diversifying the economy to put people at the center.
+
+We'll dig more into how to solve the intelligence curse, but first we'll consider the effects it has on the social contract, how much economic incentives really shape society and whether AGI might change this.
+
+[Chapter navigation: the full series continues with "Shaping the Social Contract," "Breaking the Intelligence Curse" (proposals to avert the default: alignment of incentives, diffusing AI to people, hardening democracy), and "History is Yours to Write."]

@@ -1,0 +1,91 @@
+{
+  "source_id": "altman-gentle-singularity",
+  "author": "Sam Altman",
+  "title": "The Gentle Singularity",
+  "year": 2025,
+  "type": "blog",
+  "url": "https://blog.samaltman.com/the-gentle-singularity",
+  "central_scenario_summary": "Humanity is 'past the event horizon': digital superintelligence is close, arriving as a smooth, 'gentle' takeoff (agents doing cognitive work in 2025, novel insights in 2026, robots in 2027), with a 'larval' form of recursive self-improvement and the cost of intelligence converging toward the cost of electricity. Productivity and scientific progress rise enormously and the world gets 'so much richer so quickly' that new policy ideas (a new social contract) become feasible, even as 'whole classes of jobs' disappear and new ones emerge. Altman argues it is critically important to make superintelligence cheap, widely available, and 'not too concentrated with any person, company, or country.'",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We are past the event horizon; the takeoff has started. Humanity is close to building digital superintelligence", "location": "opening line"},
+        {"text": "nevertheless this is a larval version of recursive self-improvement", "location": "recursive self-improvement passage"}
+      ],
+      "notes": "Explicit superintelligence + (early) recursive self-improvement, framed as smooth/continuous rather than an abrupt explosion."
+    },
+    "expertise_erosion": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "A lot more people will be able to create software, and art.", "location": "para on software/art"},
+        {"text": "experts will probably still be much better than novices, as long as they embrace the new tools", "location": "same para"}
+      ],
+      "notes": "Meaningful democratization (many more people can do skilled creative work), but Altman explicitly expects experts to retain an edge, so erosion is moderate rather than total."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We already hear from scientists that they are two or three times more productive than they were before AI.", "location": "AI-for-AI-research passage"}
+      ],
+      "notes": "Broad, economy-wide productivity and scientific acceleration."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {"text": "There will be very hard parts like whole classes of jobs going away", "location": "para on accelerating progress"},
+        {"text": "we will figure out new things to do and new things to want", "location": "same para"}
+      ],
+      "notes": "Substitutes strongly in exposed work ('whole classes of jobs going away') but expects new work to emerge; mixed."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "Expectations will go up, but capabilities will go up equally quickly, and we'll all get better stuff.", "location": "para on figuring out new things to do"}
+      ],
+      "notes": "Strong absorption; new wants and jobs, industrial-revolution analogy."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "people are capable of adapting to almost anything", "location": "para on accelerating progress"},
+        {"text": "job change after the industrial revolution is a good recent example", "location": "same para"}
+      ],
+      "notes": "Optimistic about adaptation at roughly historical (industrial-revolution) speeds, while acknowledging 'very hard parts.'"
+    },
+    "rent_concentration": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the cost of intelligence should eventually converge to near the cost of electricity", "location": "datacenter automation passage"},
+        {"text": "making superintelligence cheap, widely available, and not too concentrated with any person, company, or country", "location": "path-forward list, item 2"}
+      ],
+      "notes": "Predicts commoditization of intelligence and normatively pushes broad, non-concentrated distribution; concentration is the risk to actively avoid."
+    },
+    "timeline_years": {
+      "score": 7,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the ability for one person to get much more done in 2030 than they could in 2020 will be a striking change", "location": "para on 2030"},
+        {"text": "2025 ... agents that can do real cognitive work ... 2026 ... novel insights ... 2027 may see the arrival of robots", "location": "year-by-year passage"}
+      ],
+      "notes": "Major transformation across the 2030s; roughly 5-10 years from 2025 writing. Representative value 7."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the world will be getting so much richer so quickly that we'll be able to seriously entertain new policy ideas we never could before", "location": "para on accelerating progress"}
+      ],
+      "notes": "FREE TEXT: Rapid wealth growth will make a new social contract affordable and is expected to arrive gradually; the crucial condition for a good distributional outcome is that access to superintelligence be made cheap and widely available and not concentrated in any one actor. Distribution is treated as a governance choice, not an automatic result."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

@@ -1,0 +1,126 @@
+{
+  "source_id": "aghion-jones-jones",
+  "author": "Philippe Aghion, Benjamin F. Jones & Charles I. Jones",
+  "title": "Artificial Intelligence and Economic Growth",
+  "year": 2017,
+  "type": "paper",
+  "url": "https://web.stanford.edu/~chadj/AI.pdf",
+  "central_scenario_summary": "Aghion, Jones and Jones model AI as the latest form of a 200-year automation process (Zeira-style task automation) combined with Baumol's cost disease: as tasks are automated, their prices and GDP shares fall, so growth is constrained by essential tasks that remain hard to improve. Under sufficient conditions this delivers balanced growth with a substantial labor share even under near-complete automation, though the transition can feature a prolonged period of high capital share and low growth. Singularities from AI automating idea production are theoretically possible (with Cobb-Douglas production and nonrival knowledge) but Baumol bottlenecks and business-stealing effects can prevent explosive growth.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "We model A.I. as the latest form of automation, a broader process dating back more than 200 years.",
+          "location": "Abstract"
+        },
+        {
+          "text": "A.I. now seems poised to automate many tasks once thought to be out of reach, from driving cars to making medical recommendations and beyond.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Central framing is continuity with historical automation, disciplined by 20th-century growth experience; singularity/superintelligence scenarios are analyzed as theoretical possibilities whose enabling conditions they treat skeptically (Baumol bottlenecks). A reading emphasizing the newly-automatable high-skill tasks could support 2."
+    },
+    "expertise_erosion": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "we also conjectured that while A.I. should be skill-biased for the economy as a whole",
+          "location": "Section 7 Conclusion"
+        },
+        {
+          "text": "they may involve high levels of skill, such as legal services, radiology, and some forms of scientific lab-based research",
+          "location": "Section 1 Introduction (tasks AI may automate)"
+        }
+      ],
+      "notes": "Two-sided: economy-wide skill bias (premia grow, anchor 0) even as AI newly automates some high-skill professional tasks; AI-intensive firms conjectured to outsource low-occupation tasks but pay retained low-occupation workers a premium. Entry barriers/training are not discussed. Low confidence."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "growth may be constrained not by what we are good at but rather by what is essential and yet hard to improve",
+          "location": "Abstract (Baumol theme)"
+        },
+        {
+          "text": "When applied to a model in which A.I. automates the production of ideas, these same considerations can prevent explosive growth.",
+          "location": "Section 1 Introduction"
+        }
+      ],
+      "notes": "Gains are real and ongoing but bounded by Baumol bottleneck sectors; balanced growth near historical rates is the central case, with explosive growth requiring conditions they consider demanding. The model even allows 'a prolonged period with high capital share and relatively low aggregate economic growth'."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "what happens if A.I. allows an ever-increasing number of tasks previously performed by human labor to become automated?",
+          "location": "Section 1 Introduction"
+        },
+        {
+          "text": "overall balanced growth with a constant capital share that stays well below 100%, even with nearly complete automation",
+          "location": "Section 1 Introduction / Section 7 Conclusion"
+        }
+      ],
+      "notes": "AI substitutes for labor task-by-task (Zeira automation), but gross complementarity across tasks (elasticity < 1) concentrates labor in essential unautomated tasks whose value rises - so labor is not displaced in aggregate and the labor share remains substantial. Mixed on net."
+    },
+    "demand_absorption": {
+      "score": 0,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Baumol (1967) observed that sectors with rapid productivity growth, such as agriculture and even manufacturing today, often see their share of GDP decline",
+          "location": "Section 1 Introduction"
+        },
+        {
+          "text": "growth is determined not by what we are good at but rather by what is essential and yet hard to improve",
+          "location": "Section 7 Conclusion"
+        }
+      ],
+      "notes": "The paper's signature theme is Baumol saturation: demand for automated outputs is effectively inelastic, so their GDP shares shrink and bottleneck sectors dominate. Note: in their model this saturation is what preserves the labor share, rather than immiserizing workers - the anchor-0 elasticity structure, not the immiseration clause."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Worker reallocation frictions and retraining are not modeled; labor moves freely to unautomated tasks."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Consistent with increases in the aggregate capital share, the capital share also appears to be rising in many sectors (especially outside services), which is broadly consistent with an automation story.",
+          "location": "Section 7 Conclusion"
+        },
+        {
+          "text": "this model can generate a prolonged period with high capital share and relatively low aggregate economic growth while automation keeps pushing ahead",
+          "location": "Section 7 Conclusion"
+        }
+      ],
+      "notes": "Automation shifts income toward capital (rising capital shares, possibly for a prolonged transition), but Baumol forces keep the long-run labor share substantial and below-100% capital share; market-structure analysis (imitation, creative destruction, business-stealing) concerns innovation incentives more than winner-take-most rents."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No timeline stated; the paper is an agenda-setting theoretical exploration."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "The labor share remains substantial because of Baumol's insight: growth is determined not by what we are good at but rather by what is essential and yet hard to improve.",
+          "location": "Section 7 Conclusion"
+        }
+      ],
+      "notes": "Text dimension. Bottom line: automation raises the capital share, potentially for a prolonged transition period, and AI should be skill-biased economy-wide; but Baumol cost disease can keep the aggregate labor share substantial even under near-complete automation, so capital does not capture everything. Distributional outcomes depend on which tasks remain essential and hard to improve."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

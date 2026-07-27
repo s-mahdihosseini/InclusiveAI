@@ -1,0 +1,91 @@
+{
+  "source_id": "ai-2027",
+  "author": "Daniel Kokotajlo, Scott Alexander, Thomas Larsen, Eli Lifland, Romeo Dean (AI Futures Project)",
+  "title": "AI 2027",
+  "year": 2025,
+  "type": "report",
+  "url": "https://ai-2027.com/",
+  "central_scenario_summary": "A concrete month-by-month scenario in which AI automation of AI research produces a superhuman coder by early 2027 and artificial superintelligence by late 2027, amid a US-China arms race. Economically, AI 'takes some jobs but also creates new ones' in 2026, then a cheap AGI-level remote worker (Agent-3-mini) disrupts nearly every white-collar profession in mid-2027 while the stock market booms; the government placates displaced workers with job training and unemployment insurance while racing China. The authors expect the overall impact of superhuman AI over the next decade to exceed that of the Industrial Revolution.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We predict that the impact of superhuman AI over the next decade will be enormous, exceeding that of the Industrial Revolution.", "location": "Opening paragraph"},
+        {"text": "Over the course of 2027, the AIs improve from being able to mostly do the job of an OpenBrain research engineer to eclipsing all humans at all tasks.", "location": "Expandable after 'Late 2026: AI Takes Some Jobs'"}
+      ],
+      "notes": "Milestone table gives ASI in Dec 2027 in the racing ending; authors note medians somewhat longer (superhuman coder median later revised ~1.5 years)."
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "The job market for junior software engineers is in turmoil: the AIs can do everything taught by a CS degree, but people who know how to manage and quality-control teams of AIs are making a killing.", "location": "Late 2026: AI Takes Some Jobs"},
+        {"text": "Agent-3-mini is less capable than Agent-3, but 10x cheaper, and still better than the typical OpenBrain employee.", "location": "July 2027: The Cheap Remote Worker"}
+      ],
+      "notes": "Credential-based expertise (CS degrees, professional training) loses value as AI eclipses experts; a transient premium accrues to AI-management skills. Erosion happens by replacement rather than democratization of human expertise."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "Agent-3-mini is hugely useful for both remote work jobs and leisure. An explosion of new apps and B2B SAAS products rocks the market.", "location": "July 2027: The Cheap Remote Worker"},
+        {"text": "For almost every white-collar profession, there are now multiple credible startups promising to \"disrupt\" it with AI.", "location": "July 2027: The Cheap Remote Worker"}
+      ],
+      "notes": "Gains start concentrated in coding/AI R&D but broaden to economy-wide transformation within the scenario's two-year window."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "Hiring new programmers has nearly stopped, but there's never been a better time to be a consultant on integrating AI into your business.", "location": "July 2027: The Cheap Remote Worker"},
+        {"text": "the story goes on to cite evaluations showing off-the-charts bioweapons capabilities, persuasion abilities, the ability to automate most white-collar jobs", "location": "October 2027: Government Oversight"}
+      ],
+      "notes": "2026 is mixed ('AI has started to take jobs, but has also created new ones'), but by mid/late 2027 the depiction is strong displacement in exposed cognitive work."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "AI has started to take jobs, but has also created new ones. The stock market has gone up 30% in 2026, led by OpenBrain, Nvidia, and whichever companies have most successfully integrated AI assistants.", "location": "Late 2026: AI Takes Some Jobs"}
+      ],
+      "notes": "New apps, consultancies and jobs appear alongside displacement, but the scenario does not take a clear stance on whether demand growth absorbs displaced labor; the speed suggests it does not within the window."
+    },
+    "mobility_adjustment": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "They placate the public with job training programs and unemployment insurance, and point to the stock market, which is in a historic boom.", "location": "August 2027: The Geopolitics of Superintelligence"},
+        {"text": "Many people fear that the next wave of AIs will come for their jobs; there is a 10,000 person anti-AI protest in DC.", "location": "Late 2026: AI Takes Some Jobs"}
+      ],
+      "notes": "The shock unfolds over months, far faster than retraining or institutional adjustment; policy response is compensation, not successful reallocation."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "The stock market has gone up 30% in 2026, led by OpenBrain, Nvidia, and whichever companies have most successfully integrated AI assistants.", "location": "Late 2026: AI Takes Some Jobs"},
+        {"text": "All three sets of worries—misalignment, concentration of power in a private company, and normal concerns like job loss—motivate the government to tighten its control.", "location": "October 2027: Government Oversight"}
+      ],
+      "notes": "One lab (OpenBrain, 20% of world compute, potentially 50% under DPA) captures most surplus and power; concentration is a central theme."
+    },
+    "timeline_years": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "Over the course of 2027, the AIs improve from being able to mostly do the job of an OpenBrain research engineer to eclipsing all humans at all tasks.", "location": "Expandable after 'Late 2026: AI Takes Some Jobs'"}
+      ],
+      "notes": "Written April 2025; major labor-market impact depicted in 2026-2027 (~2 years). Authors caution 2027 was modal, medians somewhat longer (~5x slower or faster plausible)."
+    },
+    "inequality_prediction": {
+      "score": "The scenario depicts sharply widening gaps during takeoff: junior and then most white-collar workers are displaced within months while owners of AI companies and stocks enjoy a historic boom; the government responds with unemployment insurance and job training rather than broad sharing of gains, and power concentrates in one company and the national-security state.",
+      "confidence": "medium",
+      "quotes": [
+        {"text": "The public still thinks of AI as a Big Tech plot to steal their jobs; OpenBrain has a net approval of -35% (25% approve, 60% disapprove, and 15% unsure).", "location": "July 2027: The Cheap Remote Worker"}
+      ],
+      "notes": "Inequality is conveyed narratively (displacement + stock boom + concentration) rather than as an explicit distributional forecast."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

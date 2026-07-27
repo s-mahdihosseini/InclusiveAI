@@ -1,0 +1,85 @@
+{
+  "source_id": "epoch-explosive-growth",
+  "author": "Ege Erdil & Tamay Besiroglu (Epoch AI)",
+  "title": "Explosive Growth from AI Automation: A Review of the Arguments",
+  "year": 2023,
+  "type": "paper",
+  "url": "https://arxiv.org/abs/2309.11690",
+  "central_scenario_summary": "A structured review arguing that if AI can broadly substitute for human labor, standard growth models (semi-endogenous and even exogenous) robustly predict 'explosive growth' — gross world product growth roughly an order of magnitude faster than today (30%+/year) — because labor becomes an accumulable input. Nine counterarguments (regulation, non-accumulable factors, slow automation, alignment, hard R&D, mismeasurement, human preferences, historical precedent, physical limits) are each judged unlikely or very unlikely to be decisive. The authors put the odds of widespread automation plus explosive growth by 2100 at about even, and warn against high confidence either way.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "We conclude that AI systems capable of broadly substituting for human labor could plausibly lead to economic growth accelerating by an order of magnitude.", "location": "Abstract"},
+        {"text": "We think that the odds of widespread automation and subsequent explosive growth by the end of this century are about even.", "location": "Section 1, assessment themes"}
+      ],
+      "notes": "The central object is a drop-in substitute for human labor (score 3 capability); timing is 'this century' at ~even odds rather than within a decade. Economically the conditional outcome resembles score 4 (order-of-magnitude growth acceleration)."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on entry barriers to high-skill occupations and on skill premia; the analysis is aggregate."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "The most significant finding is that economic growth models consistently predict explosive growth when AI can effectively replace human labor across most or all economic tasks.", "location": "Section 4, Discussion"},
+        {"text": "If f=0.1 and rho=-1, then the proportional increase in output is 100-fold.", "location": "Section 2.3"}
+      ],
+      "notes": "Conditional on broad substitution; gains are economy-wide by construction (order-of-magnitude GWP increases)."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We present three arguments supporting the possibility of explosive growth from AI, all based on the concept that AI could serve as an accumulable substitute for human labor.", "location": "Section 1 / Section 2 opening"},
+        {"text": "the potential economic benefits of a technology that can turn labor into an accumulable input are enormous", "location": "Section 3.8"}
+      ],
+      "notes": "AI as a broad substitute for labor is the paper's premise; augmentation scenarios are treated as the case where explosive growth may fail."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "arguments based on intrinsic human preferences for some tasks being performed by humans seem like they would have made poor predictions if we had relied upon them in the past", "location": "Section 3.7"},
+        {"text": "Even under the pessimistic assumptions of f=25% and rho=-2, AI that broadly substitutes for human workers should produce at least ~1 OOM increase in gross world product.", "location": "Section 3.7"}
+      ],
+      "notes": "They argue demand-side saturation (Baumol bottlenecks, preferences for human-made goods) is quantitatively too weak to block order-of-magnitude output growth; elasticities of substitution below ~1/3 are deemed implausible."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Discusses the pace at which tasks can be automated (Section 3.3) but not how human workers reallocate across occupations."
+    },
+    "rent_concentration": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [
+        {"text": "AI could increase the productivity of capital investments, and result in concentrating wealth to those with a high propensity to save (Trammell and Korinek 2020)", "location": "Section 2.2"}
+      ],
+      "notes": "Only a passing mechanism (higher savings via wealth concentration), cited from other work; no position taken on who captures the surplus."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [
+        {"text": "We think that the odds of widespread automation and subsequent explosive growth by the end of this century are about even.", "location": "Section 1, assessment themes"}
+      ],
+      "notes": "No central date; the claim is a roughly 50% probability by 2100 (~77 years from writing), conditional analysis otherwise."
+    },
+    "inequality_prediction": {
+      "score": "The paper takes no explicit position on income distribution. Its bottom line is aggregate: conditional on AI that can do most or all economic tasks, explosive (roughly 10x faster) growth this century is about as likely as not, with credences below 20% called 'unreasonably low'; it notes only in passing that AI-driven growth could concentrate wealth toward high-propensity savers.",
+      "confidence": "high",
+      "quotes": [
+        {"text": "we end up thinking that credences of less than 20% for explosive growth conditional on AI that can do most or all tasks in the economy are unreasonably low", "location": "Section 4, Discussion"}
+      ],
+      "notes": null
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

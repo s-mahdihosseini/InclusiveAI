@@ -1,0 +1,78 @@
+{
+  "source_id": "anthropic-economic-index",
+  "author": "Anthropic",
+  "title": "The Anthropic Economic Index",
+  "year": 2025,
+  "type": "report",
+  "url": "https://www.anthropic.com/economic-index",
+  "central_scenario_summary": "An empirical measurement initiative, not a forecast: roughly one million Claude.ai conversations are mapped to O*NET occupational tasks to track how AI is actually used in the economy. Current usage is concentrated in software development and writing; about 36% of occupations use AI in at least a quarter of their tasks (only 4% in three-quarters or more); use tilts slightly toward augmentation (57%) over automation (43%); and usage peaks in mid-to-high-wage occupations while being low at both the bottom and very top of the wage distribution. Anthropic expects AI to have a major impact on work and plans longitudinal tracking, suggesting jobs may evolve rather than disappear if task-level diffusion patterns persist.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 2,
+      "confidence": "low",
+      "quotes": [
+        {"text": "In the coming years, AI systems will have a major impact on the ways people work.", "location": "Opening paragraph"},
+        {"text": "AI use is rapidly expanding, and models are becoming ever-more capable. The labor-market picture may look quite different within a relatively short time.", "location": "Conclusions and future research"}
+      ],
+      "notes": "The report deliberately avoids forecasting ('We don't... attempt to forecast the future'); scored 2 only for its framing of AI as a major economy-wide technology comparable to prior GPT waves."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No position on entry barriers or expertise premia; wage-related finding is about usage rates, not returns to skill."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "Today, usage is concentrated in software development and technical writing tasks. Over one-third of occupations (roughly 36%) see AI use in at least a quarter of their associated tasks", "location": "Main findings, bullet 1"},
+        {"text": "AI was diffused across the many tasks in the economy, having stronger impacts for some groups of tasks than others", "location": "Results, 'Depth of AI use within occupations'"}
+      ],
+      "notes": "Describes observed current diffusion (concentrated but non-trivially widespread) rather than a forecast of eventual breadth."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {"text": "AI use leans more toward augmentation (57%), where AI collaborates with and enhances human capabilities, compared to automation (43%), where AI directly performs tasks.", "location": "Main findings, bullet 2"},
+        {"text": "the future might be one where most current jobs evolve rather than disappear", "location": "Conclusions and future research"}
+      ],
+      "notes": "Mixed with a slight augmentation lean in current usage data; the report notes the automation share should be monitored over time."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on demand-side absorption of productivity gains."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on worker reallocation and retraining."
+    },
+    "rent_concentration": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on who captures the surplus."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No stated timeline; only that the picture 'may look quite different within a relatively short time.'"
+    },
+    "inequality_prediction": {
+      "score": "The report makes no inequality prediction. Its distribution-relevant finding is that current AI use is highest in mid-to-high-wage occupations (e.g., programmers, data scientists) and low at both the lowest- and highest-paid roles, reflecting current capability limits and adoption barriers — implying uneven exposure across the wage distribution.",
+      "confidence": "medium",
+      "quotes": [
+        {"text": "AI use is more prevalent for tasks associated with mid-to-high wage occupations like computer programmers and data scientists, but is lower for both the lowest- and highest-paid roles.", "location": "Main findings, bullet 3"}
+      ],
+      "notes": "Descriptive, not predictive; the initiative explicitly declines policy prescriptions and forecasts."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

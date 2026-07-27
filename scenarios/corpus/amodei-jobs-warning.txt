@@ -1,0 +1,27 @@
+SOURCE_ID: amodei-jobs-warning
+AUTHOR: Dario Amodei (reported by Jim VandeHei & Mike Allen, Axios)
+TITLE: Axios — "Behind the Curtain: A white-collar bloodbath" (AI could wipe out half of entry-level white-collar jobs)
+YEAR: 2025
+TYPE: interview
+URL: https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic
+NOTE: PARTIAL — the original Axios page is JavaScript-rendered and returned an empty shell on direct fetch (and via Yahoo syndication). Text below is assembled from (a) the Axios article's own summary as returned by web search and (b) secondary coverage (Marketing AI Institute, June 3 2025, by Mike Kaput) that reproduces the primary Axios quotes verbatim. Primary Amodei/Axios quotes are marked [AXIOS]. Central claims are faithfully reproduced but this is not the verbatim full article.
+====
+
+Headline claim (Axios, May 28, 2025): Anthropic CEO Dario Amodei told Axios that AI could wipe out half of all entry-level white-collar jobs — and spike unemployment to 10-20% in the next one to five years.
+
+[AXIOS] Amodei argued the AI industry and government are "sugarcoating" what is coming: a "white-collar bloodbath" — a mass elimination of entry-level jobs across technology, finance, law, consulting and other white-collar professions.
+
+[AXIOS, verbatim quote] "We, as the producers of this technology, have a duty and an obligation to be honest about what is coming."
+
+Key points as reported by Axios:
+- AI could eliminate half of all entry-level white-collar roles within five years.
+- Unemployment could spike to 10-20% as a direct result, in the next one to five years.
+- CEOs will quietly stop hiring, then replace humans with AI the moment it becomes viable to do so — a shift Amodei says could unfold almost overnight.
+- Despite the warnings, most government officials, CEOs, and workers are either unaware or unwilling to confront the implications. Amodei says most people are unaware this is about to happen and don't believe it.
+- Amodei is building the very technology that could displace millions, yet is among the few executives willing to publicly admit what that could mean.
+- The mass displacement would fall hardest on the entry level (the bottom rungs of professional career ladders), and on recent graduates (e.g. the classes of 2025 and 2026).
+- Amodei frames this as something society should confront now — through honesty, policy attention, and preparation — rather than after the fact. (In the same reporting cycle Amodei floated ideas such as taxing AI/token revenue to fund redistribution, and warned about the concentration of economic power.)
+
+Secondary context (Marketing AI Institute / Paul Roetzer, reacting to the Axios piece): the concern is a widening gap between AI's capabilities and society's readiness; "quiet AI layoffs" are expected to compound; entry-level hiring may quietly disappear; the issue is expected to become "a true societal issue" and a political flashpoint (midterms, 2028 campaign).
+
+[This warning is the near-term, pessimistic-transition counterpart to Amodei's longer-run optimism in "Machines of Loving Grace." The Axios interview emphasizes abrupt labor displacement and an unprepared society; it does not itself lay out how displaced workers are reabsorbed.]

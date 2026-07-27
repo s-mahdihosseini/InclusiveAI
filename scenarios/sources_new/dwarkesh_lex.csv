@@ -1,0 +1,29 @@
+id,category,author,title,year,type,url,priority
+amodei-dwarkesh-2023,lab_leader,Dario Amodei,"Dwarkesh Podcast: Dario Amodei — $10 Billion Models, OpenAI, Scaling, & AGI in 2 Years",2023,podcast,https://www.dwarkesh.com/p/dario-amodei,2
+amodei-dwarkesh-2026,lab_leader,Dario Amodei,Dwarkesh Podcast: Dario Amodei — We Are Near the End of the Exponential,2026,podcast,https://www.dwarkesh.com/p/dario-amodei-2,2
+aschenbrenner-dwarkesh,forecaster,Leopold Aschenbrenner,"Dwarkesh Podcast: Leopold Aschenbrenner — 2027 AGI, China/US Super-Intelligence Race, & the Return of History",2024,podcast,https://www.dwarkesh.com/p/leopold-aschenbrenner,1
+zuckerberg-dwarkesh-2024,lab_leader,Mark Zuckerberg,"Dwarkesh Podcast: Mark Zuckerberg — Llama 3, Open Sourcing $10B Models, & Caesar Augustus",2024,podcast,https://www.dwarkesh.com/p/mark-zuckerberg,2
+zuckerberg-dwarkesh-2025,lab_leader,Mark Zuckerberg,Dwarkesh Podcast: Mark Zuckerberg — AI Will Write Most Meta Code in 18 Months,2025,podcast,https://www.dwarkesh.com/p/mark-zuckerberg-2,1
+schulman-j-dwarkesh,lab_leader,John Schulman,"Dwarkesh Podcast: John Schulman — Reasoning, RLHF, & Plan for 2027 AGI",2025,podcast,https://www.dwarkesh.com/p/john-schulman,3
+dean-shazeer-dwarkesh,lab_leader,Jeff Dean & Noam Shazeer,"Dwarkesh Podcast: Jeff Dean & Noam Shazeer — 25 Years at Google, from PageRank to AGI",2025,podcast,https://www.dwarkesh.com/p/jeff-dean-and-noam-shazeer,3
+nadella-dwarkesh-2,lab_leader,Satya Nadella,Dwarkesh Podcast: Satya Nadella — How Microsoft Is Preparing for AGI,2025,podcast,https://www.dwarkesh.com/p/satya-nadella-2,2
+cowen-dwarkesh-4,economist,Tyler Cowen,Dwarkesh Podcast: Tyler Cowen — The #1 Bottleneck to AI Progress Is Humans,2025,podcast,https://www.dwarkesh.com/p/tyler-cowen-4,1
+imas-trammell-dwarkesh,economist,Alex Imas & Phil Trammell,Dwarkesh Podcast: Alex Imas and Phil Trammell — What Remains Scarce After AGI?,2026,podcast,https://www.dwarkesh.com/p/alex-imas-phil-trammell,1
+kokotajlo-alexander-dwarkesh,forecaster,Scott Alexander & Daniel Kokotajlo,"Dwarkesh Podcast: AI 2027 — Month-by-Month Model of Intelligence Explosion",2025,podcast,https://www.dwarkesh.com/p/scott-daniel,2
+rogoff-dwarkesh,economist,Ken Rogoff,"Dwarkesh Podcast: Ken Rogoff — China Is Digging Out of a Crisis, and America's Luck Is Wearing Thin",2025,podcast,https://www.dwarkesh.com/p/ken-rogoff,3
+kroeber-dwarkesh,economist,Arthur Kroeber,Dwarkesh Podcast: Arthur Kroeber — Why China's Manufacturing Economy Is Dominating,2025,podcast,https://www.dwarkesh.com/p/arthur-kroeber,3
+shih-dwarkesh,economist,Victor Shih,"Dwarkesh Podcast: Victor Shih — Xi Jinping's Paranoid Approach to AGI, Debt Crisis, & Politburo Politics",2025,podcast,https://www.dwarkesh.com/p/victor-shih,3
+jensen-huang-dwarkesh,lab_leader,Jensen Huang,"Dwarkesh Podcast: Jensen Huang — TPU Competition, Why We Should Sell Chips to China, & Nvidia's Supply Chain Moat",2026,podcast,https://www.dwarkesh.com/p/jensen-huang,3
+dylan-patel-dwarkesh,forecaster,Dylan Patel,Dwarkesh Podcast: Dylan Patel — Deep Dive on the 3 Big Bottlenecks to Scaling AI Compute,2026,podcast,https://www.dwarkesh.com/p/dylan-patel,3
+patel-asianometry-dwarkesh,forecaster,Dylan Patel & Jon (Asianometry),Dwarkesh Podcast: Dylan Patel & Asianometry — How the Semiconductor Industry Actually Works,2024,podcast,https://www.dwarkesh.com/p/dylan-jon,3
+amodei-lex,lab_leader,Dario Amodei,"Lex Fridman Podcast: Dario Amodei — Anthropic CEO on Claude, AGI & the Future of AI & Humanity",2024,podcast,https://lexfridman.com/dario-amodei,2
+altman-lex-2,lab_leader,Sam Altman,"Lex Fridman Podcast: Sam Altman — OpenAI, GPT-5, Sora, Board Saga, Elon Musk, Ilya, Power & AGI",2024,podcast,https://lexfridman.com/sam-altman-2,2
+andreessen-lex-2,forecaster,Marc Andreessen,"Lex Fridman Podcast: Marc Andreessen — Trump, Power, Tech, AI, Immigration & Future of America",2025,podcast,https://lexfridman.com/marc-andreessen-2,3
+keyu-jin-lex,economist,Keyu Jin,"Lex Fridman Podcast: Keyu Jin — China's Economy, Tariffs, Trade, Trump, Communism & Capitalism",2025,podcast,https://lexfridman.com/keyu-jin,2
+jensen-huang-lex,lab_leader,Jensen Huang,"Lex Fridman Podcast: Jensen Huang — NVIDIA, the $4 Trillion Company & the AI Revolution",2026,podcast,https://lexfridman.com/jensen-huang,2
+dylan-patel-lambert-lex,forecaster,Dylan Patel & Nathan Lambert,"Lex Fridman Podcast: Dylan Patel & Nathan Lambert — DeepSeek, China, OpenAI, NVIDIA, xAI, TSMC, Stargate, and AI Megaclusters",2025,podcast,https://lexfridman.com/deepseek-dylan-patel-nathan-lambert,3
+pichai-lex,lab_leader,Sundar Pichai,Lex Fridman Podcast: Sundar Pichai — CEO of Google and Alphabet,2025,podcast,https://lexfridman.com/sundar-pichai,3
+kurzweil-lex,forecaster,Ray Kurzweil,"Lex Fridman Podcast: Ray Kurzweil — Singularity, Superintelligence, and Immortality",2022,podcast,https://lexfridman.com/ray-kurzweil,2
+srinivas-lex,lab_leader,Aravind Srinivas,"Lex Fridman Podcast: Aravind Srinivas — Perplexity CEO on Future of AI, Search & the Internet",2024,podcast,https://lexfridman.com/aravind-srinivas,3
+cursor-team-lex,lab_leader,Cursor Team,Lex Fridman Podcast: Cursor Team — Future of Programming with AI,2024,podcast,https://lexfridman.com/cursor-team,3
+levels-lex,forecaster,Pieter Levels,"Lex Fridman Podcast: Pieter Levels — Programming, Viral AI Startups, and Digital Nomad Life",2024,podcast,https://lexfridman.com/pieter-levels,3

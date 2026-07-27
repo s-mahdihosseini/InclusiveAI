@@ -1,0 +1,144 @@
+{
+  "source_id": "acemoglu-johnson-power",
+  "author": "Daron Acemoglu & Simon Johnson",
+  "title": "Rebalancing AI (Power and Progress thesis essay)",
+  "year": 2023,
+  "type": "essay",
+  "url": "https://www.imf.org/en/publications/fandd/issues/2023/12/rebalancing-ai-acemoglu-johnson",
+  "central_scenario_summary": "There is no inevitable path for AI: what matters for workers is marginal, not average, productivity, and the current 'just let AI happen' path—driven by the industry's AGI-focused paradigm—emphasizes automation (including 'so-so automation' with small gains) without the offsetting creation of new labor-complementary tasks, repeating the post-1970 imbalance that eroded shared prosperity. On this trajectory AI raises GDP only modestly, and its first-order impact is increased inequality within industrial countries, with middle- and lower-income countries also at risk. Five policy levers (business-model reform, symmetric taxation of labor and capital, labor voice, funding human-complementary research, government AI expertise) could redirect AI to complement worker expertise and restore shared prosperity.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "AI could increase global GDP over the next five years, although not as substantially as enthusiasts claim. It might even modestly raise GDP growth in the medium term.",
+          "location": "'Potential macroeconomic impact' section"
+        },
+        {
+          "text": "It is unclear how much this type of automation will contribute to aggregate productivity growth while these technologies are immature, but they could contribute to sizable productivity gains as costs fall and reliability improves.",
+          "location": "'Complementing humans' section"
+        }
+      ],
+      "notes": "Explicitly skeptical of Goldman/explosive-growth forecasts; a real but gradual technology wave whose direction is a social choice."
+    },
+    "expertise_erosion": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "While automation has maintained its pace or even accelerated over the ensuing five decades, the offsetting force of new task creation has slowed, particularly for workers without four-year college degrees.",
+          "location": "'Complementing humans' section"
+        },
+        {
+          "text": "AI offers an opportunity to complement worker skill and expertise if we direct its development accordingly.",
+          "location": "'Complementing humans' section (pull quote)"
+        }
+      ],
+      "notes": "On the default path, non-college workers are pushed into low-paid services while gains accrue to those atop the skill/capital hierarchy—premia grow rather than erode. Their recommended path (AI for training/retraining educators, medical personnel, electricians, plumbers) would instead democratize expertise (would score 2); scored on the default trajectory. Judgment call."
+    },
+    "productivity_breadth": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "The productivity bandwagon is not activated, however, when the productivity gains from automation are small—what we call \"so-so automation.\"",
+          "location": "'Productive automation' section"
+        },
+        {
+          "text": "AI could increase global GDP over the next five years, although not as substantially as enthusiasts claim.",
+          "location": "'Potential macroeconomic impact' section"
+        }
+      ],
+      "notes": "Modest aggregate gains on the current path, concentrated in automation of exposed tasks; larger gains possible later if reliability improves or development is redirected."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "the current path of \"just let AI happen,\" which focuses primarily on automation (replacing people).",
+          "location": "Opening section"
+        },
+        {
+          "text": "This intellectual focus encourages automation rather than the development of human-complementary technologies.",
+          "location": "'Complementing humans' section, on the AGI paradigm"
+        }
+      ],
+      "notes": "Central/default trajectory is labor-displacing automation; complementarity is the counterfactual they advocate, not their prediction absent policy change."
+    },
+    "demand_absorption": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Groceries do not become much cheaper, there is no expansion in food production, and shoppers do not live differently.",
+          "location": "'Productive automation' section (self-checkout example)"
+        },
+        {
+          "text": "Even nontrivial productivity gains from automation can be offset when they are not accompanied by new tasks.",
+          "location": "'Productive automation' section"
+        }
+      ],
+      "notes": "On the current path the productivity bandwagon fails: gains are too small and new task creation too weak for demand to generate offsetting jobs (contrast with their car-industry example where absorption worked). Mechanism is task creation rather than demand elasticities per se."
+    },
+    "mobility_adjustment": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "in the American Midwest, the rapid adoption of robots has contributed to mass layoffs and ultimately prolonged regional decline.",
+          "location": "'Productive automation' section"
+        },
+        {
+          "text": "these workers are increasingly found in low-paying (though socially valuable) services such as in cleaning, food service, and recreation.",
+          "location": "'Complementing humans' section"
+        }
+      ],
+      "notes": "Displaced (especially non-college) workers reallocate only downward into low-paying services or face regional decline; no smooth adjustment expected on the default path."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "these choices become more consequential—and a few tech decision-makers become economically and politically more powerful.",
+          "location": "'Productive automation' section, closing"
+        },
+        {
+          "text": "The dominant developers of AI easily expropriate consumer data without compensation, and their reliance on digital advertising incentivizes grabbing consumers' attention",
+          "location": "'Five principles', business models bullet"
+        }
+      ],
+      "notes": "Automation multiplies corporate profits without shared prosperity; power concentrates in a few tech firms/decision-makers absent competition policy and redirection."
+    },
+    "timeline_years": {
+      "score": 5,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "However, on our current trajectory, the first-order impact is likely to be increased inequality within industrial countries.",
+          "location": "'Potential macroeconomic impact' section (follows the 'next five years' GDP sentence)"
+        }
+      ],
+      "notes": "The essay's explicit forward horizon is the next five years to medium term; not a point estimate of a capability milestone."
+    },
+    "inequality_prediction": {
+      "score": "On the current automation-focused trajectory, AI's first-order impact is increased inequality within industrial countries: automation raises average productivity and corporate profits without raising worker marginal productivity, and new task creation lags, especially for non-college workers. Middle- and lower-income countries also stand to lose, and there is no guarantee AI creates more jobs than it destroys—but redirecting AI toward human-complementary tasks could restore shared prosperity.",
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "However, on our current trajectory, the first-order impact is likely to be increased inequality within industrial countries.",
+          "location": "'Potential macroeconomic impact' section"
+        },
+        {
+          "text": "There is no guarantee that, on its current path, AI will generate more jobs than it destroys.",
+          "location": "'Potential macroeconomic impact' section"
+        }
+      ],
+      "notes": ""
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

@@ -1,0 +1,89 @@
+{
+  "source_id": "amodei-loving-grace",
+  "author": "Dario Amodei",
+  "title": "Machines of Loving Grace",
+  "year": 2024,
+  "type": "essay",
+  "url": "https://darioamodei.com/machines-of-loving-grace",
+  "central_scenario_summary": "If safety and geopolitics go right, 'powerful AI' (a 'country of geniuses in a datacenter', smarter than Nobel laureates and runnable as millions of fast copies) could arrive as early as 2026 and, over the following 5-10 years, compress a century of scientific progress: curing most disease, doubling lifespan, and potentially enabling ~20% GDP growth that lets the developing world catch up. On work, comparative advantage keeps humans economically relevant in the short run, but eventually AI becomes so cheap and broadly effective that the current economic setup 'no longer makes sense', requiring new arrangements (possibly UBI). Amodei is relatively optimistic about within-country inequality of access in the developed world, most worried about global inequality, and regards wealth inequality as the hardest unsolved problem.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "high",
+      "quotes": [
+        {"text": "it is smarter than a Nobel Prize winner across most relevant fields – biology, programming, math, engineering, writing, etc.", "location": "Basic assumptions and framework (definition of powerful AI)"},
+        {"text": "We could summarize this as a 'country of geniuses in a datacenter'.", "location": "Basic assumptions and framework"}
+      ],
+      "notes": "Describes superhuman AI, millions of copies at 10-100x speed, and acknowledges recursive self-improvement (fn 10), but rejects an instantaneous 'singularity'; capability ceiling is clearly superintelligence."
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "may even in some ways level the playing field between humans", "location": "Section 5 (Work and meaning), citing NBER w31161"},
+        {"text": "in the long run AI will become so broadly effective and so cheap that this will no longer apply", "location": "Section 5 (Work and meaning)"}
+      ],
+      "notes": "AI is superhuman at expert tasks (science, coding) and eventually ultra-cheap, so expertise rents ultimately compete away; but short-run he stresses human comparative advantage, so the erosion is a long-run outcome."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "compress the progress that human biologists would have achieved over the next 50-100 years into 5-10 years", "location": "Section 1 (Biology and health)"},
+        {"text": "a dream scenario ... would be 20% annual GDP growth rate in the developing world", "location": "Section 3 (Economic development and poverty)"}
+      ],
+      "notes": "Economy-wide transformative gains across science, health, and growth."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the other 10% will cause humans to become highly leveraged, increasing compensation and in fact creating a bunch of new human jobs", "location": "Section 5 (Work and meaning)"},
+        {"text": "in the long run AI will become so broadly effective and so cheap that this will no longer apply", "location": "Section 5 (Work and meaning)"}
+      ],
+      "notes": "Short/medium run: complement via comparative advantage. Long run: full substitution once AI is cheap and broadly effective. Scored mixed for the central 5-10yr window with an explicit long-run shift to strong substitute."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the '10%' expands to continue to employ almost everyone", "location": "Section 5 (Work and meaning)"}
+      ],
+      "notes": "Invokes comparative advantage / lump-of-labour fallacy for near-term absorption; but explicitly warns that in the long run most humans may not contribute meaningfully, so absorption eventually breaks down."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "the pace I'm describing is probably close to the limits of what society can absorb without extreme turbulence", "location": "Footnote 2"}
+      ],
+      "notes": "Deliberately picks a 'tame' pace near the edge of what society can absorb; implies historical-ish adjustment with real turbulence risk. Not a focus of the essay."
+    },
+    "rent_concentration": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "markets are typically good at bringing down the cost of high-value technologies over time", "location": "Section 3 (Inequality within countries)"}
+      ],
+      "notes": "Expects competitive diffusion of access to consumers, especially in the developed world; but flags wealth inequality (as opposed to access) as a harder, unresolved problem in Section 5."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "I think it could come as early as 2026 ... focus on what happens in the 5-10 years after that", "location": "Basic assumptions and framework"}
+      ],
+      "notes": "Powerful AI ~2026; main transformation over the following 5-10 years, i.e. roughly 7-12 years from the 2024 writing. Representative value 10."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "I am more optimistic about within-country inequality especially in the developed world", "location": "Section 3 (Inequality within countries)"}
+      ],
+      "notes": "FREE TEXT: Amodei is relatively optimistic that within-country inequality of access can be managed in the developed world (markets lower costs; responsive institutions; citizen demand), most concerned about global North-South inequality, and treats wealth inequality (vs. access) as the hardest problem, possibly requiring a new economic settlement (e.g., large UBI) once labor is broadly displaced."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

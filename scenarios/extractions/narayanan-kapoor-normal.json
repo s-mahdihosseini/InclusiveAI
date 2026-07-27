@@ -1,0 +1,143 @@
+{
+  "source_id": "narayanan-kapoor-normal",
+  "author": "Arvind Narayanan & Sayash Kapoor",
+  "title": "AI as Normal Technology",
+  "year": 2025,
+  "type": "essay",
+  "url": "https://knightcolumbia.org/content/ai-as-normal-technology",
+  "central_scenario_summary": "AI is a transformative general-purpose technology, but a 'normal' one like electricity or the internet: its economic and societal impacts arrive slowly, over decades, because application development and diffusion—not methods progress—are the binding constraints, especially in consequential and safety-critical domains. Superintelligence and fast-takeoff scenarios are rejected as incoherent; humans and organizations remain in control, with a growing share of human work consisting of AI control, specification, and oversight. The risks that matter most are systemic and political—inequality, concentration of power, labor-market disruption—arising from people and firms using AI within capitalism, and the right policy posture is resilience, competition, and preventing concentration rather than nonproliferation.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "To view AI as normal is not to understate its impact—even transformative, general-purpose technologies such as electricity and the internet are \"normal\" in our conception.",
+          "location": "Opening section, first paragraph"
+        },
+        {
+          "text": "we explain why we think that transformative economic and societal impacts will be slow (on the timescale of decades)",
+          "location": "Introduction, overview of Part I"
+        }
+      ],
+      "notes": "Explicitly matches the scale-1 anchor: diffusion like electricity/internet over decades; fast takeoff and superintelligence rejected."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "The essay does not take a position on entry barriers into high-skill occupations or on expertise premia; it discusses professional benchmarks (bar exam) only to argue they overstate AI's ability to replace professionals."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "because most people used it infrequently, this only translated to 0.5%-3.5% of work hours (and a 0.125-0.875 percentage point increase in labor productivity).",
+          "location": "Part I, 'Diffusion is limited by the speed of human, organizational, and institutional change'"
+        },
+        {
+          "text": "professionals in many occupations benefit from existing AI systems, but this benefit is typically modest and is more about augmentation than substitution",
+          "location": "Part I, 'Benchmarks do not measure real-world utility'"
+        }
+      ],
+      "notes": "Eventually broad (GPT-scale) but gains materialize gradually and unevenly across sectors; near-term gains modest. Scored 1 as the within-horizon central case."
+    },
+    "substitution": {
+      "score": 0,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "this benefit is typically modest and is more about augmentation than substitution, a radically different picture from what one might conclude based on static benchmarks like exams",
+          "location": "Part I, 'Benchmarks do not measure real-world utility'"
+        },
+        {
+          "text": "Even if every task that humans do today might be automated one day, this does not mean that human labor will be superfluous.",
+          "location": "Part I, 'Economic impacts are likely to be gradual'"
+        },
+        {
+          "text": "we predict that an increasing percentage of human jobs and tasks will be related to AI control.",
+          "location": "Part II, 'Control comes in many flavors'"
+        }
+      ],
+      "notes": "Complement-with-task-creation view: humans shift into AI control and specification tasks; acknowledged exceptions (copywriters, translators) noted as small."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "As automation increases, humans will adapt, and will focus on tasks that are not yet automated, perhaps tasks that do not exist today",
+          "location": "Part I, 'Economic impacts are likely to be gradual'"
+        },
+        {
+          "text": "the goalpost of AGI will continually move further away as increasing automation redefines which tasks are economically valuable.",
+          "location": "Part I, 'Economic impacts are likely to be gradual'"
+        }
+      ],
+      "notes": "Historical-pattern view: automated outputs cheapen, labor and value migrate to new tasks, as in past GPT transitions."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Will the progress of AI be gradual, allowing people and institutions to adapt as AI capabilities and adoption increase, or will there be jumps leading to massive disruption",
+          "location": "Part I, opening"
+        },
+        {
+          "text": "the speed of diffusion is inherently limited by the speed at which not only individuals, but also organizations and institutions, can adapt to technology.",
+          "location": "Part I, 'Diffusion is limited by the speed of human, organizational, and institutional change'"
+        }
+      ],
+      "notes": "Their central claim is that the shock is slow enough for historical-speed adjustment; diffusion itself is paced by adaptation. They still flag 'massive job losses in specific occupations' as a systemic risk."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "most commonly—extractive capitalistic practices that magnify inequalities. Defending against this category of risk requires increasing resilience by preventing the concentration of power and resources",
+          "location": "Part IV, 'The challenge of policy making under uncertainty'"
+        },
+        {
+          "text": "nonproliferation, might help to contain a superintelligence but exacerbate the risks associated with normal technology by increasing market concentration.",
+          "location": "Part IV, 'The challenge of policy making under uncertainty'"
+        }
+      ],
+      "notes": "Concentration of power is a first-order risk they expect capitalism to produce absent pro-competition, open-model policy; not framed as inevitable winner-take-most."
+    },
+    "timeline_years": {
+      "score": 20,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "transformative economic and societal impacts will be slow (on the timescale of decades)",
+          "location": "Introduction, overview of Part I"
+        },
+        {
+          "text": "Diffusion occurs over decades, not years.",
+          "location": "Part I, 'Diffusion is limited by the speed of human, organizational, and institutional change'"
+        }
+      ],
+      "notes": "No point estimate given; 'decades' operationalized as ~20 years (lower edge of a multi-decade diffusion)."
+    },
+    "inequality_prediction": {
+      "score": "If AI is normal technology, its downsides will mirror those of previous technologies deployed in capitalistic societies: increasing inequality, job losses in specific occupations, worsening labor conditions, and concentration of power—driven by people and firms using AI for their own ends, not by rogue AI. These systemic risks are the ones policy should prioritize, via resilience, competition, and equitable labor markets.",
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "the downsides of which will be likely to mirror those of previous technologies that are deployed in capitalistic societies, such as inequality.",
+          "location": "Introduction, overview of Part IV"
+        },
+        {
+          "text": "These include the systemic entrenchment of bias and discrimination, massive job losses in specific occupations, worsening labor conditions, increasing inequality, concentration of power",
+          "location": "Part III, 'History suggests normal AI may introduce many kinds of systemic risks'"
+        }
+      ],
+      "notes": ""
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

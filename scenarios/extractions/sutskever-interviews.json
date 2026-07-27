@@ -1,0 +1,88 @@
+{
+  "source_id": "sutskever-interviews",
+  "author": "Ilya Sutskever",
+  "title": "Ilya Sutskever — Dwarkesh interview on superintelligence",
+  "year": 2025,
+  "type": "podcast",
+  "url": "https://www.dwarkesh.com/p/ilya-sutskever-2",
+  "central_scenario_summary": "Sutskever reframes superintelligence not as a finished mind that already knows every job but as a super-efficient learner — 'a superintelligent 15-year-old' — that is deployed incrementally and learns on the job the way a human worker joins an organization, becoming superhuman as instances accumulate and merge their learnings. He puts this system 5-20 years out and thinks broad deployment will 'likely' bring rapid economic growth for some time, though the magnitude is hard to predict because the physical world is large and slow. On distribution, his strong intuition is that market competition and specialization will push prices down and spread gains across many firms and niches rather than concentrating with the first mover (while conceding winner-take-all is a 'valid' possibility), and he separately favors capping the power of the most powerful superintelligence.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "high",
+      "quotes": [
+        {"text": "I produce a superintelligent 15-year-old that's very eager to go ... go and be a programmer, you go and be a doctor, go and learn", "location": "~00:50 superintelligence as a learner"},
+        {"text": "you basically have a model which functionally becomes superintelligent even without any sort of recursive self-improvement in software (Dwarkesh framing, affirmed)", "location": "~00:52 broad deployment"}
+      ],
+      "notes": "Superintelligence via a human-like learner that becomes superhuman and can amalgamate learnings across instances; discusses intelligence-explosion dynamics."
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "low",
+      "quotes": [
+        {"text": "a mind which can learn to do every single job, and that is superintelligence (Dwarkesh framing, affirmed by Sutskever: 'Yes.')", "location": "~00:51"}
+      ],
+      "notes": "Inferred, not an explicit claim about human premia: an AI that can learn to do every job (programmer, doctor) would ultimately compete away expertise rents. Sutskever does not directly discuss human entry barriers or skill premia, hence low confidence."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "AI is going to be diffused through the economy. There'll be very strong economic forces for this, and I think the impact is going to be felt very strongly.", "location": "opening ~00:01"}
+      ],
+      "notes": "Economy-wide diffusion and impact; one learner able to do every job implies broad gains."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "once you have the learning algorithm, it gets deployed into the world the same way a human laborer might join an organization (affirmed: 'Exactly.')", "location": "~00:51"}
+      ],
+      "notes": "AI learns and performs jobs like a human laborer across the economy; strong substitute, though deployment is gradual/incremental."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "it is likely that we will have rapid economic growth ... The question is how rapid it's going to be.", "location": "~00:52 broad deployment"}
+      ],
+      "notes": "Expects rapid output growth but notes the physical world moves at a different speed; does not directly discuss new-wants/Baumol absorption. Scored mixed/historical."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "the deployment itself will involve some kind of a learning trial-and-error period. It's a process, as opposed to you dropping the finished thing.", "location": "~00:50 superintelligence as a learner"},
+        {"text": "I now place more importance on AI being deployed incrementally and in advance", "location": "~00:56 alignment"}
+      ],
+      "notes": "Incremental, in-advance deployment implies a more gradual transition that society can partly adjust to; frictions in reallocation not directly analyzed."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "they started to compete in the market and push the prices down. So I think from the market perspective, something similar will happen there as well.", "location": "~01:25 who captures the gains"},
+        {"text": "That's a valid argument. My strong intuition is that it's not how it's going to go.", "location": "~01:28 (on winner-take-all)"}
+      ],
+      "notes": "Leans toward competitive diffusion via price competition and specialization into niches, but explicitly treats first-mover winner-take-all as a valid possibility; also favors capping the most powerful system's power. Meaningful-but-contested, hence mixed."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "high",
+      "quotes": [
+        {"text": "I think like 5 to 20 [years]", "location": "~01:22 forecasts"}
+      ],
+      "notes": "Explicit 5-20 year forecast for the human-like learner that becomes superhuman; representative value 10 (range 5-20)."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the ones which have the friendlier rules, the economic growth will be faster. Hard to predict.", "location": "~00:52 broad deployment"}
+      ],
+      "notes": "FREE TEXT: Sutskever expects rapid economic growth from broad AI deployment; on distribution his strong intuition is that competition and specialization will push prices down and spread benefits across many firms/niches rather than concentrating with whoever builds the learner first, though he concedes winner-take-all is a valid risk. He separately supports capping the power of the most powerful superintelligence."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

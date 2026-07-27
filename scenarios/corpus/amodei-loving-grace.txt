@@ -1,0 +1,96 @@
+SOURCE_ID: amodei-loving-grace
+AUTHOR: Dario Amodei
+TITLE: Machines of Loving Grace (How AI Could Transform the World for the Better)
+YEAR: 2024
+TYPE: essay
+URL: https://darioamodei.com/machines-of-loving-grace
+NOTE: PARTIAL — full essay obtained via fetch; corpus stores intro + framework + Section 3 (Economic development and poverty) + Section 5 (Work and meaning) + Taking stock in full. The deep biology/neuroscience/governance sections (1, 2, 4) are summarized in brackets because they are not about economics/income distribution.
+====
+
+Machines of Loving Grace
+How AI Could Transform the World for the Better
+October 2024
+
+I think and talk a lot about the risks of powerful AI. The company I'm the CEO of, Anthropic, does a lot of research on how to reduce these risks. Because of this, people sometimes draw the conclusion that I'm a pessimist or "doomer" who thinks AI will be mostly bad or dangerous. I don't think that at all. In fact, one of my main reasons for focusing on risks is that they're the only thing standing between us and what I see as a fundamentally positive future. I think that most people are underestimating just how radical the upside of AI could be, just as I think most people are underestimating how bad the risks could be.
+
+In this essay I try to sketch out what that upside might look like—what a world with powerful AI might look like if everything goes right. [...] I'm including lots of details mainly because I think a concrete vision does more to advance discussion than a highly hedged and abstract one.
+
+The five categories I am most excited about are:
+1. Biology and physical health
+2. Neuroscience and mental health
+3. Economic development and poverty
+4. Peace and governance
+5. Work and meaning
+
+## Basic assumptions and framework
+
+To make this whole essay more precise and grounded, it's helpful to specify clearly what we mean by powerful AI (i.e. the threshold at which the 5-10 year clock starts counting), as well as laying out a framework for thinking about the effects of such AI once it's present.
+
+What powerful AI (I dislike the term AGI) will look like, and when (or if) it will arrive, is a huge topic in itself. [...] I think it could come as early as 2026, though there are also ways it could take much longer. But for the purposes of this essay, I'd like to put these issues aside, assume it will come reasonably soon, and focus on what happens in the 5-10 years after that.
+
+By powerful AI, I have in mind an AI model—likely similar to today's LLMs in form, though it might be based on a different architecture, might involve several interacting models, and might be trained differently—with the following properties:
+
+- In terms of pure intelligence, it is smarter than a Nobel Prize winner across most relevant fields – biology, programming, math, engineering, writing, etc. This means it can prove unsolved mathematical theorems, write extremely good novels, write difficult codebases from scratch, etc.
+- In addition to just being a "smart thing you talk to", it has all the "interfaces" available to a human working virtually, including text, audio, video, mouse and keyboard control, and internet access. It can engage in any actions, communications, or remote operations enabled by this interface [...]. It does all of these tasks with, again, a skill exceeding that of the most capable humans in the world.
+- It does not just passively answer questions; instead, it can be given tasks that take hours, days, or weeks to complete, and then goes off and does those tasks autonomously, in the way a smart employee would, asking for clarification as necessary.
+- It does not have a physical embodiment (other than living on a computer screen), but it can control existing physical tools, robots, or laboratory equipment through a computer; in theory it could even design robots or equipment for itself to use.
+- The resources used to train the model can be repurposed to run millions of instances of it (this matches projected cluster sizes by ~2027), and the model can absorb information and generate actions at roughly 10x-100x human speed. It may however be limited by the response time of the physical world or of software it interacts with.
+- Each of these million copies can act independently on unrelated tasks, or if needed can all work together in the same way humans would collaborate, perhaps with different subpopulations fine-tuned to be especially good at particular tasks.
+
+We could summarize this as a "country of geniuses in a datacenter".
+
+[Amodei then lays out a framework of "marginal returns to intelligence" and factors that are complementary to / limit intelligence: speed of the outside world, need for data, intrinsic complexity, constraints from humans, and physical laws. Intelligence is initially bottlenecked by these other factors, but over time routes around them. The key question is how fast it all happens and in what order.]
+
+[Section 1 (Biology and health) and Section 2 (Neuroscience and mind), summarized: Amodei's central prediction is the "compressed 21st century" — AI-enabled biology and medicine will compress 50-100 years of progress into 5-10 years, achieving prevention/treatment of most infectious disease, elimination of most cancer, cures for genetic and mental illness, and a possible doubling of the human lifespan. He argues the returns to intelligence for the key discoveries are very high.]
+
+## 3. Economic development and poverty
+
+The previous two sections are about developing new technologies that cure disease and improve the quality of human life. However an obvious question, from a humanitarian perspective, is: "will everyone have access to these technologies?"
+
+It is one thing to develop a cure for a disease, it is another thing to eradicate the disease from the world. More broadly, many existing health interventions have not yet been applied everywhere in the world, and for that matter the same is true of (non-health) technological improvements in general. Another way to say this is that living standards in many parts of the world are still desperately poor: GDP per capita is ~$2,000 in Sub-Saharan Africa as compared to ~$75,000 in the United States. If AI further increases economic growth and quality of life in the developed world, while doing little to help the developing world, we should view that as a terrible moral failure and a blemish on the genuine humanitarian victories in the previous two sections. Ideally, powerful AI should help the developing world catch up to the developed world, even as it revolutionizes the latter.
+
+I am not as confident that AI can address inequality and economic growth as I am that it can invent fundamental technologies, because technology has such obvious high returns to intelligence (including the ability to route around complexities and lack of data) whereas the economy involves a lot of constraints from humans, as well as a large dose of intrinsic complexity. I am somewhat skeptical that an AI could solve the famous "socialist calculation problem" and I don't think governments will (or should) turn over their economic policy to such an entity, even if it could do so. There are also problems like how to convince people to take treatments that are effective but that they may be suspicious of.
+
+The challenges facing the developing world are made even more complicated by pervasive corruption in both private and public sectors. Corruption creates a vicious cycle: it exacerbates poverty, and poverty in turn breeds more corruption. AI-driven plans for economic development need to reckon with corruption, weak institutions, and other very human challenges.
+
+Nevertheless, I do see significant reasons for optimism. Diseases have been eradicated and many countries have gone from poor to rich, and it is clear that the decisions involved in these tasks exhibit high returns to intelligence (despite human constraints and complexity). Therefore, AI can likely do them better than they are currently being done. [...] More importantly though, we have to try. Both AI companies and developed world policymakers will need to do their part to ensure that the developing world is not left out; the moral imperative is too great.
+
+Below I make some guesses about how I think things may go in the developing world over the 5-10 years after powerful AI is developed:
+
+- Distribution of health interventions. The area where I am perhaps most optimistic is distributing health interventions throughout the world. [...] Overall, I think 5-10 years is a reasonable timeline for a good fraction (maybe 50%) of AI-driven health benefits to propagate to even the poorest countries in the world. A good goal might be for the developing world 5-10 years after powerful AI to at least be substantially healthier than the developed world is today, even if it continues to lag behind the developed world.
+
+- Economic growth. Can the developing world quickly catch up to the developed world, not just in health, but across the board economically? There is some precedent for this: in the final decades of the 20th century, several East Asian economies achieved sustained ~10% annual real GDP growth rates, allowing them to catch up with the developed world. [...] it's plausible that "AI finance ministers and central bankers" could replicate or exceed this 10% accomplishment. [...] On the more negative side, while AI and automation have many potential benefits, they also pose challenges for economic development, particularly for countries that haven't yet industrialized. Finding ways to ensure these countries can still develop and improve their economies in an age of increasing automation is an important challenge for economists and policymakers to address. Overall, a dream scenario—perhaps a goal to aim for—would be 20% annual GDP growth rate in the developing world, with 10% each coming from AI-enabled economic decisions and the natural spread of AI-accelerated technologies, including but not limited to health. If achieved, this would bring sub-Saharan Africa to the current per-capita GDP of China in 5-10 years, while raising much of the rest of the developing world to levels higher than the current US GDP. Again, this is a dream scenario, not what happens by default: it's something all of us must work together to make more likely.
+
+- Food security. Advances in crop technology [...] could give us an AI-driven second Green Revolution, helping close the gap between the developing and developed world.
+
+- Mitigating climate change. [...] there's good reason to think that AI-enhanced research will give us the means to make mitigating climate change far less costly and disruptive, rendering many of the objections moot and freeing up developing countries to make more economic progress.
+
+- Inequality within countries. I've mostly talked about inequality as a global phenomenon (which I do think is its most important manifestation), but of course inequality also exists within countries. With advanced health interventions and especially radical increases in lifespan or cognitive enhancement drugs, there will certainly be valid worries that these technologies are "only for the rich". I am more optimistic about within-country inequality especially in the developed world, for two reasons. First, markets function better in the developed world, and markets are typically good at bringing down the cost of high-value technologies over time. Second, developed world political institutions are more responsive to their citizens and have greater state capacity to execute universal access programs—and I expect citizens to demand access to technologies that so radically improve quality of life. [...] There is a separate problem in inequality of wealth (as opposed to inequality of access to life-saving and life-enhancing technologies), which seems harder and which I discuss in Section 5.
+
+- The opt-out problem. One concern in both developed and developing worlds alike is people opting out of AI-enabled benefits (similar to the anti-vaccine movement, or Luddite movements more generally). There could end up being bad feedback cycles where, for example, the people who are least able to make good decisions opt out of the very technologies that improve their decision-making abilities, leading to an ever-increasing gap and even creating a dystopian underclass [...].
+
+Overall, I am optimistic about quickly bringing AI's biological advances to people in the developing world. I am hopeful, though not confident, that AI can also enable unprecedented economic growth rates and allow the developing world to at least surpass where the developed world is now. [...] It won't be a perfect world, and those who are behind won't fully catch up, at least not in the first few years. But with strong efforts on our part, we may be able to get things moving in the right direction—and fast.
+
+[Section 4 (Peace and governance), summarized: Amodei argues AI will not structurally favor democracy the way it favors health/poverty alleviation; conflict is adversarial and AI helps "good guys" and "bad guys" alike, with worrying tools for propaganda and surveillance. He proposes an "entente strategy" whereby a coalition of democracies secures a temporary AI advantage.]
+
+## 5. Work and meaning
+
+Even if everything in the preceding four sections goes well [...] at least one important question still remains. "It's great we live in such a technologically advanced world as well as a fair and decent one", someone might object, "but with AIs doing everything, how will humans have meaning? For that matter, how will they survive economically?".
+
+I think this question is more difficult than the others. [...] it is fuzzier and harder to predict in advance, because it relates to macroscopic questions about how society is organized that tend to resolve themselves only over time and in a decentralized manner.
+
+On the question of meaning, I think it is very likely a mistake to believe that tasks you undertake are meaningless simply because an AI could do them better. Most people are not the best in the world at anything, and it doesn't seem to bother them particularly much. [...] In any case I think meaning comes mostly from human relationships and connection, not from economic labor. [...] The facts that (a) an AI somewhere could in principle do this task better, and (b) this task is no longer an economically rewarded element of a global economy, don't seem to me to matter very much.
+
+The economic piece actually seems more difficult to me than the meaning piece. By "economic" in this section I mean the possible problem that most or all humans may not be able to contribute meaningfully to a sufficiently advanced AI-driven economy. This is a more macro problem than the separate problem of inequality, especially inequality in access to the new technologies, which I discussed in Section 3.
+
+First of all, in the short term I agree with arguments that comparative advantage will continue to keep humans relevant and in fact increase their productivity, and may even in some ways level the playing field between humans. As long as AI is only better at 90% of a given job, the other 10% will cause humans to become highly leveraged, increasing compensation and in fact creating a bunch of new human jobs complementing and amplifying what AI is good at, such that the "10%" expands to continue to employ almost everyone. In fact, even if AI can do 100% of things better than humans, but it remains inefficient or expensive at some tasks, or if the resource inputs to humans and AIs are meaningfully different, then the logic of comparative advantage continues to apply. One area humans are likely to maintain a relative (or even absolute) advantage for a significant time is the physical world. Thus, I think that the human economy may continue to make sense even a little past the point where we reach "a country of geniuses in a datacenter".
+
+However, I do think in the long run AI will become so broadly effective and so cheap that this will no longer apply. At that point our current economic setup will no longer make sense, and there will be a need for a broader societal conversation about how the economy should be organized.
+
+While that might sound crazy, the fact is that civilization has successfully navigated major economic shifts in the past: from hunting and gathering to farming, farming to feudalism, and feudalism to industrialism. I suspect that some new and stranger thing will be needed, and that it's something no one today has done a good job of envisioning. It could be as simple as a large universal basic income for everyone, although I suspect that will only be a small part of a solution. It could be a capitalist economy of AI systems, which then give out resources (huge amounts of them, since the overall economic pie will be gigantic) to humans based on some secondary economy of what the AI systems think makes sense to reward in humans (based on some judgment ultimately derived from human values). Perhaps the economy runs on Whuffie points. Or perhaps humans will continue to be economically valuable after all, in some way not anticipated by the usual economic models. All of these solutions have tons of possible problems [...]. And as with some of the other challenges, we will likely have to fight to get a good outcome here: exploitative or dystopian directions are clearly also possible and have to be prevented.
+
+## Taking stock
+
+Through the varied topics above, I've tried to lay out a vision of a world that is both plausible if everything goes right with AI, and much better than the world today. [...] If all of this really does happen over 5 to 10 years—the defeat of most diseases, the growth in biological and cognitive freedom, the lifting of billions of people out of poverty to share in the new technologies, a renaissance of liberal democracy and human rights—I suspect everyone watching it will be surprised by the effect it has on them.
+
+[Amodei closes by arguing that the values of fairness, cooperation, curiosity and autonomy are a "winning strategy," and that AI simply offers an opportunity to get humanity to a good destination more quickly.]

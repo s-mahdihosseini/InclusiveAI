@@ -1,0 +1,19 @@
+{
+  "tier3_smm": {
+    "kappa": 4.911220921203494,
+    "tau": 0.46307332805357854
+  },
+  "smm_diagnostics": {
+    "objective": 0.01287330880322765,
+    "n_evaluations": 58,
+    "elapsed_seconds": 57.34662485122681
+  },
+  "data_moments": {
+    "var_log_occ_wage": 0.208,
+    "mobility_rate": 0.12
+  },
+  "moment_weights": {
+    "var_log_occ_wage": 5.0,
+    "mobility_rate": 8.0
+  }
+}

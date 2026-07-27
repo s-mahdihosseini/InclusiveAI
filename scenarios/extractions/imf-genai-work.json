@@ -1,0 +1,93 @@
+{
+  "source_id": "imf-genai-work",
+  "author": "Mauro Cazzaniga, Florence Jaumotte, Longji Li, Giovanni Melina, Augustus J. Panton, Carlo Pizzinelli, Emma J. Rockall, Marina Mendes Tavares (IMF)",
+  "title": "Gen-AI: Artificial Intelligence and the Future of Work",
+  "year": 2024,
+  "type": "report",
+  "url": "https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/01/14/Gen-AI-Artificial-Intelligence-and-the-Future-of-Work-542379",
+  "central_scenario_summary": "AI is a major productivity shock exposing almost 40 percent of global employment (60 percent in advanced economies); unlike past automation it reaches high-wage cognitive work, with roughly half of exposed jobs at risk of displacement and half complemented. In a UK-calibrated task model with a 5.5pp labor-share decline, labor income inequality rises if AI strongly complements high earners, and capital income and wealth inequality rise in all scenarios; if productivity gains are large (output +16 percent, gains mostly within 10 years), incomes rise across most of the distribution. Policy — property rights over AI, redistribution, safety nets, retraining — shapes the final distributional outcome.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "Artificial intelligence (AI) is set to profoundly change the global economy, with some commentators seeing it as akin to a new industrial revolution.", "location": "Executive Summary, first paragraph"},
+        {"text": "Almost 40 percent of global employment is exposed to AI, with advanced economies at greater risk but also better poised to exploit AI benefits", "location": "Executive Summary"}
+      ],
+      "notes": "Treats AI as a broad general-purpose technology wave hitting cognitive occupations; no superintelligence or full-automation scenario."
+    },
+    "expertise_erosion": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {"text": "potential AI complementarity is positively correlated with income", "location": "Executive Summary"},
+        {"text": "with strong complementarity, high-wage earners might experience a disproportionate increase in their earnings, thereby intensifying labor income inequality", "location": "Section VI, Conclusions"}
+      ],
+      "notes": "Two-sided: displacement risk now extends to higher-wage earners (which would erode premia), but the note's emphasized scenario has AI complementing high-income professionals, raising their premia. Scored 0 for the emphasized high-complementarity case; the low-complementarity case would instead compress top labor incomes."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "output increases by 16 percent between steady states, and total factor productivity increases by almost 4 percent. These gains happen primarily in the first 10 years of the transition.", "location": "Section IV, model results (third scenario)"},
+        {"text": "In advanced economies, about 60 percent of jobs are exposed to AI, due to prevalence of cognitive-task-oriented jobs.", "location": "Executive Summary"}
+      ],
+      "notes": "Sizable but conventional gains (roughly +1.5pp annual productivity growth for a decade in the optimistic scenario), concentrated in exposed cognitive occupations; not economy-transforming explosive growth."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {"text": "AI promises to increase productivity while threatening to replace humans in some jobs and to complement them in others.", "location": "Executive Summary, first paragraph"},
+        {"text": "A new measure of potential AI complementarity suggests that, of these, about half may be negatively affected by AI, while the rest could benefit from enhanced productivity through AI integration.", "location": "Executive Summary"}
+      ],
+      "notes": "Explicitly mixed: displacement and complementarity channels are modeled jointly; which dominates varies by occupation and scenario."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "A rise in aggregate productivity of the economy could however strengthen overall economic demand, potentially creating more job opportunities for most workers in a ripple effect.", "location": "Section I, Introduction"},
+        {"text": "higher growth and labor demand could more than compensate for the partial replacement of labor tasks by AI, and incomes could increase along most of the income distribution", "location": "Executive Summary"}
+      ],
+      "notes": "Historical-pattern absorption: productivity gains raise demand for all factors, offsetting displacement if gains are large enough — conditional, not guaranteed."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "College-educated workers are better prepared to move from jobs at risk of displacement to high-complementarity jobs; older workers may be more vulnerable to the AI-driven transformation.", "location": "Executive Summary"},
+        {"text": "For all economies, social safety nets and retraining for AI-susceptible workers are crucial to ensure inclusivity.", "location": "Executive Summary"}
+      ],
+      "notes": "Assumes historical mobility patterns (UK/Brazil transition evidence): reallocation happens but is uneven — easier for the college-educated and young, harder for older and less-educated workers; policy support needed."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "Unlike labor income inequality, capital income and wealth inequality always increase with AI adoption", "location": "Section IV, model results"},
+        {"text": "Countries' choices regarding the definition of AI property rights, as well as redistributive and other fiscal policies, will ultimately shape its impact on income and wealth distribution.", "location": "Executive Summary"}
+      ],
+      "notes": "Surplus flows significantly to capital owners (higher capital returns accruing to high earners) in every scenario, but the note stresses contested/policy-dependent outcomes rather than winner-take-most firm rents."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "These gains happen primarily in the first 10 years of the transition.", "location": "Section IV, model results (third scenario)"}
+      ],
+      "notes": "Model transition gains concentrated in the first 10 years after adoption; advanced economies affected sooner than EMDEs."
+    },
+    "inequality_prediction": {
+      "score": "Labor income inequality may increase if AI strongly complements high-income workers (their earnings rise more than proportionally), while capital income and wealth inequality increase in all scenarios because capital returns rise and assets are concentrated at the top; however, if productivity gains are large enough, income levels rise for most workers (from +2 percent at the bottom to +14 percent at the top in the model), and property-rights and redistributive policy choices ultimately shape the distributional outcome.",
+      "confidence": "high",
+      "quotes": [
+        {"text": "Labor income inequality may increase if the complementarity between AI and high-income workers is strong, while capital returns will increase wealth inequality.", "location": "Official Summary"},
+        {"text": "Growing AI adoption has the potential to exacerbate cross-country and within-country inequality.", "location": "Section V/VI, policy discussion"}
+      ],
+      "notes": null
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

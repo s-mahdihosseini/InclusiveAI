@@ -1,0 +1,117 @@
+{
+  "source_id": "acemoglu-dont-believe-hype",
+  "author": "Daron Acemoglu",
+  "title": "Don't Believe the AI Hype",
+  "year": 2024,
+  "type": "essay",
+  "url": "https://www.project-syndicate.org/commentary/ai-productivity-boost-will-be-smaller-than-expected-by-daron-acemoglu-2024-05",
+  "central_scenario_summary": "Over the next decade AI's macroeconomic effects will be modest: only about 4.6% of tasks will be affected, yielding a TFP increase of roughly 0.66% over ten years (0.53% after adjusting for harder-to-learn tasks) and perhaps 1-1.5% extra GDP including the investment boom—far below Goldman Sachs and McKinsey forecasts. AI's exposure is more demographically even than past automation waves, but there is no evidence it will reduce inequality or raise wage growth; capital will gain more than labor, and some groups will be hurt. AI is a general-purpose technology whose potential will be squandered if the tech industry's automation-and-advertising agenda goes unregulated.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "AI is nowhere close to being able to perform most manual or social tasks (including seemingly simple functions with some social aspects, like accounting).",
+          "location": "Middle of essay, task-share discussion"
+        },
+        {
+          "text": "AI is what economists call a general-purpose technology. We can do many things with it",
+          "location": "Final paragraph"
+        }
+      ],
+      "notes": "Accepts GPT status but with very small decade-scale effects driven by existing technologies and improvements; quantitatively near the bottom of the scale-1 anchor (near stagnation over the ten-year horizon)."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No direct position on entry barriers into high-skill occupations or expertise premia; notes exposure is more evenly distributed across demographic groups than prior automation."
+    },
+    "productivity_breadth": {
+      "score": 0,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "I estimate this to be around 4.6%, implying that AI will increase TFP by only 0.66% over ten years, or by 0.06% annually.",
+          "location": "Middle of essay, Hulten's theorem calculation"
+        },
+        {
+          "text": "Once this adjustment is made, the 0.66% TFP growth figure declines to about 0.53%.",
+          "location": "Later, harder-to-learn tasks adjustment"
+        }
+      ],
+      "notes": "Narrow task share, modest micro cost savings (27% labor-cost / 14.4% overall), small aggregate effect; GDP boost 1-1.5% over a decade including investment."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "It is reasonable to suppose that AI's biggest impact will come from automating some tasks and making some workers in some occupations more productive.",
+          "location": "Early in essay"
+        },
+        {
+          "text": "the tech industry is currently focused excessively on automation and monetizing data, rather than on introducing new production tasks for workers.",
+          "location": "Middle of essay"
+        }
+      ],
+      "notes": "Mixed by construction (some tasks automated, some workers augmented), with the industry tilted toward automation."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Does not address demand elasticity or saturation; notes new tasks/products could raise effects but 'unlikely to be a major source of economic growth within ten years.'"
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on reallocation speed or retraining."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "capital will gain more than labor overall.",
+          "location": "Inequality paragraph, near end"
+        },
+        {
+          "text": "if we embrace techno-optimism uncritically or let the tech industry set the agenda, much of the potential could be squandered.",
+          "location": "Final paragraph"
+        }
+      ],
+      "notes": "Capital-over-labor tilt and tech-industry agenda-setting; not a full winner-take-most claim in this piece (that is stronger elsewhere in his work)."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "one can say something about the next decade, because most of these near-term economic effects must involve existing technologies and improvements to them.",
+          "location": "Second paragraph"
+        }
+      ],
+      "notes": "The ten-year horizon is the analysis window over which the (modest) central effects play out; beyond 20-30 years he says prediction is basically impossible."
+    },
+    "inequality_prediction": {
+      "score": "AI's exposure is more evenly spread across demographic groups than earlier automation waves, so it will not widen inequality as much as robots or software did—but there is no evidence it will reduce inequality or boost wage growth. Some groups, especially white native-born women, are significantly more exposed and will be negatively affected, and capital will gain more than labor overall.",
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "However, I find no evidence that AI will reduce inequality or boost wage growth.",
+          "location": "Inequality paragraph, near end"
+        },
+        {
+          "text": "Some groups – especially white, native-born women – are significantly more exposed and will be negatively affected, and capital will gain more than labor overall.",
+          "location": "Inequality paragraph, near end"
+        }
+      ],
+      "notes": ""
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

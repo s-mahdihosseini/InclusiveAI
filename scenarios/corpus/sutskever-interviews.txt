@@ -1,0 +1,64 @@
+SOURCE_ID: sutskever-interviews
+AUTHOR: Ilya Sutskever (interviewed by Dwarkesh Patel)
+TITLE: Ilya Sutskever — Dwarkesh interview on superintelligence ("We're moving from the age of scaling to the age of research")
+YEAR: 2025
+TYPE: podcast
+URL: https://www.dwarkesh.com/p/ilya-sutskever-2
+NOTE: PARTIAL — full transcript obtained (~93k chars). Corpus stores the economics/deployment/growth/distribution portions relevant to income distribution. Technical portions (RL, pre-training, value functions, alignment mechanics, self-play) are largely omitted or summarized.
+====
+
+=== Opening: on the "slow takeoff" and economic impact ===
+
+DWARKESH PATEL: Another thing that's crazy is how normal the slow takeoff feels. The idea that we'd be investing 1% of GDP in AI, I feel like it would have felt like a bigger deal, whereas right now it just feels...
+
+SUTSKEVER: We get used to things pretty fast, it turns out. But also it's kind of abstract... It's not really felt in any other way so far.
+
+DWARKESH PATEL: I think your point, about how from the average person's point of view nothing is that different, will continue being true even into the singularity.
+
+SUTSKEVER: No, I don't think so. [...] the impact of AI is going to be felt. AI is going to be diffused through the economy. There'll be very strong economic forces for this, and I think the impact is going to be felt very strongly.
+
+DWARKESH PATEL: When do you expect that impact? I think the models seem smarter than their economic impact would imply.
+
+SUTSKEVER: Yeah. This is one of the very confusing things about the models right now. How to reconcile the fact that they are doing so well on evals?... But the economic impact seems to be dramatically behind. [He attributes this to models being over-trained on eval-like tasks (like a student who practices 10,000 hours of competitive programming) and to inadequate generalization.]
+
+=== ~00:50 – Superintelligence as a learner, deployed like a human worker ===
+
+SUTSKEVER: [On defining superintelligence] a human being is not an AGI. Yes, there is definitely a foundation of skills, but a human being lacks a huge amount of knowledge. Instead, we rely on continual learning. [...] I produce a superintelligent 15-year-old that's very eager to go. They don't know very much at all, a great student, very eager. You go and be a programmer, you go and be a doctor, go and learn. So you could imagine that the deployment itself will involve some kind of a learning trial-and-error period. It's a process, as opposed to you dropping the finished thing.
+
+DWARKESH PATEL: You're proposing instead a mind which can learn to do every single job, and that is superintelligence. [...] once you have the learning algorithm, it gets deployed into the world the same way a human laborer might join an organization.
+
+SUTSKEVER: Exactly.
+
+DWARKESH PATEL: [Do you expect an intelligence explosion from broad deployment — one model doing every job, learning on the job, amalgamating learnings across instances in a way humans can't?]
+
+SUTSKEVER: I think that it is likely that we will have rapid economic growth. I think with broad deployment, there are two arguments you could make which are conflicting. One is that once indeed you get to a point where you have an AI that can learn to do things quickly and you have many of them, then there will be a strong force to deploy them in the economy unless there will be some kind of a regulation that stops it, which by the way there might be.
+
+But the idea of very rapid economic growth for some time, I think it's very possible from broad deployment. The question is how rapid it's going to be. I think this is hard to know because on the one hand you have this very efficient worker. On the other hand, the world is just really big and there's a lot of stuff, and that stuff moves at a different speed. [...] So I think very rapid economic growth is possible. We will see all kinds of things like different countries with different rules and the ones which have the friendlier rules, the economic growth will be faster. Hard to predict.
+
+=== Timeline (~01:22) ===
+
+DWARKESH PATEL: what are your forecasts to this system you're describing, which can learn as well as a human and subsequently, as a result, become superhuman?
+
+SUTSKEVER: I think like 5 to 20 [years].
+
+=== ~01:03 – On capping the power of superintelligence ===
+
+SUTSKEVER: I think it would be really materially helpful if the power of the most powerful superintelligence was somehow capped because it would address a lot of these concerns. The question of how to do it, I'm not sure, but I think that would be materially helpful when you're talking about really, really powerful systems.
+
+=== ~01:24 – Will the benefits concentrate with the first mover, or be widely distributed? ===
+
+DWARKESH PATEL: By default, you would expect the company that has that model to be getting all these gains because they have the model that has the skills and knowledge that it's building up in the world. What is the reason to think that the benefits of that would be widely distributed and not just end up at whatever model company gets this continuous learning loop going first?
+
+SUTSKEVER: Here is what I think is going to happen. Number one, let's look at how things have gone so far with the AIs of the past. One company produced an advance and the other company scrambled and produced some similar things after some amount of time and they started to compete in the market and push the prices down. So I think from the market perspective, something similar will happen there as well.
+
+[...] suppose you have many of them and you have some company that's producing a lot of profits from it. Then you have another company that comes in and starts to compete. The way the competition is going to work is through specialization. Competition loves specialization. You see it in the market, you see it in evolution as well. You're going to have lots of different niches and you're going to have lots of different companies who are occupying different niches. In this world we might say one AI company is really quite a bit better at some area of really complicated economic activity and a different company is better at another area. And the third company is really good at litigation.
+
+DWARKESH PATEL: [But if one company gets the learner first, learning every job in the economy seems tractable for that one company — winner take all?]
+
+SUTSKEVER: That's a valid argument. My strong intuition is that it's not how it's going to go. The argument says it will go this way, but my strong intuition is that it will not go this way. In theory, there is no difference between theory and practice. In practice, there is. I think that's going to be one of those.
+
+=== On alignment target (context for distribution of benefits) ===
+
+SUTSKEVER: [The best thing to build is] the AI that's robustly aligned to care about sentient life specifically. [...] there's a case to be made that it will be easier to build an AI that cares about sentient life than an AI that cares about human life alone, because the AI itself will be sentient.
+
+[Sutskever also stresses deploying AI incrementally and in advance so that society can "feel the AGI," predicting that as AI becomes visibly more powerful, competitors will collaborate on safety and governments/publics will demand action. "The whole problem is the power."]

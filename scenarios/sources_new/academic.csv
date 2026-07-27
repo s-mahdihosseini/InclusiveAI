@@ -1,0 +1,31 @@
+id,category,author,title,year,type,url,priority
+hampole-ai-labor-market,empirical,"Menaka Hampole, Dimitris Papanikolaou, Lawrence D.W. Schmidt & Bryan Seegmiller",Artificial Intelligence and the Labor Market,2025,paper,https://www.nber.org/papers/w33509,1
+kogan-papanikolaou-tech-displacement,empirical,"Leonid Kogan, Dimitris Papanikolaou, Lawrence D.W. Schmidt & Bryan Seegmiller","Technology and Labor Displacement: Evidence from Linking Patents with Worker-Level Data",2023,paper,https://www.nber.org/papers/w31846,1
+liu-papanikolaou-tech-labor-markets,empirical,"Huben Liu, Dimitris Papanikolaou, Lawrence Schmidt & Bryan Seegmiller","Technology and Labor Markets: Past, Present, and Future; Evidence from Two Centuries of Innovation",2025,paper,https://www.nber.org/papers/w34386,2
+babina-ai-workforce-composition,empirical,"Tania Babina, Anastassia Fedyk, Alex Xi He & James Hodson",Firm Investments in Artificial Intelligence Technologies and Changes in Workforce Composition,2023,paper,https://www.nber.org/papers/w31325,2
+babina-ai-firm-growth-innovation,empirical,"Tania Babina, Anastassia Fedyk, Alex Xi He & James Hodson","Artificial Intelligence, Firm Growth, and Product Innovation",2024,paper,https://doi.org/10.1016/j.jfineco.2023.103745,2
+otis-kenya-entrepreneurship-rct,empirical,"Nicholas Otis, Rowan Clarke, Solène Delecourt, David Holtz & Rembrand Koning",The Uneven Impact of Generative AI on Entrepreneurial Performance: Evidence from a Field Experiment in Kenya,2025,paper,https://doi.org/10.1287/mnsc.2024.06909,1
+acemoglu-autor-johnson-proworker-ai,economist,"Daron Acemoglu, David Autor & Simon Johnson",Building Pro-Worker Artificial Intelligence,2026,paper,https://www.nber.org/papers/w34854,1
+metr-developer-slowdown-rct,empirical,"Joel Becker, Nate Rush, Elizabeth Barnes & David Rein",Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity,2025,paper,https://arxiv.org/abs/2507.09089,1
+autor-rebuild-middle-class-nber,economist,David Autor,Applying AI to Rebuild Middle Class Jobs,2024,paper,https://www.nber.org/papers/w32140,1
+toner-rodgers-ai-science-retracted,empirical,Aidan Toner-Rodgers,"Artificial Intelligence, Scientific Discovery, and Product Innovation (RETRACTED)",2024,paper,https://arxiv.org/abs/2412.17866,3
+felten-raj-seamans-occupational-exposure,empirical,"Edward Felten, Manav Raj & Robert Seamans",Occupational Heterogeneity in Exposure to Generative AI,2023,paper,https://doi.org/10.2139/ssrn.4414065,2
+cui-genai-developer-field-experiments,empirical,"Kevin Zheyuan Cui, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng & Tobias Salz",The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers,2024,paper,https://doi.org/10.2139/ssrn.4945566,1
+eisfeldt-generative-ai-firm-values,empirical,"Andrea Eisfeldt, Gregor Schubert & Miao Ben Zhang",Generative AI and Firm Values,2023,paper,https://www.nber.org/papers/w31222,2
+alekseeva-ai-managerial-expertise,empirical,"Liudmila Alekseeva, José Azar, Mireia Gine & Sampsa Samila",AI Adoption and the Demand for Managerial Expertise,2024,paper,https://doi.org/10.2139/ssrn.4986379,2
+costinot-werning-robots-luddism,economist,Arnaud Costinot & Iván Werning,"Robots, Trade, and Luddism: A Sufficient Statistic Approach to Optimal Technology Regulation",2022,paper,https://doi.org/10.1093/restud/rdac076,2
+korinek-vipra-concentrating-intelligence,economist,Anton Korinek & Jai Vipra,Concentrating Intelligence: Scaling and Market Structure in Artificial Intelligence,2024,paper,https://www.nber.org/papers/w33139,1
+growiec-existential-risk-transformative-ai,economist,Jakub Growiec,Existential Risk from Transformative AI: An Economic Perspective,2024,paper,https://doi.org/10.3846/tede.2024.21525,2
+humlum-vestergaard-chatgpt-adoption,empirical,Anders Humlum & Emilie Vestergaard,The Adoption of ChatGPT,2024,paper,https://doi.org/10.2139/ssrn.4807516,2
+acemoglu-autor-hazell-restrepo-ai-vacancies,empirical,"Daron Acemoglu, David Autor, Jonathon Hazell & Pascual Restrepo",AI and Jobs: Evidence from Online Vacancies,2020,paper,https://www.nber.org/papers/w28257,3
+dilip-kim-seamans-genai-patents,empirical,"Nikhil Dilip, Youngkyung Kim & Robert Seamans",Generative AI and Patents,2026,paper,https://doi.org/10.2139/ssrn.6237338,3
+autor-thompson-expertise,economist,David Autor & Neil Thompson,Expertise,2025,paper,https://www.nber.org/papers/w33941,1
+handa-tamkin-claude-economic-tasks,empirical,"Kunal Handa, Alex Tamkin, Miles McCain et al.",Which Economic Tasks are Performed with AI? Evidence from Millions of Claude Conversations,2025,paper,https://arxiv.org/abs/2503.04761,1
+oecd-genai-general-purpose-technology,economist,"Flavio Calvino, Daniel Haerle & Sarah Liu",Is Generative AI a General Purpose Technology?,2025,paper,https://doi.org/10.1787/704e2d12-en,3
+korinek-ai-agents-economic-research,economist,Anton Korinek,AI Agents for Economic Research,2025,paper,https://www.nber.org/papers/w34202,3
+autor-labor-market-impacts-tech-change,economist,David Autor,The Labor Market Impacts of Technological Change: From Unbridled Enthusiasm to Qualified Optimism to Vast Uncertainty,2022,paper,https://www.nber.org/papers/w30074,2
+stiglitz-korinek-future-of-inequality,economist,Joseph Stiglitz & Anton Korinek,The Future of Inequality,2025,paper,https://doi.org/10.1093/oso/9780198799580.003.0019,2
+doorley-ai-income-inequality-ireland,empirical,"Karina Doorley, Sorcha O'Connor, Richard O'Shea & Dora Tuda",Artificial Intelligence and Income Inequality in Ireland,2026,paper,https://doi.org/10.26504/jr16,3
+eisfeldt-schubert-ai-finance-survey,economist,Andrea Eisfeldt & Gregor Schubert,AI and Finance,2024,paper,https://www.nber.org/papers/w33076,3
+felten-raj-seamans-labor-policy-acm,economist,"Edward Felten, Manav Raj & Robert Seamans",Generative AI Requires Broad Labor Policy Considerations,2024,paper,https://doi.org/10.1145/3637864,3
+oberson-taxing-ai-ubi-financing,economist,Xavier Oberson,Financing the Disruption and Automation Costs (Notably Universal Basic Income),2024,paper,https://doi.org/10.4337/9781035307555.00016,3

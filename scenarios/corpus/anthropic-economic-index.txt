@@ -1,0 +1,61 @@
+SOURCE_ID: anthropic-economic-index
+AUTHOR: Anthropic (Societal Impacts / Economic Research team)
+TITLE: The Anthropic Economic Index (initial report announcement, "Introducing the Anthropic Economic Index")
+YEAR: 2025
+TYPE: report
+URL: https://www.anthropic.com/economic-index
+NOTE: PARTIAL - The index landing page itself is a JS data dashboard ("Loading data"); this file contains the full text of the initial report announcement (Feb 10, 2025, anthropic.com/news/the-anthropic-economic-index), which summarizes the first paper (arXiv:2503.04761). Later index updates not included.
+====
+
+# The Anthropic Economic Index
+Feb 10, 2025
+
+In the coming years, AI systems will have a major impact on the ways people work. For that reason, we're launching the Anthropic Economic Index, an initiative aimed at understanding AI's effects on labor markets and the economy over time.
+
+The Index's initial report provides first-of-its-kind data and analysis based on millions of anonymized conversations on Claude.ai, revealing the clearest picture yet of how AI is being incorporated into real-world tasks across the modern economy.
+
+We're also open sourcing the dataset used for this analysis, so researchers can build on and extend our findings. Developing policy responses to address the coming transformation in the labor market and its effects on employment and productivity will take a range of perspectives.
+
+The main findings from the Economic Index's first paper are:
+
+- Today, usage is concentrated in software development and technical writing tasks. Over one-third of occupations (roughly 36%) see AI use in at least a quarter of their associated tasks, while approximately 4% of occupations use it across three-quarters of their associated tasks.
+- AI use leans more toward augmentation (57%), where AI collaborates with and enhances human capabilities, compared to automation (43%), where AI directly performs tasks.
+- AI use is more prevalent for tasks associated with mid-to-high wage occupations like computer programmers and data scientists, but is lower for both the lowest- and highest-paid roles. This likely reflects both the limits of current AI capabilities, as well as practical barriers to using the technology.
+
+## Mapping AI usage across the labor market
+
+Our new paper builds on a long line of research on the labor market impact of technologies, from the Spinning Jenny of the Industrial Revolution to the car-manufacturing robots of the present day. We focus on the ongoing impact of AI. We don't survey people on their AI use, or attempt to forecast the future; instead, we have direct data on how AI is actually being used.
+
+### Analyzing occupational tasks
+Our research began with an important insight from the economics literature: sometimes it makes sense to focus on occupational tasks rather than occupations themselves. Jobs often share certain tasks and skills in common... Certain tasks lend themselves better to being automated or augmented by a new technology than others. We'd therefore expect AI to be adopted selectively for different tasks across different occupations...
+
+### Using Clio to match AI use to tasks
+This research was made possible by Claude insights and observations, or "Clio", an automated analysis tool that allows us to analyze conversations with Claude while preserving user privacy. We used Clio on a dataset of approximately one million conversations with Claude (specifically, Free and Pro conversations on Claude.ai), and used it to organize the conversations by occupational task. We chose tasks according to the classification made by the U.S. Department of Labor... O*NET.
+
+## Results
+
+Uses of AI by job type. The tasks and occupations with by far the largest adoption of AI in our dataset were those in the "computer and mathematical" category, which in large part covers software engineering roles. 37.2% of queries sent to Claude were in this category... The second largest category was "arts, design, sports, entertainment, and media" (10.3% of queries), which mainly reflected people using Claude for various kinds of writing and editing. Unsurprisingly, occupations involving a high degree of physical labor, such as those in the "farming, fishing, and forestry" category (0.1% of queries), were least represented.
+
+Depth of AI use within occupations. Our analysis found that very few occupations see AI use across most of their associated tasks: only approximately 4% of jobs used AI for at least 75% of tasks. However, more moderate use of AI is much more widespread: roughly 36% of jobs had some use of AI for at least 25% of their tasks. As we predicted, there wasn't evidence in this dataset of jobs being entirely automated: instead, AI was diffused across the many tasks in the economy, having stronger impacts for some groups of tasks than others.
+
+AI use and salary. Interestingly, both low-paying and very-high-paying jobs had very low rates of AI use (these were generally jobs involving a large degree of manual dexterity, such as shampooers and obstetricians). It was specific occupations in the mid-to-high median salary ranges, like computer programmers and copywriters, who were—in our data—among the heaviest users of AI.
+
+Automation versus augmentation. We also looked in more detail at how the tasks were being performed—specifically, at which tasks involved "automation" (where AI directly performs tasks such as formatting a document) versus "augmentation" (where AI collaborates with a user to perform a task). Overall, we saw a slight lean towards augmentation, with 57% of tasks being augmented and 43% of tasks being automated. That is, in just over half of cases, AI was not being used to replace people doing tasks, but instead worked with them, engaging in tasks like validation (e.g., double-checking the user's work), learning (e.g., helping the user acquire new knowledge and skills), and task iteration (e.g., helping the user brainstorm or otherwise doing repeated, generative tasks).
+[Breakdown: Augmentation 57.4% total — Validation 2.8%, Task Iteration 31.3%, Learning 23.3%. Automation 42.6% total — Feedback Loop 14.8%, Directive 27.8%.]
+
+### Caveats
+- We can't know for certain whether someone using Claude for a task was completing a task for work...
+- We don't know how the users were using the responses from Claude... Some of what appears in our data to be automation could, in fact, be augmentation...
+- We also only analyze data from Claude.ai Free and Pro plans, rather than API, Team, or Enterprise users...
+- The sheer number of different tasks means it is possible that Clio classified some conversations incorrectly...
+- Claude can't generate images... some creative uses won't be referenced in the data;
+- Given that Claude is advertised for use as a state-of-the-art coding model, we might expect coding to be overrepresented as a use case. For that reason, we don't argue that the uses in our dataset are a representative sample of AI use in general.
+
+## Conclusions and future research
+AI use is rapidly expanding, and models are becoming ever-more capable. The labor-market picture may look quite different within a relatively short time. For that reason, we'll repeat many of the analyses above over time to help track the societal and economic changes that are likely to occur...
+
+These kinds of longitudinal analyses can give us new insights into AI and the job market. For example, we'll be able to monitor changes in the depth of AI use within occupations. If it remains the case that AI is used only for certain tasks, and only a few jobs use AI for the vast majority of their tasks, the future might be one where most current jobs evolve rather than disappear. We can also monitor the ratio of automation to augmentation, providing signals of areas where automation is becoming more prevalent.
+
+Our research gives data on how AI is being used, but it doesn't provide policy prescriptions. Answers to questions about how to prepare for AI's impact on the labor market can't come directly from research in isolation; instead, they'll come from a combination of evidence, values, and experience from broad perspectives.
+
+[Landing page meta-description, 2026 update: "The Anthropic Economic Index reveals the shape of AI adoption across the world. Here, you can explore the data behind our research to understand how people are using Claude across every US state and hundreds of occupations. Track the topics that are trending where you live, and see how people are using AI to augment or automate their work—that is, whether they prefer to collaborate with, or delegate to, Claude."]

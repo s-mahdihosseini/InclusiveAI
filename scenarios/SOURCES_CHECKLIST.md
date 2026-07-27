@@ -1,0 +1,484 @@
+# Source collection checklist
+
+454 sources; 28 collected (✓). Priority ①②③.
+Save each as `corpus/<id>.txt` with the standard header, or run
+`python3 scripts/download_corpus.py --priority 2`. Links are best-effort
+pointers — if one 404s, search the title.
+
+## Economists (149)
+
+- ✓ ① **Aghion, Jones & Jones** — [Artificial Intelligence and Economic Growth](https://web.stanford.edu/~chadj/AI.pdf) (2017) `aghion-jones-jones`
+- ☐ ① **Alex Imas** — [Odd Lots: Alex Imas — Why Economists Might Be Getting AI Wrong](https://www.bloomberg.com/news/articles/2026-04-18/economists-might-be-wrong-about-ai-and-jobs) (2026) `imas-oddlots-2026`
+- ☐ ① **Alex Imas** — [Plain English: Alex Imas — The Case Against the AI Job Apocalypse](https://www.theringer.com/podcasts/plain-english-with-derek-thompson/2026/05/12/the-case-against-the-ai-job-apocalypse) (2026) `imas-plainenglish-2026`
+- ☐ ① **Alex Imas & Phil Trammell** — [Dwarkesh Podcast: Alex Imas and Phil Trammell — What Remains Scarce After AGI?](https://www.dwarkesh.com/p/alex-imas-phil-trammell) (2026) `imas-trammell-dwarkesh`
+- ☐ ① **Alexander Bick, Adam Blandin, David Deming** — [The rapid adoption of generative AI](https://cepr.org/voxeu/columns/rapid-adoption-generative-ai) (2024) `bick-blandin-deming-rapid-adoption-genai-voxeu`
+- ☐ ① **Anton Korinek** — [Hard Fork: Anton Korinek — Is AI Eating the Labor Market?](https://open.spotify.com/episode/7y2pPRehZcN9f30EyvnMhj) (2026) `korinek-hardfork-2026`
+- ☐ ① **Anton Korinek** — [The Economics of Transformative AI](https://www.frbsf.org/news-and-media/events/2025/04/anton-korinek-economics-of-transformative-ai/) (2025) `korinek-sffed-2025`
+- ☐ ① **Anton Korinek** — [Econ Focus Interview: Anton Korinek](https://www.richmondfed.org/publications/research/econ_focus/2025/q4_interview) (2025) `korinek-richmondfed-2025`
+- ☐ ① **Anton Korinek** — [AI is Coming: Interview with Anton Korinek](https://conversableeconomist.com/2025/12/15/ai-is-coming-interview-with-anton-sablik/) (2025) `korinek-conversableeconomist-2025`
+- ✓ ① **Anton Korinek & Donghyun Suh** — [Scenarios for the Transition to AGI](https://arxiv.org/abs/2403.12107) (2024) `korinek-agi-scenarios`
+- ☐ ① **Anton Korinek & Jai Vipra** — [Concentrating Intelligence: Scaling and Market Structure in Artificial Intelligence](https://www.nber.org/papers/w33139) (2024) `korinek-vipra-concentrating-intelligence`
+- ☐ ① **Austan Goolsbee** — [Remarks on Productivity Growth and Monetary Policy](https://www.chicagofed.org/publications/speeches/2025/feb-28-siepr-economic-summit) (2025) `goolsbee-chicagofed-2025`
+- ☐ ① **Austan Goolsbee** — [Interview with Austan Goolsbee: Being at the Fed, House Prices, AI, and More](https://conversableeconomist.com/2025/06/26/interview-with-austan-goolsbee-a-view-from-the-fed/) (2025) `goolsbee-conversableeconomist-2025`
+- ☐ ① **Betsey Stevenson** — [What Is There to Fear in a Post AGI World](https://www.digitalistpapers.com/volume2) (2025) `stevenson-digitalistpapers-2025`
+- ☐ ① **Brad DeLong** — [The AI-Bubble's Most Likely Endgame Looks to Be Not Apocalypse, But an Awful Lot of Useful Compost](https://braddelong.substack.com/p/the-ai-bubbles-most-likely-endgame) (2025) `delong-substack-bubbleendgame-2025`
+- ☐ ① **Brad DeLong** — [Top economist Brad DeLong to recent college grads: Don't blame AI for job struggles](https://fortune.com/2025/08/02/dont-blame-ai-college-graduates-cant-find-jobs-blame-economy/) (2025) `delong-fortune-2025`
+- ☐ ① **Carl Benedikt Frey** — [How Progress Ends with Carl Benedikt Frey](https://bcghendersoninstitute.com/how-progress-ends-with-carl-benedikt-frey/) (2025) `frey-bcghenderson-2025`
+- ☐ ① **Carl Benedikt Frey** — [AI may spark a new era of progress, but that depends on more than just the tech](https://www.weforum.org/podcasts/radio-davos/episodes/carl-benedikt-frey-ai-work-jobs-economics/) (2025) `frey-wef-2025`
+- ☐ ① **Chad Jones** — [Past Automation and Future AI: How Weak Links Tame the Growth Explosion](https://economics.princeton.edu/events/chad-jones-and-chris-tonetti-on-past-automation-and-future-ai-how-weak-links-tame-the-growth-explosion/) (2026) `chadjones-princeton-2026`
+- ☐ ① **Charles I. Jones** — [The AI Dilemma: Growth versus Existential Risk](https://web.stanford.edu/~chadj/papers.html) (2024) `jones-ai-dilemma`
+- ☐ ① **Daniel Susskind** — [Preparing for an AI Economy](https://futureoflife.org/podcast/preparing-for-an-ai-economy-with-daniel-susskind/) (2025) `susskind-futureoflife-2025`
+- ✓ ① **Daron Acemoglu** — [The Simple Macroeconomics of AI](https://economics.mit.edu/sites/default/files/2024-04/The%20Simple%20Macroeconomics%20of%20AI.pdf) (2024) `acemoglu-simple-macro`
+- ☐ ① **Daron Acemoglu** — [EconTalk: Daron Acemoglu — Innovation, Power, and Shared Prosperity](https://www.econtalk.org/daron-acemoglu-on-innovation-and-shared-prosperity/) (2023) `acemoglu-econtalk-2023`
+- ☐ ① **Daron Acemoglu** — [Nobel Prize podcast interview with Adam Smith](https://www.nobelprize.org/prizes/economic-sciences/2024/acemoglu/podcast/) (2025) `acemoglu-nobelprize-2025`
+- ☐ ① **Daron Acemoglu** — [Reclaiming Democracy From the Market](https://www1.project-syndicate.org/onpoint/saving-democracy-in-the-age-of-ai-by-daron-acemoglu-and-michael-j-sandel-2026-03) (2026) `acemoglu-projectsyndicate-2026`
+- ☐ ① **Daron Acemoglu** — [Power and Progress: MIT Professor Daron Acemoglu on Navigating Techno-Optimism and Regulation in the Era of AI](https://www.metisstrategy.com/interview/daron-acemoglu/) (2024) `acemoglu-metisstrategy-2024`
+- ☐ ① **Daron Acemoglu, David Autor & Simon Johnson** — [Building Pro-Worker Artificial Intelligence](https://www.nber.org/papers/w34854) (2026) `acemoglu-autor-johnson-proworker-ai`
+- ☐ ① **Daron Acemoglu, David Autor, Simon Johnson** — [How AI can become pro-worker](https://cepr.org/voxeu/columns/how-ai-can-become-pro-worker) (2023) `acemoglu-autor-johnson-ai-pro-worker-voxeu`
+- ✓ ① **David Autor** — [AI Could Actually Help Rebuild the Middle Class](https://www.noemamag.com/how-ai-could-help-rebuild-the-middle-class/) (2024) `autor-middle-class`
+- ☐ ① **David Autor** — [Applying AI to Rebuild Middle Class Jobs](https://www.nber.org/papers/w32140) (2024) `autor-rebuild-middle-class-nber`
+- ☐ ① **David Autor** — [David Autor on AI's impact on jobs, expertise, and labor markets](https://www.possible.fm/podcasts/autor/) (2025) `autor-possible-2025`
+- ☐ ① **David Autor** — [David Autor: How Is AI Shaping the Future of Work?](https://issues.org/david-autor-economist-ai-future-work/) (2024) `autor-issues-2024`
+- ☐ ① **David Autor & Neil Thompson** — [Expertise](https://www.nber.org/papers/w33941) (2025) `autor-thompson-expertise`
+- ☐ ① **David Bloom, Klaus Prettner, Jamel Saadaoui, Mario Veruete** — [The expansion of AI will likely shrink earnings inequality](https://cepr.org/voxeu/columns/expansion-ai-will-likely-shrink-earnings-inequality) (2024) `bloom-prettner-ai-earnings-inequality-voxeu`
+- ☐ ① **David Deming** — [Shorting the AI jobs apocalypse](https://forklightning.substack.com/p/shorting-the-ai-jobs-apocalypse) (2025) `deming-forkedlightning-shortingapocalypse-2025`
+- ☐ ① **David Deming** — [AI-human teams and the future of work](https://forklightning.substack.com/p/ai-human-teams-and-the-future-of) (2025) `deming-forkedlightning-aihumanteams-2025`
+- ☐ ① **David Oks** — [Asterisk: What Will Happen to Indian IT?](https://asteriskmag.com/issues/15/what-will-happen-to-indian-it) (2026) `asterisk-oks-indian-it`
+- ☐ ① **Deming, Ong & Summers** — [Technological Disruption in the Labor Market](https://www.nber.org/papers/w33323) (2025) `deming-ong-summers`
+- ☐ ① **Diane Coyle** — [Measuring AI's Effects on Productivity Is Tough. Here's Why](https://www.bloomberg.com/news/articles/2025-03-20/measuring-ai-s-effects-on-productivity-is-tough-here-s-why) (2025) `coyle-bloomberg-2025`
+- ☐ ① **Diane Coyle** — [Measuring AI's Economic Impact](https://www.project-syndicate.org/commentary/is-ai-boom-real-or-just-another-speculative-bubble-by-diane-coyle-2025-10) (2025) `coyle-projectsyndicate-2025`
+- ☐ ① **Enrique Ide & Eduard Talamas** — [Artificial Intelligence in the Knowledge Economy](https://arxiv.org/abs/2312.05481) (2024) `ide-talamas`
+- ✓ ① **Erik Brynjolfsson** — [The Turing Trap: The Promise & Peril of Human-Like AI](https://digitaleconomy.stanford.edu/news/the-turing-trap-the-promise-peril-of-human-like-artificial-intelligence/) (2022) `brynjolfsson-turing-trap`
+- ☐ ① **Erik Brynjolfsson** — [AI, jobs, and productivity: My chat with economist Erik Brynjolfsson](https://fasterplease.substack.com/p/ai-jobs-and-productivity-my-chat) (2024) `brynjolfsson-fasterplease-2024`
+- ☐ ① **Erik Brynjolfsson** — [Stanford's original AI guru says productivity liftoff has begun](https://fortune.com/2026/02/15/ai-productivity-liftoff-doubling-2025-jobs-report-transition-harvest-phase-j-curve/) (2026) `brynjolfsson-fortune-2026`
+- ☐ ① **Erik Brynjolfsson** — [AI could widen the wealth gap and wipe out entry-level jobs, expert says](https://www.npr.org/2025/08/05/nx-s1-5485286/ai-jobs-economy-wealth-gap) (2025) `brynjolfsson-npr-2025`
+- ☐ ① **Eugenio Cerutti, Antonio Garcia Pascual, Yosuke Kido, Longji Li, Giovanni Melina, Marina M. Tavares, Philippe Wingender** — [The global impact of AI: Mind the gap](https://cepr.org/voxeu/columns/global-impact-ai-mind-gap) (2025) `cerutti-imf-global-impact-ai-mind-gap-voxeu`
+- ☐ ① **Francesco Filippucci, Peter Gal, Cecilia Jona-Lasinio, Alvaro Leandro, Giuseppe Nicoletti** — [Should AI stay or should AI go: The promises and perils of AI for productivity and growth](https://cepr.org/voxeu/columns/should-ai-stay-or-should-ai-go-promises-and-perils-ai-productivity-and-growth) (2024) `filippucci-gal-ai-stay-or-go-voxeu`
+- ☐ ① **Jack Clark & Peter McCrory** — [Odd Lots: Jack Clark & Peter McCrory — Anthropic's Co-Founder and Top Economist on the AI Frontier](https://www.bloomberg.com/news/articles/2026-06-19/anthropic-s-co-founder-and-top-economist-on-doing-research-at-the-ai-frontier) (2026) `clark-mccrory-oddlots-2026`
+- ☐ ① **Joel Mokyr** — [How technological progress leads to economic growth](https://a16zcrypto.com/posts/article/joel-mokyr-tech-progress-economic-growth/) (2025) `mokyr-a16z-2025`
+- ☐ ① **Joel Mokyr** — [Nobel Laureate Mokyr on AI, Innovation and the Uneasy Marriage of Tech and State](https://www.caixinglobal.com/2025-11-03/cover-story-nobel-prize-winner-joel-mokyr-on-ai-innovation-and-the-uneasy-bond-between-technological-change-and-government-102378441.html) (2025) `mokyr-caixin-2025`
+- ☐ ① **Joseph Stiglitz** — [Unregulated AI Will Worsen Inequality, Warns Nobel-Winning Economist Joseph Stiglitz](https://www.scientificamerican.com/article/unregulated-ai-will-worsen-inequality-warns-nobel-winning-economist-joseph-stiglitz/) (2025) `stiglitz-scientificamerican-2025`
+- ☐ ① **Joseph Stiglitz** — [AI will make the 'tech bro' class even richer, Nobel laureate Joe Stiglitz says](https://fortune.com/article/why-does-nobel-laureate-joe-stiglitz-think-tech-bro-class-richer/) (2026) `stiglitz-fortune-2026`
+- ☐ ① **Larry Summers** — [Larry Summers: Which jobs will AI replace?](https://www.gzeromedia.com/video/gzero-world-clips/larry-summers-which-jobs-will-ai-replace) (2024) `summers-gzero-2024`
+- ☐ ① **Larry Summers** — [The Economics of AI: A Conversation with Larry Summers](https://ai-podcast.nejm.org/e/the-economics-of-ai-a-conversation-with-larry-summers) (2024) `summers-nejmai-2024`
+- ☐ ① **Luis Garicano** — [Silicon Continent: The Task Is Not the Job](https://www.siliconcontinent.com/p/why-desk-jobs-survive-and-amodei) (2026) `siliconcontinent-garicano-task-not-job`
+- ☐ ① **Luis Garicano** — [Silicon Continent: Three Theses on AI Value Capture](https://www.siliconcontinent.com/p/three-theses-on-ai-value-capture) (2026) `siliconcontinent-garicano-value-capture`
+- ☐ ① **Matt Clancy & Tamay Besiroglu** — [Asterisk: The Great Inflection? A Debate About AI and Explosive Growth](https://asteriskmag.com/issues/03/the-great-inflection-a-debate-about-ai-and-explosive-growth) (2023) `asterisk-clancy-besiroglu-inflection`
+- ☐ ① **Matthew Yglesias** — [Will A.I. take your job? Mine? Everyone's?](https://www.slowboring.com/p/will-ai-take-your-job-mine-everyones) (2023) `yglesias-slowboring-willaitakejob-2023`
+- ☐ ① **Matthew Yglesias** — [It's time to take AI job loss seriously](https://www.slowboring.com/p/its-time-to-take-ai-job-loss-seriously) (2025) `yglesias-slowboring-jobloss-2025`
+- ☐ ① **Matthew Yglesias & Timothy B. Lee** — [Slow Boring: Will AI Take Your Job? Mine? Everyone's?](https://www.slowboring.com/p/will-ai-take-your-job-mine-everyones) (2026) `slowboring-yglesias-lee-jobs`
+- ☐ ① **Michael Webb** — [Michael Webb on whether AI will soon cause job loss, lower incomes, and higher inequality — or the opposite](https://80000hours.org/podcast/episodes/michael-webb-ai-jobs-labour-market/) (2023) `webb-80000hours-2023`
+- ☐ ① **Moll, Rachel & Restrepo** — [Uneven Growth: Automation's Impact on Income and Wealth Inequality](https://benjaminmoll.com/wp-content/uploads/2022/01/UG.pdf) (2022) `moll-rachel-restrepo`
+- ☐ ① **Noah Smith** — [Plentiful High-Paying Jobs in the Age of AI (comparative advantage)](https://www.noahpinion.blog/p/plentiful-high-paying-jobs-in-the) (2024) `noahsmith-plentiful-jobs`
+- ☐ ① **Noah Smith** — [AI and jobs, again](https://www.noahpinion.blog/p/ai-and-jobs-again) (2025) `noahsmith-noahpinion-aijobsagain-2025`
+- ☐ ① **Noah Smith** — [Stop pretending you know what AI does to the economy](https://www.noahpinion.blog/p/stop-pretending-you-know-what-ai) (2025) `noahsmith-noahpinion-stoppretending-2025`
+- ☐ ① **Noah Smith** — [Noahpinion: Book Review of Power and Progress](https://www.noahpinion.blog/p/book-review-power-and-progress-874) (2026) `noahpinion-power-progress-review`
+- ☐ ① **Pascual Restrepo** — [Work and Growth in the Era of AGI](https://pascualrestrepo.com/) (2025) `restrepo-agi-work`
+- ☐ ① **Pascual Restrepo** — [Pascual Restrepo on AI, automation, and the future of work](https://economics.yale.edu/news/260317/pascual-restrepo-ai-automation-and-future-work) (2026) `restrepo-yale-2026`
+- ☐ ① **Pascual Restrepo** — [A Yale economist says AGI won't automate most jobs—because they're not worth the trouble](https://fortune.com/2026/04/04/ai-jobs-future-not-important-enough-to-be-automated-yale/) (2026) `restrepo-fortune-2026`
+- ✓ ① **Philip Trammell & Anton Korinek** — [Economic Growth under Transformative AI](https://arxiv.org/abs/2312.00561) (2023) `trammell-korinek-growth`
+- ☐ ① **Philippe Aghion** — [Should we be afraid of AI?](https://cepr.org/events/emu-lab-annual-lecture-philippe-aghion-should-we-be-afraid-ai) (2025) `aghion-cepr-2025`
+- ☐ ① **Philippe Aghion** — [Creative destruction, AI, and the European recovery](https://www.lse.ac.uk/lse-player/creative-destruction-ai-and-the-european-recovery) (2026) `aghion-lse-2026`
+- ☐ ① **Sendhil Mullainathan** — [Capitalisn't: Sendhil Mullainathan — Who Controls AI?](https://capitalisnt.com/episodes/who-controls-ai-with-sendhil-mullainathan-idyLjiVh/transcript) (2023) `mullainathan-capitalisnt-2023`
+- ☐ ① **Stefania Albanesi, Antonio Dias da Silva, Juan Francisco Jimeno, Ana Lamo, Alena Wabitsch** — [Artificial intelligence and jobs: Evidence from Europe](https://cepr.org/voxeu/columns/artificial-intelligence-and-jobs-evidence-europe) (2023) `albanesi-ai-jobs-evidence-europe-voxeu`
+- ☐ ① **Tyler Cowen** — [Dwarkesh Podcast: Tyler Cowen — The #1 Bottleneck to AI Progress Is Humans](https://www.dwarkesh.com/p/tyler-cowen-4) (2025) `cowen-dwarkesh-4`
+- ☐ ① **Tyler Cowen** — [EconTalk: Tyler Cowen — The Risks and Impact of Artificial Intelligence](https://www.econtalk.org/tyler-cowen-on-the-risks-and-impact-of-artificial-intelligence/) (2023) `cowen-econtalk-risks-2023`
+- ☐ ① **Tyler Cowen** — [EconTalk: Tyler Cowen — AI, Employment, and Education](https://www.econtalk.org/ai-employment-and-education-with-tyler-cowen/) (2026) `cowen-econtalk-employment-2026`
+- ☐ ① **Tyler Cowen** — [Tyler Cowen: The Future Belongs to AI Maniacs](https://www.thefp.com/p/tyler-cowen-ai-maniacs-future-economy) (2025) `cowen-freepress-2025`
+- ☐ ① **Tyler Cowen** — [Why I think AI take-off is relatively slow](https://marginalrevolution.com/marginalrevolution/2025/02/why-i-think-ai-take-off-is-relatively-slow.html) (2025) `cowen-marginalrevolution-2025`
+- ✓ ① **Tyna Eloundou et al.** — [GPTs are GPTs: Labor Market Impact Potential of LLMs](https://arxiv.org/abs/2303.10130) (2023) `eloundou-gpts-gpts`
+- ☐ ① **William Nordhaus** — [Are We Approaching an Economic Singularity?](https://www.nber.org/papers/w21547) (2021) `nordhaus-singularity`
+- ✓ ② **Anton Korinek** — [Scenario Planning for an AGI Future](https://www.imf.org/en/Publications/fandd/issues/2023/12/Scenario-Planning-for-an-AGI-future-Anton-korinek) (2024) `brookings-korinek-work`
+- ☐ ② **Anton Korinek** — [Economic Policy Challenges for the Age of AI](https://www.nber.org/papers/w32980) (2024) `korinek-policy-challenges`
+- ☐ ② **Anton Korinek & Joseph Stiglitz** — [AI and Its Implications for Income Distribution and Unemployment](https://www.nber.org/papers/w24174) (2017) `korinek-stiglitz`
+- ☐ ② **Arnaud Costinot & Iván Werning** — [Robots, Trade, and Luddism: A Sufficient Statistic Approach to Optimal Technology Regulation](https://doi.org/10.1093/restud/rdac076) (2022) `costinot-werning-robots-luddism`
+- ☐ ② **Autor, Chin, Salomons & Seegmiller** — [New Frontiers: The Origins and Content of New Work 1940-2018](https://www.nber.org/papers/w30389) (2024) `autor-new-frontiers`
+- ☐ ② **Baily, Brynjolfsson & Korinek** — [Machines of Mind: The Case That AI Is a General-Purpose Technology](https://www.brookings.edu/articles/machines-of-mind-the-case-that-ai-really-is-a-general-purpose-technology/) (2023) `baily-brynjolfsson-korinek`
+- ☐ ② **Ben Jones** — [Ben Jones & Chad Jones on Economic Growth in the Long Run: AI Explosion or an Empty Planet?](https://www.governance.ai/post/unfinished-ben-jones-chad-jones-on-economic-growth-in-the-long-run-artificial-intelligence-explosion-or-an-empty-planet) (2023) `benjones-govai-2023`
+- ☐ ② **Brookings Institution** — [New data show no AI jobs apocalypse—for now](https://www.brookings.edu/articles/new-data-show-no-ai-jobs-apocalypse-for-now/) (2025) `brookings-nodataapocalypse-2025`
+- ☐ ② **Brynjolfsson, Li & Raymond** — [Generative AI at Work](https://arxiv.org/abs/2304.11771) (2023) `brynjolfsson-callcenter`
+- ☐ ② **Carl Benedikt Frey, Pascual Llanos-Paredes** — [Lost in translation: AI's impact on translators and foreign language skills](https://cepr.org/voxeu/columns/lost-translation-ais-impact-translators-and-foreign-language-skills) (2025) `frey-llanos-paredes-ai-translators-voxeu`
+- ☐ ② **Carl Frey & Michael Osborne** — [The Future of Employment](https://www.oxfordmartin.ox.ac.uk/downloads/academic/The_Future_of_Employment.pdf) (2013) `frey-osborne`
+- ☐ ② **Chad Jones** — [A.I. and Our Economic Future (Transcript)](https://singjupost.com/professor-chad-jones-a-i-and-our-economic-future-transcript/) (2024) `chadjones-singjupost-2024`
+- ☐ ② **Daniel Susskind** — [A World Without Work](https://www.danielsusskind.com/a-world-without-work) (2020) `susskind-world-without-work`
+- ☐ ② **Daron Acemoglu** — [Episode 33: Daron Acemoglu on Institutions, Economic Growth and AI](https://capitalismandfreedom.substack.com/p/episode-33-daron-acemoglu-mit-economics) (2024) `acemoglu-capitalismfreedom-2024`
+- ☐ ② **Daron Acemoglu & Pascual Restrepo** — [The Race between Man and Machine](https://economics.mit.edu/sites/default/files/publications/The%20Race%20Between%20Man%20and%20Machine.pdf) (2018) `acemoglu-restrepo-tasks`
+- ☐ ② **Daron Acemoglu & Pascual Restrepo** — [Automation and New Tasks: How Technology Displaces and Reinstates Labor](https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3) (2019) `acemoglu-restrepo-new-tasks`
+- ✓ ② **Daron Acemoglu & Simon Johnson** — [Power and Progress (thesis essays)](https://www.project-syndicate.org/onpoint/ai-automation-labor-productivity-daron-acemoglu-simon-johnson) (2023) `acemoglu-johnson-power`
+- ☐ ② **Daron Acemoglu, Hans Koster, Ceren Ozgen** — [Industrial robots on workers: Winners and losers](https://cepr.org/voxeu/columns/industrial-robots-workers-winners-and-losers) (2023) `acemoglu-koster-ozgen-industrial-robots-voxeu`
+- ☐ ② **David Autor** — [Work of the Past Work of the Future](https://www.nber.org/papers/w25588) (2019) `autor-work-of-future`
+- ☐ ② **David Autor** — [The Labor Market Impacts of Technological Change: From Unbridled Enthusiasm to Qualified Optimism to Vast Uncertainty](https://www.nber.org/papers/w30074) (2022) `autor-labor-market-impacts-tech-change`
+- ☐ ② **David Hemous & Morten Olsen** — [The Rise of the Machines: Automation Horizontal Innovation and Income Inequality](https://www.davidhemous.info/) (2022) `hemous-olsen-machines`
+- ☐ ② **Dimitris Papanikolaou & Lawrence Schmidt** — [What jobs will be most affected by AI?](https://www.brookings.edu/articles/what-jobs-will-be-most-affected-by-ai/) (2025) `brookings-econactivity-2025`
+- ☐ ② **Elizabeth Van Nostrand** — [Asterisk: After Work, We'll Have Each Other](https://asteriskmag.com/issues/15/after-work-we-ll-have-each-other) (2026) `asterisk-vannostrand-after-work`
+- ☐ ② **Erik Brynjolfsson & Gabriel Unger** — [The Macroeconomics of Artificial Intelligence](https://www.imf.org/en/Publications/fandd/issues/2023/12/Macroeconomics-of-artificial-intelligence-Brynjolfsson-Unger) (2023) `brynjolfsson-unger-macro`
+- ☐ ② **Ethan Ilzetzki, Suryaansh Jain** — [The impact of artificial intelligence on growth and employment](https://cepr.org/voxeu/columns/impact-artificial-intelligence-growth-and-employment) (2023) `ilzetzki-jain-ai-growth-employment-voxeu`
+- ☐ ② **Fabrizio Dell'Acqua et al.** — [Navigating the Jagged Technological Frontier](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700) (2023) `dellacqua-jagged-frontier`
+- ☐ ② **Jakub Growiec** — [Existential Risk from Transformative AI: An Economic Perspective](https://doi.org/10.3846/tede.2024.21525) (2024) `growiec-existential-risk-transformative-ai`
+- ☐ ② **Jesse Smith** — [Asterisk: So You Think You Could Be an Electrician?](https://asteriskmag.com/issues/15/so-you-think-you-could-be-an-electrician) (2026) `asterisk-smith-electrician`
+- ☐ ② **John Cochrane** — [AI regulation](https://www.grumpy-economist.com/p/ai-regulation) (2024) `cochrane-grumpyeconomist-airegulation-2024`
+- ☐ ② **John Cochrane** — [AI, Society, and Democracy: Just Relax](https://www.grumpy-economist.com/p/ai-society-and-democracy-just-relax) (2024) `cochrane-grumpyeconomist-justrelax-2024`
+- ☐ ② **Joseph Stiglitz & Anton Korinek** — [The Future of Inequality](https://doi.org/10.1093/oso/9780198799580.003.0019) (2025) `stiglitz-korinek-future-of-inequality`
+- ☐ ② **Karthik Tadepalli** — [Asterisk: Ideas Aren't Getting Harder to Find](https://asteriskmag.com/issues/12/ideas-arent-getting-harder-to-find) (2025) `asterisk-tadepalli-ideas`
+- ☐ ② **Kelsey Piper** — [Vox Future Perfect: Kelsey Piper on AI, Jobs, and Who Benefits](https://www.vox.com/future-perfect) (2024) `vox-piper-future-perfect`
+- ☐ ② **Keyu Jin** — [Lex Fridman Podcast: Keyu Jin — China's Economy, Tariffs, Trade, Trump, Communism & Capitalism](https://lexfridman.com/keyu-jin) (2025) `keyu-jin-lex`
+- ☐ ② **Leonardo Gambacorta, Vatsala Shreeti** — [Big techs' AI empire](https://cepr.org/voxeu/columns/big-techs-ai-empire) (2025) `gambacorta-shreeti-big-techs-ai-empire-voxeu`
+- ☐ ② **Luis Garicano** — [AI and the knowledge economy essays (Silicon Continent)](https://www.siliconcontinent.com/) (2025) `garicano-ai-hierarchies`
+- ☐ ② **Martin Wolf** — [FT: Martin Wolf on AI, Productivity, and Growth](https://www.ft.com/martin-wolf) (2024) `ft-wolf-ai-productivity`
+- ☐ ② **Michael Webb** — [The Impact of AI on the Labor Market](https://www.michaelwebb.co/webb_ai.pdf) (2020) `webb-ai-labor`
+- ☐ ② **Pieter Garicano & Simon Grimm** — [Silicon Continent: Nineteen Thoughts on AI and Europe](https://www.siliconcontinent.com/p/nineteen-thoughts-on-ai-and-europe) (2026) `siliconcontinent-garicano-europe-ai`
+- ☐ ② **Shakked Noy & Whitney Zhang** — [Experimental Evidence on the Productivity Effects of Generative AI](https://www.science.org/doi/10.1126/science.adh2586) (2023) `noy-zhang-writing`
+- ☐ ② **Tim O'Reilly** — [Scenario Planning for AI and the Jobless Future](https://www.oreilly.com/radar/scenario-planning-for-ai-and-the-jobless-future/) (2026) `oreilly-radar-2026`
+- ☐ ② **Tyler Cowen** — [Average Is Over + AI economics essays](https://marginalrevolution.com/) (2024) `cowen-average-over`
+- ☐ ② **Zilan Qian** — [Asterisk: Boarding China's Last Bus](https://asteriskmag.com/issues/15/chinas-last-bus) (2026) `asterisk-qian-china-last-bus`
+- ☐ ③ **Afra Wang** — [Asterisk: Factory Logic](https://asteriskmag.com/issues/13/factory-logic) (2026) `asterisk-wang-factory-logic`
+- ☐ ③ **Agrawal, Gans & Goldfarb** — [Power and Prediction: The Disruptive Economics of AI](https://www.predictionmachines.ai/) (2022) `agrawal-gans-goldfarb`
+- ☐ ③ **Andrea Eisfeldt & Gregor Schubert** — [AI and Finance](https://www.nber.org/papers/w33076) (2024) `eisfeldt-schubert-ai-finance-survey`
+- ☐ ③ **Anton Korinek** — [AI Agents for Economic Research](https://www.nber.org/papers/w34202) (2025) `korinek-ai-agents-economic-research`
+- ☐ ③ **Arthur Kroeber** — [Dwarkesh Podcast: Arthur Kroeber — Why China's Manufacturing Economy Is Dominating](https://www.dwarkesh.com/p/arthur-kroeber) (2025) `kroeber-dwarkesh`
+- ☐ ③ **Casey Newton** — [Platformer: Casey Newton on AI and the Entry-Level Job Market](https://www.platformer.news/archive) (2024) `platformer-newton-ai-jobs`
+- ☐ ③ **Dani Rodrik** — [The real choice confronting developing countries](https://www.koreatimes.co.kr/opinion/20260607/the-real-choice-confronting-developing-countries) (2026) `rodrik-koreatimes-2026`
+- ☐ ③ **Dean Ball** — [EconTalk: Dean Ball — Claude, War, and the State of the Republic](https://www.econtalk.org/claude-war-and-the-state-of-the-republic-with-dean-ball/) (2026) `ball-econtalk-2026`
+- ☐ ③ **Derek Thompson** — [The Atlantic: Derek Thompson on the White-Collar AI Jobs Crisis](https://www.theatlantic.com/technology/) (2024) `atlantic-thompson-ai-jobs`
+- ☐ ③ **Edward Felten, Manav Raj & Robert Seamans** — [Generative AI Requires Broad Labor Policy Considerations](https://doi.org/10.1145/3637864) (2024) `felten-raj-seamans-labor-policy-acm`
+- ☐ ③ **Flavio Calvino, Daniel Haerle & Sarah Liu** — [Is Generative AI a General Purpose Technology?](https://doi.org/10.1787/704e2d12-en) (2025) `oecd-genai-general-purpose-technology`
+- ☐ ③ **Giammario Impullitti, Pontus Rendahl** — [The price of power: Why rising markups hurt innovation and widen inequality](https://cepr.org/voxeu/columns/price-power-why-rising-markups-hurt-innovation-and-widen-inequality) (2025) `impullitti-rendahl-markups-inequality-voxeu`
+- ☐ ③ **Jon Danielsson** — [Artificial intelligence and stability](https://cepr.org/voxeu/columns/artificial-intelligence-and-stability) (2025) `danielsson-ai-and-stability-voxeu`
+- ☐ ③ **Ken Rogoff** — [Dwarkesh Podcast: Ken Rogoff — China Is Digging Out of a Crisis, and America's Luck Is Wearing Thin](https://www.dwarkesh.com/p/ken-rogoff) (2025) `rogoff-dwarkesh`
+- ☐ ③ **Lefteris Andreadis, Emmanouil Chatzikonstantinou, Elena Kalotychou, Christodoulos Louca, Christos Makridis** — [The local effects of artificial intelligence labour investments: Evidence from the municipal bond market](https://cepr.org/voxeu/columns/local-effects-artificial-intelligence-labour-investments-evidence-municipal-bond) (2025) `andreadis-ai-labour-municipal-bond-voxeu`
+- ☐ ③ **Michael Strain** — [AI Will Not Kill Jobs essays](https://www.aei.org/profile/michael-r-strain/) (2024) `strain-ai-jobs`
+- ☐ ③ **Nicholas Bloom et al.** — [Are Ideas Getting Harder to Find?](https://web.stanford.edu/~chadj/IdeaPF.pdf) (2020) `bloom-ai-growth`
+- ☐ ③ **Oliver Kim** — [Asterisk: GDP — We Really Don't Know How Good We Have It](https://asteriskmag.com/issues/11/gdp-we-really-don-t-know-how-good-we-have-it) (2025) `asterisk-kim-gdp`
+- ☐ ③ **Richard & Daniel Susskind** — [The Future of the Professions](https://global.oup.com/academic/product/the-future-of-the-professions-9780198713395) (2015) `susskind-future-professions`
+- ☐ ③ **Sida Peng et al.** — [The Impact of AI on Developer Productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590) (2023) `peng-copilot`
+- ☐ ③ **The Economist** — [The Economist: Technology Quarterly on the AI Economy](https://www.economist.com/technology-quarterly) (2024) `economist-technology-quarterly-ai`
+- ☐ ③ **The New York Times Magazine** — [NYT Magazine: What AI Means for the Future of Work](https://www.nytimes.com/section/magazine) (2024) `nytmag-ai-economy-feature`
+- ☐ ③ **Victor Shih** — [Dwarkesh Podcast: Victor Shih — Xi Jinping's Paranoid Approach to AGI, Debt Crisis, & Politburo Politics](https://www.dwarkesh.com/p/victor-shih) (2025) `shih-dwarkesh`
+- ☐ ③ **Works in Progress** — [Works in Progress: AI and the Future of Economic Growth](https://worksinprogress.co/) (2024) `worksinprogress-ai-growth`
+- ☐ ③ **Xavier Oberson** — [Financing the Disruption and Automation Costs (Notably Universal Basic Income)](https://doi.org/10.4337/9781035307555.00016) (2024) `oberson-taxing-ai-ubi-financing`
+
+## Lab leaders & technologists (85)
+
+- ✓ ① **Andrej Karpathy** — [Dwarkesh Podcast interview](https://www.dwarkesh.com/p/andrej-karpathy) (2025) `karpathy-dwarkesh`
+- ✓ ① **Dario Amodei** — [Machines of Loving Grace](https://darioamodei.com/machines-of-loving-grace) (2024) `amodei-loving-grace`
+- ✓ ① **Dario Amodei** — [Axios interview: AI could wipe out half of entry-level white-collar jobs](https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic) (2025) `amodei-jobs-warning`
+- ☐ ① **Dario Amodei** — [Ezra Klein Show: Dario Amodei — What if Dario Amodei Is Right About AI?](https://open.spotify.com/episode/3SYfUM4Zpr1g9QlplBZGv0) (2024) `amodei-ezraklein-2024`
+- ☐ ① **Dario Amodei** — [CNN: Anderson Cooper interview on AI-driven unemployment](https://www.cnn.com/2025/05/29/tech/ai-anthropic-ceo-dario-amodei-unemployment) (2025) `amodei-cnn-anderson-cooper-2025`
+- ☐ ① **Dario Amodei** — [WSJ: live interview with Emma Tucker at Davos 2026](https://www.youtube.com/watch?v=K7F6ohcBJus) (2026) `amodei-davos-2026-wsj`
+- ☐ ① **Dario Amodei** — [World Economic Forum Radio Davos: "The day after AGI" with Hassabis](https://www.weforum.org/podcasts/radio-davos/episodes/ai-agi-dario-amodei-demis-hassabis/) (2026) `amodei-weforum-radiodavos-2026`
+- ☐ ① **Dario Amodei** — [Senate Judiciary Subcommittee: written testimony on AI oversight](https://www.judiciary.senate.gov/imo/media/doc/2023-07-26_-_testimony_-_amodei.pdf) (2023) `amodei-senate-testimony-2023`
+- ☐ ① **Dario Amodei** — [In Good Company with Nicolai Tangen: Claude, AI safety and economic impact](https://open.spotify.com/episode/6UzOVEv3Upt5oHAMZw9Gzx) (2024) `amodei-goodcompany-tangen-2024`
+- ☐ ① **Dario Amodei** — [Fortune: invokes Jevons Paradox, revises white-collar jobs narrative](https://fortune.com/2026/05/05/dario-amodei-jevons-paradox-will-ai-wipe-out-white-collar-jobs/) (2026) `amodei-fortune-jevons-2026`
+- ☐ ① **Demis Hassabis** — [CBS 60 Minutes: AI, disease, and "radical abundance"](https://www.cbsnews.com/news/artificial-intelligence-google-deepmind-ceo-demis-hassabis-60-minutes-transcript/) (2025) `hassabis-60minutes-2025`
+- ☐ ① **Demis Hassabis** — [Fortune: predicts AI "renaissance" and radical abundance](https://fortune.com/2026/02/11/demis-hassabis-nobel-google-deepmind-predicts-ai-renaissance-radical-abundance) (2026) `hassabis-fortune-renaissance-2026`
+- ☐ ① **Demis Hassabis** — [World Economic Forum Radio Davos: "The day after AGI" with Amodei](https://www.weforum.org/podcasts/radio-davos/episodes/ai-agi-dario-amodei-demis-hassabis/) (2026) `hassabis-weforum-radiodavos-2026`
+- ☐ ① **Elon Musk** — [US-Saudi Investment Forum: "work will be optional"](https://www.foxbusiness.com/economy/elon-musk-predicts-work-optional-coming-decades) (2025) `musk-saudi-investmentforum-2025`
+- ☐ ① **Eric Schmidt** — [Hvylya: interview on AI, China, jobs, and superintelligence](https://en.hvylya.net/interview/2781-eric-schmidt-most-of-the-world-s-ai-will-soon-run-on-chinese-models) (2025) `schmidt-hvylya-chinajobs-2025`
+- ☐ ① **Geoffrey Hinton** — [CBS 60 Minutes: "The Godfather of AI"](https://complexevents.com/2024/01/10/godfather-of-ai-geoffrey-hinton-the-60-minutes-interview/) (2023) `hinton-60minutes-2023`
+- ☐ ① **Geoffrey Hinton** — [GZERO World with Ian Bremmer: "The human cost of AI"](https://www.gzeromedia.com/podcast/gzero-world-podcast/ai-human-cost-geoffrey-hinton) (2025) `hinton-gzero-bremmer-2025`
+- ☐ ① **Geoffrey Hinton** — [Fortune: AI will create "massive unemployment" and "soaring profits"](https://www.fortune.com/article/godfather-ai-geoffrey-hinton-massive-unemployment-soaring-profits-capitalism-hyperscalers) (2024) `hinton-fortune-massive-unemployment-2024`
+- ☐ ① **Greg Brockman** — [Benzinga: envisions a "compute-powered economy"](https://www.benzinga.com/markets/tech/26/04/51824967/openais-greg-brockman-envisions-compute-powered-economy-as-ai-transforms-work-entrepreneurship) (2026) `brockman-benzinga-computeeconomy-2026`
+- ☐ ① **Jack Clark** — [Conversations with Tyler: Jack Clark — AI's Uneven Impact](https://conversationswithtyler.com/episodes/jack-clark/) (2025) `clark-cwt-2025`
+- ☐ ① **Jensen Huang** — [CNBC: "You'll lose your job to somebody who uses AI"](https://www.cnbc.com/2025/05/28/nvidia-ceo-jensen-huang-youll-lose-your-job-to-somebody-who-uses-ai.html) (2025) `huang-cnbc-losejob-2025`
+- ☐ ① **Jensen Huang** — [World Economic Forum: conversation with Larry Fink on AI's "five-layer cake" economy](https://www.weforum.org/videos/ai-five-layer-cake-jensen-huang/) (2026) `huang-weforum-fink-davos-2026`
+- ☐ ① **Liang Wenfeng** — [ChinaTalk: "The Quiet Giant Leading China's AI Race" (translated interview)](https://www.chinatalk.media/p/deepseek-ceo-interview-with-chinas) (2024) `liangwenfeng-chinatalk-2024`
+- ☐ ① **Liang Wenfeng** — [China Academy: "We're done following. It's time to lead." (translated interview)](https://thechinaacademy.org/interview-with-deepseek-founder-were-done-following-its-time-to-lead/) (2024) `liangwenfeng-chinaacademy-2024`
+- ☐ ① **Mark Zuckerberg** — [Dwarkesh Podcast: Mark Zuckerberg — AI Will Write Most Meta Code in 18 Months](https://www.dwarkesh.com/p/mark-zuckerberg-2) (2025) `zuckerberg-dwarkesh-2025`
+- ☐ ① **Mustafa Suleyman** — [The Coming Wave (labor and containment chapters)](https://www.the-coming-wave.com/) (2023) `suleyman-coming-wave`
+- ☐ ① **Mustafa Suleyman** — [Bloomberg Businessweek: "AI Is Already Superhuman"](https://www.bloomberg.com/features/2025-mustafa-suleyman-weekend-interview/) (2025) `suleyman-bloomberg-superhuman-2025`
+- ☐ ① **Mustafa Suleyman** — [Fortune: 18-month timeline for white-collar automation](https://fortune.com/article/why-microsoft-ai-chief-mustafa-suleyman-predicts-ai-automation-18-months/) (2024) `suleyman-fortune-18months-2024`
+- ☐ ① **Reid Hoffman** — [Fortune: "Superagency" book interview on AI's economic future](https://fortune.com/2025/01/31/reid-hoffman-interview-openai-deepseek-superagncy-ai-book/) (2025) `hoffman-fortune-superagency-2025`
+- ✓ ① **Sam Altman** — [The Intelligence Age](https://ia.samaltman.com/) (2024) `altman-intelligence-age`
+- ✓ ① **Sam Altman** — [Three Observations](https://blog.samaltman.com/three-observations) (2025) `altman-three-observations`
+- ✓ ① **Sam Altman** — [The Gentle Singularity](https://blog.samaltman.com/the-gentle-singularity) (2025) `altman-gentle-singularity`
+- ☐ ① **Sam Altman** — [Senate: testimony on AI competitiveness and the global AI race](https://www.techpolicy.press/transcript-sam-altman-testifies-at-us-senate-hearing-on-ai-competitiveness/) (2025) `altman-senate-testimony-2025`
+- ☐ ① **Sam Altman** — [The Atlantic: "I no longer believe in universal basic income as much"](https://finance.yahoo.com/economy/policy/articles/sam-altman-falls-love-universal-125253241.html) (2026) `altman-atlantic-ubi-2026`
+- ☐ ① **Sam Altman** — [Sam Altman blog: "Abundant Intelligence"](https://blog.samaltman.com/abundant-intelligence) (2025) `altman-abundant-intelligence-2025`
+- ☐ ① **Satya Nadella** — [Dwarkesh interview: economic growth as the AGI test](https://www.dwarkesh.com/p/satya-nadella) (2025) `nadella-dwarkesh`
+- ☐ ① **Satya Nadella & Cindy Cohn** — [Hard Fork: Satya Nadella — Live on AI's Economic Future](https://podscripts.co/podcasts/hard-fork/hard-fork-live-part-1-satya-nadella-and-cindy-cohn) (2026) `nadella-hardfork-2026`
+- ☐ ① **Sundar Pichai** — [TechCrunch: dismisses AI job fears, emphasizes expansion plans](https://techcrunch.com/2025/06/04/alphabet-ceo-sundar-pichai-dismisses-ai-job-fears-emphasizes-expansion-plans/) (2025) `pichai-techcrunch-jobfears-2025`
+- ☐ ① **Sundar Pichai** — [Fortune/BBC: "We have to work through societal disruption"](https://fortune.com/2025/12/02/ai-wipes-jobs-google-ceo-sundar-pichai-everyday-people-to-adapt-accordingly-we-have-to-work-through-societal-disruption) (2025) `pichai-bbc-fortune-disruption-2025`
+- ☐ ① **Yoshua Bengio** — [Fortune: "Only a matter of time" before every job is wiped out](https://www.fortune.com/2025/12/19/yoshua-bengio-ai-only-a-matter-of-time-before-every-single-job-is-wiped-out-even-gen-z-trade-plumbing) (2025) `bengio-fortune-mattertime-2025`
+- ☐ ② **Aravind Srinivas** — [Breitbart: AI has a "glorious future" because people don't enjoy their jobs](https://www.breitbart.com/politics/2026/04/01/perplexity-ai-ceo-aravind-srinivas-ai-has-glorious-future-because-people-dont-enjoy-their-jobs/) (2026) `srinivas-breitbart-gloriousfuture-2026`
+- ☐ ② **Bill Gates** — [AI is about to completely change how you use computers](https://www.gatesnotes.com/AI-agents) (2023) `gates-ai-agents`
+- ☐ ② **Boris Cherny** — [Odd Lots: Boris Cherny — The Creator of Claude Code on the Hottest Piece of Software in the World](https://podcasts.apple.com/us/podcast/the-creator-of-claude-code-on-the-hottest-piece/id1056200096?i=1000777521827) (2026) `cherny-oddlots-2026`
+- ☐ ② **Dario Amodei** — [Dwarkesh Podcast: Dario Amodei — $10 Billion Models, OpenAI, Scaling, & AGI in 2 Years](https://www.dwarkesh.com/p/dario-amodei) (2023) `amodei-dwarkesh-2023`
+- ☐ ② **Dario Amodei** — [Dwarkesh Podcast: Dario Amodei — We Are Near the End of the Exponential](https://www.dwarkesh.com/p/dario-amodei-2) (2026) `amodei-dwarkesh-2026`
+- ☐ ② **Dario Amodei** — [Lex Fridman Podcast: Dario Amodei — Anthropic CEO on Claude, AGI & the Future of AI & Humanity](https://lexfridman.com/dario-amodei) (2024) `amodei-lex`
+- ☐ ② **Dario Amodei** — [Hard Fork: "Surviving the AI endgame"](https://podcasts.apple.com/us/podcast/anthropics-c-e-o-dario-amodei-on-surviving-the-a-i-endgame/id1528594034?i=1000696782462) (2025) `amodei-hardfork-endgame-2025`
+- ☐ ② **Dario Amodei** — [CNBC Squawk Box: Davos 2026 conversation on the AI race](https://podcasts.apple.com/gb/podcast/davos-2026-anthropic-ceo-dario-amodei-1-22-26/id1480890290?i=1000746236607) (2026) `amodei-cnbc-davos-2026`
+- ☐ ② **David Solomon** — [Odd Lots: David Solomon — Running a Bank in the Age of AI](https://podscripts.co/podcasts/odd-lots/goldman-sachs-ceo-david-solomon-on-running-a-bank-in-the-age-of-ai) (2026) `solomon-oddlots-2026`
+- ☐ ② **Demis Hassabis** — [Public interviews on AGI timelines and economics](https://www.dwarkesh.com/p/demis-hassabis) (2025) `hassabis-interviews`
+- ☐ ② **Demis Hassabis** — [Time: TIME100 interview on AlphaFold, AGI, and humanity](https://time.com/7277608/demis-hassabis-interview-time100-2025/) (2025) `hassabis-time100-2025`
+- ☐ ② **Eric Schmidt** — [The National: AI "will create more jobs than it destroys"](https://www.thenationalnews.com/future/technology/2025/10/30/ai-jobs-creation-google-eric-schmidt/) (2025) `schmidt-thenational-jobcreation-2025`
+- ☐ ② **Geoffrey Hinton** — [Forbes: "Society is unprepared for AI's economic disruption"](https://www.forbes.com/sites/timbajarin/2025/09/16/geoffrey-hinton-society-is-unprepared-for-ais-economic-disruption/) (2025) `hinton-forbes-disruption-2025`
+- ☐ ② **Greg Brockman** — [Tae Kim's Substack: "There's not going to be enough compute"](https://taekim.substack.com/p/an-interview-with-openai-president) (2024) `brockman-substack-notenoughcompute-2024`
+- ✓ ② **Ilya Sutskever** — [Public interviews on superintelligence](https://www.dwarkesh.com/p/ilya-sutskever-2) (2025) `sutskever-interviews`
+- ☐ ② **Jack Clark** — [Technological Optimism and Appropriate Fear](https://jack-clark.net/) (2025) `jack-clark-optimism-fear`
+- ☐ ② **Jensen Huang** — [Lex Fridman Podcast: Jensen Huang — NVIDIA, the $4 Trillion Company & the AI Revolution](https://lexfridman.com/jensen-huang) (2026) `jensen-huang-lex`
+- ☐ ② **Jensen Huang** — [TechCrunch: AI is "creating an enormous number of jobs"](https://techcrunch.com/2026/05/04/as-workers-worry-about-ai-nvidias-jensen-huang-says-ai-is-creating-an-enormous-number-of-jobs/) (2026) `huang-techcrunch-enormousjobs-2026`
+- ☐ ② **Kevin Scott** — [Stratechery: Kevin Scott on the AI platform shift and jobs](https://stratechery.com/2024/interviews-with-microsoft-ceo-satya-nadella-and-cto-kevin-scott-about-the-ai-platform-shift/) (2024) `scott-stratechery-platformshift-2024`
+- ☐ ② **Kevin Scott** — [McKinsey: "Forward Thinking" on AI and the future of work](https://www.mckinsey.com/featured-insights/future-of-work/forward-thinking-on-artificial-intelligence-with-microsoft-cto-kevin-scott) (2023) `scott-mckinsey-forwardthinking-2023`
+- ☐ ② **Mark Zuckerberg** — [Dwarkesh Podcast: Mark Zuckerberg — Llama 3, Open Sourcing $10B Models, & Caesar Augustus](https://www.dwarkesh.com/p/mark-zuckerberg) (2024) `zuckerberg-dwarkesh-2024`
+- ☐ ② **Mark Zuckerberg** — [Complex Idea Generation: pushes back on AI job-displacement anxiety](https://letsdatascience.com/news/mark-zuckerberg-rejects-ai-job-displacement-anxiety-dca98954) (2026) `zuckerberg-complex-ideageneration-2026`
+- ☐ ② **Mira Murati** — [Fortune: "Some creative jobs maybe will go away"](https://fortune.com/2024/06/24/ai-creative-industry-jobs-losses-openai-cto-mira-murati-skill-displacement) (2024) `murati-fortune-creativejobs-2024`
+- ☐ ② **OpenAI (Sam Altman)** — [Planning for AGI and Beyond](https://openai.com/index/planning-for-agi-and-beyond/) (2023) `openai-planning-agi`
+- ☐ ② **Reid Hoffman** — [EconTalk: Reid Hoffman — Why AI Is Good for Humans](https://www.econtalk.org/why-ai-is-good-for-humans-with-reid-hoffman/) (2025) `hoffman-econtalk-2025`
+- ☐ ② **Sam Altman** — [Lex Fridman Podcast: Sam Altman — OpenAI, GPT-5, Sora, Board Saga, Elon Musk, Ilya, Power & AGI](https://lexfridman.com/sam-altman-2) (2024) `altman-lex-2`
+- ☐ ② **Sam Altman** — [All-In Podcast: "Universal Basic Compute" proposal](https://x.com/theallinpod/status/1790558532942602397) (2024) `altman-allin-basiccompute-2024`
+- ☐ ② **Satya Nadella** — [Dwarkesh Podcast: Satya Nadella — How Microsoft Is Preparing for AGI](https://www.dwarkesh.com/p/satya-nadella-2) (2025) `nadella-dwarkesh-2`
+- ☐ ② **Satya Nadella** — [Stratechery: interview on the AI platform shift and the economy](https://stratechery.com/2024/interviews-with-microsoft-ceo-satya-nadella-and-cto-kevin-scott-about-the-ai-platform-shift/) (2024) `nadella-stratechery-platformshift-2024`
+- ☐ ② **Sholto Douglas & Trenton Bricken** — [Dwarkesh interview: capability timelines and white-collar automation](https://www.dwarkesh.com/p/sholto-douglas-trenton-bricken) (2025) `sholto-trenton-dwarkesh`
+- ☐ ② **Yann LeCun** — [Lex Fridman interview: LLM-skeptic path to human-level AI](https://lexfridman.com/yann-lecun-3-transcript) (2024) `lecun-lex`
+- ☐ ② **Yoshua Bengio** — [Moneycontrol (via Storyboard18): "Governments are not doing anything" on AI job losses](https://www.storyboard18.com/trending/governments-are-not-doing-anything-yoshua-bengio-warns-of-ai-job-losses-90019.htm) (2025) `bengio-moneycontrol-governments-2025`
+- ☐ ③ **Andrew Ng** — [AI is the New Electricity](https://www.gsb.stanford.edu/insights/andrew-ng-why-ai-new-electricity) (2017) `ng-new-electricity`
+- ☐ ③ **Aravind Srinivas** — [Lex Fridman Podcast: Aravind Srinivas — Perplexity CEO on Future of AI, Search & the Internet](https://lexfridman.com/aravind-srinivas) (2024) `srinivas-lex`
+- ☐ ③ **Cursor Team** — [Lex Fridman Podcast: Cursor Team — Future of Programming with AI](https://lexfridman.com/cursor-team) (2024) `cursor-team-lex`
+- ☐ ③ **Jamie Dimon** — [JPMorgan shareholder letters and interviews on AI (3.5-day workweek)](https://www.jpmorganchase.com/ir/annual-report) (2024) `dimon-ai-statements`
+- ☐ ③ **Jeff Dean & Noam Shazeer** — [Dwarkesh Podcast: Jeff Dean & Noam Shazeer — 25 Years at Google, from PageRank to AGI](https://www.dwarkesh.com/p/jeff-dean-and-noam-shazeer) (2025) `dean-shazeer-dwarkesh`
+- ☐ ③ **Jensen Huang** — [Public statements on AI and jobs](https://www.wired.com/story/jensen-huang-nvidia-ai/) (2025) `huang-statements`
+- ☐ ③ **Jensen Huang** — [Dwarkesh Podcast: Jensen Huang — TPU Competition, Why We Should Sell Chips to China, & Nvidia's Supply Chain Moat](https://www.dwarkesh.com/p/jensen-huang) (2026) `jensen-huang-dwarkesh`
+- ☐ ③ **John Schulman** — [Dwarkesh Podcast: John Schulman — Reasoning, RLHF, & Plan for 2027 AGI](https://www.dwarkesh.com/p/john-schulman) (2025) `schulman-j-dwarkesh`
+- ☐ ③ **Kevin Scott** — [Capgemini: "Turning scarcity into abundance"](https://www.capgemini.com/us-en/insights/research-library/a-conversation-with-kevin-scott/) (2024) `scott-capgemini-abundance-2024`
+- ☐ ③ **Mustafa Suleyman** — [Silicon Valley Girl Podcast: on AI, jobs, and the economy](https://singjupost.com/mustafa-suleyman-on-silicon-valley-girl-podcast-transcript/) (2025) `suleyman-siliconvalleygirl-podcast-2025`
+- ☐ ③ **Reid Hoffman** — [Masters of Scale: AI "Superagency" and the future of work](https://mastersofscale.com/reid-hoffman-on-ai-superagency/) (2025) `hoffman-mastersofscale-superagency-2025`
+- ☐ ③ **Sam Altman** — [Lex Fridman interview](https://lexfridman.com/sam-altman-2-transcript) (2024) `altman-lex`
+- ☐ ③ **Sundar Pichai** — [Lex Fridman Podcast: Sundar Pichai — CEO of Google and Alphabet](https://lexfridman.com/sundar-pichai) (2025) `pichai-lex`
+
+## Forecasters & research orgs (90)
+
+- ☐ ① **Andrei Potlogea & Anson Ho (Epoch AI)** — [AI and Explosive Growth Redux](https://epoch.ai/gradient-updates/ai-and-explosive-growth-redux) (2025) `epoch-explosive-growth-redux`
+- ☐ ① **Andrew Yang** — [Hard Fork: Andrew Yang — The Future of Universal Basic Income in the AI Economy](https://podscripts.co/podcasts/hard-fork/tim-cooks-legacy-the-future-of-ubi-with-andrew-yang-hatgpt) (2026) `yang-hardfork-ubi-2026`
+- ✓ ① **Anthropic** — [The Anthropic Economic Index](https://www.anthropic.com/economic-index) (2025) `anthropic-economic-index`
+- ☐ ① **Anthropic** — [Anthropic Economic Index Report: Economic Primitives](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report) (2026) `anthropic-econ-index-jan2026`
+- ☐ ① **Bain & Company** — [$2 Trillion in New Revenue Needed to Fund AI's Scaling Trend](https://www.bain.com/about/media-center/press-releases/20252/$2-trillion-in-new-revenue-needed-to-fund-ais-scaling-trend---bain--companys-6th-annual-global-technology-report/) (2025) `bain-global-tech-2trillion`
+- ☐ ① **Carl Shulman** — [Dwarkesh interview part 1: intelligence explosion economics](https://www.dwarkesh.com/p/carl-shulman) (2023) `shulman-dwarkesh-1`
+- ☐ ① **Carl Shulman** — [80000 Hours Podcast: Carl Shulman — The Economy and National Security after AGI (Part 1)](https://80000hours.org/podcast/episodes/carl-shulman-economy-agi/) (2024) `shulman-80k-economy-2024`
+- ☐ ① **Ege Erdil & Matthew Barnett** — [Most AI Value Will Come from Broad Automation, Not from R&D](https://epoch.ai/gradient-updates/most-ai-value-will-come-from-broad-automation-not-from-r-d) (2025) `epoch-broad-automation`
+- ✓ ① **Ege Erdil & Tamay Besiroglu** — [Explosive Growth from AI Automation: A Review of the Arguments](https://arxiv.org/abs/2309.11690) (2023) `epoch-explosive-growth`
+- ☐ ① **Ege Erdil & Tamay Besiroglu** — [Dwarkesh interview: AI takeoff slower than you think (Mechanize)](https://www.dwarkesh.com/p/ege-tamay) (2025) `ege-tamay-dwarkesh`
+- ✓ ① **Forethought (MacAskill et al.)** — [Preparing for the Intelligence Explosion](https://www.forethought.org/research/preparing-for-the-intelligence-explosion) (2025) `forethought-intelligence-explosion`
+- ☐ ① **Forethought Research** — [Could One Country Outgrow the Rest of the World After AGI? Economic Analysis of Superexponential Growth](https://www.forethought.org/research/could-one-country-outgrow-the-rest-of-the-world) (2025) `forethought-outgrow-world`
+- ☐ ① **Geoffrey Hinton** — [60 Minutes: Geoffrey Hinton on the Promise and Risks of AI](https://www.cbsnews.com/news/geoffrey-hinton-ai-dangers-60-minutes-transcript/) (2023) `sixtyminutes-hinton-pelley`
+- ☐ ① **Handa, Tamkin, McCain et al. (Anthropic)** — [Which Economic Tasks are Performed with AI? Evidence from Millions of Claude Conversations](https://arxiv.org/abs/2503.04761) (2025) `anthropic-econ-tasks-paper`
+- ☐ ① **Holden Karnofsky** — [The Most Important Century series](https://www.cold-takes.com/most-important-century/) (2021) `karnofsky-important-century`
+- ✓ ① **IMF (Cazzaniga et al.)** — [Gen-AI: Artificial Intelligence and the Future of Work](https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/01/14/Gen-AI-Artificial-Intelligence-and-the-Future-of-Work-542379) (2024) `imf-genai-work`
+- ☐ ① **Jonathan Mann** — [Asterisk: AI Isn't Coming for Tech Jobs—Yet](https://asteriskmag.com/issues/03/ai-isn-t-coming-for-tech-jobs-yet) (2023) `asterisk-mann-tech-jobs`
+- ✓ ① **Katja Grace et al.** — [Thousands of AI Authors on the Future of AI](https://arxiv.org/abs/2401.02843) (2024) `grace-ai-survey`
+- ✓ ① **Kokotajlo et al. (AI Futures Project)** — [AI 2027](https://ai-2027.com/) (2025) `ai-2027`
+- ☐ ① **Kulveit, Finnveden et al.** — [Gradual Disempowerment: How Even Aligned AI Erodes Human Influence](https://gradual-disempowerment.ai/) (2025) `gradual-disempowerment`
+- ✓ ① **Leopold Aschenbrenner** — [Situational Awareness: The Decade Ahead](https://situational-awareness.ai/) (2024) `aschenbrenner-situational`
+- ☐ ① **Leopold Aschenbrenner** — [Dwarkesh Podcast: Leopold Aschenbrenner — 2027 AGI, China/US Super-Intelligence Race, & the Return of History](https://www.dwarkesh.com/p/leopold-aschenbrenner) (2024) `aschenbrenner-dwarkesh`
+- ☐ ① **Mechanize (Erdil & Besiroglu)** — [Life After Work](https://www.mechanize.work/blog/life-after-work/) (2025) `mechanize-life-after-work`
+- ☐ ① **Metaculus** — [Labor Automation Forecasting Hub](https://www.metaculus.com/labor-hub/) (2025) `metaculus-labor-automation-hub`
+- ☐ ① **Nenad Tomašev & Matija Franklin (Google DeepMind)** — [Virtual Agent Economies](https://arxiv.org/abs/2509.01063) (2025) `deepmind-virtual-agent-economies`
+- ☐ ① **OpenAI** — [Modeling an AI Jobs Transition](https://openai.com/index/modeling-ai-jobs-transition/) (2025) `openai-jobs-transition`
+- ☐ ① **OpenAI (Ronnie Chatterji)** — [OpenAI's New Economic Analysis](https://openai.com/global-affairs/new-economic-analysis/) (2026) `openai-new-econ-analysis`
+- ☐ ① **Paul Christiano** — [Takeoff Speeds](https://sideways-view.com/2018/02/24/takeoff-speeds/) (2018) `christiano-takeoff`
+- ☐ ① **Paul Christiano** — [What Failure Looks Like](https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like) (2019) `christiano-failure-looks-like`
+- ☐ ① **PwC** — [Sizing the Prize: PwC's Global Artificial Intelligence Study](https://www.pwc.co.nz/insights-and-publications/2023-publications/artificial-intelligence-study.html) (2017) `pwc-sizing-the-prize`
+- ☐ ① **RAND Corporation** — [Macroeconomic Implications of Artificial Intelligence](https://www.rand.org/pubs/perspectives/PEA3888-3.html) (2025) `rand-macro-implications`
+- ☐ ① **Timothy B. Lee & Ajeya Cotra** — [Asterisk: How Long Until AI Doesn't Need Humans?](https://asteriskmag.com/issues/14/how-long-until-ai-doesn-t-need-humans) (2026) `asterisk-lee-cotra-ai-humans`
+- ☐ ① **Tom Davidson** — [80000 Hours Podcast: Tom Davidson — How Quickly AI Could Transform the World](https://80000hours.org/podcast/episodes/tom-davidson-how-quickly-ai-could-transform-the-world/) (2023) `davidson-80k-takeoff-2023`
+- ☐ ① **Tom Davidson** — [Could Advanced AI Drive Explosive Economic Growth?](https://www.openphilanthropy.org/research/could-advanced-ai-drive-explosive-economic-growth/) (2021) `openphil-davidson-explosive-growth`
+- ☐ ① **Tom Davidson & Rose Hadshar** — [The Industrial Explosion](https://newsletter.forethought.org/p/the-industrial-explosion) (2025) `forethought-industrial-explosion`
+- ☐ ② **Accenture** — [Artificial Intelligence Poised to Double Annual Economic Growth Rates by 2035](https://newsroom.accenture.com/news/2016/artificial-intelligence-poised-to-double-annual-economic-growth-rate-in-12-developed-economies-and-boost-labor-productivity-by-up-to-40-percent-by-2035-according-to-new-research-by-accenture) (2016) `accenture-ai-double-growth`
+- ☐ ② **Andy DeVries** — [Odd Lots: Andy DeVries — The Utilities Analyst Who Says the Data Center Demand Story Doesn't Add Up](https://www.bloomberg.com/news/audio/2026-02-02/odd-lots-the-data-center-demand-story-doesn-t-add-up-podcast) (2026) `devries-oddlots-2026`
+- ☐ ② **Anthropic** — [Anthropic Economic Index Report: Learning Curves](https://www.anthropic.com/research/economic-index-march-2026-report) (2026) `anthropic-econ-index-mar2026`
+- ☐ ② **Anthropic** — [Anthropic Economic Index Report: Cadences](https://www.anthropic.com/research/economic-index-june-2026-report) (2026) `anthropic-econ-index-jun2026`
+- ☐ ② **Anthropic** — [Anthropic Economic Index Report: Uneven Geographic and Enterprise AI Adoption](https://arxiv.org/abs/2511.15080) (2025) `anthropic-econ-index-geographic`
+- ☐ ② **Carl Shulman** — [Dwarkesh interview part 2: AI takeover and the economy](https://www.dwarkesh.com/p/carl-shulman-2) (2023) `shulman-dwarkesh-2`
+- ☐ ② **Carl Shulman** — [80000 Hours Podcast: Carl Shulman — Government and Society after AGI (Part 2)](https://open.spotify.com/episode/6P71Eva2i9U5eBsChVWHFx) (2024) `shulman-80k-government-2024`
+- ☐ ② **Convergence Analysis** — [Threshold 2030: Forecasting the Economic Impacts of Frontier AI](https://www.convergenceanalysis.org/threshold-2030/part-3-forecasting) (2024) `convergence-threshold-2030`
+- ☐ ② **CSET (Georgetown)** — [AI and the Future of Workforce Training](https://cset.georgetown.edu/publication/ai-and-the-future-of-workforce-training/) (2024) `cset-workforce-training`
+- ☐ ② **Daniel Kokotajlo** — [What 2026 Looks Like (2021 forecast)](https://www.alignmentforum.org/posts/6Xgy6CAf2jqHhynHL/what-2026-looks-like) (2021) `kokotajlo-2026`
+- ☐ ② **David Roodman** — [Modeling the Human Trajectory](https://www.openphilanthropy.org/research/modeling-the-human-trajectory/) (2020) `roodman-human-trajectory`
+- ☐ ② **Epoch AI** — [GATE: Growth and AI Transition Endogenous model](https://epoch.ai/gate) (2025) `epoch-gate`
+- ☐ ② **Epoch AI** — [Can AI Scaling Continue Through 2030?](https://epoch.ai/blog/can-ai-scaling-continue-through-2030) (2024) `epoch-scaling-2030`
+- ☐ ② **Epoch AI** — [Data Center Buildout Share of US GDP Is Still Relatively Small (But Rapidly Growing)](https://epoch.ai/data-insights/ai-datacenter-share-gdp) (2026) `epoch-datacenter-gdp`
+- ☐ ② **Gary Wingens** — [Odd Lots: Gary Wingens — Why AI Might Actually Create More Work for Lawyers](https://podcasts.apple.com/us/podcast/why-ai-might-actually-create-more-work-for-lawyers/id1056200096?i=1000776561632) (2026) `wingens-oddlots-2026`
+- ☐ ② **Geoffrey Hinton** — [The Weekly Show with Jon Stewart: Geoffrey Hinton on the Risks of AI](https://www.youtube.com/watch?v=jrK3PsD3APk) (2025) `weeklyshow-hinton-stewart`
+- ☐ ② **Josh Tyrangiel** — [Plain English: Josh Tyrangiel — America Isn't Ready for What AI Will Do to Jobs](https://www.theringer.com/podcasts/plain-english-with-derek-thompson/2026/02/13/america-isnt-ready-for-what-ai-will-do-to-jobs) (2026) `tyrangiel-plainenglish-2026`
+- ☐ ② **Joshua Rothman** — [The New Yorker: Why the Godfather of AI Fears What He's Built](https://www.newyorker.com/contributors/joshua-rothman) (2023) `newyorker-rothman-hinton`
+- ☐ ② **McKinsey Global Institute** — [Generative AI and the Future of Work in America](https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america) (2023) `mckinsey-genai-work`
+- ☐ ② **Mechanize** — [The Future of AI Is Already Written](https://www.mechanize.work/blog/technological-determinism/) (2025) `mechanize-technological-determinism`
+- ☐ ② **Metaculus** — [If Human-Level AI Is Developed, Will World GDP Grow by at Least 300% in 15 Years?](https://www.metaculus.com/questions/3477/if-human-level-artificial-intelligence-is-developed-will-world-gdp-grow-by-at-least-300-in-any-of-the-subsequent-15-years/) (2018) `metaculus-gdp-growth-hlai`
+- ☐ ② **Michael Batnick & Ben Carlson** — [Plain English: Batnick & Carlson — SpaceX, AI Bubble Fears, and the Trillion-Dollar Zero-Profit Company](https://podcasts.apple.com/us/podcast/spacex-ai-bubble-fears-and-the-age-of-the/id1594471023?i=1000774327100) (2026) `batnick-carlson-plainenglish-2026`
+- ☐ ② **Mo Gawdat** — [Diary of a CEO: Mo Gawdat on AI, Jobs, and Economic Collapse](https://podcasts.apple.com/gb/podcast/the-diary-of-a-ceo-with-steven-bartlett/id1291423644) (2024) `doac-gawdat-ai-jobs`
+- ☐ ② **RAND Corporation** — [Artificial Intelligence and the Labor Force: A Data-Driven Approach to Identifying Exposed Occupations](https://www.rand.org/pubs/research_reports/RRA2655-1.html) (2024) `rand-ai-labor-force`
+- ☐ ② **RAND Corporation** — [AI Is Making Jobs, Not Taking Them](https://www.rand.org/pubs/commentary/2025/10/ai-is-making-jobs-not-taking-them.html) (2025) `rand-jobs-not-taking`
+- ☐ ② **Ray Kurzweil** — [Lex Fridman Podcast: Ray Kurzweil — Singularity, Superintelligence, and Immortality](https://lexfridman.com/ray-kurzweil) (2022) `kurzweil-lex`
+- ☐ ② **Samuel Hammond** — [Ninety-Five Theses on AI](https://www.secondbest.ca/p/ninety-five-theses-on-ai) (2023) `hammond-95-theses`
+- ☐ ② **Sastry, Heim, Belfield, Anderljung et al.** — [Computing Power and the Governance of Artificial Intelligence](https://arxiv.org/abs/2402.08797) (2024) `govai-compute-governance`
+- ☐ ② **Scott Alexander** — [Astral Codex Ten: AI Chip Regulation Is Not a Dystopian Surveillance State](https://www.astralcodexten.com/p/ai-chip-regulation-is-not-a-dystopian) (2026) `astralcodexten-chip-regulation`
+- ☐ ② **Scott Alexander & Daniel Kokotajlo** — [Dwarkesh Podcast: AI 2027 — Month-by-Month Model of Intelligence Explosion](https://www.dwarkesh.com/p/scott-daniel) (2025) `kokotajlo-alexander-dwarkesh`
+- ☐ ② **Tom Cunningham** — [Forecasts of AI & Economic Growth](https://tecunningham.github.io/posts/2025-10-19-forecasts-of-AI-growth.html) (2025) `cunningham-ai-growth-forecasts`
+- ☐ ② **Tom Davidson** — [What a Compute-Centric Framework Says About Takeoff Speeds](https://www.openphilanthropy.org/research/what-a-compute-centric-framework-says-about-takeoff-speeds/) (2023) `davidson-takeoff`
+- ☐ ② **Tom Davidson** — [80000 Hours Podcast: Tom Davidson — How AI-Enabled Coups Could Allow a Tiny Group to Seize Power](https://80000hours.org/podcast/episodes/tom-davidson-ai-enabled-human-power-grabs/) (2025) `davidson-80k-coups-2025`
+- ☐ ② **Zvi Mowshowitz** — [You Better Mechanize](https://www.lesswrong.com/posts/j7GgmLwymtJEcnf9L/you-better-mechanize) (2025) `zvi-you-better-mechanize`
+- ☐ ② **Zvi Mowshowitz** — [Asterisk: Why Is Everyone Suddenly Furious About AI Regulation?](https://asteriskmag.com/issues/06/why-is-everyone-suddenly-furious-about-ai-regulation) (2024) `asterisk-zvi-ai-regulation`
+- ☐ ③ **Accenture** — [The Productivity Payoff: Unlocking Competitiveness with Gen AI](https://www.accenture.com/us-en/insights/strategy/productivity-payoff) (2024) `accenture-productivity-payoff`
+- ☐ ③ **Ajeya Cotra** — [Forecasting TAI with Biological Anchors](https://www.alignmentforum.org/posts/KrJfoZzpSDpnrv9va/draft-report-on-ai-timelines) (2020) `cotra-bioanchors`
+- ☐ ③ **Bain & Company** — [Nearly Half of Industrial Automation Revenue to Rely on AI by 2030](https://www.bain.com/about/media-center/press-releases/2026/nearly-half-of-industrial-automation-revenue-to-rely-on-ai-by-2030-bain--company-finds/) (2026) `bain-industrial-automation-2030`
+- ☐ ③ **CSET (Georgetown)** — [Identifying the AI Development Workforce](https://cset.georgetown.edu/publication/identifying-the-ai-development-workforce) (2026) `cset-ai-development-workforce`
+- ☐ ③ **Dylan Patel** — [Dwarkesh Podcast: Dylan Patel — Deep Dive on the 3 Big Bottlenecks to Scaling AI Compute](https://www.dwarkesh.com/p/dylan-patel) (2026) `dylan-patel-dwarkesh`
+- ☐ ③ **Dylan Patel & Jon (Asianometry)** — [Dwarkesh Podcast: Dylan Patel & Asianometry — How the Semiconductor Industry Actually Works](https://www.dwarkesh.com/p/dylan-jon) (2024) `patel-asianometry-dwarkesh`
+- ☐ ③ **Dylan Patel & Nathan Lambert** — [Lex Fridman Podcast: Dylan Patel & Nathan Lambert — DeepSeek, China, OpenAI, NVIDIA, xAI, TSMC, Stargate, and AI Megaclusters](https://lexfridman.com/deepseek-dylan-patel-nathan-lambert) (2025) `dylan-patel-lambert-lex`
+- ☐ ③ **Goldman Sachs (Briggs & Kodnani)** — [The Potentially Large Effects of AI on Economic Growth](https://www.gspublishing.com/content/research/en/reports/2023/03/27/d64e052b-0f6e-45d7-967b-d7be35fabd16.html) (2023) `goldman-briggs-kodnani`
+- ☐ ③ **GovAI** — [Voice and Access in AI: Global AI Majority Participation in Artificial Intelligence Development and Governance](https://www.governance.ai/research-paper/voice-and-access-in-ai-global-ai-majority-participation-in-artificial-intelligence-development-and-governance) (2024) `govai-voice-access-global-majority`
+- ☐ ③ **Kai-Fu Lee** — [AI Superpowers (labor chapters)](https://en.wikipedia.org/wiki/AI_Superpowers) (2018) `lee-ai-superpowers`
+- ☐ ③ **Marc Andreessen** — [Lex Fridman Podcast: Marc Andreessen — Trump, Power, Tech, AI, Immigration & Future of America](https://lexfridman.com/marc-andreessen-2) (2025) `andreessen-lex-2`
+- ☐ ③ **Max Tegmark** — [Life 3.0 (economics chapters)](https://en.wikipedia.org/wiki/Life_3.0) (2017) `tegmark-life3`
+- ☐ ③ **Nick Bostrom** — [Superintelligence (economic chapters)](https://en.wikipedia.org/wiki/Superintelligence:_Paths%2C_Dangers%2C_Strategies) (2014) `bostrom-superintelligence`
+- ☐ ③ **OpenAI Global Affairs** — [Finding Work With AI](https://openaiglobalaffairs.substack.com/p/finding-work-with-ai) (2025) `openai-finding-work`
+- ☐ ③ **Pieter Levels** — [Lex Fridman Podcast: Pieter Levels — Programming, Viral AI Startups, and Digital Nomad Life](https://lexfridman.com/pieter-levels) (2024) `levels-lex`
+- ☐ ③ **Ray Kurzweil** — [The Singularity Is Nearer](https://en.wikipedia.org/wiki/The_Singularity_Is_Nearer) (2024) `kurzweil-singularity-nearer`
+- ☐ ③ **Robin Hanson** — [The Age of Em / em economy essays](https://ageofem.com/) (2016) `hanson-em-economy`
+- ☐ ③ **Stanford HAI** — [AI Index Report (Economy chapter)](https://aiindex.stanford.edu/report/) (2025) `stanford-ai-index`
+- ☐ ③ **Steven Levy** — [Wired: Steven Levy's Plaintext on the Road to AGI](https://www.wired.com/newsletter/plaintext/) (2024) `wired-levy-plaintext-agi`
+- ☐ ③ **Will MacAskill & Fin Moorhouse** — [Introducing Better Futures](https://www.forethought.org/research/introducing-better-futures) (2025) `forethought-better-futures`
+
+## Skeptics & contrarians (53)
+
+- ☐ ① **Arvind Narayanan** — [Capitalisn't: Arvind Narayanan — What Everyone's Getting Wrong About AI](https://open.spotify.com/episode/2hwj2mNU1NwzOrw00yYKZ5) (2025) `narayanan-capitalisnt-2025`
+- ✓ ① **Arvind Narayanan & Sayash Kapoor** — [AI as Normal Technology](https://knightcolumbia.org/content/ai-as-normal-technology) (2025) `narayanan-kapoor-normal`
+- ☐ ① **Cal Newport** — [Why Isn't AI Taking Our Jobs?](https://calnewport.com/why-isnt-ai-taking-our-jobs/) (2025) `newport-why-isnt-ai-taking-jobs`
+- ☐ ① **Cal Newport** — [Why Didn't AI "Join the Workforce" in 2025?](https://calnewport.com/why-didnt-ai-join-the-workforce-in-2025/) (2026) `newport-ai-workforce-2025`
+- ✓ ① **Daron Acemoglu** — [Don't Believe the AI Hype](https://www.project-syndicate.org/commentary/ai-productivity-boost-will-be-smaller-than-expected-by-daron-acemoglu-2024-05) (2024) `acemoglu-dont-believe-hype`
+- ☐ ① **Daron Acemoglu** — [AI May Not Live Up to the Hype, MIT Economist Daron Acemoglu Warns](https://www.bloomberg.com/news/articles/2024-10-02/ai-can-only-do-5-of-jobs-says-mit-economist-who-fears-crash) (2024) `acemoglu-bloomberg-5pct-jobs`
+- ☐ ① **Daron Acemoglu** — [Will AI Usher in an Economic Boom, or Just a Lot of Mediocre Automation?](https://www.bloomberg.com/news/articles/2025-10-10/will-ai-usher-in-an-economic-boom-or-just-a-lot-of-mediocre-automation) (2025) `acemoglu-bloomberg-mediocre-automation`
+- ☐ ① **Daron Acemoglu** — [Nobel Laureate Daron Acemoglu on the 'brainless' AI discourse, the myth of capitalism and the Gen Z revolution risk](https://fortune.com/2026/06/21/nobel-laureate-daron-acemoglu-ai-productivity-capitalism-democracy/) (2026) `acemoglu-fortune-brainless-discourse`
+- ☐ ① **David Cahn** — [AI's $600B Question](https://sequoiacap.com/article/ais-600b-question/) (2024) `cahn-sequoia-600b-question`
+- ☐ ① **Derek Thompson** — [The Case Against the AI Job Apocalypse](https://www.theringer.com/podcasts/plain-english-with-derek-thompson/2026/05/12/the-case-against-the-ai-job-apocalypse) (2026) `dthompson-case-against-jobs-apocalypse`
+- ☐ ① **Don Muir** — [The Jobs Apocalypse Was Just Called Off By The People Who Predicted It](https://www.forbes.com/sites/donmuir/2026/07/25/the-jobs-apocalypse-was-just-called-off-by-the-people-who-predicted-it/) (2026) `muir-forbes-jobs-apocalypse-called-off`
+- ✓ ① **Dwarkesh Patel** — [Why I Don't Think AGI Is Right Around the Corner](https://www.dwarkesh.com/p/timelines-june-2025) (2025) `dwarkesh-timelines`
+- ☐ ① **Ed Zitron** — [The Subprime AI Crisis](https://www.wheresyoured.at/subprimeai/) (2024) `zitron-subprime-ai-crisis`
+- ☐ ① **Ed Zitron** — [OpenAI Is A Systemic Risk To The Tech Industry](https://omny.fm/shows/better-offline/openai-is-a-systemic-risk-to-the-tech-industry) (2025) `zitron-openai-systemic-risk`
+- ☐ ① **Emily M. Bender & Alex Hanna** — [The AI Con: How to Fight Big Tech's Hype and Create the Future We Want](https://en.wikipedia.org/wiki/The_AI_Con) (2025) `bender-hanna-ai-con-book`
+- ☐ ① **Ethan Mollick** — [Plain English: Ethan Mollick — What Happens When AI Learns to Do Our Jobs](https://www.theringer.com/podcasts/plain-english-with-derek-thompson/2025/10/24/what-happens-when-ai-learns-to-do-our-jobs) (2025) `mollick-plainenglish-2025`
+- ☐ ① **Gary Marcus** — [Peak bubble](https://garymarcus.substack.com/p/peak-bubble) (2025) `marcus-peak-bubble`
+- ☐ ① **Gary Marcus** — [The AI bubble is all over now, baby blue](https://garymarcus.substack.com/p/the-ai-bubble-is-all-over-now-baby) (2026) `marcus-bubble-baby-blue`
+- ☐ ① **Gary Marcus** — [Slop, productivity, and why the AI-fueled world is going nowhere mighty fast](https://garymarcus.substack.com/p/slop-productivity-and-why-the-ai) (2025) `marcus-slop-productivity`
+- ☐ ① **Goldman Sachs (Jim Covello)** — [Gen AI: Too Much Spend Too Little Benefit?](https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit) (2024) `goldman-covello-skeptic`
+- ☐ ① **Harris Kupperman** — [AI Mania Is About To End: Harris Kupperman](https://quoththeraven.substack.com/p/ai-mania-is-about-to-end-harris-kupperman) (2026) `kupperman-ai-mania-end`
+- ☐ ① **Jim Chanos** — [Jim Chanos on Crypto, AI, and Casino Capitalism](https://www.ineteconomics.org/perspectives/blog/jim-chanos-on-crypto-ai-and-casino-capitalism) (2025) `chanos-inet-casino-capitalism`
+- ✓ ① **Luke Drago & Rudolf Laine** — [The Intelligence Curse](https://intelligence-curse.ai/) (2025) `intelligence-curse`
+- ☐ ① **Melanie Mitchell & Arvind Narayanan** — [A Guide to Cutting Through AI Hype: Arvind Narayanan and Melanie Mitchell Discuss Artificial and Human Intelligence](https://blog.citp.princeton.edu/2025/04/02/a-guide-to-cutting-through-ai-hype-arvind-narayanan-and-melanie-mitchell-discuss-artificial-and-human-intelligence/) (2025) `mitchell-narayanan-cutting-hype`
+- ☐ ① **Neil Thompson** — [Beyond AI Exposure: Which Tasks are Cost-Effective to Automate with Computer Vision?](https://futuretech.mit.edu/news/beyond-ai-exposure-which-tasks-are-cost-effective-to-automate-with-computer-vision) (2024) `thompson-beyond-ai-exposure-cv`
+- ☐ ① **Paul Krugman** — [Talking AI With Martin Wolf](https://paulkrugman.substack.com/p/talking-ai-with-martin-wolf) (2025) `krugman-substack-martinwolf-2025`
+- ☐ ① **Paul Krugman** — [AI and the Pitfalls of Innovation](https://paulkrugman.substack.com/p/ai-and-the-pitfalls-of-innovation) (2025) `krugman-substack-pitfalls-2025`
+- ☐ ① **Paul Romer** — [AI Hype and Skepticism: Economist Paul Romer](https://sloanreview.mit.edu/audio/ai-hype-and-skepticism-economist-paul-romer/) (2024) `romer-mitsloan-hype-skepticism`
+- ☐ ① **Robert Gordon** — [The Future Of U.S. Productivity Growth: A Skeptical View](https://www.newyorkfed.org/medialibrary/media/research/conference/2024/AMEC%20US%20Productivity/Sessiontrue3_Gordon_LGAtrueNYFedtrueFuturetrueoftrueLP_240216) (2024) `gordon-nyfed-skeptical-view`
+- ☐ ① **Robert Shiller** — [Nobel laureate economist warns AI jobs apocalypse fears could become a self-fulfilling prophesy](https://fortune.com/2026/06/27/ai-job-apocalypse-backlash-robert-shiller-nobel/) (2026) `shiller-fortune-self-fulfilling-prophecy`
+- ☐ ① **Rodney Brooks** — [Predictions Scorecard, 2026 January 01](https://rodneybrooks.com/predictions-scorecard-2026-january-01/) (2026) `brooks-predictions-scorecard-2026`
+- ☐ ② **Daron Acemoglu** — [A Nobel laureate on the economics of artificial intelligence](https://www.technologyreview.com/2025/02/25/1111207/a-nobel-laureate-on-the-economics-of-artificial-intelligence/) (2025) `acemoglu-techreview-economics-ai`
+- ☐ ② **Daron Acemoglu** — [AI Is Not Improving Productivity: Nobel Laureate Daron Acemoglu](https://sloanreview.mit.edu/audio/ai-is-not-improving-productivity-nobel-laureate-daron-acemoglu/) (2024) `acemoglu-mitsloan-not-improving-productivity`
+- ☐ ② **Ed Zitron** — [How Does OpenAI Survive?](https://www.wheresyoured.at/to-serve-altman/) (2024) `zitron-how-openai-survives`
+- ☐ ② **Ed Zitron** — [The Era Of The Business Idiot](https://www.wheresyoured.at/the-era-of-the-business-idiot/) (2025) `zitron-business-idiot`
+- ☐ ② **Ethan Mollick** — [Co-Intelligence / One Useful Thing essays](https://www.oneusefulthing.org/p/latent-expertise-experts-and-ai) (2024) `mollick-cointelligence`
+- ☐ ② **Gary Marcus** — [Deep Learning Is Hitting a Wall / AGI skepticism](https://nautil.us/deep-learning-is-hitting-a-wall-238440/) (2022) `marcus-skepticism`
+- ☐ ② **Gary Marcus** — [AI, layoffs, productivity and The Klarna Effect](https://garymarcus.substack.com/p/ai-layoffs-productivity-and-the-klarna) (2025) `marcus-klarna-effect`
+- ☐ ② **Harris Kupperman** — [How To Lose $400 Billion In AI: Harris Kupperman](https://quoththeraven.substack.com/p/a-case-against-the-ai-boom-harris) (2025) `kupperman-400-billion-ai`
+- ☐ ② **Jim Chanos** — [Jim Chanos warns AI spending boom mirrors dot-com bubble risks](https://finance.yahoo.com/news/jim-chanos-warns-ai-spending-171853416.html) (2026) `chanos-yahoo-dotcom-bubble`
+- ☐ ② **MIT NANDA** — [The State of AI in Business 2025 (95% of pilots fail)](https://nanda.media.mit.edu/) (2025) `mit-nanda-business`
+- ☐ ② **Paul Krugman** — [Technology and Jobs](https://paulkrugman.substack.com/p/technology-and-jobs) (2025) `krugman-substack-techjobs-2025`
+- ☐ ② **Paul Romer** — [Economist Paul Romer sees AI as hype, FDI real path to growth](https://www.scmp.com/tech/policy/article/3264731/nobel-laureate-paul-romer-sees-diminishing-returns-ai-fdi-still-killer-app-emerging-economies) (2024) `romer-scmp-diminishing-returns`
+- ☐ ② **Robert Gordon** — [Economists are betting on an AI productivity boom](https://www.marketplace.org/story/2025/03/20/economists-are-betting-on-an-ai-productivity-boom) (2025) `gordon-marketplace-2025`
+- ☐ ② **Tim Lee** — [Macro Musings: Tim Lee — AI Automation and the Macroeconomy](https://macromusings.libsyn.com/tim-lee-on-the-present-and-future-of-ai-and-its-implications-for-policy) (2023) `lee-macromusings-2023`
+- ☐ ② **Timothy B. Lee** — [Why I'm Not Worried About AI Taking Everyone's Jobs](https://www.understandingai.org/p/why-im-not-worried-about-ai-taking) (2024) `timlee-not-worried`
+- ☐ ③ **Ed Zitron** — [The AI bubble essays (Where's Your Ed At)](https://www.wheresyoured.at/) (2025) `zitron-bubble`
+- ☐ ③ **Ed Zitron** — [Revenge of The Business Idiot](https://www.wheresyoured.at/the-revenge-of-the-business-idiot/) (2026) `zitron-business-idiot-revenge`
+- ☐ ③ **François Chollet** — [Francois Chollet, Mike Knoop - LLMs won't lead to AGI - $1,000,000 Prize to find true solution](https://www.dwarkesh.com/p/francois-chollet) (2024) `chollet-dwarkesh-llms-no-agi`
+- ☐ ③ **Gary Marcus** — [Two takes on AI and the future of America](https://garymarcus.substack.com/p/two-takes-on-ai-and-the-future-of) (2025) `marcus-future-america`
+- ☐ ③ **Melanie Mitchell** — [Why Artificial Intelligence Is Harder Than We Think: My Long-read Q&A with Melanie Mitchell](https://www.aei.org/economics/why-artificial-intelligence-is-harder-than-we-think-my-long-read-qa-with-melanie-mitchell/) (2023) `mitchell-aei-harder-than-think`
+- ☐ ③ **Robert Armstrong** — [FT Unhedged: AI bubble fears, US shutdown chaos & the $1.7tn shadow bank risk](https://www.biznews.com/interviews/members-only-ft-unhedged-ai-bubble-fears) (2025) `armstrong-ft-unhedged-ai-bubble`
+- ☐ ③ **Robin Hanson** — [AI takeoff skepticism / foom debate essays](https://www.overcomingbias.com/) (2023) `hanson-foom-skeptic`
+
+## Empirical evidence (adoption & effects) (23)
+
+- ☐ ① **Anders Humlum & Emilie Vestergaard** — [Large Language Models Small Labor Market Effects](https://bfi.uchicago.edu/working-papers/large-language-models-small-labor-market-effects/) (2025) `humlum-vestergaard`
+- ☐ ① **Brynjolfsson, Chandar & Chen** — [Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of AI](https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/) (2025) `brynjolfsson-canaries`
+- ☐ ① **Joel Becker, Nate Rush, Elizabeth Barnes & David Rein** — [Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://arxiv.org/abs/2507.09089) (2025) `metr-developer-slowdown-rct`
+- ☐ ① **Kevin Zheyuan Cui, Mert Demirer, Sonia Jaffe, Leon Musolff, Sida Peng & Tobias Salz** — [The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers](https://doi.org/10.2139/ssrn.4945566) (2024) `cui-genai-developer-field-experiments`
+- ☐ ① **Kunal Handa, Alex Tamkin, Miles McCain et al.** — [Which Economic Tasks are Performed with AI? Evidence from Millions of Claude Conversations](https://arxiv.org/abs/2503.04761) (2025) `handa-tamkin-claude-economic-tasks`
+- ☐ ① **Leonid Kogan, Dimitris Papanikolaou, Lawrence D.W. Schmidt & Bryan Seegmiller** — [Technology and Labor Displacement: Evidence from Linking Patents with Worker-Level Data](https://www.nber.org/papers/w31846) (2023) `kogan-papanikolaou-tech-displacement`
+- ☐ ① **Menaka Hampole, Dimitris Papanikolaou, Lawrence D.W. Schmidt & Bryan Seegmiller** — [Artificial Intelligence and the Labor Market](https://www.nber.org/papers/w33509) (2025) `hampole-ai-labor-market`
+- ☐ ① **METR** — [Measuring AI Ability to Complete Long Tasks](https://arxiv.org/abs/2503.14499) (2025) `metr-task-horizon`
+- ☐ ① **Nicholas Otis, Rowan Clarke, Solène Delecourt, David Holtz & Rembrand Koning** — [The Uneven Impact of Generative AI on Entrepreneurial Performance: Evidence from a Field Experiment in Kenya](https://doi.org/10.1287/mnsc.2024.06909) (2025) `otis-kenya-entrepreneurship-rct`
+- ☐ ① **OpenAI** — [GDPval: measuring model performance on economically valuable tasks](https://openai.com/index/gdpval/) (2025) `gdpval-openai`
+- ☐ ② **Anders Humlum & Emilie Vestergaard** — [The Adoption of ChatGPT](https://doi.org/10.2139/ssrn.4807516) (2024) `humlum-vestergaard-chatgpt-adoption`
+- ☐ ② **Andrea Eisfeldt, Gregor Schubert & Miao Ben Zhang** — [Generative AI and Firm Values](https://www.nber.org/papers/w31222) (2023) `eisfeldt-generative-ai-firm-values`
+- ☐ ② **Bick, Blandin & Deming** — [The Rapid Adoption of Generative AI](https://www.nber.org/papers/w32966) (2024) `bick-blandin-deming`
+- ☐ ② **Edward Felten, Manav Raj & Robert Seamans** — [Occupational Heterogeneity in Exposure to Generative AI](https://doi.org/10.2139/ssrn.4414065) (2023) `felten-raj-seamans-occupational-exposure`
+- ☐ ② **Huben Liu, Dimitris Papanikolaou, Lawrence Schmidt & Bryan Seegmiller** — [Technology and Labor Markets: Past, Present, and Future; Evidence from Two Centuries of Innovation](https://www.nber.org/papers/w34386) (2025) `liu-papanikolaou-tech-labor-markets`
+- ☐ ② **Liudmila Alekseeva, José Azar, Mireia Gine & Sampsa Samila** — [AI Adoption and the Demand for Managerial Expertise](https://doi.org/10.2139/ssrn.4986379) (2024) `alekseeva-ai-managerial-expertise`
+- ☐ ② **Tania Babina, Anastassia Fedyk, Alex Xi He & James Hodson** — [Firm Investments in Artificial Intelligence Technologies and Changes in Workforce Composition](https://www.nber.org/papers/w31325) (2023) `babina-ai-workforce-composition`
+- ☐ ② **Tania Babina, Anastassia Fedyk, Alex Xi He & James Hodson** — [Artificial Intelligence, Firm Growth, and Product Innovation](https://doi.org/10.1016/j.jfineco.2023.103745) (2024) `babina-ai-firm-growth-innovation`
+- ☐ ③ **Aidan Toner-Rodgers** — [Artificial Intelligence, Scientific Discovery, and Product Innovation (RETRACTED)](https://arxiv.org/abs/2412.17866) (2024) `toner-rodgers-ai-science-retracted`
+- ☐ ③ **Daron Acemoglu, David Autor, Jonathon Hazell & Pascual Restrepo** — [AI and Jobs: Evidence from Online Vacancies](https://www.nber.org/papers/w28257) (2020) `acemoglu-autor-hazell-restrepo-ai-vacancies`
+- ☐ ③ **Karina Doorley, Sorcha O'Connor, Richard O'Shea & Dora Tuda** — [Artificial Intelligence and Income Inequality in Ireland](https://doi.org/10.26504/jr16) (2026) `doorley-ai-income-inequality-ireland`
+- ☐ ③ **Nikhil Dilip, Youngkyung Kim & Robert Seamans** — [Generative AI and Patents](https://doi.org/10.2139/ssrn.6237338) (2026) `dilip-kim-seamans-genai-patents`
+- ☐ ③ **Shakked Noy & Whitney Zhang** — [Experimental Evidence on the Productivity Effects of Generative AI (working paper)](https://economics.mit.edu/sites/default/files/inline-files/Noy_Zhang_1_0.pdf) (2023) `noy-zhang-writing2`
+
+## Classics (framing) (4)
+
+- ☐ ① **John Maynard Keynes** — [Economic Possibilities for our Grandchildren](https://www.econ.yale.edu/smith/econ116a/keynes1.pdf) (1930) `keynes-grandchildren`
+- ☐ ② **Robin Hanson** — [Economic Growth Given Machine Intelligence](https://mason.gmu.edu/~rhanson/aigrow.pdf) (2001) `hanson-machine-growth`
+- ☐ ③ **Herbert Simon** — [The Shape of Automation for Men and Management](https://en.wikipedia.org/wiki/Herbert_A._Simon) (1965) `simon-automation`
+- ☐ ③ **Robert Gordon** — [The Rise and Fall of American Growth + AI skepticism](https://en.wikipedia.org/wiki/The_Rise_and_Fall_of_American_Growth) (2016) `gordon-rise-fall`
+
+## Policy institutions & central banks (34)
+
+- ☐ ① **Alexandre Georgieff** — [Artificial intelligence and wage inequality](https://www.oecd.org/en/publications/artificial-intelligence-and-wage-inequality_bf98a45c-en.html) (2024) `georgieff-oecd-ai-wage-inequality`
+- ☐ ① **Christine Lagarde** — [The transformative power of AI: Europe's moment to act](https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp251124_1~c239fb4a7f.en.html) (2025) `lagarde-ecb-ai-transformative-power`
+- ☐ ① **Hyun Song Shin** — [Artificial Intelligence and the economy: implications for central banks](https://www.bis.org/speeches/sp240630b.htm) (2024) `shin-bis-ai-economy-central-banks`
+- ☐ ① **Iñaki Aldasoro, Sebastian Doerr, Leonardo Gambacorta, Daniel Rees** — [The impact of artificial intelligence on output and inflation](https://www.bis.org/publ/work1179.pdf) (2024) `aldasoro-bis-ai-output-inflation`
+- ☐ ① **Kristalina Georgieva** — [New Skills and AI Are Reshaping the Future of Work](https://www.imf.org/en/blogs/articles/2026/01/14/new-skills-and-ai-are-reshaping-the-future-of-work) (2026) `georgieva-imf-new-skills-ai-future-work`
+- ☐ ① **Kristalina Georgieva** — [AI Will Transform the Global Economy. Let's Make Sure It Benefits Humanity.](https://www.imf.org/en/blogs/articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity) (2024) `georgieva-imf-ai-transform-global-economy`
+- ☐ ① **Mario Draghi** — [The Draghi report: The future of European competitiveness](https://commission.europa.eu/topics/competitiveness/draghi-report_en) (2024) `draghi-report-eu-competitiveness`
+- ☐ ① **Ministry of Finance Government of India** — [Labour in the AI Era: Crisis or Catalyst](https://www.indiabudget.gov.in/economicsurvey/) (2025) `india-economic-survey-ai-labour-2025`
+- ☐ ① **OECD** — [The OECD AI exposure measure](https://www.oecd.org/en/publications/the-oecd-ai-exposure-measure_f3da0f0a-en.html) (2025) `oecd-ai-exposure-measure`
+- ☐ ① **Pawel Gmyrek et al. (ILO/NASK)** — [Generative AI and Jobs: A Refined Global Index of Occupational Exposure](https://webapps.ilo.org/static/english/intserv/working-papers/wp140/index.html) (2025) `ilo-gmyrek-genai-jobs-refined-index-2025`
+- ☐ ① **UK Government (Matt Clifford)** — [AI Opportunities Action Plan](https://www.gov.uk/government/publications/ai-opportunities-action-plan/ai-opportunities-action-plan) (2025) `uk-gov-ai-opportunities-action-plan`
+- ☐ ① **White House Council of Economic Advisers** — [Artificial Intelligence and the Great Divergence](https://www.whitehouse.gov/wp-content/uploads/2026/01/Artificial-Intelligence-and-the-Great-Divergence-5.pdf) (2026) `cea-ai-great-divergence`
+- ☐ ① **World Bank** — [Digital Progress and Trends Report 2025: Strengthening AI Foundations](https://www.worldbank.org/en/publication/dptr2025-ai-foundations) (2025) `worldbank-digital-progress-trends-2025`
+- ☐ ① **World Economic Forum** — [Chief Economists' Outlook: January 2026](https://www.weforum.org/publications/chief-economists-outlook-january-2026/) (2026) `wef-chief-economists-outlook-jan-2026`
+- ☐ ② **Andrew Bailey** — [Can AI make Cutlery?](https://www.bankofengland.co.uk/speech/2026/may/andrew-bailey-speech-at-cutlers-feast-sheffield) (2026) `bailey-boe-can-ai-make-cutlery`
+- ☐ ② **Andrew Green** — [Artificial intelligence and the changing demand for skills in the labour market](https://www.oecd.org/en/publications/artificial-intelligence-and-the-changing-demand-for-skills-in-the-labour-market_88684e36-en.html) (2024) `green-oecd-ai-changing-demand-skills`
+- ☐ ② **Cai Fang** — [How to View the Impact of AI on Employment?](https://interpret.csis.org/translations/how-to-view-the-impact-of-ai-on-employment/) (2025) `cai-fang-ai-employment-china`
+- ☐ ② **International Monetary Fund** — [How Europe Can Capture the AI Growth Dividend](https://www.imf.org/en/blogs/articles/2025/11/20/how-europe-can-capture-the-ai-growth-dividend) (2025) `imf-europe-ai-growth-dividend`
+- ☐ ② **International Monetary Fund** — [Global Economic and Financial Implications of Artificial Intelligence](https://www.imf.org/-/media/files/publications/imf-notes/2026/english/insea2026002.pdf) (2026) `imf-note-global-economic-financial-ai-2026`
+- ☐ ② **Jerome Powell** — [Transcript of Chair Powell's Press Conference - October 29 2025](https://www.federalreserve.gov/mediacenter/files/FOMCpresconf20251029.pdf) (2025) `powell-fed-press-conference-oct-2025`
+- ☐ ② **OECD** — [OECD Employment Outlook 2023: AI and the Labour Market](https://www.oecd.org/en/publications/oecd-employment-outlook-2023_08785bba-en.html) (2023) `oecd-employment-2023`
+- ☐ ② **OECD** — [Introducing the OECD AI Capability Indicators](https://www.oecd.org/en/publications/2025/06/introducing-the-oecd-ai-capability-indicators_7c0731f0.html) (2025) `oecd-ai-capability-indicators`
+- ☐ ② **Sarah Breeden** — [Agents of change](https://www.bankofengland.co.uk/speech/2026/june/sarah-breeden-panel-at-the-european-central-bank-forum-on-central-banking-2026) (2026) `breeden-boe-agents-of-change`
+- ☐ ② **Tony Blair Institute for Global Change** — [The Potential Impact of AI on the Public-Sector Workforce](https://www.institute.global/insights/economic-prosperity/the-potential-impact-of-ai-on-the-public-sector-workforce) (2024) `tbi-ai-public-sector-workforce`
+- ☐ ② **US Department of the Treasury** — [Uses, Opportunities, and Risks of Artificial Intelligence in Financial Services](https://home.treasury.gov/news/press-releases/jy2760) (2024) `treasury-ai-financial-services-report`
+- ☐ ② **World Bank** — [Quantifying the Jobs Potential of AI in Latin America and the Caribbean](https://www.worldbank.org/en/results/2025/04/15/quantifying-the-jobs-potential-of-ai-in-latin-america-and-the-caribbean) (2025) `worldbank-ai-jobs-latin-america-caribbean`
+- ☐ ② **World Economic Forum** — [The Future of Jobs Report 2025](https://www.weforum.org/publications/the-future-of-jobs-report-2025/) (2025) `wef-future-jobs-2025`
+- ☐ ③ **Austan Goolsbee** — [Chicago Fed chief Austan Goolsbee says AI is coming fast, but doesn't expect rapid job losses](https://www.cbsnews.com/chicago/video/chicago-fed-chief-austan-goolsbee-says-ai-is-coming-fast-but-doesnt-expect-rapid-job-losses/) (2026) `goolsbee-chicago-fed-ai-jobs`
+- ☐ ③ **Congressional Budget Office** — [Artificial Intelligence and Its Potential Effects on the Economy and the Federal Budget](https://www.cbo.gov/publication/61147) (2024) `cbo-ai-economy`
+- ☐ ③ **Congressional Budget Office** — [Director's Statement on the Budget and Economic Outlook for 2026 to 2036](https://www.cbo.gov/publication/62050) (2026) `cbo-budget-economic-outlook-2026-ai`
+- ☐ ③ **International Monetary Fund** — [AI Needs More Abundant Power Supplies to Keep Driving Economic Growth](https://www.imf.org/en/blogs/articles/2025/05/13/ai-needs-more-abundant-power-supplies-to-keep-driving-economic-growth) (2025) `imf-ai-power-supplies-growth`
+- ☐ ③ **International Monetary Fund** — [How Artificial Intelligence Can Boost Productivity in Latin America](https://www.imf.org/en/blogs/articles/2025/03/20/how-artificial-intelligence-can-boost-productivity-in-latin-america) (2025) `imf-ai-productivity-latin-america`
+- ☐ ③ **Nandan Nilekani** — [Nandan Nilekani on AI's impact on jobs and India's economy](https://www.businesstoday.in/technology/artificial-intelligence/story/some-jobs-will-be-affected-but-heres-what-infosys-co-founder-nandan-nilekani-thinks-about-ai-driven-future-465688-2025-02-24) (2025) `nilekani-ai-india-jobs-economy`
+- ☐ ③ **OECD** — [Skills in the AI age](https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/07/skills-in-the-ai-age_e8d8c1e6/972bd15e-en.pdf) (2026) `oecd-skills-in-ai-age`
+
+## Podcasts (transcripts) (16)
+
+- ☐ ① **Adam Davidson** — [Freakonomics Radio: Adam Davidson — New Technologies Always Scare Us: Is AI Any Different? (How to Think About AI Pt. 2)](https://freakonomics.com/podcast/new-technologies-always-scare-us-is-a-i-any-different/) (2023) `davidson-freakonomics-jobs-2023`
+- ☐ ① **All-In Podcast hosts** — [All-In: Labor, Capital, and the Tension Between Innovation and Obsolescence](https://youtube.com/watch?v=3Amlu4y94Ho) (2026) `allin-277-labor-capital`
+- ☐ ① **All-In Podcast hosts** — [All-In: AI's Impact on Jobs and Automation](https://youtube.com/watch?v=wgdxSCsmS-Q) (2026) `allin-279-jobs-automation`
+- ☐ ① **Anton Korinek** — [80000 Hours podcast: the economics of transformative AI](https://80000hours.org/podcast/episodes/anton-korinek-transformative-ai-economics/) (2023) `korinek-80k`
+- ☐ ① **Kevin Roose & Casey Newton** — [Hard Fork: AI-Washing Layoffs? — Are Companies Blaming AI for Job Cuts](https://podscripts.co/podcasts/hard-fork/ai-washing-layoffs-why-llms-cant-write-well-tokenmaxxing) (2026) `newton-roose-hardfork-aiwashing-2026`
+- ☐ ① **Tyler Cowen** — [Dwarkesh interview: why growth will stay ~2%](https://www.dwarkesh.com/p/tyler-cowen-3) (2025) `cowen-dwarkesh`
+- ☐ ② **All-In Podcast hosts** — [All-In: Is AI an Economic Equalizer?](https://youtube.com/watch?v=w8ah_tA0yfg) (2026) `allin-278-economic-equalizer`
+- ☐ ② **All-In Podcast hosts** — [All-In: Tech's Role in Addressing Economic Disparity](https://youtube.com/watch?v=PHL1j2ti420) (2026) `allin-280-economic-disparity`
+- ☐ ② **Ben Gilbert & David Rosenthal** — [Acquired: Google — The AI Company](https://www.acquired.fm/episodes/google-the-ai-company) (2025) `acquired-google-ai-company`
+- ☐ ② **Bill Gurley** — [Invest Like the Best: The Gift and the Curse of Staying Private](https://www.joincolossus.com/) (2025) `iltb-gurley-staying-private`
+- ☐ ② **Brad Gerstner & Bill Gurley** — [Bg2 Pod: The Economics of AI Capex](https://www.bg2pod.com/) (2025) `bg2pod-capex-economics`
+- ☐ ② **Ezra Klein & Ben Buchanan** — [The Government Knows AGI Is Coming](https://www.nytimes.com/2025/03/04/opinion/ezra-klein-podcast-ben-buchanan.html) (2025) `ezra-klein-buchanan`
+- ☐ ② **Kevin Roose & Casey Newton** — [Hard Fork: Hot IPO Summer — AI IPOs and the Zero-Profit Economy](https://podscripts.co/podcasts/hard-fork/hot-ipo-summer-what-is-ai-doing-to-math-hatgpt) (2026) `newton-roose-hardfork-ipo-2026`
+- ☐ ③ **Adam Davidson** — [Freakonomics Radio: Adam Davidson — Can AI Take a Joke? (How to Think About AI Pt. 1)](https://freakonomics.com/podcast/can-a-i-take-a-joke/) (2023) `davidson-freakonomics-joke-2023`
+- ☐ ③ **Adam Davidson** — [Freakonomics Radio: Adam Davidson — AI Is Changing Everything: Does That Include You? (How to Think About AI Pt. 3)](https://freakonomics.com/podcast/a-i-is-changing-everything-does-that-include-you/) (2023) `davidson-freakonomics-tools-2023`
+- ☐ ③ **Joe Liemandt** — [Invest Like the Best: Building Alpha School and the Future of Education](https://www.joincolossus.com/) (2025) `iltb-liemandt-alpha-school`

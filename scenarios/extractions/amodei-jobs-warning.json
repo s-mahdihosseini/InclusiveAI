@@ -1,0 +1,84 @@
+{
+  "source_id": "amodei-jobs-warning",
+  "author": "Dario Amodei",
+  "title": "Axios: AI could wipe out half of entry-level white-collar jobs",
+  "year": 2025,
+  "type": "interview",
+  "url": "https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic",
+  "central_scenario_summary": "In an Axios interview, Amodei warns of a near-term 'white-collar bloodbath': AI could eliminate about half of all entry-level white-collar jobs across technology, finance, law, and consulting, and push unemployment to 10-20% within one to five years. He argues employers will quietly stop hiring and then swap in AI 'the moment it becomes viable', a shift that could unfold almost overnight, while most workers, executives, and officials remain unaware or in denial. He casts this as a duty to be honest about an abrupt, largely unmanaged labor displacement rather than a description of how displaced workers get reabsorbed.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "AI could eliminate half of all entry-level white-collar roles within five years", "location": "Axios summary / MAII secondary coverage"}
+      ],
+      "notes": "Implies AI becomes capable enough to do most entry-level white-collar cognitive tasks within ~1-5 years (drop-in for that tier of work). Consistent with Amodei's broader 'powerful AI by ~2026' view."
+    },
+    "expertise_erosion": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {"text": "AI could eliminate half of all entry-level white-collar roles", "location": "Axios summary"}
+      ],
+      "notes": "Displacement concentrated at the entry level (the bottom rungs / new graduates); if senior/expert roles persist while entry rungs vanish, this raises barriers to entering professions and tilts toward incumbents. Inferred, not stated as a claim about premia."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "a mass elimination of jobs across technology, finance, law, consulting and other white-collar professions", "location": "Axios summary"}
+      ],
+      "notes": "Exposure is broad across many white-collar sectors, but the piece is about displacement of entry-level tasks rather than economy-wide productivity gains; scored moderate for exposure breadth."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "CEOs will quietly stop hiring, then replace humans with AI the moment it becomes viable to do so", "location": "MAII secondary coverage of Axios interview"}
+      ],
+      "notes": "Clear strong-substitute framing: AI displaces workers in exposed white-collar work."
+    },
+    "demand_absorption": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "unemployment could spike to 10-20% ... in the next one to five years", "location": "Axios summary"}
+      ],
+      "notes": "The interview foregrounds abrupt job destruction and a large unemployment spike without describing reabsorption; near-term this reads as saturation/immiserization. Note: Amodei's other writing (Machines of Loving Grace) is more optimistic about long-run absorption."
+    },
+    "mobility_adjustment": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "a shift he says could unfold almost overnight", "location": "MAII secondary coverage of Axios interview"},
+        {"text": "most government officials, CEOs, and workers are either unaware or unwilling to confront the implications", "location": "MAII secondary coverage"}
+      ],
+      "notes": "Shock is abrupt and society is unprepared; very frictional adjustment."
+    },
+    "rent_concentration": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "The available text does not clearly address who captures the surplus (Amodei has elsewhere floated token taxes / concentration concerns, but not in the fetched material). Silent."
+    },
+    "timeline_years": {
+      "score": 5,
+      "confidence": "high",
+      "quotes": [
+        {"text": "in the next one to five years", "location": "Axios summary"}
+      ],
+      "notes": "Explicit 1-5 year horizon; representative value 5 (upper bound of the stated range)."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We, as the producers of this technology, have a duty and an obligation to be honest about what is coming.", "location": "Axios, verbatim Amodei quote"}
+      ],
+      "notes": "FREE TEXT: In the near term AI could wipe out ~half of entry-level white-collar jobs and drive unemployment to 10-20% within 1-5 years, hitting new entrants and recent graduates hardest; absent honest preparation and policy, this abrupt displacement risks a sharp, destabilizing rise in inequality."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

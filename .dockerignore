@@ -1,0 +1,9 @@
+.venv
+__pycache__
+*.pyc
+scenarios/corpus
+scenarios/sources_new
+models/expertise/dynamic
+models/demand/*.pdf
+*.pdf
+.DS_Store

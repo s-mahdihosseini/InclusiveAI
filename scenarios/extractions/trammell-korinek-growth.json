@@ -1,0 +1,117 @@
+{
+  "source_id": "trammell-korinek-growth",
+  "author": "Philip Trammell & Anton Korinek",
+  "title": "Economic Growth under Transformative AI",
+  "year": 2023,
+  "type": "paper",
+  "url": "https://www.nber.org/papers/w31815",
+  "central_scenario_summary": "A review synthesizing growth-theoretic models of transformative AI (TAI), defined as AI that makes capital a close enough substitute for labor to drive growth on its own. The robust finding: fully automating production lets machines self-replicate, dramatically accelerating growth while driving the labor share toward zero, breaking the Kaldor Facts; automating R&D (self-improvement) can amplify this up to hyperbolic 'singularity' growth but may not produce explosion alone. Wages - exploding output times a collapsing labor share - may rise or fall depending on returns to scale, natural-resource constraints, and the direction of technical change; the authors treat these trajectories as plausible within decades or even years and urge institutional preparation.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Recent advances in AI may herald the near arrival of systems that can automate essentially all work.",
+          "location": "Abstract"
+        },
+        {
+          "text": "As AI R&D is automated ever more fully, AI capabilities could advance ever more rapidly.",
+          "location": "Section 6 Conclusion"
+        }
+      ],
+      "notes": "Central subject is full automation including self-improving AI and singularity-type feedback (hyperbolic growth scenarios). The authors explicitly decline to assign probabilities, but treat these as 'plausible trajectories that could materialize within decades or even years'. Scored 4 for the scenario space reviewed; a conservative reading of their modal case is 3."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Labor is homogeneous in the reviewed models; entry barriers, skill premia, and occupational heterogeneity are not discussed."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "fully automating production alone (so that machines can self-replicate) would dramatically raise the growth rate and lower the labor share, breaking the Kaldor Facts",
+          "location": "Abstract"
+        },
+        {
+          "text": "Once production is sufficiently automated, output growth is likely to accelerate, and this acceleration will likely continue for the foreseeable future.",
+          "location": "Section 5 Summary"
+        }
+      ],
+      "notes": "Economy-wide transformative gains - growth accelerations up to double-exponential or hyperbolic - conditional on TAI arriving."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "the central question is whether and when AI will allow capital to become a close enough substitute for labor to drive growth on its own",
+          "location": "Section 2 Automating production"
+        },
+        {
+          "text": "the burst in output made feasible by a qualitative advance in automation will almost all accrue to capital, driving the labor share toward zero",
+          "location": "Section 5 Summary"
+        }
+      ],
+      "notes": "TAI is defined by capital becoming a gross substitute for labor. They note capital and labor remain gross complements to date (Nordhaus 2021), so the score reflects the central TAI scenario, not current AI."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Supply-side growth review; consumer demand elasticities, Baumol saturation, and new-jobs absorption are not analyzed (wages 'depend on... tastes' is the closest touch)."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Worker reallocation across occupations is not modeled."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "AI may render the claim true in the future, and vindicate Piketty (2014)'s concern about twenty-first century capital concentration.",
+          "location": "Section 6 Conclusion, 'Preparing for economic transformation'"
+        },
+        {
+          "text": "It may be valuable to consider policy responses that could mitigate extreme distributional consequences",
+          "location": "Section 6 Conclusion"
+        }
+      ],
+      "notes": "Concentration is at the factor level: labor share toward zero, output accruing almost entirely to capital owners; the conclusion frames this as 'radical inequality' and 'distributional upheaval' requiring policy. Firm-level market power is not analyzed."
+    },
+    "timeline_years": {
+      "score": 15,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "the median forecast on the prediction platform Metaculus places AGI in 2039",
+          "location": "Section 6 Conclusion"
+        },
+        {
+          "text": "plausible trajectories that could materialize within decades or even years",
+          "location": "Section 6 Conclusion, 'The imperative of preparation'"
+        }
+      ],
+      "notes": "The authors offer no probability assessments of their own; 15 years approximates the Metaculus 2039 AGI median they cite (from the 2026 revision) within their 'decades or even years' framing."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Wages—the product of exploding output and a plummeting labor share—may rise or fall, depending on the returns to scale, the importance of natural resources, and the direction of technical change.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Text dimension. Bottom line: under transformative AI the labor share falls toward zero and income concentrates in capital, vindicating Piketty-style concerns about capital concentration; whether absolute wages rise or collapse is genuinely ambiguous, and managing 'radical inequality' becomes a first-order policy problem."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

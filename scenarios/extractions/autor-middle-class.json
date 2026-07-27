@@ -1,0 +1,135 @@
+{
+  "source_id": "autor-middle-class",
+  "author": "David Autor",
+  "title": "AI Could Actually Help Rebuild The Middle Class",
+  "year": 2024,
+  "type": "essay",
+  "url": "https://www.noemamag.com/how-ai-could-help-rebuild-the-middle-class/",
+  "central_scenario_summary": "Autor argues that AI, unlike pre-AI computing, can supply expert judgment support, enabling workers with foundational training but without elite credentials to perform high-stakes expert tasks now monopolized by doctors, lawyers, coders and professors. Used well, AI would rebuild the hollowed-out middle class, moderate earnings inequality, and lower the cost of key services; jobs will not disappear because the industrialized world faces a worker shortage, not a work shortage. He stresses this is 'a scenario, not a forecast': the real risk is not joblessness but the devaluation of expertise if AI is deployed purely for automation, an outcome determined by institutional and policy choices.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Like the Industrial and Computer revolutions before it, Artificial Intelligence marks an inflection point in the economic value of human expertise.",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence', opening"
+        },
+        {
+          "text": "AI will speed progress in robotics, but the era in which it is feasible and cost-effective to deploy robots to perform physically demanding tasks in unpredictable real-world environments... remains distant.",
+          "location": "Section 'Substitution Versus Complementarity', near end"
+        }
+      ],
+      "notes": "Treats AI as an epochal general-purpose wave comparable to the Industrial and Computer revolutions, but explicitly rejects the drop-in-worker/AGI framing ('The most charitable thing I can say about these ominous statements is that they are likely wrong')."
+    },
+    "expertise_erosion": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "AI could enable a larger set of workers possessing complementary knowledge to perform some of the higher-stakes decision-making tasks currently arrogated to elite experts like doctors, lawyers, coders and educators.",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence'"
+        },
+        {
+          "text": "It would simultaneously temper the monopoly power that doctors hold over medical care, lawyers over document production, software engineers over computer code, professors over undergraduate education",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence' (inversion technology passage)"
+        }
+      ],
+      "notes": "Central thesis: moderate democratization. AI lowers entry barriers into elite expert work for workers with foundational training (NP analogy), reducing elite rents - but foundational expertise remains necessary and valuable ('AI will not in general enable untrained, non-expert workers to carry out high-stakes tasks'). Not score 3: expertise premia shrink but do not compete away."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "If AI unleashes a surge of productivity in radiology, customer service, software coding, copywriting and many other domains, won't that mean that we'll be left with fewer workers doing the jobs previously done by many?",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence', after proof-of-concept studies"
+        },
+        {
+          "text": "the treatment group that was given access to this tool completed the required programming task about 56% faster than the control group",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence' (Copilot study)"
+        }
+      ],
+      "notes": "Cites sizable measured gains (56% coding, 40% writing time, 14% customer service) concentrated in exposed occupations and services; expects AI to lower costs of healthcare, education, law. Does not claim economy-wide transformative growth."
+    },
+    "substitution": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "AI is a tool, like a calculator or a chainsaw, and tools generally aren't substitutes for expertise but rather levers for its application.",
+          "location": "Opening section, after 'unique opportunity' passage"
+        },
+        {
+          "text": "In all three instances, AI tools supplemented expertise rather than displaced experts.",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence' (summary of the three studies)"
+        }
+      ],
+      "notes": "Central scenario is strong complementarity/augmentation, with automation of some tasks acknowledged ('AI will automate the core tasks of some occupations, eliminate others'). He also concedes recent evidence shows automation outpacing new-work creation - hence framed as attainable scenario, not forecast."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Demand for healthcare, education and computer code appears almost limitless — and will rise further if, as expected, AI brings down the costs of these services.",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence'"
+        },
+        {
+          "text": "the U.S. and other rich countries will run out of workers before we run out of jobs.",
+          "location": "Opening section"
+        }
+      ],
+      "notes": "Strong absorption view for the aggregate: new job specialties tied to innovation, rising incomes calling for 'richer slices', demographic labor scarcity. Acknowledges sector-level saturation (agriculture) but denies it applies economy-wide."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "These countervailing effects will create winners and losers, and the adjustment may be wrenching.",
+          "location": "Section 'The Twilight Of Expertise?', end"
+        },
+        {
+          "text": "AI tools helped novice workers attain the capabilities of experienced agents in three months rather than 10.",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence' (Brynjolfsson-Li-Raymond study)"
+        }
+      ],
+      "notes": "Two-sided: AI itself compresses training time (score-2 flavor) and lowers entry barriers, but adjustment 'may be wrenching', displaced workers are unlikely to be the beneficiaries, and the NP example shows institutional reallocation takes decades of contestation. Netted to historical-pattern 1."
+    },
+    "rent_concentration": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "This would improve the quality of jobs for workers without college degrees, moderate earnings inequality, and — akin to what the Industrial Revolution did for consumer goods — lower the cost of key services such as healthcare, education and legal expertise.",
+          "location": "Section 'Expertise In The Era Of Artificial Intelligence'"
+        },
+        {
+          "text": "In this world, labor is disposable and most wealth would accrue to owners of Artificial Intelligence patents.",
+          "location": "Section 'A Scenario, Not A Forecast' (describing the risk scenario he rejects)"
+        }
+      ],
+      "notes": "In his central (attainable) scenario surplus diffuses to workers and consumers via cheaper services and broader expertise. Concentration of wealth to AI owners is explicitly the dystopian alternative ('hellscape'), not the central scenario."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No explicit timeline; speaks of AI expert judgment becoming 'a near-ubiquitous presence in our working lives' 'in the years ahead' and frames stakes over the coming decades of demographic change."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Not only could this dampen earnings inequality and lower the costs of key services like healthcare and education, but it could also help restore the quality, stature and agency that has been lost to too many workers and jobs.",
+          "location": "Section 'A Scenario, Not A Forecast', closing"
+        }
+      ],
+      "notes": "Text dimension. Bottom line: AI used well can reverse the computerization-era rise in inequality by extending expertise to non-college workers and rebuilding the middle class; the danger is not mass joblessness but devaluation of expertise, with wealth accruing to AI owners, if society chooses pure automation. The outcome is a policy/institutional choice, not a technological inevitability."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

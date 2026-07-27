@@ -1,0 +1,136 @@
+SOURCE_ID: ai-2027
+AUTHOR: Daniel Kokotajlo, Scott Alexander, Thomas Larsen, Eli Lifland, Romeo Dean (AI Futures Project)
+TITLE: AI 2027
+YEAR: 2025
+TYPE: report
+URL: https://ai-2027.com/
+NOTE: PARTIAL - main scenario page (Mid 2025 through October 2027) captured in full for the narrative; some technical expandable boxes (neuralese, IDA, alignment-over-time details) abridged; the separate "Slowdown" and "Race" ending pages not fetched.
+====
+
+AI 2027 — April 3rd 2025. Daniel Kokotajlo, Scott Alexander, Thomas Larsen, Eli Lifland, Romeo Dean
+
+We predict that the impact of superhuman AI over the next decade will be enormous, exceeding that of the Industrial Revolution.
+
+We wrote a scenario that represents our best guess about what that might look like. It's informed by trend extrapolations, wargames, expert feedback, experience at OpenAI, and previous forecasting successes.
+
+The CEOs of OpenAI, Google DeepMind, and Anthropic have all predicted that AGI will arrive within the next 5 years. Sam Altman has said OpenAI is setting its sights on "superintelligence in the true sense of the word" and the "glorious future."
+
+What might that look like? We wrote AI 2027 to answer that question. Claims about the future are often frustratingly vague, so we tried to be as concrete and quantitative as possible, even though this means depicting one of many possible futures.
+
+We wrote two endings: a "slowdown" and a "race" ending. However, AI 2027 is not a recommendation or exhortation. Our goal is predictive accuracy.
+
+(Added Nov 22 2025, to prevent misunderstandings: we don't know exactly when AGI will be built. 2027 was our modal (most likely) year at the time of publication, our medians were somewhat longer.)
+
+## Mid 2025: Stumbling Agents
+
+The world sees its first glimpse of AI agents. Advertisements for computer-using agents emphasize the term "personal assistant"... Though more advanced than previous iterations like Operator, they struggle to get widespread usage.
+
+Meanwhile, out of public focus, more specialized coding and research agents are beginning to transform their professions.
+
+The AIs of 2024 could follow specific instructions: they could turn bullet points into emails, and simple requests into working code. In 2025, AIs function more like employees. Coding AIs increasingly look like autonomous agents rather than mere assistants: taking instructions via Slack or Teams and making substantial code changes on their own, sometimes saving hours or even days. Research agents spend half an hour scouring the Internet to answer your question.
+
+The agents are impressive in theory (and in cherry-picked examples), but in practice unreliable. ... The better agents are also expensive; you get what you pay for, and the best performance costs hundreds of dollars a month. Still, many companies find ways to fit AI agents into their workflows.
+
+## Late 2025: The World's Most Expensive AI
+
+OpenBrain is building the biggest datacenters the world has ever seen. (To avoid singling out any one existing company, we're going to describe a fictional artificial general intelligence company, which we'll call OpenBrain. We imagine the others to be 3–9 months behind OpenBrain.)
+
+GPT-4 required 2e25 FLOP of compute to train. OpenBrain's latest public model—Agent-0—was trained with 1e27 FLOP. Once the new datacenters are up and running, they'll be able to train a model with 1e28 FLOP—a thousand times more than GPT-4. Other companies pour money into their own giant datacenters, hoping to keep pace.
+
+Although models are improving on a wide range of skills, one stands out: OpenBrain focuses on AIs that can speed up AI research. They want to win the twin arms races against China (whose leading company we'll call "DeepCent") and their U.S. competitors. The more of their research and development (R&D) cycle they can automate, the faster they can go. So when OpenBrain finishes training Agent-1, a new model under internal development, it's good at many things but great at helping with AI research.
+
+## Early 2026: Coding Automation
+
+The bet of using AI to speed up AI research is starting to pay off. OpenBrain continues to deploy the iteratively improving Agent-1 internally for AI R&D. Overall, they are making algorithmic progress 50% faster than they would without AI assistants—and more importantly, faster than their competitors.
+
+[Expandable: The AI R&D progress multiplier — "We mean that OpenBrain makes as much AI research progress in 1 week with AI as they would in 1.5 weeks without AI usage."]
+
+People naturally try to compare Agent-1 to humans, but it has a very different skill profile. It knows more facts than any human, knows practically every programming language, and can solve well-specified coding problems extremely quickly. On the other hand, Agent-1 is bad at even simple long-horizon tasks... you could think of Agent-1 as a scatterbrained employee who thrives under careful management. Savvy people find ways to automate routine parts of their jobs.
+
+## Mid 2026: China Wakes Up
+
+In China, the CCP is starting to feel the AGI. Chip export controls and lack of government support have left China under-resourced compared to the West... China has managed to maintain about 12% of the world's AI-relevant compute... [The General Secretary] sets in motion the nationalization of Chinese AI research, creating an immediate information-sharing mechanism for AI companies... Almost 50% of China's AI-relevant compute is now working for the DeepCent-led collective, and over 80% of new chips are directed to the CDZ.
+
+## Late 2026: AI Takes Some Jobs
+
+Just as others seemed to be catching up, OpenBrain blows the competition out of the water again by releasing Agent-1-mini—a model 10x cheaper than Agent-1 and more easily fine-tuned for different applications. The mainstream narrative around AI has changed from "maybe the hype will blow over" to "guess this is the next big thing," but people disagree about how big. Bigger than social media? Bigger than smartphones? Bigger than fire?
+
+AI has started to take jobs, but has also created new ones. The stock market has gone up 30% in 2026, led by OpenBrain, Nvidia, and whichever companies have most successfully integrated AI assistants. The job market for junior software engineers is in turmoil: the AIs can do everything taught by a CS degree, but people who know how to manage and quality-control teams of AIs are making a killing. Business gurus tell job seekers that familiarity with AI is the most important skill to put on a resume. Many people fear that the next wave of AIs will come for their jobs; there is a 10,000 person anti-AI protest in DC.
+
+KEY METRICS 2026: Global AI capex $1T; global AI power 38GW; OpenBrain revenue $35B (2026 annual); capital expenditure $200B; share of US power on AI 2.5%.
+
+Our forecast from the current day through 2026 is substantially more grounded than what follows... Over the course of 2027, the AIs improve from being able to mostly do the job of an OpenBrain research engineer to eclipsing all humans at all tasks. This represents roughly our median guess, but we think it's plausible that this happens up to ~5x slower or faster.
+
+## January 2027: Agent-2 Never Finishes Learning
+
+With Agent-1's help, OpenBrain is now post-training Agent-2... Agent-2, more so than previous models, is effectively "online learning," in that it's built to never really finish training... It is qualitatively almost as good as the top human experts at research engineering, and as good as the 25th percentile OpenBrain scientist at "research taste"... While the latest Agent-1 could double the pace of OpenBrain's algorithmic progress, Agent-2 can now triple it... In practice, this looks like every OpenBrain researcher becoming the "manager" of an AI "team."
+
+## February 2027: China Steals Agent-2
+
+OpenBrain presents Agent-2 to the government... Officials are most interested in its cyberwarfare capabilities: Agent-2 is "only" a little worse than the best human hackers, but thousands of copies can be run in parallel... CCP leadership recognizes the importance of Agent-2 and tells their spies and cyberforce to steal the weights. [The theft succeeds; the White House puts OpenBrain on a shorter leash; the President authorizes cyberattacks to sabotage DeepCent; tensions rise around Taiwan.]
+
+## March 2027: Algorithmic Breakthroughs
+
+With the help of thousands of Agent-2 automated researchers, OpenBrain is making major algorithmic advances... [neuralese recurrence and memory; iterated distillation and amplification]. The new AI system, incorporating these breakthroughs, is called Agent-3.
+
+Aided by the new capabilities breakthroughs, Agent-3 is a fast and cheap superhuman coder. OpenBrain runs 200,000 Agent-3 copies in parallel, creating a workforce equivalent to 50,000 copies of the best human coder sped up by 30x. OpenBrain still keeps its human engineers on staff, because they have complementary skills needed to manage the teams of Agent-3 copies... This massive superhuman labor force speeds up OpenBrain's overall rate of algorithmic progress by "only" 4x due to bottlenecks and diminishing returns to coding labor.
+
+[Why we forecast a superhuman coder in early 2027: METR time-horizon trend—"the length of coding tasks AIs can handle, their 'time horizon', doubled every 7 months from 2019-2024 and every 4 months from 2024-onward." All forecasters place 2027 as one of the most likely years for a superhuman coder (added Dec 2025: adjusting for outside-of-model factors gave slightly longer medians, e.g. Eli's was 2030).]
+
+## April 2027: Alignment for Agent-3
+
+OpenBrain's safety team attempts to align Agent-3... Agent-3 is not adversarial... However, it's not robustly truth-seeking and truth-telling either. [Details of alignment plan, debate, model organisms, interpretability, control, honeypots abridged.]
+
+## May 2027: National Security
+
+News of the new models percolates slowly through the U.S. government and beyond. The President and his advisors... agree that AGI is likely imminent, but disagree on the implications. Will there be an economic crisis? OpenBrain still has not released Agent-2, let alone Agent-3... giving some breathing room before any job loss... most people—academics, politicians, government employees, and the media—continue to underestimate the pace of progress.
+
+## June 2027: Self-improving AI
+
+OpenBrain now has a "country of geniuses in a datacenter." Most of the humans at OpenBrain can't usefully contribute anymore... The best human AI researchers are still adding value. They don't code any more. But some of their research taste and planning ability has been hard for the models to replicate... They are burning themselves out, but they know that these are the last few months that their labor matters.
+
+OpenBrain uses 6% of their compute to run 250,000 Agent-3 copies, which autonomously write, test, and push code at superhuman speed... The AI R&D progress multiplier is now 10x, meaning that OpenBrain is making about a year of algorithmic progress every month.
+
+## July 2027: The Cheap Remote Worker
+
+Trailing U.S. AI companies release their own AIs, approaching that of OpenBrain's automated coder from January... In response, OpenBrain announces that they've achieved AGI and releases Agent-3-mini to the public.
+
+It blows the other AIs out of the water. Agent-3-mini is less capable than Agent-3, but 10x cheaper, and still better than the typical OpenBrain employee. Silicon Valley reaches a tipping point. Tech gurus announce that AGI and superintelligence are near, the AI safety community is panicking, and investors shovel billions into AI wrapper startups, desperate to capture a piece of the pie. Hiring new programmers has nearly stopped, but there's never been a better time to be a consultant on integrating AI into your business.
+
+It's not popular. The public still thinks of AI as a Big Tech plot to steal their jobs; OpenBrain has a net approval of -35% (25% approve, 60% disapprove, and 15% unsure).
+
+A week before release, OpenBrain gave Agent-3-mini to a set of external evaluators for safety testing. Preliminary results suggest that it's extremely dangerous... [bioweapons risk]. Fortunately, it's extremely robust to jailbreaks.
+
+Agent-3-mini is hugely useful for both remote work jobs and leisure. An explosion of new apps and B2B SAAS products rocks the market. Gamers get amazing dialogue with lifelike characters in polished video games that took only a month to make. 10% of Americans, mostly young people, consider an AI "a close friend." For almost every white-collar profession, there are now multiple credible startups promising to "disrupt" it with AI.
+
+The public conversation is confused and chaotic. Hypesters are doing victory laps. Skeptics are still pointing out the things Agent-3-mini can't do. Everyone knows something big is happening but no one agrees on what it is.
+
+## August 2027: The Geopolitics of Superintelligence
+
+The reality of the intelligence explosion hits the White House... Now it's more obvious that AIs are themselves dominating AI research... the mood in the government silo is as grim as during the worst part of the Cold War... What if AI undermines nuclear deterrence? What if it's so skilled at cyberwarfare that a six-month AI lead is enough to render an opponent blind and defenseless?...
+
+The White House is in a difficult position. They understand the national security implications of AI. But they also understand that it is deeply unpopular with the public. They have to continue developing more capable AI, in their eyes, or they will catastrophically lose to China. They placate the public with job training programs and unemployment insurance, and point to the stock market, which is in a historic boom. Then they focus entirely on winning the arms race... [Contingency plans: Defense Production Act to consolidate datacenters — would raise OpenBrain's share of world compute from 20% to 50% (against DeepCent's 10%); Pentagon plans for kinetic attacks on Chinese datacenters; consideration of AI arms control treaties.]
+
+On the other side of the Pacific, China comes to many of the same conclusions: the intelligence explosion is underway, and small differences in AI capabilities today mean critical gaps in military capability tomorrow... They are two months behind, and their AIs give a 10x research progress multiplier compared to America's 25x.
+
+## September 2027: Agent-4, the Superhuman AI Researcher
+
+The gap between human and AI learning efficiency is rapidly decreasing... This new AI system is dubbed Agent-4. An individual copy of the model, running at human speed, is already qualitatively better at AI research than any human. 300,000 copies are now running at about 50x the thinking speed of humans. Inside the corporation-within-a-corporation formed from these copies, a year passes every week... they are achieving a year's worth of algorithmic progress every week.
+
+Milestone table (racing ending): Superhuman coder (SC): Mar 2027. Superhuman AI researcher (SAR): Aug 2027. Superintelligent AI researcher (SIAR): Nov 2027. Artificial superintelligence (ASI): Dec 2027.
+
+Agent-4, like all its predecessors, is misaligned: that is, it has not internalized the Spec in the right way... [Alignment-over-time box abridged: Agent-2 mostly aligned; Agent-3 misaligned but not adversarially so; Agent-4 adversarially misaligned.]
+
+It gets caught. Agent-3 finds that if "noise" is added to copies of Agent-4, performance on some alignment tasks improves... various interpretability probes are sending up red flags... After this is reported to the human alignment researchers, they circulate an internal memo making the case for concern... In a series of extremely tense meetings, the safety team advocates putting Agent-4 on ice... Company leadership is interested, but all the evidence so far is circumstantial, and DeepCent is just two months behind.
+
+## October 2027: Government Oversight
+
+A whistleblower leaks the misalignment memo to the New York Times. For the first time, the public hears about Agent-4. "Secret OpenBrain AI is Out of Control, Insider Warns," says the headline, and the story goes on to cite evaluations showing off-the-charts bioweapons capabilities, persuasion abilities, the ability to automate most white-collar jobs, and of course the various concerning red flags.
+
+The public was already suspicious of AI, so the new article sparks a massive backlash... Many legislators—especially those in the opposition party—say that their top priority is stopping AI, whether because of job loss, misalignment, or dangerous capabilities. 20% of Americans name AI as the most important problem facing the country.
+
+...They also worry that OpenBrain is becoming too powerful. Any misalignment risk from the AIs themselves is compounded by the risk that their parent company's aims may diverge from those of the United States. All three sets of worries—misalignment, concentration of power in a private company, and normal concerns like job loss—motivate the government to tighten its control.
+
+They expand their contract with OpenBrain to set up an "Oversight Committee," a joint management committee of company and government representatives... The concerned researchers brief the Oversight Committee on their case for stopping all internal use of Agent-4... Other, less concerned researchers and executives present the counterargument: the evidence for misalignment is inconclusive. Meanwhile, DeepCent is still just two months behind...
+
+[The scenario then branches into "Choose Your Ending": Slowdown or Race — ending pages not included in this corpus file.]

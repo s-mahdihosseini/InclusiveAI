@@ -1,0 +1,92 @@
+{
+  "source_id": "forethought-intelligence-explosion",
+  "author": "William MacAskill & Fin Moorhouse (Forethought)",
+  "title": "Preparing for the Intelligence Explosion",
+  "year": 2025,
+  "type": "report",
+  "url": "https://www.forethought.org/research/preparing-for-the-intelligence-explosion",
+  "central_scenario_summary": "AI that can substitute for human research labour likely arrives within one to two decades and grows in collective capability hundreds of times faster than the human research workforce, driving a 'century in a decade' of technological progress and then an 'industrial explosion' as AI plus robots remove human labour as the bottleneck to physical production. This creates rapid-fire 'grand challenges' — including AI takeover, destructive technologies, and extreme concentration of economic and political power — alongside potential radical abundance; institutions are too slow by default, so preparation must start now.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "high",
+      "quotes": [
+        {"text": "There's now a serious chance we will see AI far smarter than humans within the coming decade.", "location": "Section 1, Introduction"},
+        {"text": "AI that can accelerate research could drive a century of technological progress over just a few years.", "location": "Abstract"}
+      ],
+      "notes": "Explicit intelligence-explosion scenario: ~even chance of a software feedback loop; AI research effort growing >=300x faster than human research effort even in the conservative case."
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "if human-level AI and dextrous robots can substitute for almost all skilled human labour, things would be very different", "location": "Section 3, The industrial explosion"},
+        {"text": "it would become increasingly hard for anyone else to claw back relative influence through hard work", "location": "Section 4, Power-concentrating mechanisms (Economic concentration)"}
+      ],
+      "notes": "Human expertise loses its scarcity value through replacement: returns to skill and effort collapse relative to returns on capital and land ownership."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "we might expect a century's worth of technological progress to more than double average incomes; abundant AI and robotic labour from an industrial explosion could dramatically increase that again", "location": "Section 4, Abundance"},
+        {"text": "we think a century of technological progress in a decade — or far more — is more likely than not", "location": "Section 3, The technology explosion"}
+      ],
+      "notes": "Acceleration is asymmetric (simulation-heavy fields faster than experiment-bound ones) but economy-wide and transformative overall."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "The main bottleneck to rapid industrial growth — human labour — melts away.", "location": "Section 3, The industrial explosion"},
+        {"text": "AI systems render human participation increasingly unnecessary for functioning governments, cultures, and economies", "location": "Section 4, New competitive pressures (Value erosion)"}
+      ],
+      "notes": "Historically machines complemented labour; the paper's core claim is that AI plus robotics ends that complementarity."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "low",
+      "quotes": [
+        {"text": "An intelligence explosion could cause huge gains in material wealth and income... with the potential for thousands of AI and robot assistants per person, if people choose to have that", "location": "Section 4, Abundance"}
+      ],
+      "notes": "Envisages vast new consumption (personalised culture, services, assistants) absorbing output; but this is about consumption possibilities, not labor demand — the paper does not claim new human jobs absorb displaced workers."
+    },
+    "mobility_adjustment": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {"text": "the world will need to handle these challenges fast, on a timescale far shorter than what human institutions are designed for", "location": "Section 1, Introduction"},
+        {"text": "it's hard to speed up humans themselves, and their interactions, thoughts, and learning", "location": "Section 2, Asymmetric acceleration"}
+      ],
+      "notes": "The paper is about institutional/decision-making adjustment rather than occupational reallocation specifically; scored 0 because its central mechanism is that human adaptation cannot keep pace with the shock."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "AI-driven explosive growth could result in an even smaller fraction of people (or companies, or countries) holding an even larger fraction of wealth.", "location": "Section 4, Power-concentrating mechanisms (Economic concentration)"},
+        {"text": "If the labour share shrinks significantly, then without redistribution most income would come from rents on capital and land", "location": "Section 4, Power-concentrating mechanisms (Economic concentration)"}
+      ],
+      "notes": "First-mover advantages could make leads permanent; in the extreme, 'almost all global power could be concentrated into one place.' Redistribution is flagged as the counterweight."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "There's now a serious chance we will see AI far smarter than humans within the coming decade.", "location": "Section 1, Introduction"},
+        {"text": "It seems likely to us that AI research effort will reach parity with human research labour within the next two decades", "location": "Section 3, AI-human cognitive parity"}
+      ],
+      "notes": "Central economic impact (technology + industrial explosion) within roughly a decade of writing, with parity possibly 'in a matter of years' and up to two decades."
+    },
+    "inequality_prediction": {
+      "score": "Radical abundance is possible — a century of progress could more than double average incomes and AI/robot labour could multiply that — but it is not guaranteed to be shared: if the labour share shrinks, income flows to owners of capital and land, wealth could concentrate 'in only a few hands,' and first movers could lock in permanent dominance, so preventing extreme, hard-to-reverse concentration of power requires deliberate institutions and redistribution.",
+      "confidence": "high",
+      "quotes": [
+        {"text": "an intelligence explosion could lead to huge gains in wealth which are concentrated in only a few hands", "location": "Section 4, Abundance"}
+      ],
+      "notes": null
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

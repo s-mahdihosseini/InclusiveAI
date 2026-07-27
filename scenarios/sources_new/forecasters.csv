@@ -1,0 +1,39 @@
+id,category,author,title,year,type,url,priority
+epoch-scaling-2030,forecaster,Epoch AI,Can AI Scaling Continue Through 2030?,2024,blog,https://epoch.ai/blog/can-ai-scaling-continue-through-2030,2
+epoch-explosive-growth-redux,forecaster,Andrei Potlogea & Anson Ho (Epoch AI),AI and Explosive Growth Redux,2025,blog,https://epoch.ai/gradient-updates/ai-and-explosive-growth-redux,1
+epoch-broad-automation,forecaster,Ege Erdil & Matthew Barnett,"Most AI Value Will Come from Broad Automation, Not from R&D",2025,blog,https://epoch.ai/gradient-updates/most-ai-value-will-come-from-broad-automation-not-from-r-d,1
+epoch-datacenter-gdp,forecaster,Epoch AI,Data Center Buildout Share of US GDP Is Still Relatively Small (But Rapidly Growing),2026,blog,https://epoch.ai/data-insights/ai-datacenter-share-gdp,2
+mechanize-life-after-work,forecaster,Mechanize (Erdil & Besiroglu),Life After Work,2025,blog,https://www.mechanize.work/blog/life-after-work/,1
+mechanize-technological-determinism,forecaster,Mechanize,The Future of AI Is Already Written,2025,blog,https://www.mechanize.work/blog/technological-determinism/,2
+forethought-outgrow-world,forecaster,Forethought Research,Could One Country Outgrow the Rest of the World After AGI? Economic Analysis of Superexponential Growth,2025,report,https://www.forethought.org/research/could-one-country-outgrow-the-rest-of-the-world,1
+forethought-industrial-explosion,forecaster,Tom Davidson & Rose Hadshar,The Industrial Explosion,2025,essay,https://newsletter.forethought.org/p/the-industrial-explosion,1
+forethought-better-futures,forecaster,Will MacAskill & Fin Moorhouse,Introducing Better Futures,2025,report,https://www.forethought.org/research/introducing-better-futures,3
+openphil-davidson-explosive-growth,forecaster,Tom Davidson,Could Advanced AI Drive Explosive Economic Growth?,2021,report,https://www.openphilanthropy.org/research/could-advanced-ai-drive-explosive-economic-growth/,1
+roodman-human-trajectory,forecaster,David Roodman,Modeling the Human Trajectory,2020,report,https://www.openphilanthropy.org/research/modeling-the-human-trajectory/,2
+anthropic-econ-index-jan2026,forecaster,Anthropic,Anthropic Economic Index Report: Economic Primitives,2026,report,https://www.anthropic.com/research/anthropic-economic-index-january-2026-report,1
+anthropic-econ-index-mar2026,forecaster,Anthropic,Anthropic Economic Index Report: Learning Curves,2026,report,https://www.anthropic.com/research/economic-index-march-2026-report,2
+anthropic-econ-index-jun2026,forecaster,Anthropic,Anthropic Economic Index Report: Cadences,2026,report,https://www.anthropic.com/research/economic-index-june-2026-report,2
+anthropic-econ-tasks-paper,forecaster,"Handa, Tamkin, McCain et al. (Anthropic)",Which Economic Tasks are Performed with AI? Evidence from Millions of Claude Conversations,2025,paper,https://arxiv.org/abs/2503.04761,1
+anthropic-econ-index-geographic,forecaster,Anthropic,Anthropic Economic Index Report: Uneven Geographic and Enterprise AI Adoption,2025,report,https://arxiv.org/abs/2511.15080,2
+openai-jobs-transition,forecaster,OpenAI,Modeling an AI Jobs Transition,2025,report,https://openai.com/index/modeling-ai-jobs-transition/,1
+openai-new-econ-analysis,forecaster,OpenAI (Ronnie Chatterji),OpenAI's New Economic Analysis,2026,report,https://openai.com/global-affairs/new-economic-analysis/,1
+openai-finding-work,forecaster,OpenAI Global Affairs,Finding Work With AI,2025,blog,https://openaiglobalaffairs.substack.com/p/finding-work-with-ai,3
+deepmind-virtual-agent-economies,forecaster,Nenad Tomašev & Matija Franklin (Google DeepMind),Virtual Agent Economies,2025,paper,https://arxiv.org/abs/2509.01063,1
+rand-ai-labor-force,forecaster,RAND Corporation,Artificial Intelligence and the Labor Force: A Data-Driven Approach to Identifying Exposed Occupations,2024,report,https://www.rand.org/pubs/research_reports/RRA2655-1.html,2
+rand-macro-implications,forecaster,RAND Corporation,Macroeconomic Implications of Artificial Intelligence,2025,report,https://www.rand.org/pubs/perspectives/PEA3888-3.html,1
+rand-jobs-not-taking,forecaster,RAND Corporation,"AI Is Making Jobs, Not Taking Them",2025,report,https://www.rand.org/pubs/commentary/2025/10/ai-is-making-jobs-not-taking-them.html,2
+cset-workforce-training,forecaster,CSET (Georgetown),AI and the Future of Workforce Training,2024,report,https://cset.georgetown.edu/publication/ai-and-the-future-of-workforce-training/,2
+cset-ai-development-workforce,forecaster,CSET (Georgetown),Identifying the AI Development Workforce,2026,report,https://cset.georgetown.edu/publication/identifying-the-ai-development-workforce,3
+govai-compute-governance,forecaster,"Sastry, Heim, Belfield, Anderljung et al.",Computing Power and the Governance of Artificial Intelligence,2024,paper,https://arxiv.org/abs/2402.08797,2
+govai-voice-access-global-majority,forecaster,GovAI,Voice and Access in AI: Global AI Majority Participation in Artificial Intelligence Development and Governance,2024,report,https://www.governance.ai/research-paper/voice-and-access-in-ai-global-ai-majority-participation-in-artificial-intelligence-development-and-governance,3
+christiano-failure-looks-like,forecaster,Paul Christiano,What Failure Looks Like,2019,essay,https://www.lesswrong.com/posts/HBxe6wdjxK239zajf/what-failure-looks-like,1
+zvi-you-better-mechanize,forecaster,Zvi Mowshowitz,You Better Mechanize,2025,essay,https://www.lesswrong.com/posts/j7GgmLwymtJEcnf9L/you-better-mechanize,2
+metaculus-labor-automation-hub,forecaster,Metaculus,Labor Automation Forecasting Hub,2025,report,https://www.metaculus.com/labor-hub/,1
+metaculus-gdp-growth-hlai,forecaster,Metaculus,"If Human-Level AI Is Developed, Will World GDP Grow by at Least 300% in 15 Years?",2018,report,https://www.metaculus.com/questions/3477/if-human-level-artificial-intelligence-is-developed-will-world-gdp-grow-by-at-least-300-in-any-of-the-subsequent-15-years/,2
+convergence-threshold-2030,forecaster,Convergence Analysis,Threshold 2030: Forecasting the Economic Impacts of Frontier AI,2024,report,https://www.convergenceanalysis.org/threshold-2030/part-3-forecasting,2
+cunningham-ai-growth-forecasts,forecaster,Tom Cunningham,Forecasts of AI & Economic Growth,2025,blog,https://tecunningham.github.io/posts/2025-10-19-forecasts-of-AI-growth.html,2
+pwc-sizing-the-prize,forecaster,PwC,Sizing the Prize: PwC's Global Artificial Intelligence Study,2017,report,https://www.pwc.co.nz/insights-and-publications/2023-publications/artificial-intelligence-study.html,1
+accenture-ai-double-growth,forecaster,Accenture,Artificial Intelligence Poised to Double Annual Economic Growth Rates by 2035,2016,report,https://newsroom.accenture.com/news/2016/artificial-intelligence-poised-to-double-annual-economic-growth-rate-in-12-developed-economies-and-boost-labor-productivity-by-up-to-40-percent-by-2035-according-to-new-research-by-accenture,2
+accenture-productivity-payoff,forecaster,Accenture,The Productivity Payoff: Unlocking Competitiveness with Gen AI,2024,report,https://www.accenture.com/us-en/insights/strategy/productivity-payoff,3
+bain-global-tech-2trillion,forecaster,Bain & Company,$2 Trillion in New Revenue Needed to Fund AI's Scaling Trend,2025,report,https://www.bain.com/about/media-center/press-releases/20252/$2-trillion-in-new-revenue-needed-to-fund-ais-scaling-trend---bain--companys-6th-annual-global-technology-report/,1
+bain-industrial-automation-2030,forecaster,Bain & Company,Nearly Half of Industrial Automation Revenue to Rely on AI by 2030,2026,report,https://www.bain.com/about/media-center/press-releases/2026/nearly-half-of-industrial-automation-revenue-to-rely-on-ai-by-2030-bain--company-finds/,3

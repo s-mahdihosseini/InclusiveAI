@@ -1,0 +1,140 @@
+{
+  "source_id": "brynjolfsson-turing-trap",
+  "author": "Erik Brynjolfsson",
+  "title": "The Turing Trap: The Promise & Peril of Human-Like Artificial Intelligence",
+  "year": 2022,
+  "type": "essay",
+  "url": "https://arxiv.org/abs/2201.04200",
+  "central_scenario_summary": "Brynjolfsson argues AI may be the most general of all general-purpose technologies and will bring record wealth creation in the coming decade, but its distributive effects hinge on whether it automates (substitutes for) or augments (complements) human labor. Human-like AI aimed at replicating workers erodes labor's economic and political bargaining power and concentrates wealth and power among those who control the technology - the 'Turing Trap' - and technologists, businesspeople, and policymakers currently face excess incentives for automation. Augmentation, which historically generated most value via new goods, services and tasks, would grow and share the pie; policy (e.g., tax rebalancing, training) should redirect incentives toward it.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "A good case can be made that AI is the most general of all general-purpose technologies",
+          "location": "Opening section, paragraph on economic implications"
+        },
+        {
+          "text": "In the coming decade, machine intelligence will become increasingly powerful and pervasive. We can expect record wealth creation as a result.",
+          "location": "Opening section"
+        }
+      ],
+      "notes": "Treats AI as an epochal GPT wave; notes full HLAI/job-level automation remains hard today ('zero occupations out of 950 in which machine learning could do 100 percent of the necessary tasks'), so not a near-term drop-in-worker claim."
+    },
+    "expertise_erosion": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "If capital in the form of AI can perform more tasks, those with unique assets, talents, or skills that are not easily replaced with technology stand to benefit disproportionately.",
+          "location": "Second section (distributional evidence)"
+        },
+        {
+          "text": "a focus on more human-like AI can make technology a better substitute for the many non-superstar workers, driving down their market wages, even as it amplifies the market power of a few",
+          "location": "Second section (distributional evidence)"
+        }
+      ],
+      "notes": "Does not discuss entry barriers into professions directly. On the automation path he warns of premia accruing to a small set of irreplaceable superstars while ordinary workers' skills are devalued - anchor 0. His advocated augmentation path would instead direct gains to workers broadly."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "our own economy is increasingly transformed by AI",
+          "location": "Opening section"
+        },
+        {
+          "text": "augmentation creates new capabilities and new products and services, ultimately generating far more value than merely human-like AI",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Expects broad, transformative gains ('record wealth creation', 'soaring productivity'), especially if AI is pointed at augmentation and new goods rather than replicating existing human tasks."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "The distributive effects of AI depend on whether it is primarily used to augment human labor or automate and replace it.",
+          "location": "Opening section"
+        },
+        {
+          "text": "there are currently excess incentives for automation rather than augmentation among technologists, business executives, and policy-makers",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "The technology is genuinely two-sided (both automation and augmentation raise productivity); his warning is that the current incentive structure tilts deployment toward substitution. Scored 1 for the document's framing, with the automation-heavy path flagged as the risk, not the recommendation."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "most of the value that our economy has created since ancient times comes from new goods and services that not even the kings of ancient empires had, not from cheaper versions of existing goods",
+          "location": "Third section (Daedalus thought experiment)"
+        },
+        {
+          "text": "fully 60 percent of people are now employed in occupations that did not exist in 1940",
+          "location": "Third section"
+        }
+      ],
+      "notes": "Strong absorption view: existing goods saturate ('only so much value one can get from clay pots... even with unlimited quantities and zero prices') but new goods, services and tasks absorb income and employment - the core argument for why augmentation beats automation. Also cites jet engines raising pilot employment via elastic demand."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "for each dollar spent on machine learning technology, companies may need to spend nine dollars on intangible human capital",
+          "location": "Policy section (training externalities)"
+        },
+        {
+          "text": "workers are often cash- and credit-constrained, limiting their ability to invest in their own skills development",
+          "location": "Policy section"
+        }
+      ],
+      "notes": "Adjustment requires large retraining investment that markets underprovide (externalities, credit constraints); displacement externalities ('deaths of despair', trade-adjustment failure) show adjustment can fail without policy. Roughly historical speeds, contingent on policy."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "As machines become better substitutes for human labor, workers lose economic and political bargaining power and become increasingly dependent on those who control the technology.",
+          "location": "Abstract"
+        },
+        {
+          "text": "when knowledge shifts from humans to machines, it opens the possibility of concentration of power",
+          "location": "Middle section (useful knowledge / incomplete contracts)"
+        }
+      ],
+      "notes": "On the current automation-tilted trajectory, wealth and power concentrate in those who control the technology ('a new billionaire class', winner amplification), reinforced by political power feedback. His advocated augmentation path would decentralize power - the concentration score reflects the trajectory he warns is underway."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "In the coming decade, machine intelligence will become increasingly powerful and pervasive.",
+          "location": "Opening section"
+        }
+      ],
+      "notes": "Only loose timing; 'the coming decade' for pervasive impact."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "The more technology is used to replace rather than augment labor, the worse the disparity may become, and the greater the resentments that feed destructive political instincts and actions.",
+          "location": "Closing section"
+        }
+      ],
+      "notes": "Text dimension. Bottom line: if current excess incentives for automation persist, non-superstar wages fall and wealth and political power concentrate in those who control AI, trapping a powerless majority (the Turing Trap); redirecting incentives toward augmentation would instead create 'prosperity for the many, not just the few'. The outcome is a choice, not destiny."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

@@ -1,0 +1,87 @@
+{
+  "source_id": "aschenbrenner-situational",
+  "author": "Leopold Aschenbrenner",
+  "title": "Situational Awareness: The Decade Ahead",
+  "year": 2024,
+  "type": "essay",
+  "url": "https://situational-awareness.ai/",
+  "central_scenario_summary": "AGI ('drop-in remote workers as intelligent as the smartest humans') is strikingly plausible by 2027 via trend extrapolation of compute, algorithmic efficiency, and unhobbling. Hundreds of millions of automated AI researchers then compress a decade of algorithmic progress into a year or so, yielding vastly superhuman AI by decade's end. Applying superintelligence broadly triggers an industrial and economic explosion — a shift in the growth regime with growth rates of 30%/year or more — plus a decisive military advantage, a US government 'Project,' and an existential race with China.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "high",
+      "quotes": [
+        {"text": "By the end of the decade, they will be smarter than you or I; we will have superintelligence, in the true sense of the word.", "location": "Introduction, para 2"},
+        {"text": "It's strikingly plausible we'd go from AGI to superintelligence very quickly, perhaps in less than one year.", "location": "II. From AGI to Superintelligence, 'Automating AI research'"}
+      ],
+      "notes": null
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the current course of AI progress is taking us to essentially drop-in remote workers as intelligent as the smartest humans", "location": "II, 'Complementarities and long tails' collapsible"},
+        {"text": "arcane regulation might ensure lawyers and doctors still need to be human, even if AI systems were much better at those jobs", "location": "II, 'The power of superintelligence' (industrial and economic explosion bullet)"}
+      ],
+      "notes": "Expertise rents erode by outright replacement (copies of the best researchers at near-zero marginal cost); any remaining professional premia are regulatory artifacts, not skill scarcity."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We could see economic growth rates of 30%/year and beyond, quite possibly multiple doublings a year.", "location": "II, 'The power of superintelligence'"},
+        {"text": "this would be a fundamental shift in the growth regime, more comparable to the historical step-change from very slow growth to a couple percent a year with the industrial revolution", "location": "II, 'The power of superintelligence'"}
+      ],
+      "notes": "Explosive progress starts narrow (AI R&D) then broadens to all of science, technology, and industry in the 2030s."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "Extremely accelerated technological progress, combined with the ability to automate all human labor, could dramatically accelerate economic growth", "location": "II, 'The power of superintelligence' (industrial and economic explosion bullet)"},
+        {"text": "An AI capabilities explosion... enabling automation of any and all cognitive work.", "location": "II, 'The power of superintelligence'"}
+      ],
+      "notes": "Full labor substitution is the mechanism of the growth explosion; complementarity with humans is treated as a temporary bottleneck lasting at most a couple of years."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on whether consumer demand or new jobs absorb the gains; mentions Baumol-style bottlenecks and preferences for human nannies only as frictions that slow measured GDP, not as a demand-side thesis."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Does not discuss worker reallocation or retraining; societal resistance and regulation are mentioned as drags on growth, but labor-market adjustment is not analyzed."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "Whoever controls superintelligence will quite possibly have enough power to seize control from pre-superintelligence forces.", "location": "II, 'The power of superintelligence'"},
+        {"text": "Superintelligence will give a decisive economic and military advantage.", "location": "Introduction, Table of Contents (IIId summary)"}
+      ],
+      "notes": "Concentration is framed in terms of national/lab control of superintelligence (leading to a government Project) rather than firm-level product-market rents, but the surplus and power are extremely concentrated."
+    },
+    "timeline_years": {
+      "score": 6,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "This is what I expect the 2030s to look like across science and technology.", "location": "II, 'The power of superintelligence'"},
+        {"text": "By 2025/26, these machines will outpace many college graduates.", "location": "Introduction, para 2"}
+      ],
+      "notes": "Written 2024; AGI ~2027, superintelligence by ~2028-2030, industrial/economic explosion in the early 2030s. ~6 years to main economic impact."
+    },
+    "inequality_prediction": {
+      "score": "Aschenbrenner does not frame outcomes as household income inequality; his central distributional claim is about power: superintelligence confers a decisive economic and military advantage, so whoever controls it (leading labs, then the US government's Project, versus the CCP) could economically outcompete nation-states and even seize control, while growth explodes to 30%+ per year in domains where human-made barriers are removed.",
+      "confidence": "medium",
+      "quotes": [
+        {"text": "Even without robots, the small civilization of superintelligences would be able to hack any undefended military... cunningly persuade generals and electorates, economically outcompete nation-states", "location": "II, 'The power of superintelligence'"}
+      ],
+      "notes": "Within-country wage or income distribution is not discussed; concentration of control is the inequality-relevant claim."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

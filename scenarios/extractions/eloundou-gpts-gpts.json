@@ -1,0 +1,109 @@
+{
+  "source_id": "eloundou-gpts-gpts",
+  "author": "Tyna Eloundou, Sam Manning, Pamela Mishkin & Daniel Rock",
+  "title": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+  "year": 2023,
+  "type": "paper",
+  "url": "https://arxiv.org/abs/2303.10130",
+  "central_scenario_summary": "A measurement paper: using a task-level exposure rubric applied to O*NET with human and GPT-4 annotators, the authors find ~80% of the U.S. workforce could have at least 10% of tasks affected by LLMs and ~19% at least 50%, with LLM-powered software raising the share of tasks that could be done significantly faster at equal quality from ~15% to 47-56%. Exposure spans all wage levels but rises with wages and with occupational entry barriers - the opposite of prior automation waves - and is not concentrated in low-productivity-growth industries. They conclude LLMs are general-purpose technologies with pervasive, growing impact, while remaining deliberately agnostic about timelines and about whether exposure means augmentation or displacement.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "We conclude that LLMs such as GPTs exhibit traits of general-purpose technologies, indicating that they could have considerable economic, social, and policy implications.",
+          "location": "Abstract"
+        },
+        {
+          "text": "their growing economic effect is expected to persist and increase even if we halt the development of new capabilities today",
+          "location": "Section 1 Introduction"
+        }
+      ],
+      "notes": "Central claim is GPT (general-purpose technology) status - a major wave - without AGI or drop-in-worker claims; adoption timeline explicitly not predicted."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Takes no position on premia or rents. Relevant measurement finding: 'workers facing higher (lower) barriers to entry in their jobs tend to experience more (less) exposure to LLMs' and higher wages associate with higher exposure (Section 1 / 4.2) - a precondition for expertise-premium erosion, but the paper is explicitly agnostic on whether exposure augments or displaces those workers."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "around 80% of the U.S. workforce could have at least 10% of their work tasks affected by the introduction of LLMs, while approximately 19% of workers may see at least 50% of their tasks impacted",
+          "location": "Abstract"
+        },
+        {
+          "text": "about 15% of all worker tasks in the US could be completed significantly faster at the same level of quality. When incorporating software and tooling built on top of LLMs, this share increases to between 47 and 56% of all tasks.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Breadth is the headline: exposure is pervasive across occupations, wage levels, and industries ('impacts... likely to be pervasive'). Realized aggregate productivity magnitude is not estimated - technical feasibility does not guarantee outcomes - hence medium confidence."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "We define exposure as a proxy for potential economic impact without distinguishing between labor-augmenting or labor-displacing effects.",
+          "location": "Section 1 Introduction"
+        }
+      ],
+      "notes": "Deliberate agnosticism: exposure includes both augmentation and displacement potential. Scored 1 (mixed) as the closest representation of their stated view that both effects are in play, but this is methodological neutrality rather than a substantive prediction."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "The connection between productivity growth in the past decade and overall LLM exposure appears weak, suggesting a potential optimistic case that future productivity gains from LLMs may not exacerbate possible cost disease effects",
+          "location": "Section 1 Introduction"
+        },
+        {
+          "text": "much of these algorithms' potential will emerge across a broad range of economically valuable use cases, including the creation of new types of work",
+          "location": "Section 1 Introduction"
+        }
+      ],
+      "notes": "Light-touch position: exposure is not concentrated in already-stagnant Baumol sectors, and GPT status implies new work creation - mildly against saturation, but no demand-side analysis."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Worker reallocation, retraining, and adjustment speeds are not analyzed."
+    },
+    "rent_concentration": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Who captures the surplus is not analyzed (no discussion of provider rents, market power, or factor shares)."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "We do not make predictions about the development or adoption timeline of such LLMs.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Explicitly declines to give a timeline; measures what is technically feasible now."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "The projected effects span all wage levels, with higher-income jobs potentially facing greater exposure to LLM capabilities and LLM-powered software.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Text dimension. Bottom line: exposure is broad and, unlike prior automation waves, tilts toward higher-wage, higher-entry-barrier occupations (science and critical-thinking skills are protective; programming and writing skills are exposed). The paper deliberately does not translate this into a wage or inequality forecast, leaving open whether exposed high-wage workers are augmented or displaced."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

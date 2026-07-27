@@ -1,0 +1,85 @@
+{
+  "source_id": "karpathy-dwarkesh",
+  "author": "Andrej Karpathy",
+  "title": "Andrej Karpathy — Dwarkesh Podcast interview",
+  "year": 2025,
+  "type": "podcast",
+  "url": "https://www.dwarkesh.com/p/andrej-karpathy",
+  "central_scenario_summary": "Karpathy sees AI as a continuation of ~2.5 centuries of computing and automation rather than a discrete break: 'AGI will just blend into' the roughly 2% GDP growth trend, diffusing slowly like computers, mobile phones and the internet (none of which show up as a jump in GDP). He rejects a fast intelligence-explosion / 'geniuses in a datacenter' step-change, forecasting instead a 'decade of agents' in which automation advances via an 'autonomy slider' (AI handles ~80% of a task's volume while humans supervise). Current economic value is surprisingly narrow (dominated by coding), jobs are messier and stickier than pundits expect (e.g., radiologists), and his main long-run worry is a gradual loss of human control and understanding as work is delegated to competing autonomous systems.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "AI is still fundamentally a program ... it's going to diffuse over time, and it's still going to add up to the same exponential", "location": "AGI will blend into 2% GDP growth"},
+        {"text": "I still think you're presupposing some discrete jump that has no historical precedent that I can't find in any of the statistics", "location": "AGI will blend into 2% GDP growth"}
+      ],
+      "notes": "Explicitly denies a growth-regime change or intelligence-explosion event; frames AI as steady diffusion like past general technologies over a decade-plus ('decade of agents'). Uses the computer-era analogy but insists the ~2% growth rate does not accelerate, which is the hallmark of steady-diffusion (score 1) rather than an accelerating GPT wave."
+    },
+    "expertise_erosion": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "Radiologists are alive and well and growing, even though computer vision is really, really good ... It's just a messy, complicated job", "location": "AGI will blend into 2% GDP growth (radiology example)"}
+      ],
+      "notes": "Argues expert jobs are messier and stickier than automation predictions assume; humans move up to supervising AIs. Implies little near-term change in who can do expert work rather than strong erosion or a rise in premia. Not a central theme."
+    },
+    "productivity_breadth": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "this thing which is 'general' ... is just overwhelmingly doing only coding", "location": "AGI will blend into 2% GDP growth (Dwarkesh), endorsed by Karpathy"},
+        {"text": "You can't find them in GDP. GDP is the same exponential.", "location": "AGI will blend into 2% GDP growth"}
+      ],
+      "notes": "Observes current gains are narrow (coding-dominated) with small measured aggregate/GDP effect; expects breadth only via slow diffusion."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "We're going to be swapping in AIs that do 80% of the volume. They delegate 20% of the volume to humans, and humans are supervising teams of five AIs", "location": "AGI will blend into 2% GDP growth (autonomy slider)"}
+      ],
+      "notes": "Partial substitution plus human supervision/complementarity via the 'autonomy slider'; not instant full replacement."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "it's all just part of the same speed-up of the whole thing. It's just so smooth.", "location": "AGI will blend into 2% GDP growth"}
+      ],
+      "notes": "Implies the economy keeps absorbing automation in the historical pattern (humans move up the abstraction ladder), consistent with unchanged 2% growth; does not stress new consumption categories."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "society will refactor based on the tasks that make up jobs, based on what's automatable or not", "location": "AGI will blend into 2% GDP growth"}
+      ],
+      "notes": "Gradual diffusion gives society time to refactor jobs/tasks; roughly historical adjustment. Frictions not discussed in detail."
+    },
+    "rent_concentration": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Does not take a clear position on who captures the surplus (providers/capital vs. users). Silent."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "It's going to be gradually put into society, and we'll end up with the same pattern.", "location": "AGI will blend into 2% GDP growth"}
+      ],
+      "notes": "Frames this as the 'decade of agents' (~10 years) and continuous thereafter; there is no single impact date in his view."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [
+        {"text": "there will be a gradual loss of control and understanding of what's happening", "location": "ASI section"}
+      ],
+      "notes": "FREE TEXT: Karpathy does not foreground income distribution; because he expects continuity (no growth-regime change, gradual diffusion), he implies no dramatic distributional break. His central concern is not inequality but a gradual, economy-wide loss of human control and understanding as work is delegated to competing autonomous AIs."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

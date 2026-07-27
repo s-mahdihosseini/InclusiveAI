@@ -1,0 +1,90 @@
+{
+  "source_id": "altman-intelligence-age",
+  "author": "Sam Altman",
+  "title": "The Intelligence Age",
+  "year": 2024,
+  "type": "essay",
+  "url": "https://ia.samaltman.com/",
+  "central_scenario_summary": "Deep learning that predictably improves with scale will, within a few thousand days, plausibly deliver superintelligence and give everyone a 'personal AI team' of virtual experts and tutors, ushering in an era of 'massive prosperity' and 'shared prosperity to a degree that seems unimaginable today.' Labor markets will change significantly (good and bad), but most jobs will change more slowly than people expect and humanity will not run out of things to do. The main distributional risk Altman flags is access: unless compute is made cheap and abundant, AI could become 'mostly a tool for rich people.'",
+  "dimensions": {
+    "capability_pace": {
+      "score": 4,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "It is possible that we will have superintelligence in a few thousand days (!); it may take longer, but I'm confident we'll get there.", "location": "para 8"}
+      ],
+      "notes": "Capability ceiling is superintelligence, but Altman expects gradual labor-market diffusion ('most jobs will change more slowly than most people think')."
+    },
+    "expertise_erosion": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "we can each have a personal AI team, full of virtual experts in different areas", "location": "para 5"},
+        {"text": "virtual tutors who can provide personalized instruction in any subject, in any language", "location": "para 5"}
+      ],
+      "notes": "Framed as broad democratization of access to expert-level help; lowers barriers to doing expert work."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "a defining characteristic of the Intelligence Age will be massive prosperity", "location": "para 12"},
+        {"text": "we can have shared prosperity to a degree that seems unimaginable today", "location": "para 6"}
+      ],
+      "notes": "Economy-wide, transformative prosperity."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "this technology can cause a significant change in labor markets (good and bad) in the coming years", "location": "para 15"},
+        {"text": "AI will allow us to amplify our own abilities like never before", "location": "para 15"}
+      ],
+      "notes": "Emphasizes augmentation/amplification and new work, while acknowledging 'good and bad' labor-market change; net leans complement-with-mixed-effects."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "I have no fear that we'll run out of things to do (even if they don't look like 'real jobs' to us today)", "location": "para 15"},
+        {"text": "we will be back in an expanding world, and we can again focus on playing positive-sum games", "location": "para 15"}
+      ],
+      "notes": "Strong absorption; lamplighter analogy; new categories of work."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "most jobs will change more slowly than most people think", "location": "para 15"}
+      ],
+      "notes": "Slow, gradual change implies manageable, roughly historical adjustment."
+    },
+    "rent_concentration": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "If we don't build enough infrastructure, AI will be a very limited resource that wars get fought over and that becomes mostly a tool for rich people.", "location": "para 14"}
+      ],
+      "notes": "Advocates/predicts broad diffusion of prosperity if compute is made abundant; explicitly warns concentration ('tool for rich people') is the failure mode to avoid."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "low",
+      "quotes": [
+        {"text": "In the next couple of decades, we will be able to do things that would have seemed like magic", "location": "para 1"},
+        {"text": "superintelligence in a few thousand days", "location": "para 8"}
+      ],
+      "notes": "Superintelligence possibly within 'a few thousand days' (~5-8 yrs); broad prosperity over 'the next couple of decades'. Representative value 10."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "in the future, everyone's lives can be better than anyone's life is now", "location": "para 6"}
+      ],
+      "notes": "FREE TEXT: Broadly optimistic that AI-driven prosperity will lift living standards worldwide and be widely shared; the key distributional condition is making compute cheap and abundant so access is universal rather than captured by the rich."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

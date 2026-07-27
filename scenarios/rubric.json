@@ -1,0 +1,107 @@
+{
+  "version": "0.1",
+  "purpose": "Extraction rubric: map any expert document about future AI onto a fixed set of scored dimensions, each linked to parameters of the InclusiveAI models. Extractors must (a) score only what the document supports, (b) attach short verbatim quotes with locations, (c) use null for dimensions the document is silent on.",
+  "scales_note": "All scores are integers on the anchored scales below. Confidence: 'low' | 'medium' | 'high' reflects how directly the document speaks to the dimension.",
+  "dimensions": {
+    "capability_pace": {
+      "question": "How far and how fast does AI capability go in this document's central scenario?",
+      "scale": {
+        "0": "Stagnation / narrow tools; no general-purpose wave",
+        "1": "Steady diffusion like past technologies (electricity, internet); decades",
+        "2": "Major general-purpose-technology wave on the scale of the computer era",
+        "3": "Drop-in worker for most cognitive tasks within roughly a decade",
+        "4": "Superintelligence / intelligence explosion; recursive self-improvement"
+      },
+      "maps_to": { "demand.ag": { "0": 1.5, "1": 3.0, "2": 8.0, "3": 12.0, "4": 16.0 } }
+    },
+    "expertise_erosion": {
+      "question": "What happens to entry barriers into high-skill occupations and to expertise/skill premia?",
+      "scale": {
+        "0": "Barriers rise; AI complements incumbent elites; premia grow",
+        "1": "Little change in who can do expert work",
+        "2": "Moderate democratization: AI meaningfully lowers training/entry barriers",
+        "3": "Strong erosion: expertise rents largely compete away"
+      },
+      "maps_to": { "expertise.scarcity": { "0": 0.0, "1": 0.3, "2": 1.0, "3": 1.5 } }
+    },
+    "productivity_breadth": {
+      "question": "Are productivity gains concentrated in a few tasks/occupations or broad and large?",
+      "scale": {
+        "0": "Narrow: a few tasks/sectors; small aggregate effect",
+        "1": "Moderate: sizable gains in exposed occupations",
+        "2": "Broad and large: economy-wide, transformative gains"
+      },
+      "maps_to": {
+        "expertise.productivity": { "0": 0.5, "1": 1.0, "2": 1.8 },
+        "demand.exposure": { "0": 0.5, "1": 1.0, "2": 1.8 }
+      }
+    },
+    "substitution": {
+      "question": "Is AI on net a substitute for human labor in exposed work, or a complement/augmenter?",
+      "scale": {
+        "0": "Strong complement: augments workers, creates tasks",
+        "1": "Mixed: substitutes in some tasks, complements in others",
+        "2": "Strong substitute: displaces labor in exposed work"
+      },
+      "maps_to": { "demand.sig_scale": { "0": 0.6, "1": 1.0, "2": 1.4 } }
+    },
+    "demand_absorption": {
+      "question": "Will demand absorb the productivity gains (new wants, elastic demand, new jobs) or saturate (Baumol / limited wants)?",
+      "scale": {
+        "0": "Saturation: inelastic demand for exposed outputs; gains immiserize producers",
+        "1": "Mixed / historical pattern",
+        "2": "Strong absorption: new consumption categories and jobs soak up income"
+      },
+      "maps_to": {
+        "demand.eps_spread": { "0": 1.4, "1": 1.0, "2": 0.5 },
+        "demand.nonhom": { "0": 1.3, "1": 1.0, "2": 1.2 }
+      },
+      "mapping_note": "Saturation = keep/amplify dispersion in price elasticities (inelastic overhead goods stay inelastic). Absorption = compress elasticities toward the elastic mean. Nonhomotheticity stays on except in the pure-CES thought experiment."
+    },
+    "mobility_adjustment": {
+      "question": "How easily do workers reallocate across occupations in the scenario (speed of shock vs institutions, retraining)?",
+      "scale": {
+        "0": "Very frictional: shock too fast or institutions too weak to adjust",
+        "1": "Historical adjustment speeds",
+        "2": "Fluid: AI itself lowers retraining costs; fast reallocation"
+      },
+      "maps_to": { "demand.mobility": { "0": 0.3, "1": 1.0, "2": 1.8 } }
+    },
+    "rent_concentration": {
+      "question": "Who captures the surplus: competitive diffusion to users/consumers, or concentrated rents to AI providers and capital?",
+      "scale": {
+        "0": "Competitive: surplus diffuses to users and consumers",
+        "1": "Mixed: meaningful but contested provider rents",
+        "2": "Concentrated: winner-take-most rents to a few firms / capital owners"
+      },
+      "maps_to": { "market_power.tab": "reserved for the AI Market Power model (record now, map later)" }
+    },
+    "timeline_years": {
+      "question": "Years from the document's writing to its central scenario's main economic impact (number; null if unstated).",
+      "scale": "numeric"
+    },
+    "inequality_prediction": {
+      "question": "The document's own bottom line on inequality (free text, 1-3 sentences, faithful to the author).",
+      "scale": "text"
+    }
+  },
+  "extraction_schema": {
+    "source_id": "string (matches sources.csv id)",
+    "author": "string",
+    "title": "string",
+    "year": "int",
+    "type": "paper | essay | report | podcast | interview | blog",
+    "url": "string",
+    "central_scenario_summary": "2-4 sentences, faithful summary of the document's central view of AI's economic future",
+    "dimensions": {
+      "<dimension_name>": {
+        "score": "int per scale, or null if silent",
+        "confidence": "low | medium | high",
+        "quotes": [{ "text": "short verbatim quote (<= 40 words)", "location": "section/heading/approx position" }],
+        "notes": "extractor judgment calls, if any"
+      }
+    },
+    "extractor": "model or human id",
+    "extraction_date": "YYYY-MM-DD"
+  }
+}

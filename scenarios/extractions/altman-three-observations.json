@@ -1,0 +1,90 @@
+{
+  "source_id": "altman-three-observations",
+  "author": "Sam Altman",
+  "title": "Three Observations",
+  "year": 2025,
+  "type": "blog",
+  "url": "https://blog.samaltman.com/three-observations",
+  "central_scenario_summary": "AI intelligence scales with the log of resources, the cost to use a given capability falls ~10x per year, and the socioeconomic value of intelligence is super-exponential; together these imply AGI-level agents will roll out as cheap 'virtual co-workers' across every field of knowledge work, seeping into the economy much like the transistor. Astonishing economic growth and widely distributed gains are expected, and within a decade 'everyone on earth' could accomplish more than the most impactful person today. But Altman stresses that increasing equality is 'not technologically determined': the balance of power between capital and labor could easily get messed up, possibly requiring early intervention such as a universal 'compute budget.'",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "high",
+      "quotes": [
+        {"text": "We are now starting to roll out AI agents, which will eventually feel like virtual co-workers.", "location": "after the three observations"},
+        {"text": "In a decade, perhaps everyone on earth will be capable of accomplishing more than the most impactful person can today.", "location": "para 6"}
+      ],
+      "notes": "AGI defined as doing 'increasingly complex problems, at human level, in many fields'; drop-in junior coworker scaled to millions across knowledge work within ~a decade."
+    },
+    "expertise_erosion": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "everyone should have access to unlimited genius to direct however they can imagine", "location": "penultimate para"},
+        {"text": "Anyone in 2035 should be able to marshall the intellectual capacity equivalent to everyone in 2025", "location": "penultimate para"}
+      ],
+      "notes": "Strong democratization of access to expert-level intelligence; latent talent unlocked."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {"text": "a big scientific discovery that scales well and that seeps into almost every corner of the economy", "location": "transistor analogy"},
+        {"text": "Now imagine such agents in every field of knowledge work.", "location": "software-engineer-agent passage"}
+      ],
+      "notes": "Broad, economy-wide gains."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "capable of doing most things a software engineer at a top company with a few years of experience could do", "location": "software-engineer-agent passage"},
+        {"text": "We will find new things to do, new ways to be useful to each other ... but they may not look very much like the jobs of today.", "location": "para after 'impossible to ignore'"}
+      ],
+      "notes": "Agents substitute in exposed knowledge work but new roles emerge; mixed."
+    },
+    "demand_absorption": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "We will find new things to do, new ways to be useful to each other, and new ways to compete", "location": "para after 'impossible to ignore'"}
+      ],
+      "notes": "New jobs/wants absorb the shock, in the historical pattern."
+    },
+    "mobility_adjustment": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "The world will not change all at once; it never does. Life will go on mostly the same in the short run", "location": "para 'The world will not change all at once'"}
+      ],
+      "notes": "Gradual short-run change eases adjustment; roughly historical."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {"text": "it does seem like the balance of power between capital and labor could easily get messed up, and this may require early intervention", "location": "near end"},
+        {"text": "increasing equality does not seem technologically determined and getting this right may require new ideas", "location": "near end"}
+      ],
+      "notes": "Explicitly flags meaningful, contested risk that capital captures the gains at labor's expense; distribution is a policy choice, not automatic."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "In a decade, perhaps everyone on earth will be capable of accomplishing more than the most impactful person can today.", "location": "para 6"}
+      ],
+      "notes": "Roughly a decade to major impact; agents rolling out from 2025."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {"text": "the balance of power between capital and labor could easily get messed up, and this may require early intervention", "location": "near end"}
+      ],
+      "notes": "FREE TEXT: Average outcomes (health, prosperity) should improve, but equality is not guaranteed by the technology; Altman warns the capital-labor balance could be badly distorted and floats redistributive ideas (e.g., a universal 'compute budget') and relentlessly cheap intelligence as remedies."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

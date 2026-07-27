@@ -1,0 +1,103 @@
+{
+  "source_id": "dwarkesh-timelines",
+  "author": "Dwarkesh Patel",
+  "title": "Why I Don't Think AGI Is Right Around the Corner",
+  "year": 2025,
+  "type": "blog",
+  "url": "https://www.dwarkesh.com/p/timelines-june-2025",
+  "central_scenario_summary": "Current LLMs cannot learn continually on the job, which is why they cannot function as actual employees; if progress stopped today, less than a quarter of white-collar employment would be automated. Patel's central 50/50 timelines: computer-use agents that can do a week-long project (small-business taxes end-to-end) by 2028, and human-like organic on-the-job learning for any white-collar work by 2032. Once continual learning is solved, models that amalgamate learning across all copies produce a 'broadly deployed intelligence explosion' and functionally rapid superintelligence—so he is bearish on the next few years but expects a wild, transformative world within roughly a decade, with AGI probability per year cratering after 2030 if it hasn't happened.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "AI learns on the job as easily, organically, seamlessly, and quickly as a human, for any white collar work... 2032",
+          "location": "'So what are my predictions?' section, second bullet"
+        },
+        {
+          "text": "An AI that is capable of online learning might functionally become a superintelligence quite rapidly without any further algorithmic progress",
+          "location": "'Continual learning' section, near end"
+        }
+      ],
+      "notes": "Central scenario is a drop-in white-collar worker within ~7 years (scale 3); he explicitly flags that this milestone shades into a broadly deployed intelligence explosion (scale 4) shortly after. Wide, lognormal distribution acknowledged."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No position on entry barriers to expert occupations or expertise premia; the essay is about capability timelines, not skill distribution."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "we might still see something that looks like a broadly deployed intelligence explosion. AIs will be getting broadly deployed through the economy, doing different jobs and learning while doing them",
+          "location": "'Continual learning' section, near end"
+        },
+        {
+          "text": "even if we stay sober about the current limitations of AI, we have to expect some truly crazy outcomes.",
+          "location": "Final paragraph"
+        }
+      ],
+      "notes": "Near term narrow ('If AI progress totally stalls today, I think <25% of white collar employment goes away'); central scenario by early 2030s is economy-wide and transformative. Scored on the central scenario."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "So one AI is basically learning how to do every single job in the world.",
+          "location": "'Continual learning' section, near end"
+        },
+        {
+          "text": "their inability to build up context will make it impossible to have them operate as actual employees at your firm.",
+          "location": "'Continual learning' section (present-day limitation, removed in central scenario)"
+        }
+      ],
+      "notes": "Framing is explicitly about AIs replacing human employees once continual learning is solved; today's AI is a weak substitute only because of the learning bottleneck. No discussion of complementary task creation."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on whether demand absorbs productivity gains or on new consumption categories."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on worker reallocation, retraining, or labor-market institutions."
+    },
+    "rent_concentration": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on who captures the surplus; discusses labs' release incentives only in passing."
+    },
+    "timeline_years": {
+      "score": 7,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "AI learns on the job as easily, organically, seamlessly, and quickly as a human, for any white collar work... 2032",
+          "location": "'So what are my predictions?' section"
+        },
+        {
+          "text": "I'm forecasting a pretty wild world within a relatively short amount of time.",
+          "location": "'So what are my predictions?' section"
+        }
+      ],
+      "notes": "50/50 date of 2032 for the milestone he equates with 'at minimum a broadly deployed intelligence explosion', ~7 years from writing (June 2025). Computer-use milestone 2028."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "The essay makes no prediction about inequality or income distribution."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

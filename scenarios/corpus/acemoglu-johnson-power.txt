@@ -1,0 +1,88 @@
+SOURCE_ID: acemoglu-johnson-power
+AUTHOR: Daron Acemoglu & Simon Johnson
+TITLE: Rebalancing AI (Power and Progress thesis essay)
+YEAR: 2023
+TYPE: essay
+URL: https://www.imf.org/en/publications/fandd/issues/2023/12/rebalancing-ai-acemoglu-johnson
+NOTE: The requested Project Syndicate OnPoint URL (https://www.project-syndicate.org/onpoint/ai-automation-labor-productivity-daron-acemoglu-simon-johnson) is paywalled/returns an empty shell. Substituted with the authors' open-access essay "Rebalancing AI" (IMF Finance & Development, December 2023), which the authors state "is adapted from the authors' book, Power and Progress: Our 1000 Year Struggle over Technology and Prosperity, and also draws on joint work with David Autor." Full text extracted from the official PDF (https://www.imf.org/-/media/files/publications/fandd/article/2023/december/26-29-acemoglu-final.pdf). Complete text.
+====
+
+REBALANCING AI
+Daron Acemoglu and Simon Johnson, IMF Finance & Development, December 2023
+The drive toward automation is perilous—to support shared prosperity, AI must complement workers, not replace them
+
+Optimistic forecasts regarding the growth implications of AI abound. AI adoption could boost productivity growth by 1.5 percentage points per year over a 10-year period and raise global GDP by 7 percent ($7 trillion in additional output), according to Goldman Sachs. Industry insiders offer even more excited estimates, including a supposed 10 percent chance of an "explosive growth" scenario, with global output rising more than 30 percent a year.
+
+All this techno-optimism draws on the "productivity bandwagon": a deep-rooted belief that technological change—including automation—drives higher productivity, which raises net wages and generates shared prosperity.
+
+Such optimism is at odds with the historical record and seems particularly inappropriate for the current path of "just let AI happen," which focuses primarily on automation (replacing people). We must recognize that there is no singular, inevitable path of development for new technology. And, assuming that the goal is to sustainably improve economic outcomes for more people, what policies would put AI development on the right path, with greater focus on enhancing what all workers can do?
+
+THE MACHINERY QUESTION
+
+Contrary to popular belief, productivity growth need not translate into higher demand for workers. The standard definition of productivity is "average output per worker"—total output divided by total employment. The hope is that as output per worker grows, so will the willingness of businesses to hire people.
+
+But employers are not motivated to increase hiring based on average output per worker. Rather, what matters to companies is marginal productivity—the additional contribution that one more worker brings by increasing production or by serving more customers. The notion of marginal productivity is distinct from output or revenue per worker; output per worker may increase while marginal productivity remains constant or even declines.
+
+Many new technologies, such as industrial robots, expand the set of tasks performed by machines and algorithms, displacing workers. Automation raises average productivity but does not increase, and in fact may reduce, worker marginal productivity. Over the past four decades, automation has raised productivity and multiplied corporate profits, but it has not led to shared prosperity in industrial countries.
+
+Replacing workers with machines is not the only way to improve economic efficiency—and history has proved this, as we describe in our recent book, Power and Progress. Rather than automating work, some innovations boost how much individuals contribute to production. For example, new software tools that aid car mechanics and enable greater precision can increase worker marginal productivity. This is completely different from installing industrial robots with the goal of replacing people.
+
+NEW FUNCTIONS
+
+The creation of new tasks is even more important for raising worker marginal productivity. When new machines open up new uses for human labor, this expands workers' contributions to production and increases their marginal productivity. There was plenty of automation in car manufacturing during the momentous industry reorganization led by Henry Ford starting in the 1910s. But mass-production methods and assembly lines simultaneously introduced a range of new design, technical, machine-operation, and clerical tasks, boosting the industry's demand for workers.
+
+New tasks have been vital in the growth of employment and wages over the past two centuries. And many of the fastest-expanding occupations in the past few decades—those of MRI radiologists, network engineers, computer-assisted machine operators, software programmers, IT security personnel, and data analysts—did not exist 80 years ago. Even people in occupations that have been around longer, such as bank tellers, professors, and accountants, now work on many relatively new tasks using technology. In almost all these cases, new tasks were introduced because of technological advances and have been a major driver of employment growth. These new tasks have also been integral to productivity growth—they have helped launch new products and enabled more efficient production processes.
+
+PRODUCTIVE AUTOMATION
+
+Automation in an industry can also drive up employment—in that sector or in the economy broadly—if it substantially increases productivity. In this case, new jobs may come either from nonautomated tasks in the same industry or from the expansion of activities in related industries. In the first half of the 20th century, the rapid increase in car manufacturing stimulated massive expansion of the oil, steel, and chemical industries. Vehicle output on a mass scale also revolutionized the possibilities for transportation, enabling the rise of new retail, entertainment, and service activities.
+
+The productivity bandwagon is not activated, however, when the productivity gains from automation are small—what we call "so-so automation." For example, self-checkout kiosks in grocery stores bring limited productivity benefits because they merely shift the work of scanning items from employees to customers. When stores introduce self-checkout kiosks, fewer cashiers are employed, but there is no major productivity boost to stimulate the creation of new jobs elsewhere. Groceries do not become much cheaper, there is no expansion in food production, and shoppers do not live differently.
+
+Even nontrivial productivity gains from automation can be offset when they are not accompanied by new tasks. For example, in the American Midwest, the rapid adoption of robots has contributed to mass layoffs and ultimately prolonged regional decline.
+
+The situation is similarly troubling for workers when new technologies focus on surveillance. Increased monitoring of workers may lead to some small improvements in productivity, but its main function is to extract more effort from workers.
+
+All this underscores perhaps the most important aspect of technology: choice. There are often myriad ways of using our collective knowledge to improve production and even more ways to direct innovation. Will we invent and implement digital tools for surveillance, automation, or to empower workers by creating new productive tasks?
+
+When the productivity bandwagon is weak and there are no self-correcting mechanisms to ensure shared benefits, these choices become more consequential—and a few tech decision-makers become economically and politically more powerful.
+
+COMPLEMENTING HUMANS
+
+New technology may complement workers by enabling them to work more efficiently, perform higher-quality work, or accomplish new tasks. For example, even as mechanization gradually pushed more than half of the US labor force out of agriculture, a range of new blue-collar and clerical tasks in factories and newly emerging service industries generated significant demand for skilled labor between about 1870 and 1970. This work was not only better paying but also less dangerous and less physically exhausting.
+
+This virtuous combination—automation of traditional work alongside creation of new tasks—proceeded in relative balance for much of the 20th century. But sometime after approximately 1970, this balance was lost. While automation has maintained its pace or even accelerated over the ensuing five decades, the offsetting force of new task creation has slowed, particularly for workers without four-year college degrees. As a result, these workers are increasingly found in low-paying (though socially valuable) services such as in cleaning, food service, and recreation.
+
+The critical question of the new era of AI is whether this technology will primarily accelerate the existing trend of automation without the offsetting force of good job creation—particularly for non-college-educated workers—or whether it will instead enable the introduction of new labor-complementary tasks for workers with diverse skill sets and a wide range of educational backgrounds.
+
+It is inevitable that AI systems will be used for some automation. A major barrier to automation of many service and production tasks has been that they require flexibility, judgment, and common sense—which are notably absent from pre-AI forms of automation. Artificial intelligence, especially generative AI, can potentially master such tasks. It is unclear how much this type of automation will contribute to aggregate productivity growth while these technologies are immature, but they could contribute to sizable productivity gains as costs fall and reliability improves.
+
+The dominant intellectual paradigm in today's digital tech sector also favors the automation path. A major focus of AI research is to attain human parity in a vast range of cognitive tasks and, more generally, to achieve artificial general intelligence that mimics and surpasses human capabilities. This intellectual focus encourages automation rather than the development of human-complementary technologies.
+
+However, AI offers an opportunity to complement worker skill and expertise if we direct its development accordingly.
+
+Human productivity is often hampered by lack of specific knowledge or expertise, which could be supplemented by next-generation technology. For example, AI holds great potential for training and retraining expert workers, such as educators, medical personnel, and those in modern crafts (such as electricians and plumbers). AI could also create new demands for human expertise and judgment in overseeing these processes, communicating with customers, and enabling more sophisticated services.
+
+FIVE PRINCIPLES
+
+Redirecting technological change is not easy, but it is possible. Governments everywhere—especially in the US and other countries where technology is under active development—should take the following five steps to help put AI development onto a human-complementary, rather than human-displacing, path:
+
+- Reform business models: The dominant developers of AI easily expropriate consumer data without compensation, and their reliance on digital advertising incentivizes grabbing consumers' attention through any means possible. Governments need to establish clear ownership rights for all consumers over their data and should tax digital ads. Enabling a more diverse range of business models—or even requiring more competition—is essential if AI is to be helpful to all humans.
+
+- Tax system: The tax code in the US and many other countries places a heavier burden on firms that hire labor than on those that invest in algorithms to automate work. To shift incentives toward human-complementary technological choices, policymakers should aim to create a more symmetric tax structure, equalizing marginal tax rates for hiring (and training) labor and for investing in equipment and software.
+
+- Labor voice: Given that workers will be profoundly affected by AI, they should have a voice in its development. Government policy should restrict deployment of untested (or insufficiently tested) AI for applications that could put workers at risk, for example in high-stakes personnel decision-making tasks (including hiring and termination) or in workplace monitoring and surveillance.
+
+- Funding for more human-complementary research: Research and development in human-complementary AI technologies require greater support. Governments should foster competition and investment in technology that pairs AI tools with human expertise to improve work in vital social sectors. Once there is sufficient progress, governments can encourage further investment with advice on whether purported human-complementary technology is appropriate for adoption in publicly funded education and health care programs.
+
+- AI expertise within government: AI will touch every area of government investment, regulation, and oversight. Developing a consultative AI division within government can help agencies and regulators support more timely, effective decision-making.
+
+POTENTIAL MACROECONOMIC IMPACT
+
+AI could increase global GDP over the next five years, although not as substantially as enthusiasts claim. It might even modestly raise GDP growth in the medium term. However, on our current trajectory, the first-order impact is likely to be increased inequality within industrial countries.
+
+Middle-income countries and many lower-income countries also have much to fear from the existing path. New capital-intensive technology will soon be applied everywhere. There is no guarantee that, on its current path, AI will generate more jobs than it destroys.
+
+If we can redirect AI onto a more human-complementary path, while using it to address pressing social problems, all parts of the planet can benefit. But if the just-automate approach prevails, shared prosperity will be even harder to achieve.
+
+[This article is adapted from the authors' book, Power and Progress: Our 1000 Year Struggle over Technology and Prosperity, and also draws on joint work with David Autor.]

@@ -1,0 +1,38 @@
+id,category,author,title,year,type,url,priority
+sixtyminutes-hinton-pelley,forecaster,Geoffrey Hinton,60 Minutes: Geoffrey Hinton on the Promise and Risks of AI,2023,interview,https://www.cbsnews.com/news/geoffrey-hinton-ai-dangers-60-minutes-transcript/,1
+weeklyshow-hinton-stewart,forecaster,Geoffrey Hinton,The Weekly Show with Jon Stewart: Geoffrey Hinton on the Risks of AI,2025,video,https://www.youtube.com/watch?v=jrK3PsD3APk,2
+slowboring-yglesias-lee-jobs,economist,Matthew Yglesias & Timothy B. Lee,Slow Boring: Will AI Take Your Job? Mine? Everyone's?,2026,essay,https://www.slowboring.com/p/will-ai-take-your-job-mine-everyones,1
+noahpinion-power-progress-review,economist,Noah Smith,Noahpinion: Book Review of Power and Progress,2026,essay,https://www.noahpinion.blog/p/book-review-power-and-progress-874,1
+asterisk-clancy-besiroglu-inflection,economist,Matt Clancy & Tamay Besiroglu,Asterisk: The Great Inflection? A Debate About AI and Explosive Growth,2023,essay,https://asteriskmag.com/issues/03/the-great-inflection-a-debate-about-ai-and-explosive-growth,1
+asterisk-mann-tech-jobs,forecaster,Jonathan Mann,Asterisk: AI Isn't Coming for Tech Jobs—Yet,2023,essay,https://asteriskmag.com/issues/03/ai-isn-t-coming-for-tech-jobs-yet,1
+asterisk-oks-indian-it,economist,David Oks,Asterisk: What Will Happen to Indian IT?,2026,essay,https://asteriskmag.com/issues/15/what-will-happen-to-indian-it,1
+asterisk-vannostrand-after-work,economist,Elizabeth Van Nostrand,"Asterisk: After Work, We'll Have Each Other",2026,essay,https://asteriskmag.com/issues/15/after-work-we-ll-have-each-other,2
+asterisk-smith-electrician,economist,Jesse Smith,Asterisk: So You Think You Could Be an Electrician?,2026,essay,https://asteriskmag.com/issues/15/so-you-think-you-could-be-an-electrician,2
+asterisk-qian-china-last-bus,economist,Zilan Qian,Asterisk: Boarding China's Last Bus,2026,essay,https://asteriskmag.com/issues/15/chinas-last-bus,2
+asterisk-lee-cotra-ai-humans,forecaster,Timothy B. Lee & Ajeya Cotra,Asterisk: How Long Until AI Doesn't Need Humans?,2026,essay,https://asteriskmag.com/issues/14/how-long-until-ai-doesn-t-need-humans,1
+asterisk-zvi-ai-regulation,forecaster,Zvi Mowshowitz,Asterisk: Why Is Everyone Suddenly Furious About AI Regulation?,2024,essay,https://asteriskmag.com/issues/06/why-is-everyone-suddenly-furious-about-ai-regulation,2
+asterisk-tadepalli-ideas,economist,Karthik Tadepalli,Asterisk: Ideas Aren't Getting Harder to Find,2025,essay,https://asteriskmag.com/issues/12/ideas-arent-getting-harder-to-find,2
+asterisk-kim-gdp,economist,Oliver Kim,Asterisk: GDP — We Really Don't Know How Good We Have It,2025,essay,https://asteriskmag.com/issues/11/gdp-we-really-don-t-know-how-good-we-have-it,3
+asterisk-wang-factory-logic,economist,Afra Wang,Asterisk: Factory Logic,2026,essay,https://asteriskmag.com/issues/13/factory-logic,3
+siliconcontinent-garicano-task-not-job,economist,Luis Garicano,Silicon Continent: The Task Is Not the Job,2026,essay,https://www.siliconcontinent.com/p/why-desk-jobs-survive-and-amodei,1
+siliconcontinent-garicano-value-capture,economist,Luis Garicano,Silicon Continent: Three Theses on AI Value Capture,2026,essay,https://www.siliconcontinent.com/p/three-theses-on-ai-value-capture,1
+siliconcontinent-garicano-europe-ai,economist,Pieter Garicano & Simon Grimm,Silicon Continent: Nineteen Thoughts on AI and Europe,2026,essay,https://www.siliconcontinent.com/p/nineteen-thoughts-on-ai-and-europe,2
+acquired-google-ai-company,podcast,Ben Gilbert & David Rosenthal,Acquired: Google — The AI Company,2025,podcast,https://www.acquired.fm/episodes/google-the-ai-company,2
+iltb-gurley-staying-private,podcast,Bill Gurley,Invest Like the Best: The Gift and the Curse of Staying Private,2025,podcast,https://www.joincolossus.com/,2
+iltb-liemandt-alpha-school,podcast,Joe Liemandt,Invest Like the Best: Building Alpha School and the Future of Education,2025,podcast,https://www.joincolossus.com/,3
+allin-277-labor-capital,podcast,All-In Podcast hosts,"All-In: Labor, Capital, and the Tension Between Innovation and Obsolescence",2026,podcast,https://youtube.com/watch?v=3Amlu4y94Ho,1
+allin-278-economic-equalizer,podcast,All-In Podcast hosts,All-In: Is AI an Economic Equalizer?,2026,podcast,https://youtube.com/watch?v=w8ah_tA0yfg,2
+allin-279-jobs-automation,podcast,All-In Podcast hosts,All-In: AI's Impact on Jobs and Automation,2026,podcast,https://youtube.com/watch?v=wgdxSCsmS-Q,1
+allin-280-economic-disparity,podcast,All-In Podcast hosts,All-In: Tech's Role in Addressing Economic Disparity,2026,podcast,https://youtube.com/watch?v=PHL1j2ti420,2
+bg2pod-capex-economics,podcast,Brad Gerstner & Bill Gurley,Bg2 Pod: The Economics of AI Capex,2025,podcast,https://www.bg2pod.com/,2
+ft-wolf-ai-productivity,economist,Martin Wolf,"FT: Martin Wolf on AI, Productivity, and Growth",2024,essay,https://www.ft.com/martin-wolf,2
+economist-technology-quarterly-ai,economist,The Economist,The Economist: Technology Quarterly on the AI Economy,2024,essay,https://www.economist.com/technology-quarterly,3
+wired-levy-plaintext-agi,forecaster,Steven Levy,Wired: Steven Levy's Plaintext on the Road to AGI,2024,blog,https://www.wired.com/newsletter/plaintext/,3
+newyorker-rothman-hinton,forecaster,Joshua Rothman,The New Yorker: Why the Godfather of AI Fears What He's Built,2023,essay,https://www.newyorker.com/contributors/joshua-rothman,2
+nytmag-ai-economy-feature,economist,The New York Times Magazine,NYT Magazine: What AI Means for the Future of Work,2024,essay,https://www.nytimes.com/section/magazine,3
+vox-piper-future-perfect,economist,Kelsey Piper,"Vox Future Perfect: Kelsey Piper on AI, Jobs, and Who Benefits",2024,essay,https://www.vox.com/future-perfect,2
+worksinprogress-ai-growth,economist,Works in Progress,Works in Progress: AI and the Future of Economic Growth,2024,essay,https://worksinprogress.co/,3
+platformer-newton-ai-jobs,economist,Casey Newton,Platformer: Casey Newton on AI and the Entry-Level Job Market,2024,blog,https://www.platformer.news/archive,3
+astralcodexten-chip-regulation,forecaster,Scott Alexander,Astral Codex Ten: AI Chip Regulation Is Not a Dystopian Surveillance State,2026,essay,https://www.astralcodexten.com/p/ai-chip-regulation-is-not-a-dystopian,2
+doac-gawdat-ai-jobs,forecaster,Mo Gawdat,"Diary of a CEO: Mo Gawdat on AI, Jobs, and Economic Collapse",2024,podcast,https://podcasts.apple.com/gb/podcast/the-diary-of-a-ceo-with-steven-bartlett/id1291423644,2
+atlantic-thompson-ai-jobs,economist,Derek Thompson,The Atlantic: Derek Thompson on the White-Collar AI Jobs Crisis,2024,essay,https://www.theatlantic.com/technology/,3

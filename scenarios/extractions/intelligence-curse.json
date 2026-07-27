@@ -1,0 +1,135 @@
+{
+  "source_id": "intelligence-curse",
+  "author": "Luke Drago & Rudolf Laine",
+  "title": "The Intelligence Curse",
+  "year": 2025,
+  "type": "essay",
+  "url": "https://intelligence-curse.ai/",
+  "central_scenario_summary": "AGI is labor-replacing: AI and robotics will substitute for humans across the economy, military, and bureaucracy, making 'intelligence on tap' resemble a natural resource like oil rather than a tool like the plow or computer. As with the resource curse afflicting rentier states, powerful actors (states, corporations, AI labs) will then lose their incentive to invest in regular people—education, salaries, safety nets—because people no longer generate their revenue; AI labs become a new rentier layer extracting rents from all economic activity. By default, regular people lose income and bargaining power, the economy increasingly sidelines human consumption, and prosperity is not shared—unless democratic institutions and deliberate measures break the curse.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Rather than just providing the government an alternative income stream that still requires humans to manage, AI and robotics will replace the need for humans across the economy, military, and government bureaucracy entirely.",
+          "location": "'Explaining the intelligence curse' section"
+        },
+        {
+          "text": "when powerful actors create and implement general intelligence, they will lose their incentives to invest in people.",
+          "location": "Chapter summary / thesis statement"
+        }
+      ],
+      "notes": "Central scenario is full labor-replacing AGI ('a country of geniuses in a data center'); framed as near-term ('believe in straight lines on graphs') though this chapter gives no explicit date. Not primarily a recursive-self-improvement story."
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "If AI can do your job cheaper and faster, there isn't a reason to hire you.",
+          "location": "'Explaining the intelligence curse' section, first paragraph"
+        },
+        {
+          "text": "Tech workers have a skill set companies desperately need to make more money. [Footnote: At least, this was true until the recent improvements in AI's programming capabilities.]",
+          "location": "'Why powerful actors care about you' section"
+        }
+      ],
+      "notes": "Expertise rents collapse, but via wholesale replacement of expert labor by AI rather than democratization of human entry into expert work; the bargaining power of skilled workers (Silicon Valley perks) is explicitly described as ending."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "We could produce unparalleled value with a fully automated economy, but if the spoils are distributed like the worst rentier states it will not result in prosperity for the masses.",
+          "location": "'Explaining the intelligence curse' section"
+        }
+      ],
+      "notes": "Economy-wide, transformative gains in output are assumed; the dispute is entirely over distribution."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Powerful actors that adopt labor-replacing AI systems will face rentier state-like incentives with far higher stakes.",
+          "location": "Chapter summary"
+        },
+        {
+          "text": "They won't be able to participate in the economy because they won't be able to do anything better, faster, cheaper, or more reliably than their artificial replacers.",
+          "location": "'Explaining the intelligence curse', regular-people bullets"
+        }
+      ],
+      "notes": "Strongest substitution position in the corpus: complete displacement including manual labor as robotics improves."
+    },
+    "demand_absorption": {
+      "score": 0,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "As humans stop being producers, they stop earning the economic power that lets them direct the economy with their consumption choices. The economy will increasingly sideline them.",
+          "location": "'Can the economy sideline human consumption?' section"
+        },
+        {
+          "text": "most people-facing companies will fizzle out as their demand base loses economic power.",
+          "location": "'Explaining the intelligence curse', regular-people bullets"
+        }
+      ],
+      "notes": "Mechanism is income collapse rather than satiation of wants: demand for human-serving output disappears because displaced humans have no purchasing power; production runs in loops avoiding human consumers. Maps to the immiserizing/no-absorption end of the scale."
+    },
+    "mobility_adjustment": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "it's not that there won't be a demand for teachers, it's that there won't be an incentive to fund schools.",
+          "location": "'Explaining the intelligence curse', rebuttal paragraph"
+        },
+        {
+          "text": "At worst, they won't be able to earn even subsistence wages, and no one will step in to save them.",
+          "location": "'Explaining the intelligence curse', regular-people bullets"
+        }
+      ],
+      "notes": "There is nowhere for workers to reallocate to: no occupation escapes replacement, and investment in retraining/education loses its return. Adjustment fails by construction rather than by friction."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Control will likely be concentrated in the hands of a few players: the labs that produce AI, the states where they reside, and the companies that manufacture the raw materials, the chips, and the robots",
+          "location": "Chapter summary, opening bullets"
+        },
+        {
+          "text": "they'll become a horizontal layer of the economy, extracting rents from all economic activity by selling it to companies and states who use it to replace their workers.",
+          "location": "'Explaining the intelligence curse', AI labs paragraph"
+        }
+      ],
+      "notes": "The defining claim of the piece: AI labs and allied capital become the new rentiers; breaking the curse requires strong democratic institutions and diffusion of AI to people."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No explicit timeline in the retrieved chapter; the series elsewhere treats labor-replacing AI as plausibly arriving within years, but no number is stated in the text obtained."
+    },
+    "inequality_prediction": {
+      "score": "By default, post-AGI incentives produce extreme concentration: powerful actors stop investing in regular people, who lose employment, income, and bargaining power entirely; at best they subsist on charity, at worst they cannot earn subsistence and public funding is gutted. A fully automated economy could produce unparalleled value, but distributed like the worst rentier states it brings mass impoverishment—democracy plus deliberate curse-breaking measures are needed to avoid this.",
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "We could produce unparalleled value with a fully automated economy, but if the spoils are distributed like the worst rentier states it will not result in prosperity for the masses.",
+          "location": "'Explaining the intelligence curse' section"
+        },
+        {
+          "text": "Regular people will not be able to support themselves. The vast majority of people will not have the economic power necessary to make any demands.",
+          "location": "'Explaining the intelligence curse', regular-people bullets"
+        }
+      ],
+      "notes": ""
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

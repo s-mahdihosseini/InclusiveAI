@@ -1,0 +1,320 @@
+SOURCE_ID: narayanan-kapoor-normal
+AUTHOR: Arvind Narayanan & Sayash Kapoor
+TITLE: AI as Normal Technology
+YEAR: 2025
+TYPE: essay
+URL: https://knightcolumbia.org/content/ai-as-normal-technology
+NOTE: PARTIAL. Full essay fetched (115,917 chars) but fetcher truncated the final ~5% (end of Part IV: rest of "Nonproliferation" section, diffusion-policy section, conclusion). Footnote citation bodies stripped; all main body prose through the truncation point preserved.
+====
+
+AI as Normal Technology
+An alternative to the vision of AI as a potential superintelligence
+By Arvind Narayanan & Sayash Kapoor, April 15, 2025 (Knight First Amendment Institute)
+
+We articulate a vision of artificial intelligence (AI) as normal technology. To view AI as normal is not to understate its impact—even transformative, general-purpose technologies such as electricity and the internet are "normal" in our conception. But it is in contrast to both utopian and dystopian visions of the future of AI which have a common tendency to treat it akin to a separate species, a highly autonomous, potentially superintelligent entity.
+
+The statement "AI is normal technology" is three things: a description of current AI, a prediction about the foreseeable future of AI, and a prescription about how we should treat it. We view AI as a tool that we can and should remain in control of, and we argue that this goal does not require drastic policy interventions or technical breakthroughs. We do not think that viewing AI as a humanlike intelligence is currently accurate or useful for understanding its societal impacts, nor is it likely to be in our vision of the future.
+
+The normal technology frame is about the relationship between technology and society. It rejects technological determinism, especially the notion of AI itself as an agent in determining its future. It is guided by lessons from past technological revolutions, such as the slow and uncertain nature of technology adoption and diffusion. It also emphasizes continuity between the past and the future trajectory of AI in terms of societal impact and the role of institutions in shaping this trajectory.
+
+In Part I, we explain why we think that transformative economic and societal impacts will be slow (on the timescale of decades), making a critical distinction between AI methods, AI applications, and AI adoption, arguing that the three happen at different timescales.
+
+In Part II, we discuss a potential division of labor between humans and AI in a world with advanced AI (but not "superintelligent" AI, which we view as incoherent as usually conceptualized). In this world, control is primarily in the hands of people and organizations; indeed, a greater and greater proportion of what people do in their jobs is AI control.
+
+In Part III, we examine the implications of AI as normal technology for AI risks. We analyze accidents, arms races, misuse, and misalignment, and argue that viewing AI as normal technology leads to fundamentally different conclusions about mitigations compared to viewing AI as being humanlike.
+
+Of course, we cannot be certain of our predictions, but we aim to describe what we view as the median outcome. We have not tried to quantify probabilities, but we have tried to make predictions that can tell us whether or not AI is behaving like normal technology.
+
+In Part IV, we discuss the implications for AI policy. We advocate for reducing uncertainty as a first-rate policy goal and resilience as the overarching approach to catastrophic risks. We argue that drastic interventions premised on the difficulty of controlling superintelligent AI will, in fact, make things much worse if AI turns out to be normal technology—the downsides of which will be likely to mirror those of previous technologies that are deployed in capitalistic societies, such as inequality.
+
+The world we describe in Part II is one in which AI is far more advanced than it is today. We are not claiming that AI progress—or human progress—will stop at that point. What comes after it? We do not know. Consider this analogy: At the dawn of the first Industrial Revolution, it would have been useful to try to think about what an industrial world would look like and how to prepare for it, but it would have been futile to try to predict electricity or computers. Our exercise here is similar. Since we reject "fast takeoff" scenarios, we do not see it as necessary or useful to envision a world further ahead than we have attempted to. If and when the scenario we describe in Part II materializes, we will be able to better anticipate and prepare for whatever comes next.
+
+A note to readers. This essay has the unusual goal of stating a worldview rather than defending a proposition. The literature on AI superintelligence is copious. We have not tried to give a point-by-point response to potential counter arguments, as that would make the paper several times longer. This paper is merely the initial articulation of our views; we plan to elaborate on them in various follow ups.
+
+PART I: THE SPEED OF PROGRESS
+
+[Figure 1. Like other general-purpose technologies, the impact of AI is materialized not when methods and capabilities improve, but when those improvements are translated into applications and are diffused through productive sectors of the economy. There are speed limits at each stage.]
+
+Will the progress of AI be gradual, allowing people and institutions to adapt as AI capabilities and adoption increase, or will there be jumps leading to massive disruption, or even a technological singularity? Our approach to this question is to analyze highly consequential tasks separately from less consequential tasks and to begin by analyzing the speed of adoption and diffusion of AI before returning to the speed of innovation and invention.
+
+We use invention to refer to the development of new AI methods—such as large language models—that improve AI's capabilities to carry out various tasks. Innovation refers to the development of products and applications using AI that consumers and businesses can use. Adoption refers to the decision by an individual (or team or firm) to use a technology, whereas diffusion refers to the broader social process through which the level of adoption increases. For sufficiently disruptive technologies, diffusion might require changes to the structure of firms and organizations, as well as to social norms and laws.
+
+AI diffusion in safety-critical areas is slow
+
+In the paper Against Predictive Optimization, we compiled a comprehensive list of about 50 applications of predictive optimization, namely the use of machine learning (ML) to make decisions about individuals by predicting their future behavior or outcomes. Most of these applications, such as criminal risk prediction, insurance risk prediction, or child maltreatment prediction, are used to make decisions that have important consequences for people.
+
+While these applications have proliferated, there is a crucial nuance: In most cases, decades-old statistical techniques are used—simple, interpretable models (mostly regression) and relatively small sets of handcrafted features. More complex machine learning methods, such as random forests, are rarely used, and modern methods, such as transformers, are nowhere to be found.
+
+In other words, in this broad set of domains, AI diffusion lags decades behind innovation. A major reason is safety—when models are more complex and less intelligible, it is hard to anticipate all possible deployment conditions in the testing and validation process. A good example is Epic's sepsis prediction tool which, despite having seemingly high accuracy when internally validated, performed far worse in hospitals, missing two thirds of sepsis cases and overwhelming physicians with false alerts.
+
+Epic's sepsis prediction tool failed because of errors that are hard to catch when you have complex models with unconstrained feature sets. In particular, one of the features used to train the model was whether a physician had already prescribed antibiotics—to treat sepsis. In other words, during testing and validation, the model was using a feature from the future, relying on a variable that was causally dependent on the outcome. Of course, this feature would not be available during deployment. Interpretability and auditing methods will no doubt improve so that we will get much better at catching these issues, but we are not there yet.
+
+In the case of generative AI, even failures that seem extremely obvious in hindsight were not caught during testing. One example is the early Bing chatbot "Sydney" that went off the rails during extended conversations; the developers evidently did not anticipate that conversations could last for more than a handful of turns. Similarly, the Gemini image generator was seemingly never tested on historical figures. Fortunately, these were not highly consequential applications.
+
+More empirical work would be helpful for understanding the innovation-diffusion lag in various applications and the reasons for this lag. But, for now, the evidence that we have analyzed in our previous work is consistent with the view that there are already extremely strong safety-related speed limits in highly consequential tasks. These limits are often enforced through regulation, such as the FDA's supervision of medical devices, as well as newer legislation such as the EU AI Act, which puts strict requirements on high-risk AI. In fact, there are (credible) concerns that existing regulation of high-risk AI is so onerous that it may lead to "runaway bureaucracy". Thus, we predict that slow diffusion will continue to be the norm in high-consequence tasks.
+
+At any rate, as and when new areas arise in which AI can be used in highly consequential ways, we can and must regulate them. A good example is the Flash Crash of 2010, in which automated high-frequency trading is thought to have played a part. This led to new curbs on trading, such as circuit breakers.
+
+Diffusion is limited by the speed of human, organizational, and institutional change
+
+Even outside of safety-critical areas, AI adoption is slower than popular accounts would suggest. For example, a study made headlines due to the finding that, in August 2024, 40% of U.S. adults used generative AI. But, because most people used it infrequently, this only translated to 0.5%-3.5% of work hours (and a 0.125-0.875 percentage point increase in labor productivity).
+
+It is not even clear if the speed of diffusion is greater today compared to the past. The aforementioned study reported that generative AI adoption in the U.S. has been faster than personal computer (PC) adoption, with 40% of U.S. adults adopting generative AI within two years of the first mass-market product release compared to 20% within three years for PCs. But this comparison does not account for differences in the intensity of adoption (the number of hours of use) or the high cost of buying a PC compared to accessing generative AI. Depending on how we measure adoption, it is quite possible that the adoption of generative AI has been much slower than PC adoption.
+
+The claim that the speed of technology adoption is not necessarily increasing may seem surprising (or even obviously wrong) given that digital technology can reach billions of devices at once. But it is important to remember that adoption is about software use, not availability. Even if a new AI-based product is instantly released online for anyone to use for free, it takes time for people to change their workflows and habits to take advantage of the benefits of the new product and to learn to avoid the risks.
+
+Thus, the speed of diffusion is inherently limited by the speed at which not only individuals, but also organizations and institutions, can adapt to technology. This is a trend that we have also seen for past general-purpose technologies: Diffusion occurs over decades, not years.
+
+As an example, Paul A. David's analysis of electrification shows that the productivity benefits took decades to fully materialize. Electric dynamos were "everywhere but in the productivity statistics" for nearly 40 years after Edison's first central generating station. This was not just technological inertia; factory owners found that electrification did not bring substantial efficiency gains.
+
+What eventually allowed gains to be realized was redesigning the entire layout of factories around the logic of production lines. In addition to changes to factory architecture, diffusion also required changes to workplace organization and process control, which could only be developed through experimentation across industries. Workers had more autonomy and flexibility as a result of the changes, which also necessitated different hiring and training practices.
+
+The external world puts a speed limit on AI innovation
+
+It is true that technical advances in AI have been rapid, but the picture is much less clear when we differentiate AI methods from applications.
+
+We conceptualize progress in AI methods as a ladder of generality. Each step on this ladder rests on the ones below it and reflects a move toward more general computing capabilities. That is, it reduces the programmer effort needed to get the computer to perform a new task and increases the set of tasks that can be performed with a given amount of programmer (or user) effort. For example, machine learning increases generality by obviating the need for the programmer to devise logic to solve each new task, only requiring the collection of training examples instead.
+
+It is tempting to conclude that the effort required to develop specific applications will keep decreasing as we build more rungs of the ladder until we reach artificial general intelligence, often conceptualized as an AI system that can do everything out of the box, obviating the need to develop applications altogether.
+
+In some domains, we are indeed seeing this trend of decreasing application development effort. In natural language processing, large language models have made it relatively trivial to develop a language translation application. Or consider games: AlphaZero can learn to play games such as chess better than any human through self-play given little more than a description of the game and enough computing power—a far cry from how game-playing programs used to be developed.
+
+[Figure 2: The Ladder of Generality in Computing.]
+
+However, this has not been the trend in highly consequential, real-world applications that cannot easily be simulated and in which errors are costly. Consider self-driving cars: In many ways, the trajectory of their development is similar to AlphaZero's self-play—improving the tech allowed them to drive in more realistic conditions, which enabled the collection of better and/or more realistic data, which in turn led to improvements in the tech, completing the feedback loop. But this process took over two decades instead of a few hours in the case of AlphaZero because safety considerations put a limit on the extent to which each iteration of this loop could be scaled up compared to the previous one.
+
+This "capability-reliability gap" shows up over and over. It has been a major barrier to building useful AI "agents" that can automate real-world tasks. To be clear, many tasks for which the use of agents is envisioned, such as booking travel or providing customer service, are far less consequential than driving, but still costly enough that having agents learn from real-world experiences is not straightforward.
+
+Barriers also exist in non-safety-critical applications. In general, much knowledge is tacit in organizations and is not written down, much less in a form that can be learned passively. This means that these developmental feedback loops will have to happen in each sector and, for more complex tasks, may even need to occur separately in different organizations, limiting opportunities for rapid, parallel learning. Other reasons why parallel learning might be limited are privacy concerns: Organizations and individuals might be averse to sharing sensitive data with AI companies, and regulations might limit what kinds of data can be shared with third parties in contexts such as healthcare.
+
+The "bitter lesson" in AI is that general methods that leverage increases in computational power eventually surpass methods that utilize human domain knowledge by a large margin. This is a valuable observation about methods, but it is often misinterpreted to encompass application development. In the context of AI-based product development, the bitter lesson has never been even close to true. Consider recommender systems on social media: They are powered by (increasingly general) machine learning models, but this has not obviated the need for manual coding of the business logic, the frontend, and other components which, together, can comprise on the order of a million lines of code.
+
+Further limits arise when we need to go beyond AI learning from existing human knowledge. Some of our most valuable types of knowledge are scientific and social-scientific, and have allowed the progress of civilization through technology and large-scale social organizations (e.g., governments). What will it take for AI to push the boundaries of such knowledge? It will likely require interactions with, or even experiments on, people or organizations, ranging from drug testing to economic policy. Here, there are hard limits to the speed of knowledge acquisition because of the social costs of experimentation. Societies probably will not (and should not) allow the rapid scaling of experiments for AI development.
+
+Benchmarks do not measure real-world utility
+
+The methods-application distinction has important implications for how we measure and forecast AI progress. AI benchmarks are useful for measuring progress in methods; unfortunately, they have often been misunderstood as measuring progress in applications, and this confusion has been a driver of much hype about imminent economic transformation.
+
+For example, while GPT-4 reportedly achieved scores in the top 10% of bar exam test takers, this tells us remarkably little about AI's ability to practice law. The bar exam overemphasizes subject-matter knowledge and under-emphasizes real-world skills that are far harder to measure in a standardized, computer-administered format. In other words, it emphasizes precisely what language models are good at—retrieving and applying memorized information.
+
+More broadly, tasks that would lead to the most significant changes to the legal profession are also the hardest ones to evaluate. Evaluation is straightforward for tasks like categorizing legal requests by area of law because there are clear correct answers. But for tasks that involve creativity and judgment, like preparing legal filings, there is no single correct answer, and reasonable people can disagree about strategy. These latter tasks are precisely the ones that, if automated, would have the most profound impact on the profession.
+
+This observation is in no way limited to law. Another example is the gap between self-contained coding problems at which AI demonstrably excels, and real-world software engineering in which its impact is hard to measure but appears to be modest. Even highly regarded coding benchmarks that go beyond toy problems must necessarily ignore many dimensions of real-world software engineering in the interest of quantification and automated evaluation using publicly available data.
+
+This pattern appears repeatedly: The easier a task is to measure via benchmarks, the less likely it is to represent the kind of complex, contextual work that defines professional practice. By focusing heavily on capability benchmarks to inform our understanding of AI progress, the AI community consistently overestimates the real-world impact of the technology.
+
+This is a problem of 'construct validity,' which refers to whether a test actually measures what it is intended to measure. The only sure way to measure real-world usefulness of a potential application is to actually build the application and to then test it with professionals in realistic scenarios (either substituting or augmenting their labor, depending on the intended use). Such 'uplift' studies generally do show that professionals in many occupations benefit from existing AI systems, but this benefit is typically modest and is more about augmentation than substitution, a radically different picture from what one might conclude based on static benchmarks like exams (a small number of occupations such as copywriters and translators have seen substantial job losses).
+
+In conclusion, while benchmarks are valuable for tracking progress in AI methods, we should look at other kinds of metrics to track AI impacts. When measuring adoption, we must take into account the intensity of AI use. The type of application is also important: Augmentation versus substitution and high-consequence versus low-consequence.
+
+The difficulty of ensuring construct validity afflicts not only benchmarking, but also forecasting. It is extremely important to avoid ambiguous outcomes to ensure effective forecasting. The way that the forecasting community accomplishes this is by defining milestones in terms of relatively narrow skills, such as exam performance. For instance, the Metaculus question on "human-machine intelligence parity" is defined in terms of performance on exam questions in math, physics, and computer science. Based on this definition, it is not surprising that forecasters predict a 95% chance of achieving "human-machine intelligence parity" by 2040.
+
+Unfortunately, this definition is so watered down that it does not mean much for understanding the impacts of AI. As we saw above with legal and other professional benchmarks, AI performance on exams has so little construct validity that it does not even allow us to predict whether AI will replace professional workers.
+
+Economic impacts are likely to be gradual
+
+One argument for why AI development may have sudden, drastic economic impacts is that an increase in generality may lead to a wide swath of tasks in the economy becoming automatable. This is related to one definition of artificial general intelligence (AGI)—a unified system that is capable of performing all economically valuable tasks.
+
+According to the normal technology view, such sudden economic impacts are implausible. In the previous sections, we discussed one reason: Sudden improvements in AI methods are certainly possible but do not directly translate to economic impacts, which require innovation (in the sense of application development) and diffusion.
+
+Innovation and diffusion happen in a feedback loop. In safety-critical applications, this feedback loop is always slow, but even beyond safety, there are many reasons why it is likely to be slow. With past general-purpose technologies such as electricity, computers, and the internet, the respective feedback loops unfolded over several decades, and we should expect the same to happen with AI as well.
+
+Another argument for gradual economic impacts: Once we automate something, its cost of production, and its value, tend to drop drastically over time compared to the cost of human labor. As automation increases, humans will adapt, and will focus on tasks that are not yet automated, perhaps tasks that do not exist today (in Part II we describe what those might look like).
+
+This means that the goalpost of AGI will continually move further away as increasing automation redefines which tasks are economically valuable. Even if every task that humans do today might be automated one day, this does not mean that human labor will be superfluous.
+
+All of this points away from the likelihood of the automation of a vast swath of the economy at a particular moment in time. It also implies that the impacts of powerful AI will be felt on different timescales in different sectors.
+
+Speed limits to progress in AI methods
+
+Our argument for the slowness of AI impact is based on the innovation-diffusion feedback loop, and is applicable even if progress in AI methods can be arbitrarily sped up. We see both benefits and risks as arising primarily from AI deployment rather than from development; thus, the speed of progress in AI methods is not directly relevant to the question of impacts. Nonetheless, it is worth discussing speed limits that also apply to methods development.
+
+The production of AI research has been increasing exponentially, with the rate of publication of AI/ML papers on arXiv exhibiting a doubling time under two years. But it is not clear how this increase in volume translates to progress. One measure of progress is the rate of turnover of central ideas. Unfortunately, throughout its history, the AI field has shown a high degree of herding around popular ideas, and inadequate (in retrospect) levels of exploration of unfashionable ones. A notable example is the sidelining of research on neural networks for many decades.
+
+Is the current era different? Although ideas incrementally accrue at increasing rates, are they turning over established ones? The transformer architecture has been the dominant paradigm for most of the last decade, despite its well-known limitations. By analyzing over a billion citations in 241 subjects, Johan S.G. Chu & James A. Evans showed that, in fields in which the volume of papers is higher, it is harder, not easier, for new ideas to break through. This leads to an "ossification of canon." Perhaps this description applies to the current state of AI methods research.
+
+Many other speed limits are possible. Historically, deep neural network technology was partly held back due to the inadequacy of hardware, particularly Graphics Processing Units. Computational and cost limits continue to be relevant to new paradigms, including inference-time scaling. New slowdowns may emerge: Recent signs point to a shift away from the culture of open knowledge sharing in the industry.
+
+It remains to be seen if AI-conducted AI research can offer a reprieve. Perhaps recursive self-improvement in methods is possible, resulting in unbounded speedups in methods. But note that AI development already relies heavily on AI. It is more likely that we will continue to see a gradual increase in the role of automation in AI development than a singular, discontinuous moment when recursive self-improvement is achieved.
+
+Earlier, we argued that benchmarks give a misleading picture of the usefulness of AI applications. But they have arguably also led to overoptimism about the speed of methods progress. One reason is that it is hard to design benchmarks that make sense beyond the current horizon of progress. The Turing test was the north star of AI for many decades because of the assumption that any system that passed it would be humanlike in important ways, and that we would be able to use such a system to automate a variety of complex tasks. Now that large language models can arguably pass it while only weakly meeting the expectations behind the test, its significance has waned.
+
+An analogy with mountaineering is apt. Every time we solve a benchmark (reach what we thought was the peak), we discover limitations of the benchmark (realize that we're on a 'false summit') and construct a new benchmark (set our sights on what we now think is the summit). This leads to accusations of 'moving the goalposts', but this is what we should expect given the intrinsic challenges of benchmarking.
+
+AI pioneers considered the two big challenges of AI (what we now call AGI) to be (what we now call) hardware and software. Having built programmable machines, there was a palpable sense that AGI was close. The organizers of the 1956 Dartmouth conference hoped to make significant progress toward the goal through a "2-month, 10-man" effort. Today, we have climbed many more rungs on the ladder of generality. We often hear that all that is needed to build AGI is scaling, or generalist AI agents, or sample-efficient learning.
+
+But it is useful to bear in mind that what appears to be a single step might not be so. For example, there may not exist one single breakthrough algorithm that enables sample-efficient learning across all contexts. Indeed, in-context learning in large language models is already "sample efficient," but only works for a limited set of tasks.
+
+PART II: WHAT A WORLD WITH ADVANCED AI MIGHT LOOK LIKE
+
+We argue that reliance on the slippery concepts of 'intelligence' and 'superintelligence' has clouded our ability to reason clearly about a world with advanced AI. By unpacking intelligence into distinct underlying concepts, capability and power, we rebut the notion that human labor will be superfluous in a world with 'superintelligent' AI, and present an alternative vision.
+
+Human ability is not constrained by biology
+
+Can AI exceed human intelligence and, if so, by how much? According to a popular argument, unfathomably so. This is often depicted by comparing different species along a spectrum of intelligence.
+
+However, there are conceptual and logical flaws with this picture. On a conceptual level, intelligence—especially as a comparison between different species—is not well defined, let alone measurable on a one-dimensional scale.
+
+More importantly, intelligence is not the property at stake for analyzing AI's impacts. Rather, what is at stake is power—the ability to modify one's environment. To clearly analyze the impact of technology (and in particular, increasingly general computing technology), we must investigate how technology has affected humanity's power. When we look at things from this perspective, a completely different picture emerges.
+
+This shift in perspective clarifies that humans have always used technology to increase our ability to control our environment. There are few biological or physiological differences between ancestral and modern humans; instead, the relevant differences are improved knowledge and understanding, tools, technology and, indeed, AI. In a sense, modern humans, with the capability to alter the planet and its climate, are 'superintelligent' beings compared to pre-technological humans. Unfortunately, much of the foundational literature analyzing the risks of AI superintelligence suffers from a lack of precision in the use of the term 'intelligence.'
+
+Once we stop using the terms 'intelligence' and 'superintelligence,' things become much clearer. The worry is that if AI capabilities continue to increase indefinitely (whether or not they are humanlike or superhuman is irrelevant), they may lead to AI systems with more and more power, in turn leading to a loss of control. If we accept that capabilities are likely to increase indefinitely (we do), our options for preventing a loss of control are to intervene in one of the two causal steps.
+
+The superintelligence view is pessimistic about the first arrow—preventing arbitrarily capable AI systems from acquiring power that is significant enough to pose catastrophic risks—and instead focuses on alignment techniques that try to prevent arbitrarily powerful AI systems from acting against human interests. Our view is precisely the opposite, as we elaborate in the rest of this paper.
+
+Games provide misleading intuitions about the possibility of superintelligence
+
+De-emphasizing intelligence is not just a rhetorical move: We do not think there is a useful sense of the term 'intelligence' in which AI is more intelligent than people acting with the help of AI. Human intelligence is special due to our ability to use tools and to subsume other intelligences into our own, and cannot be coherently placed on a spectrum of intelligence.
+
+Human abilities definitely have some important limitations, notably speed. This is why machines dramatically outperform humans in domains like chess and, in a human+AI team, the human can hardly do better than simply deferring to AI. But speed limitations are irrelevant in most areas because high-speed sequential calculations or fast reaction times are not required.
+
+In the few real-world tasks for which superhuman speed is required, such as nuclear reactor control, we are good at building tightly scoped automated tools to do the high-speed parts, while humans retain control of the overall system.
+
+We offer a prediction based on this view of human abilities. We think there are relatively few real-world cognitive tasks in which human limitations are so telling that AI is able to blow past human performance (as AI does in chess). In many other areas, including some that are associated with prominent hopes and fears about AI performance, we think there is a high "irreducible error"—unavoidable error due to the inherent stochasticity of the phenomenon—and human performance is essentially near that limit.
+
+Concretely, we propose two such areas: forecasting and persuasion. We predict that AI will not be able to meaningfully outperform trained humans (particularly teams of humans and especially if augmented with simple automated tools) at forecasting geopolitical events (say elections). We make the same prediction for the task of persuading people to act against their own self-interest.
+
+[Discussion of persuasion evaluations and ecological validity omitted footnote citations; text continues.]
+
+The self-interest aspect of persuasion is a critical one, but is often underappreciated. As an illustrative example of a common pattern, consider the study "Evaluating Frontier Models for Dangerous Capabilities," which evaluated language models' abilities to persuade people. Some of their persuasion tests were costless to the subjects being persuaded; they were simply asked whether they believed a claim at the end of the interaction with AI. Other tests had small costs, such as forfeiting a £20 bonus to charity. So these tests do not necessarily tell us about AI's ability to persuade people to perform some dangerous tasks. But then it is not clear that such decontextualized capability evaluations have any safety implications, yet they are typically misinterpreted as if they do.
+
+Some care is necessary to make our predictions precise—it is not clear how much slack to allow for well-known but minor human limitations such as the lack of calibration (in the case of forecasting) or limited patience (in the case of persuasion).
+
+Control comes in many flavors
+
+If we presume superintelligence, the control problem evokes the metaphor of building a galaxy brain and then keeping it in a box, which is a terrifying prospect. But, if we are correct that AI systems will not be meaningfully more capable than humans acting with AI assistance, then the control problem is much more tractable, especially if superhuman persuasion turns out to be an unfounded concern.
+
+Discussions of AI control tend to over-focus on a few narrow approaches, including model alignment and keeping humans in the loop. We can roughly think of these as opposite extremes: delegating safety decisions entirely to AI during system operation, and having a human second-guessing every decision. There is a role for such approaches, but it is very limited. By human-in-the-loop control, we mean a system in which every AI decision or action requires review and approval by a human. In most scenarios, this approach greatly diminishes the benefits of automation, and therefore either devolves into the human acting as a rubber stamp or is outcompeted by a less safe solution.
+
+Fortunately, there are many other flavors of control that fall between these two extremes, such as auditing and monitoring. Auditing allows pre-deployment and/or periodic assessments of how well an AI system fulfills its stated goals, allowing us to anticipate catastrophic failures before they arise. Monitoring allows real-time oversight when system properties diverge from the expected behavior, allowing human intervention when truly needed.
+
+Other ideas come from system safety, an engineering discipline that is focused on preventing accidents in complex systems through systematic analysis and design. Examples include fail-safes, which ensure that systems default to a safe state when they malfunction, such as a predefined rule or a hard-coded action, and circuit breakers that automatically stop operations when predefined safety thresholds are exceeded. Other techniques include redundancy in critical components and the verification of safety properties of the system's actions.
+
+Other computing fields, including cybersecurity, formal verification, and human-computer interaction, are also rich sources of control techniques that have been successfully applied to traditional software systems and are equally applicable to AI. In cybersecurity, the principle of 'least privilege' ensures that actors only have access to the minimum resources needed for their tasks. Access controls prevent people working with sensitive data and systems from accessing confidential information and tools that are not required for their jobs. We can design similar protections for AI systems in consequential settings. Formal verification methods ensure that safety-critical codes work according to its specifications; it is now being used to verify the correctness of AI-generated code. From human-computer interaction, we can borrow ideas like designing systems so that state-changing actions are reversible, allowing humans to retain meaningful control even in highly automated systems.
+
+In addition to existing ideas from other fields being adapted for AI control, technical AI safety research has generated many new ideas. Examples include using language models as automated judges to evaluate the safety of proposed actions, developing systems that learn when to appropriately escalate decisions to human operators based on uncertainty or risk level, designing agentic systems so that their activity is visible and legible to humans, and creating hierarchical control structures in which simpler and more reliable AI systems oversee more capable but potentially unreliable ones.
+
+Technical AI safety research is sometimes judged against the fuzzy and unrealistic goal of guaranteeing that future "superintelligent" AI will be "aligned with human values." From this perspective, it tends to be viewed as an unsolved problem. But from the perspective of making it easier for developers, deployers, and operators of AI systems to decrease the likelihood of accidents, technical AI safety research has produced a great abundance of ideas. We predict that as advanced AI is developed and adopted, there will be increasing innovation to find new models for human control.
+
+As more physical and cognitive tasks become amenable to automation, we predict that an increasing percentage of human jobs and tasks will be related to AI control. If this seems radical, note that this kind of near-total redefinition of the concept of work has happened previously. Before the Industrial Revolution, most jobs involved manual labor. Over time, more and more manual tasks have been automated, a trend that continues. In this process, a great many different ways of operating, controlling, and monitoring physical machines were invented, and what humans do in factories today is a combination of "control" (monitoring automated assembly lines, programming robotic systems, managing quality control checkpoints, and coordinating responses to equipment malfunctions) and some tasks that require levels of cognitive ability or dexterity that machines are not yet capable.
+
+Karen Levy describes how this transformation is already unfolding in the case of AI and truck drivers: "Truck drivers' daily work consists of much more than driving trucks. Truckers monitor their freight, keeping food at the right temperature in refrigerated trucks and loads firmly secured to flatbeds. They conduct required safety inspections twice a day. They are responsible for safeguarding valuable goods. They maintain the truck and make repairs to it—some of which are routine, and some less so. When truckers arrive at a terminal or delivery point, they don't just drop things off and leave: some load and unload their freight; they talk to customers; they deal with paperwork; they may spend hours making 'yard moves'. Could some of these tasks be eliminated by intelligent systems? Surely some can and will—but these components of the job are much harder to automate, and will come much later, than highway driving."
+
+In addition to AI control, task specification is likely to become a bigger part of what human jobs entail. As anyone who has tried to outsource software or product development knows, unambiguously specifying what is desired turns out to be a surprisingly big part of the overall effort. Thus, human labor—specification and oversight—will operate at the boundary between AI systems performing different tasks. Eliminating some of these efficiency bottlenecks and having AI systems autonomously accomplish larger tasks "end-to-end" will be an ever-present temptation, but this will increase safety risks since it will decrease legibility and control. These risks will act as a natural check against ceding too much control.
+
+We further predict that this transformation will be primarily driven by market forces. Poorly controlled AI will be too error prone to make business sense. But regulation can and should bolster the ability and necessity of organizations to keep humans in control.
+
+PART III: RISKS
+
+We consider five types of risks: accidents, arms races (leading to accidents), misuse, misalignment, and non-catastrophic but systemic risks.
+
+We have already addressed accidents above. Our view is that, just like other technologies, deployers and developers should have the primary responsibility for mitigating accidents in AI systems. How effectively they will do so depends on their incentives, as well as on progress in mitigation methods. In many cases, market forces will provide an adequate incentive, but safety regulation should fill any gaps.
+
+There are a few reasons why this optimistic assessment might not hold. First, there might be arms races because the competitive benefits of AI are so great that they are an exception to the usual patterns. Second, a company or entity deploying AI might be so big and powerful that it is little consolation to know that it will eventually go out of business if it has a poor attitude to accident mitigation—it might take down civilization with it. While this is certainly possible, such concentration of power is a bigger problem than the possibility of AI accidents, and is precisely why our approach to policy emphasizes resilience and decentralization. Finally, perhaps even an AI control failure by a relatively inconspicuous deployer might lead to catastrophic risk—say because an AI agent 'escapes,' makes copies of itself, and so forth. We see this as a misalignment risk.
+
+Arms races are an old problem
+
+An AI arms race is a scenario in which two or more competitors—companies, policymakers in different countries, militaries—deploy increasingly powerful AI with inadequate oversight and control. The danger is that safer actors will be outcompeted by riskier ones. For the reasons described above, we are less concerned about arms races in the development of AI methods and are more concerned about the deployment of AI applications. (We explicitly exclude military AI from our analysis.)
+
+Let us consider companies first. A race to the bottom in terms of safety is historically extremely common across industries and has been studied extensively; it is also highly amenable to well-understood regulatory interventions. Examples include fire safety in the U.S. garment industry, both food safety and worker safety in the U.S. meatpacking industry, the U.S. steamboat industry, the mining industry, and the aviation industry.
+
+These races happened because companies were able to externalize the costs of poor safety, resulting in market failure. It is hard for consumers to assess product safety (and for workers to assess workplace safety), so market failures are common in the absence of regulation. But once regulation forces companies to internalize the costs of their safety practices, the race goes away.
+
+AI is no exception. Self-driving cars offer a good case study of the relationship between safety and competitive success. Waymo reportedly has a strong safety culture and is the leader in terms of safety outcomes. Cruise was more aggressive and had worse safety outcomes. Tesla has been aggressive and has often been accused of using its customers as beta testers. Uber's self-driving unit had a notoriously lax safety culture. Market success has been strongly correlated with safety. Cruise is set to shut down in 2025, while Uber was forced to sell off its self-driving unit. We think that these correlations are causal.
+
+Regulation has played a small but helpful role. Policymakers at both the federal and state/local levels adopted a regulatory strategy that is light-touch and polycentric. Similarly, in the aviation industry, the integration of AI has been held to the existing standards of safety instead of lowering the bar to incentivize AI adoption.
+
+In short, AI arms races might happen, but they are sector specific, and should be addressed through sector-specific regulations.
+
+As a case study of a domain in which things have played out differently, consider social media. The recommendation algorithms that generate content feeds are a kind of AI. They have been blamed for many societal ills, and social media companies have arguably underemphasized safety. There are also clear arms race dynamics, with TikTok putting pressure on competitors to make their feeds more recommendation heavy. Arguably, market forces were insufficient to align revenues with societal benefit; worse, regulators have been slow to act. One significant difference between social media and transportation is that attribution of harms is extremely hard in the case of social media. A second difference is that we have had over a century to develop standards and expectations around transportation safety.
+
+AI is broad enough that some of its future applications will be more like transportation, while others will be more like social media. This shows the importance of proactive evidence gathering and transparency in emerging AI-driven sectors and applications, and of "anticipatory AI ethics."
+
+One reason why safety regulation might be harder in the case of AI is if adoption is so rapid that regulators will not be able to intervene until it is too late. So far, we have not seen examples of rapid AI adoption in consequential tasks, even in the absence of regulation. The adoption rate of new AI applications will remain a key metric to track.
+
+Let us now consider competition between countries. Will there be competitive pressure on governments to take a hands-off approach to AI safety? Again, our message is that this is not a new problem. So far, we are seeing striking differences in approaches, such as the EU emphasizing a precautionary approach and the U.S. preferring to regulate only after there are known harms or market failures.
+
+Despite shrill U.S.-China arms race rhetoric, it is not clear that AI regulation has slowed down in either country. In the U.S., 700 AI-related bills were introduced in state legislatures in 2024 alone. Most high-risk sectors are heavily regulated in ways that apply regardless of whether or not AI is used. In our view, regulators' emphasis on AI use over development is appropriate.
+
+Failing to adequately regulate safe adoption will lead to negative impacts through accidents primarily locally. Therefore, there is no straightforward reason to expect arms races between countries. An analogy with nuclear technology can make this clear: with regard to accidents from deployment of benign AI applications, the right analogy is nuclear power, not nuclear weapons—and while there was a nuclear weapons arms race, there was no equivalent for nuclear power.
+
+It is theoretically possible that policymakers in the context of a great-power conflict will prefer to incur safety costs locally in order to ensure that their AI industry is the global winner. Focusing on adoption as opposed to development, there is currently no indication that this is happening.
+
+The primary defenses against misuse must be located downstream of models
+
+Model alignment is often seen as the primary defense against the misuse of models. Unfortunately, aligning models to refuse attempts at misuse has proved to be extremely brittle. We argue that this limitation is inherent and is unlikely to be fixable; the primary defenses against misuse must thus reside elsewhere.
+
+The fundamental problem is that whether a capability is harmful depends on context—context that the model often lacks. Consider an attacker using AI to target an employee of a large company via a phishing email. None of the individual tasks in the attack chain are inherently malicious. What makes the system harmful is how these capabilities are composed—information that exists only in the attacker's orchestration code, not in the model itself.
+
+This pattern appears repeatedly: Attempting to make an AI model that cannot be misused is like trying to make a computer that cannot be used for bad things. Model-level safety controls will either be too restrictive (preventing beneficial uses) or will be ineffective against adversaries who can repurpose seemingly benign capabilities for harmful ends.
+
+We are not against model alignment. It has been effective for reducing harmful or biased outputs from language models. Alignment can also create friction against casual threat actors. Yet, given that model-level protections are not enough to prevent misuse, defenses must focus on the downstream attack surfaces where malicious actors actually deploy AI systems. Consider again the example of phishing: the most effective defenses are email scanning and filtering systems, browser-level protections, operating system security features, and security training for users. Similar patterns hold in other domains: Defending against AI-enabled cyberthreats requires strengthening existing vulnerability detection programs; concerns about bio risks of AI are best addressed at the procurement and screening stages for creating bioweapons.
+
+AI is useful for defense
+
+Rather than viewing AI capabilities solely as a source of risk, we should recognize their defensive potential. In cybersecurity, AI is already strengthening defensive capabilities through automated vulnerability detection, threat analysis, and attack surface monitoring. Giving defenders access to powerful AI tools often improves the offense-defense balance in their favor. The same pattern holds in other domains. In biosecurity, AI can enhance screening systems for detecting dangerous sequences. These defensive applications show why restricting AI development could backfire. Rather than measuring AI risk solely in terms of offensive capabilities, we should focus on metrics like the offense-defense balance in each domain.
+
+Catastrophic misalignment is a speculative risk
+
+Misaligned AI acts against the intent of its developer or user. Our interest here is the misalignment of advanced AI causing catastrophic or existential harm. In our view, the primary defense against misalignment, again, lies downstream.
+
+In the view of AI as normal technology, catastrophic misalignment is (by far) the most speculative of the risks that we discuss. By speculative risks, we mean those for which there is epistemic uncertainty about whether or not the true risk is zero.
+
+The fear that AI systems might catastrophically misinterpret commands (the "paperclip maximizer") relies on dubious assumptions about how technology is deployed in the real world. Long before a system would be granted access to consequential decisions, it would need to demonstrate reliable performance in less critical contexts. Any system that interprets commands over-literally or lacks common sense would fail these earlier tests. The path to adoption inherently requires demonstrating appropriate behavior in increasingly consequential situations. This is not a lucky accident, but is a fundamental feature of how organizations adopt technology.
+
+A more sophisticated version of this concern is based on the concept of deceptive alignment. According to the superintelligence view, deceptive alignment is a ticking time bomb. But, in the normal technology view, deception is a mere engineering problem, albeit an important one, to be addressed during development and throughout deployment. Crucially, AI is useful in this process, and advances in AI not only enable deception, but also improve the detection of deception. Misalignment concerns often presume that AI systems will operate autonomously, making high-stakes decisions without human oversight. But as we argued in Part II, human control will remain central to AI deployment.
+
+History suggests normal AI may introduce many kinds of systemic risks
+
+While the risks discussed above have the potential to be catastrophic or existential, there is a long list of AI risks that are below this level but which are nonetheless large-scale and systemic, transcending the immediate effects of any particular AI system. These include the systemic entrenchment of bias and discrimination, massive job losses in specific occupations, worsening labor conditions, increasing inequality, concentration of power, erosion of social trust, pollution of the information ecosystem, decline of the free press, democratic backsliding, mass surveillance, and enabling authoritarianism.
+
+If AI is normal technology, these risks become far more important than the catastrophic ones discussed above. That is because these risks arise from people and organizations using AI to advance their own interests, with AI merely serving as an amplifier of existing instabilities in our society.
+
+There is plenty of precedent for these kinds of socio-political disruption in the history of transformative technologies. Notably, the Industrial Revolution led to rapid mass urbanization that was characterized by harsh working conditions, exploitation, and inequality, catalyzing both industrial capitalism and the rise of socialism and Marxism in response.
+
+The shift in focus that we recommend roughly maps onto Kasirzadeh's distinction between decisive and accumulative x-risk. But there are important differences: Kasirzadeh's account of accumulative risk still relies on threat actors such as cyberattackers to a large extent, whereas our concern is simply about the current path of capitalism. And we think that such risks are unlikely to be existential, but are still extremely serious.
+
+PART IV: POLICY
+
+The divergence between the different futures of AI—normal technology versus potentially uncontrollable superintelligence—introduces a dilemma for policymakers because defenses against one set of risks might make the other worse. We provide a set of principles for navigating this uncertainty. More concretely, the strategy that policymakers should center is resilience. Policymakers should reject nonproliferation, which violates the principles we outline, and decreases resilience. Finally, the headwinds against diffusion mean that achieving the benefits of AI is not guaranteed and requires action from policymakers.
+
+The challenge of policy making under uncertainty
+
+Today's AI safety discourse is characterized by deep differences in worldviews. We think that these differences are unlikely to go away. So, consensus among 'experts' about AI risks is unlikely. How should policymakers proceed in the face of this uncertainty?
+
+A natural inclination in policymaking is compromise. This is unlikely to work. Some interventions, such as improving transparency, are unconditionally helpful for risk mitigation. Other interventions, such as nonproliferation, might help to contain a superintelligence but exacerbate the risks associated with normal technology by increasing market concentration. The reverse is also true: Interventions such as increasing resilience by fostering open-source AI will help to govern normal technology, but risk unleashing out-of-control superintelligence.
+
+The tension is inescapable. Defense against superintelligence requires humanity to unite against a common enemy, so to speak, concentrating power and exercising central control over AI technology. But we are more concerned about risks that arise from people using AI for their own ends, whether terrorism, or cyberwarfare, or undermining democracy, or simply—and most commonly—extractive capitalistic practices that magnify inequalities. Defending against this category of risk requires increasing resilience by preventing the concentration of power and resources (which often means making powerful AI more widely available).
+
+Another tempting approach to navigating uncertainty is to estimate the probabilities of various outcomes and to then apply cost-benefit analysis. In a recent essay, we explained why this approach is unviable. AI risk probabilities lack meaningful epistemic foundations. In practice, risk estimates are 'subjective'—forecasters' personal judgments. Lacking any grounding, these tend to vary wildly, often by orders of magnitude.
+
+In addition to the probabilities, the other components of the calculation—the consequences of various policy choices, including inaction—are also subject to massive uncertainties, not just in magnitude but also in direction. Furthermore, the utility we attach to certain outcomes might depend on our moral values.
+
+Another example is the asymmetry between policies that do and do not restrict freedoms. Certain kinds of restrictions violate a core principle of liberal democracy, namely that the state should not limit people's freedom based on controversial beliefs that reasonable people can reject. Unavoidable differences in values and beliefs mean that policymakers must adopt value pluralism, preferring policies that are acceptable to stakeholders with a wide range of values. They must also prioritize robustness, preferring policies that remain helpful, or at least not harmful, if the key assumptions underpinning them turn out to be incorrect.
+
+Reducing uncertainty as a policy goal
+
+While uncertainty cannot be eliminated, it can be reduced. We recommend five specific approaches: strategic funding of research on risks; monitoring of AI use, risks, and failures ("evidence-seeking policies"); guidance on the value of different kinds of evidence; and evidence gathering as a first-rate goal in evaluating any AI policy.
+
+The case for resilience
+
+Marchant and Stevens described four approaches to governing emerging technologies. Two are ex ante, risk analysis and precaution, and the other two are ex post, liability and resilience. Marchant and Stevens argued (and we agree) that ex ante approaches are poorly suited to AI because of the difficulty of ascertaining risks in advance of deployment.
+
+Resilience, in its most simple form, is the capacity of a system to deal with harm. In our view, resilience requires both minimizing the severity of harm when it does occur and minimizing the likelihood of harm when shocks do occur. Many resilience-based governance tools help to mitigate the pacing problem, wherein traditional governance approaches are unable to keep pace with the speed of technological development.
+
+Many resilience strategies have been proposed for AI. They can be grouped into four broad categories. The first three consist of "no regret" policies that will help regardless of the future of AI.
+
+Societal resilience, broadly: It is important to redouble efforts to protect the foundations of democracy, especially those weakened by AI, such as the free press and equitable labor markets.
+
+Prerequisites for effective technical defenses and policymaking: Examples include funding more research on AI risks, transparency requirements for developers of high-stakes AI systems, building trust and reducing fragmentation in the AI community, increasing technical expertise in government, increasing international cooperation on AI, and improving AI literacy.
+
+Interventions that would help regardless of the future of AI: These include developing early warning systems, developing defenses against identified AI risks, incentivizing defenders to adopt AI, legal protections for researchers, adverse event reporting requirements, and whistleblower protections.
+
+Resilience-promoting interventions that will help if AI is normal technology but which might make it harder to control a potential superintelligent AI, such as promoting competition, including through open model releases, ensuring AI is widely available for defense, and polycentricity.
+
+We hope that there can be consensus on the first three categories even among experts and stakeholders with widely different beliefs about AI risks. We recommend that, for now, policymakers should cautiously pursue interventions in the final category as well, but should also improve their readiness to change course if the trajectory of AI changes.
+
+Nonproliferation is infeasible to enforce and leads to single points of failure
+
+Nonproliferation policies seek to limit the number of actors who can obtain powerful AI capabilities. Examples include export controls on hardware or software aimed at limiting the ability of countries to build, acquire, or operate powerful AI, requiring licenses to build or distribute powerful AI, a[... TEXT TRUNCATED BY FETCHER HERE — remainder of nonproliferation section, the diffusion-policy discussion, and the essay's conclusion were not retrieved.]

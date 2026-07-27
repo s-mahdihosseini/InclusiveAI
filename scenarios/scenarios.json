@@ -1,0 +1,71 @@
+{
+  "version": "0.1-wave1",
+  "note": "Human-reviewable synthesis of 28 expert sources (see extractions/). Scenarios are clusters of views, not endorsements; parameter values come from rubric.json maps_to tables applied to cluster score profiles, then hand-adjusted. Attribution style: 'consistent with views expressed by', never 'X's parameters'.",
+  "scenarios": [
+    {
+      "id": "normal-technology",
+      "name": "Normal Technology",
+      "tagline": "AI diffuses like electricity or the internet: real but gradual, task exposure limited, modest aggregate gains.",
+      "narrative": "AI is a genuine general-purpose technology, but diffusion is slowed by integration costs, reliability limits, and organizational change — the binding constraint is adoption, not capability. Only a modest share of tasks is economically exposed this decade; productivity gains are measured in fractions of a percent per year. Distributional effects are real but second-order: some capital-tilted gains, little change in who can do expert work.",
+      "timeline": "Decades; ~1-2% GDP from AI over ten years.",
+      "inequality_outlook": "Mild increase; capital gains more than labor, no strong compression or polarization.",
+      "params": {
+        "expertise": { "sigma": 5.0, "scarcity": 0.3, "productivity": 0.5 },
+        "demand": { "ag": 3.0, "mobility": 1.0, "exposure": 0.5, "eps_spread": 1.0, "nonhom": 1.0, "sig_scale": 1.0, "hetero": 1 }
+      },
+      "sources": ["narayanan-kapoor-normal", "acemoglu-simple-macro", "acemoglu-dont-believe-hype", "aghion-jones-jones", "karpathy-dwarkesh", "acemoglu-johnson-power"]
+    },
+    {
+      "id": "expertise-democratized",
+      "name": "Expertise Democratized",
+      "tagline": "AI extends expert capability to workers with foundational skills; entry barriers fall, wages compress from the middle up.",
+      "narrative": "AI's distinctive economic property is that it embodies expertise: it lets mid-skill workers perform higher-stakes judgment work that was previously gated behind long training and credentials. Augmentation dominates substitution, retraining costs fall (raising mobility), and demand for newly cheaper expert services is elastic enough to absorb the extra supply. Expertise rents at the top erode while mid-skill wages rise — the middle class is rebuilt rather than hollowed.",
+      "timeline": "A decade-scale wave on the scale of the computer era.",
+      "inequality_outlook": "Compression: top expertise premia shrink, middle rises. The paper's scarcity channel dominates.",
+      "params": {
+        "expertise": { "sigma": 5.0, "scarcity": 1.3, "productivity": 1.0 },
+        "demand": { "ag": 6.0, "mobility": 1.5, "exposure": 1.0, "eps_spread": 0.7, "nonhom": 1.0, "sig_scale": 0.6, "hetero": 1 }
+      },
+      "sources": ["autor-middle-class", "mollick-latent-expertise", "brynjolfsson-turing-trap", "anthropic-economic-index"]
+    },
+    {
+      "id": "white-collar-displacement",
+      "name": "White-Collar Displacement",
+      "tagline": "Fast substitution in cognitive work, exposure concentrated in high-wage occupations, adjustment too slow to keep up.",
+      "narrative": "Frontier models become drop-in performers of a large share of white-collar tasks within a few years. Exposure is tilted toward cognitive, higher-wage occupations (clerical, analysis, entry-level professional work), and firms deploy AI to automate rather than augment. Labor-market institutions and retraining cannot keep pace, so displaced workers crowd into less-exposed work. Demand for exposed outputs is not elastic enough to offset the substitution.",
+      "timeline": "1-5 years for major entry-level white-collar impact; unemployment risk concentrated in new graduates.",
+      "inequality_outlook": "Polarization: losses in exposed middle/upper-middle occupations, gains to capital and the least-exposed; both tails of the wage distribution do relatively better than the exposed middle.",
+      "params": {
+        "expertise": { "sigma": 5.0, "scarcity": 0.8, "productivity": 1.2 },
+        "demand": { "ag": 8.0, "mobility": 0.4, "exposure": 1.5, "eps_spread": 1.2, "nonhom": 1.0, "sig_scale": 1.4, "hetero": 1 }
+      },
+      "sources": ["amodei-jobs-warning", "imf-genai-work", "eloundou-gpts-gpts", "acemoglu-johnson-power"]
+    },
+    {
+      "id": "transformative-shared",
+      "name": "Transformative AGI, Broadly Shared",
+      "tagline": "Superintelligence-scale productivity with gains widely distributed: huge income growth, cheap expertise for everyone.",
+      "narrative": "AI reaches and passes human-level capability across cognitive work within roughly a decade, compressing decades of scientific and economic progress into a few years. Intelligence becomes too cheap to meter, eroding all expertise rents, while enormous income growth and new consumption categories absorb the productivity. Policy and market structure keep access broad, so the gains diffuse: everyone's real income rises steeply even as wage differentials compress. The unresolved fight is over capital income, not wages.",
+      "timeline": "Within 'a few thousand days' to a decade; growth well above historical rates.",
+      "inequality_outlook": "Wage compression amid very large aggregate gains; wealth/capital concentration is the residual risk.",
+      "params": {
+        "expertise": { "sigma": 5.0, "scarcity": 1.5, "productivity": 1.8 },
+        "demand": { "ag": 16.0, "mobility": 1.2, "exposure": 1.8, "eps_spread": 0.5, "nonhom": 1.2, "sig_scale": 1.0, "hetero": 1 }
+      },
+      "sources": ["amodei-loving-grace", "altman-intelligence-age", "altman-gentle-singularity", "altman-three-observations", "sutskever-interviews", "epoch-explosive-growth", "grace-ai-survey"]
+    },
+    {
+      "id": "concentrated-agi",
+      "name": "Concentrated AGI / Intelligence Curse",
+      "tagline": "Labor-replacing AGI with rents captured by a few: wages collapse relative to capital, workers lose bargaining power.",
+      "narrative": "AGI arrives fast and substitutes broadly for human labor, including in AI research itself, triggering explosive growth. The surplus concentrates: a handful of labs, their investors, and states capture the rents, and — like a resource curse — powerful actors lose their economic incentive to invest in ordinary people. Wages first surge in bottleneck occupations, then collapse toward the return on capital as the automatable task set expands faster than new human tasks appear. Adjustment is far too slow; distribution becomes a purely political question.",
+      "timeline": "AGI ~5 years in the aggressive versions, ~5-20 years in the cautious ones; wage collapse follows automation of the last bottleneck tasks.",
+      "inequality_outlook": "Extreme: labor share falls toward zero; inequality between capital owners and workers dominates all within-labor margins. (Full treatment awaits the AI Market Power tab.)",
+      "params": {
+        "expertise": { "sigma": 5.0, "scarcity": 1.5, "productivity": 2.0 },
+        "demand": { "ag": 16.0, "mobility": 0.3, "exposure": 2.0, "eps_spread": 1.3, "nonhom": 1.3, "sig_scale": 1.5, "hetero": 1 }
+      },
+      "sources": ["intelligence-curse", "ai-2027", "aschenbrenner-situational", "forethought-intelligence-explosion", "korinek-agi-scenarios", "brookings-korinek-work", "trammell-korinek-growth"]
+    }
+  ]
+}

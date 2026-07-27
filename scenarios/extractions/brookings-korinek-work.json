@@ -1,0 +1,122 @@
+{
+  "source_id": "brookings-korinek-work",
+  "author": "Anton Korinek",
+  "title": "Scenario Planning for an A(G)I Future",
+  "year": 2023,
+  "type": "essay",
+  "url": "https://www.imf.org/en/Publications/fandd/issues/2023/12/Scenario-Planning-for-an-AGI-future-Anton-korinek",
+  "central_scenario_summary": "Uncertainty about AI progress is so deep that policymakers should plan across three scenarios—business as usual, AGI in 20 years (labeled 'baseline'), and AGI in 5 years—each with greater than 10% probability. In the AGI scenarios, Korinek-Suh modeling shows output growth accelerating sharply once labor scarcity no longer binds, while competitive wages first rise and then plummet as the economy approaches AGI, because abundant machines substitute for scarce labor. Since the same force drives the output takeoff and the wage collapse, institutions (tax reform, expanded safety nets, small scalable basic incomes) can compensate workers and turn AGI into shared prosperity; policymakers should monitor indicators and adapt as the realized scenario reveals itself.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Scenario II (baseline, AGI in 20 years): Over the next 20 years, AI gradually advances to the point of AGI, resulting in its ability to perform all human work tasks by the end of the period, devaluing labor",
+          "location": "'Preparing for multiple scenarios' section"
+        },
+        {
+          "text": "I estimate that each of these scenarios has a greater than 10 percent probability of materializing.",
+          "location": "'Preparing for multiple scenarios' section"
+        }
+      ],
+      "notes": "Portfolio view over three scenarios, but the one he labels 'baseline' is AGI (all human work tasks) in 20 years; the aggressive variant is AGI in 5. Scored on the baseline."
+    },
+    "expertise_erosion": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "wages initially rise in all three scenarios—but only as long as labor is scarce. They plummet as the economy is close to reaching AGI.",
+          "location": "'Three main insights' after Korinek-Suh model discussion"
+        },
+        {
+          "text": "resulting in its ability to perform all human work tasks by the end of the period, devaluing labor",
+          "location": "Scenario II definition"
+        }
+      ],
+      "notes": "In the AGI scenarios all human skill premia—including expert work—are competed away as machines master the full task-complexity distribution; erosion is via replacement, not lower entry barriers for humans."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "output growth in the two AGI scenarios is much faster, as the scarcity of labor is no longer a constraint on output.",
+          "location": "'Three main insights', first insight"
+        }
+      ],
+      "notes": "Economy-wide transformative gains in the AGI scenarios; business-as-usual scenario retains historical growth."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "the takeoff in output and the collapse in wages in the two AGI scenarios are both driven by the same force: the substitution of scarce labor by comparatively more abundant machines.",
+          "location": "'Three main insights', third insight"
+        }
+      ],
+      "notes": "Substitution is the explicit central mechanism in the baseline; Scenario I (business as usual) instead features reallocation to more productive jobs."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No position on demand-side absorption or saturation; wage collapse operates through factor supply, not demand elasticities. He notes society may choose to preserve 'nostalgic' jobs (priests, judges, lawmakers) that 'could sustain demand for human labor in perpetuity'—a caveat, not the central case."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Scenario I assumes workers 'move into new jobs that are, on average, more productive'; in AGI scenarios there is nowhere to reallocate. No position on frictions/retraining speed itself; organizational frictions and regulation are listed only as factors that might slow AGI rollout."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "They plummet as the economy is close to reaching AGI.",
+          "location": "'Three main insights', second insight (wages)"
+        },
+        {
+          "text": "it should be possible to design institutions that compensate workers for their income losses and ensure that the gains from AGI lead to shared prosperity.",
+          "location": "'Three main insights', third insight"
+        }
+      ],
+      "notes": "In the baseline, market income shifts overwhelmingly to capital/machine owners (wage collapse alongside output takeoff); shared prosperity requires deliberate institutional redesign, implying default concentration."
+    },
+    "timeline_years": {
+      "score": 20,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Scenario II (baseline, AGI in 20 years)",
+          "location": "'Preparing for multiple scenarios' section"
+        },
+        {
+          "text": "Scenario III (aggressive, AGI in five years): This scenario replicates Scenario II but on a more aggressive timeline",
+          "location": "'Preparing for multiple scenarios' section"
+        }
+      ],
+      "notes": "Baseline 20 years to AGI (from 2023); aggressive variant 5 years; each scenario assigned >10% probability."
+    },
+    "inequality_prediction": {
+      "score": "In the AGI scenarios, output takes off while competitive wages plummet once labor is no longer scarce, generating potentially extreme inequality between owners of machines/capital and workers across growth, wages, fiscal sustainability, and political stability. But because the same substitution force drives both the output boom and the wage collapse, well-designed institutions—reformed taxation, expanded safety nets, small basic incomes that can be scaled up—can compensate workers and deliver shared prosperity.",
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "wages initially rise in all three scenarios—but only as long as labor is scarce. They plummet as the economy is close to reaching AGI.",
+          "location": "'Three main insights'"
+        },
+        {
+          "text": "This may involve gradual steps, such as reforming systems of taxation and expanding social safety nets, or new programs, such as introducing small basic incomes that can be scaled up when necessary.",
+          "location": "Closing policy paragraphs"
+        }
+      ],
+      "notes": ""
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

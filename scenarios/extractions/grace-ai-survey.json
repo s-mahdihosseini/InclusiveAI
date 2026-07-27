@@ -1,0 +1,79 @@
+{
+  "source_id": "grace-ai-survey",
+  "author": "Katja Grace, Harlan Stewart, Julia Fabienne Sandkühler, Stephen Thomas, Ben Weinstein-Raun, Jan Brauner, Richard C. Korzekwa (AI Impacts)",
+  "title": "Thousands of AI Authors on the Future of AI",
+  "year": 2024,
+  "type": "paper",
+  "url": "https://arxiv.org/abs/2401.02843",
+  "central_scenario_summary": "A survey of 2,778 researchers who published in top AI venues (2023 wave). The aggregate forecast gives a 10% chance by 2027 and a 50% chance by 2047 that unaided machines outperform humans on every task (HLMI) — 13 years earlier than in the 2022 survey — while full automatability of all occupations (FAOL) gets a 50% chance only by 2116. The median respondent gives substantial but not majority credence to a fast intelligence explosion (20% within 2 years of HLMI, 80% within 30). Most think good outcomes are more likely than bad, but the median extinction-risk answer is 5%, and 71% say 'substantial' or 'extreme' concern is warranted about AI worsening economic inequality.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "the chance of unaided machines outperforming humans in every possible task was estimated at 10% by 2027, and 50% by 2047", "location": "Abstract"},
+        {"text": "the chance of all human occupations becoming fully automatable was forecast to reach 10% by 2037, and 50% as late as 2116", "location": "Abstract"}
+      ],
+      "notes": "The forecast endpoint is a full drop-in substitute for human cognitive work (HLMI), but at a ~2-decade median rather than one decade; respondents give real but minority credence to a fast post-HLMI intelligence explosion (median 20% within 2 years, 80% within 30), so some probability mass sits on score 4."
+    },
+    "expertise_erosion": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "The survey did not ask about entry barriers into high-skill occupations or skill premia. Notably, respondents guessed 'Computer and Mathematical' and science occupations would be among the LAST automatable."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "low",
+      "quotes": [
+        {"text": "Since 2016 a majority of respondents have thought that it's either \"quite likely,\" \"likely,\" or an \"about even chance\" that technological progress becomes more than an order of magnitude faster within 5 years of HLMI", "location": "Section 3.6, Figure 6 caption"},
+        {"text": "the median participant did not overall expect something like a rapid acceleration of progress from an 'intelligence explosion,' but did give substantial credence to it", "location": "Section 3.6"}
+      ],
+      "notes": "Conditional on HLMI, the median respondent eventually expects dramatically faster technological advancement (80% at 30 years post-HLMI); this is a community-aggregate, conditional view rather than an unconditional near-term forecast."
+    },
+    "substitution": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "HLMI/FAOL questions ask about feasibility ('Think feasibility, not adoption'), not about whether deployed AI will on net substitute for or complement workers; no adoption-side position taken."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Not asked."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Not asked."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {"text": "AI systems worsening economic inequality by disproportionately benefiting certain individuals (71%)", "location": "Section 4.1, list of scenarios by substantial/extreme concern"}
+      ],
+      "notes": "71% of respondents view disproportionate benefits to certain individuals as warranting substantial or extreme concern — a directional worry about concentrated gains, but the authors note concern conflates likelihood and severity, so this is weaker than a prediction."
+    },
+    "timeline_years": {
+      "score": 23,
+      "confidence": "medium",
+      "quotes": [
+        {"text": "The aggregate 2023 forecast predicted a 50% chance of HLMI by 2047, down thirteen years from 2060 in the 2022 survey.", "location": "Section 3.2.1"}
+      ],
+      "notes": "Median HLMI year 2047 minus 2024 publication ~= 23 years; note the huge framing gap (FAOL median 2116) and 10% chance of HLMI as early as 2027."
+    },
+    "inequality_prediction": {
+      "score": "The surveyed AI-researcher community treats worsening inequality as one of the top AI risks: 71% say 'substantial' or 'extreme' concern is warranted over the next thirty years about 'AI systems worsening economic inequality by disproportionately benefiting certain individuals.' The paper reports this as warranted concern, not a quantitative distributional forecast.",
+      "confidence": "high",
+      "quotes": [
+        {"text": "More than half suggested that \"substantial\" or \"extreme\" concern is warranted about six different AI-related scenarios, including misinformation, authoritarian control, and inequality.", "location": "Abstract"}
+      ],
+      "notes": "Inequality ranked fifth of eleven scenarios by share of substantial/extreme concern (71%), behind misinformation (86%) and opinion manipulation (79%)."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

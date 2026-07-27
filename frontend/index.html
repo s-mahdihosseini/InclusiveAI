@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InclusiveAI — How AI Shapes the Income Distribution</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1420;
+    --panel: #171e2e;
+    --panel2: #1d2638;
+    --border: #2a3550;
+    --text: #e8ecf4;
+    --muted: #93a0b8;
+    --accent: #4f8ef7;
+    --accent2: #f7b34f;
+    --green: #3ecf8e;
+    --red: #f45b69;
+    --radius: 12px;
+    font-size: 15px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+  header {
+    padding: 26px 36px 0;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #131a2a 0%, var(--bg) 100%);
+  }
+  .brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .brand h1 { font-size: 1.8rem; letter-spacing: -0.5px; }
+  .brand h1 span { color: var(--accent); }
+  .brand .tagline { color: var(--muted); font-size: 0.95rem; }
+  nav { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
+  nav button {
+    background: none; border: none; color: var(--muted);
+    padding: 10px 18px; font-size: 0.95rem; cursor: pointer;
+    border-bottom: 2px solid transparent; font-family: inherit;
+  }
+  nav button.active { color: var(--text); border-bottom-color: var(--accent); }
+  nav button .soon {
+    font-size: 0.65rem; background: var(--panel2); color: var(--accent2);
+    border: 1px solid var(--border); border-radius: 8px; padding: 1px 6px; margin-left: 6px;
+    vertical-align: middle;
+  }
+  main { padding: 28px 36px 60px; max-width: 1280px; margin: 0 auto; }
+  .layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+  @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+  }
+  .card h3 { font-size: 1.0rem; margin-bottom: 12px; }
+  .card h3 small { color: var(--muted); font-weight: normal; }
+
+  .param { margin-bottom: 20px; }
+  .param label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
+  .param label .val { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .param input[type=range] { width: 100%; accent-color: var(--accent); }
+  .param .help { color: var(--muted); font-size: 0.75rem; margin-top: 4px; line-height: 1.35; }
+
+  .toggle-row { display: flex; gap: 8px; margin-bottom: 14px; }
+  .toggle-row button {
+    flex: 1; background: var(--panel2); color: var(--muted); border: 1px solid var(--border);
+    padding: 7px 0; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.85rem;
+  }
+  .toggle-row button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .status { font-size: 0.78rem; color: var(--muted); margin-top: 8px; min-height: 1.2em; }
+  .status.solving { color: var(--accent2); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 1180px) { .grid2 { grid-template-columns: 1fr; } }
+  .chartbox { position: relative; height: 320px; }
+
+  .stats-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .stats-table th, .stats-table td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+  .stats-table th:first-child, .stats-table td:first-child { text-align: left; }
+  .stats-table th { color: var(--muted); font-weight: 600; }
+  .delta-pos { color: var(--red); }
+  .delta-neg { color: var(--green); }
+
+  .occ-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .occ-table td, .occ-table th { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  .occ-table th { color: var(--muted); text-align: left; }
+  .occ-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar { height: 8px; border-radius: 4px; display: inline-block; vertical-align: middle; }
+
+  .scenario-row { margin-bottom: 16px; }
+  .scenario-row select {
+    width: 100%; background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
+    font-family: inherit; font-size: 0.88rem;
+  }
+  .scenario-card {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; margin-top: 10px; font-size: 0.8rem; line-height: 1.5;
+    color: var(--muted); display: none;
+  }
+  .scenario-card.show { display: block; }
+  .scenario-card .tagline { color: var(--text); font-weight: 600; margin-bottom: 6px; }
+  .scenario-card .ineq { color: var(--accent2); margin: 6px 0; }
+  .scenario-card details { margin-top: 8px; }
+  .scenario-card summary { cursor: pointer; color: var(--accent); }
+  .scenario-card .src { margin: 8px 0 0 0; padding-left: 0; list-style: none; }
+  .scenario-card .src li { margin-bottom: 8px; }
+  .scenario-card .src b { color: var(--text); font-weight: 600; }
+  .scenario-card .src i { color: var(--muted); }
+
+  .soon-panel { text-align: center; padding: 90px 30px; color: var(--muted); }
+  .soon-panel h2 { color: var(--text); margin-bottom: 12px; }
+  .soon-panel p { max-width: 620px; margin: 0 auto; line-height: 1.6; }
+
+  .intro { color: var(--muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 22px; max-width: 950px; }
+  .intro b { color: var(--text); }
+  footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding: 20px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>Inclusive<span>AI</span></h1>
+    <div class="tagline">Interactive general-equilibrium models of how AI shapes the distribution of prosperity</div>
+  </div>
+  <nav id="tabs">
+    <button data-tab="expertise" class="active">Expertise &amp; Entry Barriers</button>
+    <button data-tab="demand">Demand Structure</button>
+    <button data-tab="market_power">AI Market Power <span class="soon">soon</span></button>
+    <button data-tab="about">About</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===================== EXPERTISE TAB ===================== -->
+<section id="tab-expertise">
+  <p class="intro">
+    Generative AI compresses the time it takes to acquire occupational expertise. This erodes the
+    <b>scarcity rents</b> of high-barrier occupations (more entrants &rarr; lower relative wages at the top)
+    while simultaneously raising <b>productivity</b> unevenly across occupations. This model
+    (Hosseini &amp; Lichtinger, 2026) solves for exact general-equilibrium wages across 889 occupations.
+    Move the sliders to change the strength of each channel and the substitutability of occupations.
+  </p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <h3>Expert scenario</h3>
+        <div class="scenario-row">
+          <select id="scen-select-expertise"><option value="">— Custom (move sliders) —</option></select>
+          <div class="scenario-card" id="scen-card-expertise"></div>
+        </div>
+        <h3>Parameters</h3>
+        <div id="params"></div>
+        <div class="toggle-row" title="Partial equilibrium: wages respond to the shock only. General equilibrium: labor reallocation feeds back into wages.">
+          <button id="btn-pe">PE</button>
+          <button id="btn-ge" class="active">GE (exact)</button>
+        </div>
+        <div class="status" id="status"></div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <h3>Inequality statistics <small>(log wages, employment-weighted)</small></h3>
+        <table class="stats-table" id="stats-table"></table>
+      </div>
+    </div>
+
+    <div>
+      <div class="grid2">
+        <div class="card">
+          <h3>&Delta; log wage vs. initial wage <small>(binned means)</small></h3>
+          <div class="chartbox"><canvas id="chart-bins"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Wage distribution <small>(employment-weighted density)</small></h3>
+          <div class="chartbox"><canvas id="chart-kde"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Channel decomposition <small>(GE effect on inequality)</small></h3>
+          <div class="chartbox"><canvas id="chart-decomp"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Largest wage changes <small>(top gainers &amp; losers)</small></h3>
+          <div style="max-height:320px; overflow-y:auto">
+            <table class="occ-table" id="occ-table"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DEMAND STRUCTURE TAB ===================== -->
+<section id="tab-demand" style="display:none">
+  <p class="intro">
+    A general-purpose technology (like computers, or AI) gets cheap. Which occupations gain?
+    An occupation wins the <b>direct race</b> when the demand elasticity for its output (&epsilon;)
+    exceeds its labor&ndash;GPT substitution elasticity (&sigma;) — cheaper technology expands its market faster
+    than it replaces its workers. On top of that, <b>Engel forces</b> shift spending toward
+    income-elastic services as the economy grows, <b>worker mobility</b> spreads gains and losses,
+    and <b>household heterogeneity</b> feeds the income distribution back into demand.
+    Four occupation-goods: manual services, production, clerical, professional.
+  </p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <h3>Expert scenario</h3>
+        <div class="scenario-row">
+          <select id="scen-select-demand"><option value="">— Custom (move sliders) —</option></select>
+          <div class="scenario-card" id="scen-card-demand"></div>
+        </div>
+        <h3>Parameters</h3>
+        <div id="d-params"></div>
+        <div class="status" id="d-status"></div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <h3>Who gains, who loses <small>(at final A<sub>g</sub>)</small></h3>
+        <table class="stats-table" id="d-table"></table>
+      </div>
+    </div>
+
+    <div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Real wages along the path <small>(&Delta; log, by occupation)</small></h3>
+          <div class="chartbox"><canvas id="d-chart-path"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Wages &amp; employment at final A<sub>g</sub> <small>(&Delta; log)</small></h3>
+          <div class="chartbox"><canvas id="d-chart-final"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Real income by education group <small>(&Delta; log)</small></h3>
+          <div class="chartbox"><canvas id="d-chart-groups"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Spending composition along the path <small>(budget shares)</small></h3>
+          <div class="chartbox"><canvas id="d-chart-shares"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tab-market_power" style="display:none">
+  <div class="soon-panel card">
+    <h2>Market Power of AI Providers</h2>
+    <p>A model of concentration and markups in the market for AI services: who captures the surplus
+       AI creates — users, firms, or the providers of frontier models — and what that means for the
+       income distribution. Coming soon.</p>
+  </div>
+</section>
+
+<section id="tab-about" style="display:none">
+  <div class="card" style="max-width:820px; margin:0 auto; line-height:1.65">
+    <h2 style="margin-bottom:14px">About InclusiveAI</h2>
+    <p style="color:var(--muted)">
+      InclusiveAI is the interactive companion to <i>AI and the Distribution of Prosperity</i> — a unified
+      framework for the main mechanisms through which AI is likely to affect the income distribution.
+      Each tab wraps a quantitative general-equilibrium model of one mechanism. Users can vary the key
+      parameters that determine the direction and magnitude of each mechanism and see the distributional
+      consequences under their own scenarios.
+    </p>
+    <p style="color:var(--muted); margin-top:12px">
+      Current models: <b style="color:var(--text)">Expertise &amp; Entry Barriers</b> (live) &middot;
+      Demand Structure (in development) &middot; AI Market Power (in development).
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>InclusiveAI &middot; research preview &middot; results are model-based counterfactuals, not forecasts</footer>
+
+<script>
+const API = "";   // same origin
+let META = null;
+let EQ = "ge";    // "pe" | "ge"
+let LAST = null;  // last payload
+let charts = {};
+let debounceTimer = null;
+
+const fmt = (x, d=3) => (x==null || !isFinite(x)) ? "–" : x.toFixed(d);
+const pct = (x, d=1) => (x==null || !isFinite(x)) ? "–" : (100*x).toFixed(d) + "%";
+
+// ---------------- Tabs ----------------
+document.getElementById("tabs").addEventListener("click", e => {
+  const btn = e.target.closest("button"); if (!btn) return;
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  ["expertise","demand","market_power","about"].forEach(t =>
+    document.getElementById("tab-"+t).style.display = (t===btn.dataset.tab) ? "" : "none");
+  if (btn.dataset.tab === "demand" && !D_INIT) initDemand();
+});
+
+// ---------------- Controls ----------------
+async function init() {
+  const r = await fetch(API + "/api/expertise/meta");
+  META = await r.json();
+  const model = META.models.find(m => m.id === "expertise");
+  const box = document.getElementById("params");
+  model.parameters.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "param";
+    div.innerHTML = `
+      <label><span>${p.name}</span><span class="val" id="val-${p.id}">${p.default}</span></label>
+      <input type="range" id="in-${p.id}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.default}">
+      <div class="help">${p.help}</div>`;
+    box.appendChild(div);
+    div.querySelector("input").addEventListener("input", ev => {
+      document.getElementById("val-"+p.id).textContent = (+ev.target.value).toFixed(2);
+      scheduleSolve();
+    });
+  });
+  document.getElementById("btn-pe").onclick = () => { EQ="pe"; setEqButtons(); render(); };
+  document.getElementById("btn-ge").onclick = () => { EQ="ge"; setEqButtons(); render(); };
+  solve();
+}
+
+function setEqButtons() {
+  document.getElementById("btn-pe").classList.toggle("active", EQ==="pe");
+  document.getElementById("btn-ge").classList.toggle("active", EQ==="ge");
+}
+
+function scheduleSolve() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(solve, 350);
+}
+
+async function solve() {
+  const g = id => +document.getElementById("in-"+id).value;
+  const q = `sigma=${g("sigma")}&scarcity=${g("scarcity")}&productivity=${g("productivity")}`;
+  const st = document.getElementById("status");
+  st.textContent = "Solving general equilibrium…"; st.className = "status solving";
+  try {
+    const r = await fetch(API + `/api/expertise/solve?${q}`);
+    if (!r.ok) throw new Error(await r.text());
+    LAST = await r.json();
+    st.textContent = `Solved: ${LAST.diagnostics.n_occupations} occupations, ` +
+      `${LAST.diagnostics.iters} fixed-point iterations (τ = ${fmt(LAST.params.tau,3)})`;
+    st.className = "status";
+    render();
+  } catch (err) {
+    st.textContent = "Error: " + err.message; st.className = "status solving";
+  }
+}
+
+// ---------------- Rendering ----------------
+const C = {
+  base:  "#93a0b8",
+  pe:    "#f7b34f",
+  ge:    "#4f8ef7",
+  scar:  "#f45b69",
+  prod:  "#3ecf8e",
+};
+
+function mkChart(id, cfg) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart(document.getElementById(id), cfg);
+}
+
+const gridColor = "#2a3550";
+Chart.defaults.color = "#93a0b8";
+Chart.defaults.borderColor = gridColor;
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+function render() {
+  if (!LAST) return;
+  renderBins(); renderKde(); renderDecomp(); renderStats(); renderOcc();
+}
+
+function renderBins() {
+  const b = LAST.binscatter;
+  const mk = (obj, label, color, dashed=false) => ({
+    label, data: obj.x.map((x,i)=>({x, y: obj.y[i]})),
+    showLine: true, borderColor: color, backgroundColor: color,
+    pointRadius: 3, borderWidth: 2, tension: 0.3,
+    borderDash: dashed ? [6,4] : [],
+  });
+  const ds = (EQ === "ge")
+    ? [mk(b.ge, "GE — both channels", C.ge),
+       mk(b.ge_scarcity_only, "GE — scarcity only", C.scar, true),
+       mk(b.ge_productivity_only, "GE — productivity only", C.prod, true)]
+    : [mk(b.pe, "PE — both channels", C.pe)];
+  mkChart("chart-bins", {
+    type: "scatter",
+    data: { datasets: ds },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        x: { title: { display:true, text:"log(initial annual wage)" }, grid:{color:gridColor} },
+        y: { title: { display:true, text:"Δ log wage" }, grid:{color:gridColor} },
+      },
+      plugins: { legend: { labels: { boxWidth: 14 } } },
+    }
+  });
+}
+
+function renderKde() {
+  const k = LAST.kde;
+  const line = (data, label, color, dashed=false) => ({
+    label, data, borderColor: color, borderWidth: 2, pointRadius: 0,
+    borderDash: dashed ? [6,4] : [], fill: false, tension: 0.25,
+  });
+  mkChart("chart-kde", {
+    type: "line",
+    data: {
+      labels: k.grid.map(x => x.toFixed(2)),
+      datasets: [
+        line(k.baseline, "Current", C.base, true),
+        line(EQ==="ge" ? k.ge : k.pe, `Post-AI (${EQ.toUpperCase()})`, EQ==="ge"?C.ge:C.pe),
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        x: { title: { display:true, text:"log(annual wage)" },
+             ticks: { maxTicksLimit: 9, callback: function(v){ return (+this.getLabelForValue(v)).toFixed(1); } },
+             grid:{color:gridColor} },
+        y: { title: { display:true, text:"density" }, grid:{color:gridColor} },
+      },
+      plugins: { legend: { labels: { boxWidth: 14 } } },
+    }
+  });
+}
+
+function renderDecomp() {
+  const s = LAST.stats;
+  const metrics = ["var_logw", "p90_p10", "p90_p50", "p50_p10"];
+  const names   = ["Var(log w)", "90/10", "90/50", "50/10"];
+  const delta = (sc) => metrics.map(m => s[sc][m] - s.baseline[m]);
+  mkChart("chart-decomp", {
+    type: "bar",
+    data: {
+      labels: names,
+      datasets: [
+        { label: "Scarcity only",     data: delta("ge_scarcity_only"),     backgroundColor: C.scar },
+        { label: "Productivity only", data: delta("ge_productivity_only"), backgroundColor: C.prod },
+        { label: "Both channels",     data: delta("ge"),                   backgroundColor: C.ge },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: { title: { display:true, text:"Δ vs. baseline" }, grid:{color:gridColor} },
+        x: { grid:{display:false} },
+      },
+      plugins: { legend: { labels: { boxWidth: 14 } } },
+    }
+  });
+}
+
+function renderStats() {
+  const s = LAST.stats;
+  const sc = (EQ === "ge") ? "ge" : "pe";
+  const rows = [
+    ["Var(log w)", "var_logw"], ["p90 − p10", "p90_p10"],
+    ["p90 − p50", "p90_p50"], ["p50 − p10", "p50_p10"], ["p99 − p90", "p99_p90"],
+  ];
+  let html = `<tr><th>Statistic</th><th>Baseline</th><th>Post-AI (${EQ.toUpperCase()})</th><th>Δ</th></tr>`;
+  rows.forEach(([name, key]) => {
+    const b = s.baseline[key], a = s[sc][key], d = a - b;
+    const cls = d > 1e-6 ? "delta-pos" : (d < -1e-6 ? "delta-neg" : "");
+    html += `<tr><td>${name}</td><td>${fmt(b)}</td><td>${fmt(a)}</td>
+             <td class="${cls}">${d>=0?"+":""}${fmt(d)}</td></tr>`;
+  });
+  document.getElementById("stats-table").innerHTML = html;
+}
+
+function renderOcc() {
+  const key = (EQ === "ge") ? "dlogw_ge" : "dlogw_pe";
+  const occ = [...LAST.occupations].sort((a,b) => b[key] - a[key]);
+  const top = occ.slice(0, 10), bot = occ.slice(-10).reverse();
+  const maxAbs = Math.max(...occ.map(o => Math.abs(o[key])), 1e-9);
+  const row = o => {
+    const v = o[key];
+    const wpx = Math.round(60 * Math.abs(v) / maxAbs);
+    const color = v >= 0 ? "var(--green)" : "var(--red)";
+    return `<tr><td title="${o.code}">${o.title}</td>
+      <td class="num">$${Math.round(o.w0).toLocaleString()}</td>
+      <td class="num" style="color:${color}">${pct(v)}</td>
+      <td><span class="bar" style="width:${wpx}px;background:${color}"></span></td></tr>`;
+  };
+  document.getElementById("occ-table").innerHTML =
+    `<tr><th>Occupation</th><th style="text-align:right">Wage</th><th style="text-align:right">Δ log w</th><th></th></tr>` +
+    top.map(row).join("") +
+    `<tr><td colspan="4" style="text-align:center;color:var(--muted)">···</td></tr>` +
+    bot.map(row).join("");
+}
+
+init();
+
+// ============================================================
+// DEMAND STRUCTURE TAB
+// ============================================================
+let D_INIT = false, D_LAST = null, dDebounce = null;
+const OCC_COLORS = { 0: "#3ecf8e", 1: "#f7b34f", 2: "#f45b69", 3: "#4f8ef7" };
+const GRP_COLORS = ["#f45b69", "#f7b34f", "#4f8ef7"];
+
+async function initDemand() {
+  if (!META) { setTimeout(initDemand, 300); return; }  // meta still loading
+  if (D_INIT) return;
+  D_INIT = true;
+  const model = META.models.find(m => m.id === "demand");
+  const box = document.getElementById("d-params");
+  model.parameters.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "param";
+    if (p.type === "toggle") {
+      div.innerHTML = `
+        <div class="toggle-row" style="margin-bottom:4px">
+          <button id="d-tgl-${p.id}-on" class="${p.default ? "active" : ""}">Heterogeneous</button>
+          <button id="d-tgl-${p.id}-off" class="${p.default ? "" : "active"}">Pooled</button>
+        </div>
+        <div class="help">${p.help}</div>`;
+      box.appendChild(div);
+      const on = div.querySelector(`#d-tgl-${p.id}-on`), off = div.querySelector(`#d-tgl-${p.id}-off`);
+      on.onclick = () => { on.classList.add("active"); off.classList.remove("active"); dSchedule(); };
+      off.onclick = () => { off.classList.add("active"); on.classList.remove("active"); dSchedule(); };
+    } else {
+      div.innerHTML = `
+        <label><span>${p.name}</span><span class="val" id="d-val-${p.id}">${(+p.default).toFixed(2)}</span></label>
+        <input type="range" id="d-in-${p.id}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.default}">
+        <div class="help">${p.help}</div>`;
+      box.appendChild(div);
+      div.querySelector("input").addEventListener("input", ev => {
+        document.getElementById("d-val-"+p.id).textContent = (+ev.target.value).toFixed(2);
+        dSchedule();
+      });
+    }
+  });
+  dSolve();
+}
+
+function dSchedule() { clearTimeout(dDebounce); dDebounce = setTimeout(dSolve, 350); }
+
+async function dSolve() {
+  if (!document.getElementById("d-in-ag")) { setTimeout(dSolve, 300); return; }
+  const g = id => +document.getElementById("d-in-"+id).value;
+  const het = document.getElementById("d-tgl-hetero-on").classList.contains("active") ? 1 : 0;
+  const q = `ag=${g("ag")}&mobility=${g("mobility")}&exposure=${g("exposure")}` +
+            `&eps_spread=${g("eps_spread")}&nonhom=${g("nonhom")}&sig_scale=${g("sig_scale")}&hetero=${het}`;
+  const st = document.getElementById("d-status");
+  st.textContent = "Solving exact GE along the path…"; st.className = "status solving";
+  try {
+    const r = await fetch(API + `/api/demand/solve?${q}`);
+    if (!r.ok) throw new Error(await r.text());
+    D_LAST = await r.json();
+    const dg = D_LAST.diagnostics;
+    st.textContent = `Solved (max residual ${dg.max_resid.toExponential(1)}, ` +
+      `Walras gap ${dg.max_walras_gap.toExponential(1)}). GPT Domar weight → ${fmt(D_LAST.final.lam_g,3)}`;
+    st.className = "status";
+    dRender();
+  } catch (err) {
+    st.textContent = "Error: " + err.message; st.className = "status solving";
+  }
+}
+
+function dRender() {
+  if (!D_LAST) return;
+  dRenderPath(); dRenderFinal(); dRenderGroups(); dRenderShares(); dRenderTable();
+}
+
+function dRenderPath() {
+  const p = D_LAST.path, occ = D_LAST.labels.occupations;
+  mkChart("d-chart-path", {
+    type: "line",
+    data: {
+      labels: p.ag.map(a => a.toFixed(1)),
+      datasets: occ.map((name, i) => ({
+        label: name, data: p.dlnw_real.map(row => row[i]),
+        borderColor: OCC_COLORS[i], backgroundColor: OCC_COLORS[i],
+        borderWidth: 2, pointRadius: 0, tension: 0.25,
+      })),
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        x: { title: { display:true, text:"GPT productivity multiplier A_g" },
+             ticks: { maxTicksLimit: 8 }, grid:{color:gridColor} },
+        y: { title: { display:true, text:"Δ log real wage" }, grid:{color:gridColor} },
+      },
+      plugins: { legend: { labels: { boxWidth: 14 } } },
+    }
+  });
+}
+
+function dRenderFinal() {
+  const f = D_LAST.final, occ = D_LAST.labels.occupations;
+  mkChart("d-chart-final", {
+    type: "bar",
+    data: {
+      labels: occ,
+      datasets: [
+        { label: "Δ log real wage", data: f.dlnw_real, backgroundColor: C.ge },
+        { label: "Δ log employment", data: f.dlnL, backgroundColor: C.pe },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: { y: { grid:{color:gridColor} }, x: { grid:{display:false} } },
+      plugins: { legend: { labels: { boxWidth: 14 } } },
+    }
+  });
+}
+
+function dRenderGroups() {
+  const f = D_LAST.final, grp = D_LAST.labels.groups;
+  const ds = [{ label: "Δ log real income", data: f.dlnIm_real,
+                backgroundColor: GRP_COLORS }];
+  mkChart("d-chart-groups", {
+    type: "bar",
+    data: { labels: grp, datasets: ds },
+    options: {
+      maintainAspectRatio: false,
+      scales: { y: { grid:{color:gridColor} }, x: { grid:{display:false} } },
+      plugins: {
+        legend: { display: false },
+        title: { display: true, color: "#93a0b8",
+                 text: `Aggregate real income: ${(D_LAST.final.dlnI_real>=0?"+":"")}${fmt(D_LAST.final.dlnI_real,3)} log points` },
+      },
+    }
+  });
+}
+
+function dRenderShares() {
+  const p = D_LAST.path, occ = D_LAST.labels.occupations;
+  mkChart("d-chart-shares", {
+    type: "line",
+    data: {
+      labels: p.ag.map(a => a.toFixed(1)),
+      datasets: occ.map((name, i) => ({
+        label: name, data: p.shares.map(row => row[i]),
+        borderColor: OCC_COLORS[i], backgroundColor: OCC_COLORS[i],
+        borderWidth: 2, pointRadius: 0, tension: 0.25,
+      })),
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        x: { title: { display:true, text:"GPT productivity multiplier A_g" },
+             ticks: { maxTicksLimit: 8 }, grid:{color:gridColor} },
+        y: { title: { display:true, text:"budget share" }, grid:{color:gridColor} },
+      },
+      plugins: { legend: { labels: { boxWidth: 14 } } },
+    }
+  });
+}
+
+// ============================================================
+// EXPERT SCENARIOS (shared by both tabs)
+// ============================================================
+let SCENARIOS = null;
+
+async function loadScenarios() {
+  try {
+    const r = await fetch(API + "/api/scenarios");
+    SCENARIOS = (await r.json()).scenarios;
+    ["expertise", "demand"].forEach(tab => {
+      const sel = document.getElementById("scen-select-" + tab);
+      if (!sel) return;
+      SCENARIOS.forEach(s => {
+        const o = document.createElement("option");
+        o.value = s.id; o.textContent = s.name;
+        sel.appendChild(o);
+      });
+      sel.addEventListener("change", () => applyScenario(tab, sel.value));
+    });
+  } catch (e) { console.warn("scenarios unavailable:", e); }
+}
+
+function applyScenario(tab, id) {
+  const card = document.getElementById("scen-card-" + tab);
+  if (!id) { card.className = "scenario-card"; card.innerHTML = ""; solveTab(tab); return; }
+  const s = SCENARIOS.find(x => x.id === id);
+  if (!s) return;
+
+  // set sliders
+  const setP = (elId, valId, v) => {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    el.value = v;
+    const lab = document.getElementById(valId);
+    if (lab) lab.textContent = (+v).toFixed(2);
+  };
+  if (tab === "expertise") {
+    setP("in-sigma", "val-sigma", s.params.expertise.sigma);
+    setP("in-scarcity", "val-scarcity", s.params.expertise.scarcity);
+    setP("in-productivity", "val-productivity", s.params.expertise.productivity);
+  } else {
+    const d = s.params.demand;
+    ["ag","mobility","exposure","eps_spread","nonhom","sig_scale"].forEach(k =>
+      setP("d-in-"+k, "d-val-"+k, d[k]));
+    const on = document.getElementById("d-tgl-hetero-on"), off = document.getElementById("d-tgl-hetero-off");
+    if (on && off) {
+      on.classList.toggle("active", !!d.hetero);
+      off.classList.toggle("active", !d.hetero);
+    }
+  }
+
+  // provenance card
+  const srcs = (s.sources || []).map(x => `
+    <li><b>${x.author || x.id}</b>${x.year ? " (" + x.year + ")" : ""} — ${x.title || ""}
+      ${x.summary ? `<br><i>${x.summary}</i>` : ""}
+      ${x.quote ? `<br>&ldquo;${x.quote}&rdquo;` : ""}</li>`).join("");
+  card.innerHTML = `
+    <div class="tagline">${s.tagline}</div>
+    <div>${s.narrative}</div>
+    <div class="ineq">Inequality outlook: ${s.inequality_outlook}</div>
+    <details><summary>Sources this scenario is consistent with (${(s.sources||[]).length})</summary>
+      <ul class="src">${srcs}</ul></details>`;
+  card.className = "scenario-card show";
+  solveTab(tab);
+}
+
+function solveTab(tab) { (tab === "expertise") ? solve() : dSolve(); }
+
+// mark scenario select as Custom when user moves a slider manually
+document.addEventListener("input", e => {
+  if (e.target.matches('#params input[type=range]')) {
+    const sel = document.getElementById("scen-select-expertise");
+    if (sel && sel.value) { sel.value = ""; document.getElementById("scen-card-expertise").className = "scenario-card"; }
+  }
+  if (e.target.matches('#d-params input[type=range]')) {
+    const sel = document.getElementById("scen-select-demand");
+    if (sel && sel.value) { sel.value = ""; document.getElementById("scen-card-demand").className = "scenario-card"; }
+  }
+});
+
+loadScenarios();
+
+function dRenderTable() {
+  const f = D_LAST.final, occ = D_LAST.labels.occupations;
+  const prim = D_LAST.primitives;
+  let html = `<tr><th>Occupation</th><th>ε</th><th>σ</th><th>b₀</th><th>Δln w</th><th>Δln L</th></tr>`;
+  occ.forEach((name, i) => {
+    const dw = f.dlnw_real[i];
+    const cls = dw >= 0 ? "delta-neg" : "delta-pos";   // green if gaining
+    html += `<tr><td>${name}</td>
+      <td>${fmt(prim.eps_demand[i],2)}</td>
+      <td>${fmt(prim.sigma_labor_gpt[i],2)}</td>
+      <td>${fmt(prim.exposure_b0[i],2)}</td>
+      <td class="${cls}">${dw>=0?"+":""}${fmt(dw,3)}</td>
+      <td>${f.dlnL[i]>=0?"+":""}${fmt(f.dlnL[i],3)}</td></tr>`;
+  });
+  document.getElementById("d-table").innerHTML = html;
+}
+</script>
+</body>
+</html>

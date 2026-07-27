@@ -1,0 +1,131 @@
+{
+  "source_id": "acemoglu-simple-macro",
+  "author": "Daron Acemoglu",
+  "title": "The Simple Macroeconomics of AI",
+  "year": 2024,
+  "type": "paper",
+  "url": "https://economics.mit.edu/sites/default/files/2024-04/The%20Simple%20Macroeconomics%20of%20AI.pdf",
+  "central_scenario_summary": "Acemoglu disciplines AI forecasts with a task-based model and Hulten's theorem: with ~20% of US tasks exposed, ~23% of those profitably automatable, and ~15% average cost savings, TFP gains are at most 0.55-0.71% total over ten years and GDP gains roughly 1-2%, far below Goldman Sachs or McKinsey forecasts. Wage gains will be limited, the capital-labor income gap will widen, and inequality will not fall (real wages of low-education women may decline), because AI is being directed at automation rather than at creating new tasks for workers - the channel that could deliver more favorable outcomes.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "these macroeconomic effects appear nontrivial but modest—no more than a 0.71% increase in total factor productivity over 10 years",
+          "location": "Abstract"
+        },
+        {
+          "text": "While this is a possibility that cannot be completely ruled out, there is so far no evidence of such revolutionary effects",
+          "location": "Section 4 Concluding Remarks (on singularity-type scenarios)"
+        }
+      ],
+      "notes": "Central scenario is diffusion of a useful but bounded technology over a 10-year horizon; explicitly sets aside AGI/singularity claims and revolutionary science effects as unlikely within the time frame."
+    },
+    "expertise_erosion": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "even when AI improves the productivity of low-skill workers in certain tasks (without creating new tasks for them), this may increase rather than reduce inequality",
+          "location": "Abstract"
+        },
+        {
+          "text": "the estimates do not point to significant declines in inequality either",
+          "location": "Section 4 Concluding Remarks"
+        }
+      ],
+      "notes": "Directly engages the democratization/expertise-leveling hypothesis (Autor 2024, low-performer gains) and argues it need not lower inequality: ripple effects can hurt low-skill workers, and capital-labor inequality rises regardless. Bottom line: little net change in skill premia, so score 1."
+    },
+    "productivity_breadth": {
+      "score": 0,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "if we take this framework and existing estimates seriously, it is difficult to arrive at very large macroeconomic gains",
+          "location": "Section 1 Introduction, final paragraph"
+        },
+        {
+          "text": "This calculation implies that 19.9% of US labor tasks are exposed to AI. I then use Svanberg et al.'s estimate... that, among all exposed tasks, 23% can be profitably performed by AI",
+          "location": "Section 1 Introduction (back-of-the-envelope calculation)"
+        }
+      ],
+      "notes": "Gains are real but small in aggregate (TFP <= 0.55-0.71% over 10 years; GDP ~1-2%); concentrated in a modest slice of mostly easy-to-learn tasks. Anchor 0: narrow with small aggregate effect."
+    },
+    "substitution": {
+      "score": 1,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "It starts from a task-based model of AI's effects, working through automation and task complementarities.",
+          "location": "Abstract"
+        },
+        {
+          "text": "their exposure measure often captures the possibility that generative AI and related digital technologies can perform some of the subtasks in an occupation, providing more time for workers to focus on other activities",
+          "location": "Section 1 Introduction, footnote 5"
+        }
+      ],
+      "notes": "Explicitly mixed: extensive-margin automation (substitution) in mid-level clerical/pattern-recognition tasks plus task complementarities that raise labor productivity. Predicts no substantial wage declines for any education group, but also limited wage gains."
+    },
+    "demand_absorption": {
+      "score": 1,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "more favorable wage and inequality effects, as well as more sizable productivity benefits, will likely depend on the creation of new tasks for workers in general and especially for middle- and low-pay workers",
+          "location": "Section 1 Introduction"
+        },
+        {
+          "text": "these are not the areas receiving attention from the industry at the moment... areas of priority for the tech industry appear to be around automation and online monetization",
+          "location": "Section 4 Concluding Remarks"
+        }
+      ],
+      "notes": "Does not model demand elasticities or Baumol saturation. Takes a position on the new-task channel: good new tasks could absorb gains and lift labor, but the current industry trajectory is not creating them; some new tasks (manipulation, deepfakes) have negative social value. Netted to 1 with low confidence."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Occupational mobility frictions and retraining are not a focus; ripple effects across skill groups (A&R 2022) describe task competition, not adjustment speed."
+    },
+    "rent_concentration": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "AI is also predicted to widen the gap between capital and labor income.",
+          "location": "Abstract"
+        },
+        {
+          "text": "With previous automation technologies, such as robotics, most gains accrued to firm owners and managers, while workers in impacted occupations experienced negative outcomes",
+          "location": "Section 1 Introduction"
+        }
+      ],
+      "notes": "Predicts surplus tilts to capital owners (labor share falls) and notes tech-industry priorities around automation and online monetization, but magnitudes are modest and no winner-take-most claim is made. Scored 1 (meaningful but contested)."
+    },
+    "timeline_years": {
+      "score": 10,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "especially relevant for the medium-term (about 10-year) macroeconomic effects of AI",
+          "location": "Section 1 Introduction"
+        }
+      ],
+      "notes": "The paper's entire quantitative exercise is framed on a 10-year horizon."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "AI advances are unlikely to increase inequality as much as previous automation technologies because their impact is more equally distributed across demographic groups, but there is also no evidence that AI will reduce labor income inequality.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Text dimension. Bottom line: no substantial wage declines for any education group, but no reduction in labor income inequality either; real earnings of low-education women likely fall, between-group inequality may rise slightly, and the capital-labor income gap widens further. Better outcomes would require directing AI toward new worker-complementary tasks, which industry is not currently doing."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

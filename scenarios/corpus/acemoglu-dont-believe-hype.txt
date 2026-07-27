@@ -1,0 +1,39 @@
+SOURCE_ID: acemoglu-dont-believe-hype
+AUTHOR: Daron Acemoglu
+TITLE: Don't Believe the AI Hype
+YEAR: 2024
+TYPE: essay
+URL: https://www.project-syndicate.org/commentary/ai-productivity-boost-will-be-smaller-than-expected-by-daron-acemoglu-2024-05
+NOTE: Project Syndicate original is paywalled/JS-shell; full text obtained from authorized cross-post at https://braveneweurope.com/daron-acemoglu-dont-believe-the-ai-hype (May 23, 2024, cross-posted from Other News). Complete text.
+====
+
+Don't Believe the AI Hype
+Daron Acemoglu (Institute Professor of Economics at MIT), May 2024
+
+If you listen to tech industry leaders, business-sector forecasters, and much of the media, you may believe that recent advances in generative AI will soon bring extraordinary productivity benefits, revolutionizing life as we know it. Yet neither economic theory nor the data support such exuberant forecasts.
+
+According to tech leaders and many pundits and academics, artificial intelligence is poised to transform the world as we know it through unprecedented productivity gains. While some believe that machines soon will do everything humans can do, ushering in a new age of boundless prosperity, other predictions are at least more grounded. For example, Goldman Sachs predicts that generative AI will boost global GDP by 7% over the next decade, and the McKinsey Global Institute anticipates that the annual GDP growth rate could increase by 3-4 percentage points between now and 2040. For its part, The Economist expects that AI will create a blue-collar bonanza.
+
+Is this realistic? As I note in a recent paper, the outlook is far more uncertain than most forecasts and guesstimates suggest. Still, while it is basically impossible to predict with any confidence what AI will do in 20 or 30 years, one can say something about the next decade, because most of these near-term economic effects must involve existing technologies and improvements to them.
+
+It is reasonable to suppose that AI's biggest impact will come from automating some tasks and making some workers in some occupations more productive. Economic theory provides some guidance for assessing these aggregate effects. According to Hulten's theorem (named for economist Charles Hulten), aggregate "total factor productivity" (TFP) effects are simply the product of the share of tasks that are automated multiplied by the average cost savings.
+
+While average cost savings are difficult to estimate and will vary by activity, there have already been some careful studies of AI's effects on certain tasks. For example, Shakked Noy and Whitney Zhang have examined the impact of ChatGPT on simple writing tasks (such as summarizing documents or writing routine grant proposals or marketing material), while Erik Brynjolfsson, Danielle Li, and Lindsey Raymond have assessed the use of AI assistants in customer service. Taken together, this research suggests that currently available generative-AI tools yield average labor-cost savings of 27% and overall cost savings of 14.4%.
+
+What about the share of tasks that will be affected by AI and related technologies? Using numbers from recent studies, I estimate this to be around 4.6%, implying that AI will increase TFP by only 0.66% over ten years, or by 0.06% annually. Of course, since AI will also drive an investment boom, the increase in GDP growth could be a little larger, perhaps in the 1-1.5% range.
+
+These figures are much smaller than the ones from Goldman Sachs and McKinsey. If you want to get those bigger numbers, you either must boost the productivity gains at the micro level or assume that many more tasks in the economy will be affected. But neither scenario seems plausible. Labor-cost savings far above 27% not only fall out of the range offered by existing studies; they also do not align with the observed effects of other, even more promising technologies. For example, industrial robots have transformed some manufacturing sectors, and they appear to have reduced labor costs by about 30%.
+
+Similarly, we are unlikely to see far more than 4.6% of tasks being taken over, because AI is nowhere close to being able to perform most manual or social tasks (including seemingly simple functions with some social aspects, like accounting). As of 2019, a survey of essentially all US businesses found that only about 1.5% of them had any AI investments. Even if such investments have picked up over the past year and a half, we have a long, long way to go before AI becomes widespread.
+
+Of course, AI could have larger effects than my analysis allows if it revolutionizes the process of scientific discovery or creates many new tasks and products. The recent AI-enabled discoveries of new crystal structures and advances in protein folding do suggest such possibilities. But these breakthroughs are unlikely to be a major source of economic growth within ten years. Even if new discoveries could be tested and turned into actual products much faster, the tech industry is currently focused excessively on automation and monetizing data, rather than on introducing new production tasks for workers.
+
+Moreover, my own estimates could be too high. Early adoption of generative AI has naturally occurred where it performs reasonably well, meaning tasks for which there are objective measures of success, such as writing simple programming subroutines or verifying information. Here, the model can learn on the basis of outside information and readily available historical data.
+
+But many of the 4.6% of tasks that could feasibly be automated within ten years – evaluating applications, diagnosing health problems, providing financial advice – do not have such clearly defined objective measures of success, and often involve complex context-dependent variables (what is good for one patient will not be right for another). In these cases, learning from outside observation is much harder, and generative AI models must rely instead on the behavior of existing workers.
+
+Under these circumstances, there will be less room for major improvements over human labor. Thus, I estimate that about one-quarter of the 4.6% tasks are of the "harder-to-learn" category and will have lower productivity gains. Once this adjustment is made, the 0.66% TFP growth figure declines to about 0.53%.
+
+What about the effects on workers, wages, and inequality? The good news is that, compared to earlier waves of automation – such as those based on robots or software systems – the effects of AI may be more broadly distributed across demographic groups. If so, it will not have as extensive an impact on inequality as earlier automation technologies did (I estimated these effects in my previous work with Pascual Restrepo). However, I find no evidence that AI will reduce inequality or boost wage growth. Some groups – especially white, native-born women – are significantly more exposed and will be negatively affected, and capital will gain more than labor overall.
+
+Economic theory and the available data justify a more modest, realistic outlook for AI. There is little to support the argument that we should not worry about regulation, because AI will be the proverbial rising tide that lifts all boats. AI is what economists call a general-purpose technology. We can do many things with it, and there are certainly better things to do than automate work and boost the profitability of digital advertising. But if we embrace techno-optimism uncritically or let the tech industry set the agenda, much of the potential could be squandered.

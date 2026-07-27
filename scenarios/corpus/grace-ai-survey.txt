@@ -1,0 +1,44 @@
+SOURCE_ID: grace-ai-survey
+AUTHOR: Katja Grace, Harlan Stewart, Julia Fabienne Sandkühler, Stephen Thomas, Ben Weinstein-Raun, Jan Brauner, Richard C. Korzekwa (AI Impacts)
+TITLE: Thousands of AI Authors on the Future of AI
+YEAR: 2024
+TYPE: paper
+URL: https://arxiv.org/abs/2401.02843
+NOTE: PARTIAL - Abstract plus key sections (3.1-3.2 timelines for HLMI/FAOL, 3.6 intelligence explosion, 4.1 concerning scenarios, 4.2-4.3 long-run outcomes and extinction risk) captured from the arXiv HTML (v3); methods, demographics appendices, and remaining sections abridged/omitted. Published in JAIR 84:9 (2025).
+====
+
+ABSTRACT
+In the largest survey of its kind, 2,778 researchers who had published in top-tier artificial intelligence (AI) venues gave predictions on the pace of AI progress and the nature and impacts of advanced AI systems. The aggregate forecasts give at least a 50% chance of AI systems achieving several milestones by 2028, including autonomously constructing a payment processing site from scratch, creating a song indistinguishable from a new song by a popular musician, and autonomously downloading and fine-tuning a large language model. If science continues undisrupted, the chance of unaided machines outperforming humans in every possible task was estimated at 10% by 2027, and 50% by 2047. The latter estimate is 13 years earlier than that reached in a similar survey we conducted only one year earlier [Grace et al., 2022]. However, the chance of all human occupations becoming fully automatable was forecast to reach 10% by 2037, and 50% as late as 2116 (compared to 2164 in the 2022 survey).
+
+Most respondents expressed substantial uncertainty about the long-term value of AI progress: While 68.3% thought good outcomes from superhuman AI are more likely than bad, of these net optimists 48% gave at least a 5% chance of extremely bad outcomes such as human extinction, and 59% of net pessimists gave 5% or more to extremely good outcomes. Between 38% and 51% of respondents gave at least a 10% chance to advanced AI leading to outcomes as bad as human extinction. More than half suggested that "substantial" or "extreme" concern is warranted about six different AI-related scenarios, including misinformation, authoritarian control, and inequality. There was disagreement about whether faster or slower AI progress would be better for the future of humanity. However, there was broad agreement that research aimed at minimizing potential risks from AI systems ought to be prioritized more.
+
+3.2 HOW SOON WILL HUMAN-LEVEL PERFORMANCE ON ALL TASKS OR OCCUPATIONS BE FEASIBLE?
+We asked how soon participants expected AI systems to outperform humans across all activities, framed two ways: tasks ("High-Level Machine Intelligence", HLMI) or occupations ("Full Automation of Labor", FAOL).
+
+HLMI definition: "High-level machine intelligence (HLMI) is achieved when unaided machines can accomplish every task better and more cheaply than human workers. Ignore aspects of tasks for which being a human is intrinsically advantageous, e.g. being accepted as a jury member. Think feasibility, not adoption." (Assuming "human scientific activity continues without major negative disruption.")
+
+The aggregate 2023 forecast predicted a 50% chance of HLMI by 2047, down thirteen years from 2060 in the 2022 survey. (In the six years between the 2016 and 2022 surveys, the expected date moved only one year earlier.) The aggregate 2023 forecast predicted a 10% chance of HLMI by 2027.
+
+FAOL definition: "Say an occupation becomes fully automatable when unaided machines can accomplish it better and more cheaply than human workers... Say we have reached 'full automation of labor' when all occupations are fully automatable."
+
+The aggregate 2023 forecast predicted a 50% chance of FAOL by 2116, down 48 years from 2164 in the 2022 survey. There is about a 70-year difference between the mean 50% prediction for HLMI and the mean 50% prediction for FAOL. "Insofar as HLMI and FAOL refer to the same event, the difference in predictions about the time of their arrival would seem to be a framing effect."
+
+Occupations suggested as among the last automatable: top write-in categories were "Computer and Mathematical" (91), "Life, Physical, and Social Science" (77), "Healthcare Practitioners and Technical" (56), "Management" (49), "Arts, Design, Entertainment, Sports, and Media" (39).
+
+[Framing effects: fixed-years framing produces systematically later predictions; both framings combined with equal weight. Respondents with undergraduate education in Asia anticipated HLMI 11 years earlier than others.]
+
+3.6 WILL THERE BE AN INTELLIGENCE EXPLOSION?
+Question: "If AI systems do nearly all research and development, improvements in AI will accelerate the pace of technological progress, including further progress in AI. Over a short period (less than 5 years), this feedback loop could cause technological progress to become more than an order of magnitude faster. How likely do you find this argument to be broadly correct?"
+Since 2016 a majority of respondents have thought that it's either "quite likely," "likely," or an "about even chance" that technological progress becomes more than an order of magnitude faster within 5 years of HLMI being achieved. Median answer: "41-60%" that the intelligence explosion argument is broadly correct.
+Median probabilities (2023): explosive progress 2 years after HLMI: 20%; explosive progress 30 years after HLMI: 80%; AI vastly better than humans 2 years after HLMI: 10%; 30 years after: 60%.
+"In sum, across these three questions, the median participant did not overall expect something like a rapid acceleration of progress from an 'intelligence explosion,' but did give substantial credence to it."
+
+4.1 HOW CONCERNING ARE 11 FUTURE AI-RELATED SCENARIOS?
+We asked participants (n=1,345) about eleven potentially concerning AI scenarios... how much concern each deserved in the next thirty years. Each scenario was considered worthy of either substantial or extreme concern by more than 30% of respondents. As measured by the percentage of respondents who thought a scenario constituted either a "substantial" or "extreme" concern, the scenarios worthy of most concern were: spread of false information e.g. deepfakes (86%), manipulation of large-scale public opinion trends (79%), AI letting dangerous groups make powerful tools (e.g. engineered viruses) (73%), authoritarian rulers using AI to control their populations (73%), and AI systems worsening economic inequality by disproportionately benefiting certain individuals (71%).
+"There is some ambiguity about the reason why a scenario might be considered concerning: it might be considered especially disastrous, or especially likely, or both. From our results, there's no way to disambiguate these considerations."
+
+4.2 HOW GOOD OR BAD FOR HUMANS WILL HIGH-LEVEL MACHINE INTELLIGENCE BE?
+Respondents exhibited diverse views... 68.3% of participants found good outcomes more likely than bad outcomes, while 57.8% considered extremely bad outcomes (e.g. human extinction) a nontrivial possibility (>=5% likely). Even among net optimists, nearly half (48.4%) gave at least 5% credence to extremely bad outcomes... The median prediction for extremely bad outcomes, such as human extinction, was 5% (mean 9%). Over a third of participants (38%) put at least a 10% chance on extremely bad outcomes.
+
+4.3 HOW LIKELY IS AI TO CAUSE HUMAN EXTINCTION?
+Median answers to three extinction/disempowerment questions were 5% or 10%. Depending on how we asked, between 41.2% and 51.4% of respondents estimated a greater than 10% chance of human extinction or severe disempowerment.

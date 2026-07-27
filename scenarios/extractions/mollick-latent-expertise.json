@@ -1,0 +1,116 @@
+{
+  "source_id": "mollick-latent-expertise",
+  "author": "Ethan Mollick",
+  "title": "Latent Expertise: Everyone is in R&D",
+  "year": 2024,
+  "type": "blog",
+  "url": "https://www.oneusefulthing.org/p/latent-expertise-everyone-is-in-r",
+  "central_scenario_summary": "Current LLMs are already a useful 'co-intelligence' that greatly improves human performance, but the second wave—integrating AI into organizations, the key to true productivity growth—will take longer, as in the Industrial Revolution, where diffusion depended on many practitioners adapting the technology. Treating AI as a cost-cutting IT project is a mistake: value comes from decentralized R&D by employees, and for now unlocking the expertise latent in AI is a job for human experts, who can judge output, instruct the model, and iterate cheaply. When experts encode and share what they learn (e.g., prompts), non-experts can draw on that expertise too—with the caveat that if labs achieve AGI, organizations would change very quickly.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "let's reconsider the old analogy comparing AI to the Industrial Revolution.",
+          "location": "Second paragraph"
+        },
+        {
+          "text": "There are areas where AI is better than an expert human at particular tasks, and areas where it is completely useless.",
+          "location": "First paragraph"
+        }
+      ],
+      "notes": "Treats AI as a major GPT wave already superhuman in spots, with organizational integration the bottleneck; footnote 1 explicitly brackets the AGI case ('organizations will start to look very different very quickly') without endorsing a timeline."
+    },
+    "expertise_erosion": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "Unlocking the expertise latent in AI is, for now, a job for experts.",
+          "location": "'Latent Expertise' section"
+        },
+        {
+          "text": "I am not an expert in job descriptions, and certainly haven't done the trial-and-error work that Dan has done about this topic, but I was able to draw on his expertise thanks to his prompt. Expertise, shared.",
+          "location": "'Expert Co-Intelligence' section"
+        },
+        {
+          "text": "help anyone access the latent expertise within, while avoiding the downside risks.",
+          "location": "'Unlocking latent expertise for all' section (Generative AI Lab mission)"
+        }
+      ],
+      "notes": "Two-stage view: experts retain a temporary advantage in using AI, but once expert knowledge is encoded in shared prompts/tools, non-experts can perform near-expert work—meaningful democratization of access to expertise."
+    },
+    "productivity_breadth": {
+      "score": 1,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "LLMs, without further development, are already useful as a co-intelligence that greatly improves human performance (in innovation, productivity, coding, and more)",
+          "location": "First paragraph"
+        },
+        {
+          "text": "the second wave, putting AI to work, is going to involve integrating it into organizations. This will take longer and will be the key to true productivity growth.",
+          "location": "Second paragraph"
+        }
+      ],
+      "notes": "Sizable gains in exposed knowledge work now (and surprising reach, e.g., factory gauges), with broad organization-wide gains contingent on slower integration."
+    },
+    "substitution": {
+      "score": 0,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "they see AI as a cost-cutting mechanism. Any efficiency gains must be turned into cost savings, even before anyone in the organization figures out what AI is good for. I think this is a mistake.",
+          "location": "Second/third paragraph"
+        },
+        {
+          "text": "It is as if, after getting access to the steam engine in the 1700s, every manufacturer decided to keep production and quality the same, and just fire staff",
+          "location": "Third paragraph"
+        }
+      ],
+      "notes": "Explicitly argues for augmentation/growth over headcount-cutting substitution; 'co-intelligence' framing throughout. The AGI footnote is the acknowledged exception."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Implied pro-absorption stance via the 'expanding their outputs' / world-spanning-companies analogy, but the essay takes no explicit position on aggregate demand elasticity or new consumption; left null."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Silent on occupational reallocation; discusses within-job learning and organizational adoption instead."
+    },
+    "rent_concentration": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "for large companies, the source of any real advantage in AI will come from the expertise of their employees, which is needed to unlock the expertise latent in AI.",
+          "location": "End of introduction section"
+        },
+        {
+          "text": "The AI labs themselves don't know what they have built, or what tasks LLMs are best suited for.",
+          "location": "Final paragraph"
+        }
+      ],
+      "notes": "Value accrues to distributed users/employees and via open sharing (open-source releases advocated), not to AI providers; weakly held—this is a diffusion argument, not a market-structure analysis."
+    },
+    "timeline_years": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No explicit timeline; gains described as available now, with organizational integration 'taking longer' (unspecified)."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "No bottom line on income inequality. Closest relevant claim is distributional in access terms: benefits depend on experts sharing what they learn so that everyone, not just sophisticated users, can access latent expertise."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}

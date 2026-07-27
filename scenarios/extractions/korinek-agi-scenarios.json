@@ -1,0 +1,122 @@
+{
+  "source_id": "korinek-agi-scenarios",
+  "author": "Anton Korinek & Donghyun Suh",
+  "title": "Scenarios for the Transition to AGI",
+  "year": 2024,
+  "type": "paper",
+  "url": "https://arxiv.org/abs/2403.12107",
+  "central_scenario_summary": "Korinek and Suh model the transition to AGI as automation advancing through a distribution of tasks ranked by computational complexity, with wages determined by a race between automation and capital accumulation. If task complexity is unbounded (business-as-usual), wages can rise forever; but in their AGI scenarios, where all tasks are automatable within 5-20 years, output growth accelerates roughly tenfold while wages surge and then collapse to the return on capital, even before full automation. Policy choices such as slowing automation or reserving 'nostalgic jobs' can preserve wage growth at the cost of output.",
+  "dimensions": {
+    "capability_pace": {
+      "score": 3,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "AGI may be reached within 5 to 20 years",
+          "location": "Section 1 Introduction (describing the Hinton estimates spanned by their AGI scenarios)"
+        },
+        {
+          "text": "Artificial General Intelligence (AGI), defined as the ability of AI systems to perform all tasks that humans can perform.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "The paper deliberately spans scenarios rather than committing to one: business-as-usual (score 1) through full AGI in 5-20 years (score 3) and even a growth singularity from automated innovation (score 4). The headline AGI scenarios that organize the paper correspond to score 3."
+    },
+    "expertise_erosion": {
+      "score": 0,
+      "confidence": "low",
+      "quotes": [
+        {
+          "text": "an ever-declining fraction of superstar workers earnings ever-growing wages, whereas the majority of the labor force is starkly devalued by automation",
+          "location": "Section 1 Introduction (summarizing Section 4.4 Heterogeneous Worker Skills)"
+        },
+        {
+          "text": "As the automation index I surpasses a given worker with skill level J, the human capital that they possessed is fully devalued.",
+          "location": "Section 4.4 Heterogeneous Worker Skills"
+        }
+      ],
+      "notes": "The paper does not discuss training or entry barriers directly. Its heterogeneous-skills extension implies premia grow without bound for a shrinking top-skill elite while everyone else's expertise is devalued to the return on capital - closest to anchor 0 (premia grow for incumbent top workers), not democratization."
+    },
+    "productivity_breadth": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "Our simulation results imply ten times faster growth than in the business-as-usual scenario, especially in the aggressive AGI scenario.",
+          "location": "Section 1 Introduction"
+        },
+        {
+          "text": "sufficient automation may give rise to a growth singularity whereby output takes off",
+          "location": "Section 1 Introduction (Section 4.2 Automating Technological Progress)"
+        }
+      ],
+      "notes": "In the AGI scenarios output growth reaches ~18-20% per year economy-wide; in business-as-usual it stays near 2%. Scored on the central AGI scenarios."
+    },
+    "substitution": {
+      "score": 2,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "labor and capital become perfect substitutes at the margin so wages decline starkly to equal the marginal product of capital",
+          "location": "Section 1 Introduction (Region 2 characterization)"
+        },
+        {
+          "text": "However, wages collapse as the economy approaches full automation.",
+          "location": "Section 1 Introduction (AGI scenario results)"
+        }
+      ],
+      "notes": "Automation initially raises wages (productivity effect), but the model's defining feature is eventual strong substitution: displacement dominates as automation nears completion. They also argue 'new tasks' are just recombinations of automatable atomistic tasks."
+    },
+    "demand_absorption": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Single final-good model; demand elasticities, Baumol effects, and new consumption categories are not modeled. Fixed-factor bottlenecks (Section 4.1) are supply-side scarcity, not demand saturation."
+    },
+    "mobility_adjustment": {
+      "score": null,
+      "confidence": "low",
+      "quotes": [],
+      "notes": "Labor reallocates frictionlessly across tasks in the model; the authors list 'incorporating labor and capital adjustment costs' as future work (Conclusions). The binding adjustment margin is capital accumulation, not worker mobility."
+    },
+    "rent_concentration": {
+      "score": 2,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "the returns to capital grow faster than output, at the expense of the wage bill",
+          "location": "Section 2.5 Automation and Factor Earnings"
+        },
+        {
+          "text": "When Region 2 is reached at Φ=10/11, factor returns are equalized, and given the relative factor endowments, the capital share of the economy is ten times the labor share.",
+          "location": "Section 2.5 Automation and Factor Earnings"
+        }
+      ],
+      "notes": "The economy is competitive, so this is factor-share concentration to capital owners rather than firm-level rents. Compute earns temporarily high returns but excess returns dissipate as it is accumulated (Section 4.5)."
+    },
+    "timeline_years": {
+      "score": 20,
+      "confidence": "medium",
+      "quotes": [
+        {
+          "text": "we assume a bounded task distribution such that full automation is obtained within 20 year. In an \"aggressive AGI scenario\" we assume a shorter-tailed distribution that implies full automation within five years.",
+          "location": "Section 1 Introduction / Section 3.1 Automation Scenarios"
+        }
+      ],
+      "notes": "Baseline AGI scenario: full automation and wage collapse within 20 years; aggressive variant within 5 years (wage collapse after ~3 years). Scenario assumptions following Hinton, not the authors' own point forecast."
+    },
+    "inequality_prediction": {
+      "score": null,
+      "confidence": "high",
+      "quotes": [
+        {
+          "text": "if the complexity of tasks that humans can perform is bounded and full automation is reached, then wages collapse.",
+          "location": "Abstract"
+        }
+      ],
+      "notes": "Text dimension - see summary. Bottom line: under AGI, income shifts overwhelmingly from labor to capital; wages collapse to the return on capital while output booms. With heterogeneous skills, an ever-shrinking superstar elite earns ever-growing wages while the majority is devalued. Outcomes hinge on the task-complexity distribution and the race with capital accumulation; slowing automation can protect wages at large output cost."
+    }
+  },
+  "extractor": "claude-agent-wave1",
+  "extraction_date": "2026-07-26"
+}
