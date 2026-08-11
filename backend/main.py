@@ -105,27 +105,12 @@ PARAM_META = {
                 "fall, and how income shares move all follow in closed form."
             ),
             "parameters": [
-                {"id": "shock", "name": "AI productivity shock (%, permanent)",
-                 "min": 0.5, "max": 20.0, "step": 0.5, "default": 1.0,
-                 "help": "Size of the permanent increase in AI productivity A. All responses scale linearly (first-order solution)."},
-                {"id": "sigma", "name": "σ — substitution: AI services vs. labor",
-                 "min": 0.5, "max": 4.0, "step": 0.05, "default": 2.0,
-                 "help": "Elasticity of substitution in final production. σ > 1: AI and workers are substitutes — AI's income share rises with productivity. σ < 1: complements — the share falls."},
-                {"id": "sx0", "name": "Initial AI revenue share (s_X)",
-                 "min": 0.05, "max": 0.8, "step": 0.01, "default": 0.5,
-                 "help": "AI services' share of final-good revenue at the initial equilibrium. Sets θ = (1−s_X)/σ, the key sufficient statistic: scale effect wins when θ < 1."},
-                {"id": "eta", "name": "η — specialized-labor supply elasticity",
-                 "min": 0.0, "max": 5.0, "step": 0.1, "default": 1.0,
-                 "help": "Slope of the AI-talent supply curve. 0 = fixed supply (all adjustment through wages); large = flat supply (adjustment through employment)."},
-                {"id": "beta", "name": "β — AI-labor share of AI revenue",
-                 "min": 0.05, "max": 0.9, "step": 0.05, "default": 0.4,
-                 "help": "Cobb-Douglas weight on specialized labor in AI production."},
-                {"id": "gamma", "name": "γ — compute share of AI revenue",
-                 "min": 0.05, "max": 0.9, "step": 0.05, "default": 0.4,
-                 "help": "Cobb-Douglas weight on compute capital. The remainder 1−β−γ is the rent to the fixed factor (data, organization). β+γ is capped at 0.95."},
-                {"id": "phi", "name": "φ — compute adjustment cost",
+                {"id": "bottleneck", "name": "Bottleneckness — decreasing returns to scale",
+                 "min": 0.05, "max": 0.7, "step": 0.05, "default": 0.2,
+                 "help": "How convex the AI industry's supply curve is: the share of AI revenue tied to factors that are hard to replicate at any speed (proprietary data, organizational capital, sites, licenses). Higher = expansion is harder = productivity gains pass through less into lower prices and more into rents."},
+                {"id": "phi", "name": "φ — adjustment cost (time to build compute)",
                  "min": 0.5, "max": 50.0, "step": 0.5, "default": 8.0,
-                 "help": "How costly it is to build compute quickly (data centers, power, chips). Changes the speed of the transition — not the impact response or the long run."},
+                 "help": "How expensive it is to install compute quickly (data centers, power interconnection, chip supply). Higher φ does not change where the economy ends up — it prolongs the period of compute scarcity and delays the pass-through into prices."},
             ],
         },
     ]
@@ -155,19 +140,19 @@ def solve(
 
 @app.get("/api/market/solve")
 def solve_market(
-    sigma: float = Query(2.0, ge=0.1, le=8.0),
-    sx0: float = Query(0.5, ge=0.01, le=0.9),
-    eta: float = Query(1.0, ge=0.0, le=10.0),
-    beta: float = Query(0.4, ge=0.01, le=0.9),
-    gamma: float = Query(0.4, ge=0.01, le=0.9),
+    bottleneck: float = Query(0.2, ge=0.02, le=0.8),
     phi: float = Query(8.0, ge=0.1, le=100.0),
-    shock: float = Query(1.0, ge=0.1, le=50.0),
 ):
+    """Simplified interface: two free parameters.
+    bottleneck = 1 - beta - gamma (fixed-factor / decreasing-returns share);
+    the variable-input share is split equally between AI labor and compute.
+    Everything else uses the note's calibration: sigma=2, s_X=0.5, eta=1,
+    1% permanent shock, b=0.99, delta=0.025."""
     try:
-        out = market_power.solve(
-            round(float(sigma), 3), round(float(sx0), 3), round(float(eta), 3),
-            round(float(beta), 3), round(float(gamma), 3),
-            round(float(phi), 2), round(float(shock), 2))
+        z = round(float(bottleneck), 3)
+        bg = (1.0 - z) / 2.0
+        out = market_power.solve(2.0, 0.5, 1.0, round(bg, 4), round(bg, 4),
+                                 round(float(phi), 2), 1.0)
         if "error" in out:
             raise HTTPException(status_code=422, detail=out["error"])
         return out

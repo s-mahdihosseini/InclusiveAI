@@ -124,6 +124,8 @@ def solve(sigma=2.0, sx0=0.5, eta=1.0, beta=0.4, gamma=0.4,
         "w2": pct(st["E_w2"] * scale),
         "L2": pct(st["E_L2"] * scale),
         "Y": pct(st["E_Y"] * scale),
+        # Rents to the hard-to-replicate fixed factor: Pi = (1-b-g) pX X
+        "Pi": pct((1.0 - st["theta"]) * st["H"] * scale),
     }
 
     # Income-share paths (level changes, percentage points of GDP):
@@ -161,6 +163,7 @@ def solve(sigma=2.0, sx0=0.5, eta=1.0, beta=0.4, gamma=0.4,
         "w2": st["E_w2"] * scale_inf * eps,
         "L2": st["E_L2"] * scale_inf * eps,
         "Y": st["E_Y"] * scale_inf * eps,
+        "Pi": (1.0 - st["theta"]) * st["H"] * scale_inf * eps,
     }
 
     return {

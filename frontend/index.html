@@ -479,30 +479,33 @@
     <div class="forces">
       <div class="force up">
         <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 38c8 0 8-24 30-24" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round"/><path d="M30 8h8v8" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><div class="f-tag">BOTTLENECK 1 · TALENT</div><h3>Upward-sloping supply of AI labor</h3></div>
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 38c14 0 12-4 16-12s6-16 14-18" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round"/><path d="M8 38h30M8 38V8" stroke="#93a0b8" stroke-width="2" stroke-linecap="round"/></svg>
+          <div><div class="f-tag">FORCE 1 · CONVEX SUPPLY</div><h3>The AI industry is hard to scale</h3></div>
         </div>
-        <p>The AI sector hires from a limited pool of specialists. The supply elasticity <b>η</b> decides
-           how expansion splits between <b>hiring more people</b> (flat supply, large η) and
-           <b>bidding up their wages</b> (steep supply, small η). Whether AI-sector wages rise at all
-           depends on the race between scale and the falling AI price — the sufficient statistic is
-           θ = s₁/σ.</p>
+        <p>Expanding AI output isn't like printing software copies: it needs power interconnections,
+           data centers, chip supply, proprietary data, and organizational capability — factors that get
+           <b>disproportionately expensive to add the more you add</b>. That convex supply curve means a
+           productivity breakthrough does <b>not</b> fully pass through into cheaper AI: part of the gain
+           is retained as <b>rents to whoever owns the hard-to-replicate factors</b>. The
+           <i>bottleneckness</i> slider sets how severe these decreasing returns are.</p>
       </div>
       <div class="force down">
         <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="8" y="18" width="12" height="20" rx="2" stroke="#f45b69" stroke-width="2.5"/><rect x="26" y="10" width="12" height="28" rx="2" stroke="#f45b69" stroke-width="2.5" stroke-dasharray="4 4"/><path d="M12 26h4m-4 5h4m14-13h4m-4 5h4m-4 5h4" stroke="#f45b69" stroke-width="2"/></svg>
-          <div><div class="f-tag">BOTTLENECK 2 · COMPUTE</div><h3>Compute takes time to build</h3></div>
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="15" stroke="#f45b69" stroke-width="2.5"/><path d="M23 13v10l7 5" stroke="#f45b69" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><div class="f-tag">FORCE 2 · TIME TO BUILD</div><h3>Compute scarcity is temporary — but how temporary?</h3></div>
         </div>
-        <p>Compute capital adjusts slowly: the adjustment cost <b>φ</b> governs how expensive it is to
-           build fast. Higher φ doesn't change where the economy ends up — it changes <b>how long
-           compute stays scarce</b>: rental prices and the value of installed compute (Tobin's q) spike
-           and decay slowly, delaying the pass-through of productivity into lower AI prices.</p>
+        <p>Even the parts that <i>can</i> scale take time: a permanent AI breakthrough hits a
+           <b>predetermined compute stock</b>. On impact, the scarcity shows up as a spike in compute
+           rental prices and in the value of installed compute (Tobin's q). Investment then gradually
+           builds the stock and competes the scarcity away. The <b>adjustment cost φ</b> doesn't change
+           the destination — it sets <b>how long the bottleneck rents last</b> before productivity fully
+           reaches prices.</p>
       </div>
     </div>
     <div class="verdict">
-      <b>Market power on top:</b> a monopolist AI supplier prices against the economy-wide demand curve,
-      adding a markup wedge m = 1 − θ. The table below shows how the split of AI revenue between
-      talent, compute owners, and profits changes when the supplier has market power.
+      <b>The punchline:</b> convex supply curves turn productivity gains into <b>rents</b> — permanently
+      for the hard-to-replicate factors, temporarily for installed compute. How big and how persistent
+      those rents are is what the two sliders control.
     </div>
     <div class="cites">
       Model: Hosseini &amp; Lichtinger (2026), &ldquo;AI Productivity, Upward-Sloping Factor Supply,
@@ -533,21 +536,25 @@
     <div>
       <div class="grid2">
         <div class="card">
-          <h3>Compute buildout <small>(installed compute &amp; investment rate)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-build"></canvas></div>
+          <h3>Investment-rate response <small>(pp)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-inv"></canvas></div>
         </div>
         <div class="card">
-          <h3>Compute scarcity <small>(rental price &amp; Tobin's q)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-scarcity"></canvas></div>
+          <h3>Installed compute <small>(%)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-k"></canvas></div>
         </div>
         <div class="card">
-          <h3>Output, price &amp; wages <small>(% deviation)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-prices"></canvas></div>
+          <h3>Compute rental price <small>(%)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-rk"></canvas></div>
         </div>
         <div class="card">
-          <h3>Income shares <small>(change, pp of GDP)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-shares"></canvas></div>
+          <h3>Tobin's q <small>(%)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-q"></canvas></div>
         </div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <h3>Rents from the bottleneck <small>(% deviation from pre-shock level)</small></h3>
+        <div class="chartbox"><canvas id="m-chart-rents"></canvas></div>
       </div>
     </div>
   </div>
@@ -1003,23 +1010,28 @@ async function initMarket() {
   mSolve();
 }
 
+let M_BASE = null;   // baseline run (default sliders) for dashed reference lines
+
 async function mSolve() {
-  if (!document.getElementById("m-in-sigma")) { setTimeout(mSolve, 300); return; }
+  if (!document.getElementById("m-in-phi")) { setTimeout(mSolve, 300); return; }
   const g = id => +document.getElementById("m-in-"+id).value;
-  const q = `sigma=${g("sigma")}&sx0=${g("sx0")}&eta=${g("eta")}&beta=${g("beta")}` +
-            `&gamma=${g("gamma")}&phi=${g("phi")}&shock=${g("shock")}`;
   const st = document.getElementById("m-status");
   st.textContent = "Evaluating closed-form solution…"; st.className = "status solving";
   try {
-    const r = await fetch(API + `/api/market/solve?${q}`);
+    if (!M_BASE) {
+      const rb = await fetch(API + `/api/market/solve?bottleneck=0.2&phi=8`);
+      if (rb.ok) M_BASE = await rb.json();
+    }
+    const r = await fetch(API + `/api/market/solve?bottleneck=${g("bottleneck")}&phi=${g("phi")}`);
     if (!r.ok) {
       const err = await r.json().catch(() => ({}));
-      throw new Error(err.detail || await r.text());
+      throw new Error(err.detail || "solve failed");
     }
     M_LAST = await r.json();
     const d = M_LAST.derived;
-    st.textContent = `Closed form: λ = ${fmt(d.lambda,3)} (half-life ${fmt(d.half_life,1)} quarters), ` +
-      `θ = ${fmt(d.theta,3)} — ${d.theta < 1 ? "scale effect dominates" : "price effect dominates"}`;
+    st.textContent = `Closed form: stable root λ = ${fmt(d.lambda,3)}, ` +
+      `half-life of the bottleneck ≈ ${fmt(d.half_life,1)} quarters. ` +
+      `Long-run compute expansion: ${fmt(d.K_inf,2)}% per 1% productivity gain.`;
     st.className = "status";
     mRender();
   } catch (err) {
@@ -1030,69 +1042,65 @@ async function mSolve() {
 function mRender() {
   if (!M_LAST) return;
   const p = M_LAST.path, t = p.t;
-  const line = (data, label, color, dashed=false, fill=false) => ({
+  const isBase = M_BASE &&
+    M_LAST.params.phi === M_BASE.params.phi &&
+    M_LAST.params.beta === M_BASE.params.beta;
+
+  const mainLine = (data, label, color) => ({
     label, data, borderColor: color, backgroundColor: color + "22",
-    borderWidth: 2.2, pointRadius: 0, tension: 0.15,
-    borderDash: dashed ? [6,4] : [], fill,
+    borderWidth: 2.5, pointRadius: 0, tension: 0.15,
+  });
+  const baseLine = (data) => ({
+    label: "baseline (defaults)", data, borderColor: "#5a6784",
+    borderWidth: 1.6, pointRadius: 0, tension: 0.15, borderDash: [5,5],
   });
   const opts = (ytitle) => ({
     maintainAspectRatio: false,
     scales: {
-      x: { title: { display:true, text:"quarters after the shock" },
-           ticks: { maxTicksLimit: 9 }, grid:{color:gridColor} },
+      x: { title: { display:true, text:"quarters" }, ticks: { maxTicksLimit: 9 }, grid:{color:gridColor} },
       y: { title: { display:true, text:ytitle }, grid:{color:gridColor} },
     },
     plugins: { legend: { labels: { boxWidth: 14 } } },
   });
+  const panel = (id, key, label, color, ytitle) => {
+    const ds = [mainLine(p[key], label, color)];
+    if (M_BASE && !isBase) ds.push(baseLine(M_BASE.path[key]));
+    mkChart(id, { type: "line", data: { labels: t, datasets: ds }, options: opts(ytitle) });
+  };
 
-  mkChart("m-chart-build", { type: "line",
-    data: { labels: t, datasets: [
-      line(p.K, "Installed compute (%)", C.ge),
-      line(p.i_pp, "Investment rate (pp)", C.pe, true),
-    ]}, options: opts("deviation") });
+  // ---- the note's Figure 1, panel by panel ----
+  panel("m-chart-inv", "i_pp", "investment rate", C.ge, "percentage points");
+  panel("m-chart-k",   "K",    "installed compute", C.ge, "percent");
+  panel("m-chart-rk",  "rK",   "compute rental price", C.scar, "percent");
+  panel("m-chart-q",   "q",    "Tobin's q", C.pe, "percent");
 
-  mkChart("m-chart-scarcity", { type: "line",
-    data: { labels: t, datasets: [
-      line(p.rK, "Compute rental price (%)", C.scar),
-      line(p.q, "Tobin's q (%)", C.prod, true),
-    ]}, options: opts("% deviation") });
-
-  mkChart("m-chart-prices", { type: "line",
-    data: { labels: t, datasets: [
-      line(p.X, "AI output X", C.ge),
-      line(p.pX, "AI price p_X", C.scar),
-      line(p.w1, "Wage: general labor w₁", C.prod, true),
-      line(p.w2, "Wage: AI specialists w₂", C.pe, true),
-    ]}, options: opts("% deviation") });
-
-  const sh = p.shares;
-  mkChart("m-chart-shares", { type: "line",
-    data: { labels: t, datasets: [
-      line(sh.dsPi, "AI profits (fixed factor)", C.scar),
-      line(sh.dsK, "Compute owners", C.pe),
-      line(sh.ds2, "AI specialists", C.prod),
-      line(sh.ds1, "General labor", C.base, true),
-    ]}, options: opts("Δ share of GDP (pp)") });
+  // ---- rents captured because supply is convex ----
+  const rents = [
+    mainLine(p.Pi, "Rents to hard-to-replicate factors (permanent)", C.scar),
+    mainLine(p.rK, "Compute scarcity rents (temporary)", C.pe),
+  ];
+  mkChart("m-chart-rents", { type: "line",
+    data: { labels: t, datasets: rents }, options: opts("% deviation") });
 
   // stats table
-  const d = M_LAST.derived, im = M_LAST.impact, lr = M_LAST.longrun;
+  const im = M_LAST.impact, lr = M_LAST.longrun;
   const row = (name, a, b) => `<tr><td>${name}</td><td>${fmt(a,3)}</td><td>${fmt(b,3)}</td></tr>`;
   document.getElementById("m-stats").innerHTML =
-    `<tr><th>Response (%)</th><th>Impact</th><th>Long run</th></tr>` +
-    row("AI output X", im.X, lr.X) + row("AI price p_X", im.pX, lr.pX) +
-    row("Wage w₁ (general)", im.w1, lr.w1) + row("Wage w₂ (AI talent)", im.w2, lr.w2) +
-    row("AI employment L₂", im.L2, lr.L2) + row("GDP", im.Y, lr.Y) +
-    row("Compute stock K", im.K, lr.K) + row("Compute rental", im.rK, lr.rK);
+    `<tr><th>Response to a 1% AI productivity gain</th><th>Impact</th><th>Long run</th></tr>` +
+    row("AI output (%)", im.X, lr.X) +
+    row("AI price (%)", im.pX, lr.pX) +
+    row("Bottleneck rents (%)", im.Pi, lr.Pi) +
+    row("Compute rental price (%)", im.rK, lr.rK) +
+    row("Compute stock (%)", im.K, lr.K) +
+    row("GDP (%)", im.Y, lr.Y);
 
   // markup split table
   const mk = M_LAST.markup, c = mk.competitive, mo = mk.monopoly;
   const pcnt = x => (100*x).toFixed(1) + "%";
   document.getElementById("m-split").innerHTML =
     `<tr><th>AI revenue to…</th><th>Competitive</th><th>Monopolist</th></tr>
-     <tr><td>AI specialists (labor)</td><td>${pcnt(c.labor)}</td><td>${pcnt(mo.labor)}</td></tr>
-     <tr><td>Compute owners</td><td>${pcnt(c.compute)}</td><td>${pcnt(mo.compute)}</td></tr>
-     <tr><td>Profits</td><td>${pcnt(c.profit)}</td><td class="delta-pos">${pcnt(mo.profit)}</td></tr>
-     <tr><td>Markup wedge m = 1−θ</td><td>—</td><td>${fmt(mk.markup_wedge,3)}</td></tr>`;
+     <tr><td>Variable factors (labor + compute)</td><td>${pcnt(c.labor + c.compute)}</td><td>${pcnt(mo.labor + mo.compute)}</td></tr>
+     <tr><td>Rents / profits</td><td>${pcnt(c.profit)}</td><td class="delta-pos">${pcnt(mo.profit)}</td></tr>`;
 }
 
 // ============================================================
