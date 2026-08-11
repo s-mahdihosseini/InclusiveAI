@@ -13,13 +13,13 @@
     --bg: #0f1420;
     --panel: #171e2e;
     --panel2: #1d2638;
-    --border: #2a3550;
+    --border: #e2ddd2;
     --text: #e8ecf4;
-    --muted: #93a0b8;
-    --accent: #4f8ef7;
-    --accent2: #f7b34f;
-    --green: #3ecf8e;
-    --red: #f45b69;
+    --muted: #7a766c;
+    --accent: #2b4570;
+    --accent2: #b07c2a;
+    --green: #3f6d4e;
+    --red: #8b1a1a;
     --radius: 12px;
     font-size: 16.5px;
   }
@@ -223,6 +223,90 @@
   .intro { color: var(--muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 22px; max-width: 950px; }
   .intro b { color: var(--text); }
   footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding: 20px; border-top: 1px solid var(--border); }
+
+  /* ================================================================
+     THEME: academic print. Warm paper, serif prose, one dark-red
+     accent, thin rules. Overrides the block above.
+     ================================================================ */
+  :root {
+    --bg: #f7f5ef;
+    --panel: #fffdf8;
+    --panel2: #efece2;
+    --border: #d9d3c3;
+    --text: #24231f;
+    --muted: #605c51;
+    --accent: #8b1a1a;
+    --accent2: #a2762a;
+    --green: #3f6d4e;
+    --red: #8b1a1a;
+    --radius: 3px;
+    --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--serif); }
+  header {
+    background: var(--bg);
+    border-bottom: 3px double #b9b19e;
+    padding-top: 30px;
+  }
+  .brand h1 { font-family: var(--serif); font-weight: 700; letter-spacing: 0; }
+  .brand h1 span { color: var(--accent); }
+  .brand .tagline { font-style: italic; }
+  nav button {
+    font-family: var(--sans); text-transform: uppercase;
+    font-size: 0.74rem; letter-spacing: 1.3px; font-weight: 600;
+    padding: 10px 14px;
+  }
+  nav button.active { border-bottom: 2px solid var(--accent); }
+  nav button .soon { background: none; border: none; color: var(--muted); text-transform: none; letter-spacing: 0; }
+
+  h2, h3, h4 { font-family: var(--serif); }
+  .card { box-shadow: none; }
+  .card h3 small, .stage-sub, .hero p, .intro { font-family: var(--serif); }
+
+  .hero h2 em { color: var(--accent); font-style: italic; }
+  .hero .paper-cite { font-style: italic; }
+  .decomp .piece small { font-family: var(--sans); font-size: 0.76rem; }
+  .stage-num { border-radius: 2px; font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.8px; text-transform: uppercase; }
+  .channel.live:hover { transform: none; border-color: var(--accent); box-shadow: 2px 2px 0 var(--border); }
+  .channel p { font-family: var(--serif); }
+  .badge { font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.8px; font-size: 0.64rem; border-radius: 2px; }
+  .badge.live-b { background: none; color: var(--green); border-color: var(--green); }
+  .badge.soon-b { background: none; color: var(--muted); border-color: var(--border); }
+  .stage-arrow { color: #b9b19e; }
+
+  .force.up, .force.down {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 3px;
+  }
+  .force.up { border-left: 4px solid var(--green); }
+  .force.down { border-left: 4px solid var(--red); }
+  .force .f-tag { font-family: var(--sans); }
+  .force p { font-family: var(--serif); }
+  .verdict { background: var(--panel2); border-radius: 3px; }
+  .explore-divider span { font-family: var(--serif); font-style: italic; font-weight: 500; }
+
+  .param label, .param .help, .status, .toggle-row button, .scenario-row select,
+  .stats-table, .occ-table, .scenario-card, .badge, .f-tag {
+    font-family: var(--sans);
+  }
+  .param label { font-size: 0.8rem; }
+  .param .help { font-size: 0.72rem; }
+  .param input[type=range] { accent-color: var(--accent); }
+  .toggle-row button.active { background: var(--accent); border-color: var(--accent); }
+  .scenario-row select { background: var(--panel); }
+  .scenario-card { background: var(--panel2); }
+  .scenario-card summary { color: var(--accent); }
+  .scenario-card .ineq { color: #7a5716; }
+  .status.solving { color: #7a5716; }
+
+  .eq { background: var(--panel2); border-radius: 3px; }
+  .model-doc summary { font-family: var(--serif); }
+  .model-doc .doc-body { font-family: var(--serif); }
+  .model-doc .doc-body h5 { font-family: var(--sans); }
+
+  .cites { font-family: var(--serif); font-style: italic; }
+  .cites a { color: var(--accent); }
+  footer { font-family: var(--sans); letter-spacing: 0.4px; }
 </style>
 </head>
 <body>
@@ -269,31 +353,31 @@
     <div class="channel-grid">
       <div class="channel soon-ch">
         <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="6" y="14" width="20" height="16" rx="3" stroke="#f45b69" stroke-width="2.5"/><circle cx="13" cy="22" r="2" fill="#f45b69"/><circle cx="19" cy="22" r="2" fill="#f45b69"/><path d="M30 22h8m0 0-3-3m3 3-3 3" stroke="#93a0b8" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="6" y="14" width="20" height="16" rx="3" stroke="#8b1a1a" stroke-width="2.5"/><circle cx="13" cy="22" r="2" fill="#8b1a1a"/><circle cx="19" cy="22" r="2" fill="#8b1a1a"/><path d="M30 22h8m0 0-3-3m3 3-3 3" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <h4>Automation</h4>
         <p>AI performs tasks in place of workers. Displaced labor competes for the remaining work; gains flow to capital.</p>
       </div>
       <div class="channel live" data-goto="expertise">
         <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M8 34V22m9 12V14m9 20V18m9 16V8" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M8 34V22m9 12V14m9 20V18m9 16V8" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round"/></svg></div>
         <h4>Augmentation &amp; productivity gains</h4>
         <p>AI makes workers more productive at what they already do — unevenly across occupations. Explored in the Expertise model.</p>
       </div>
       <div class="channel soon-ch">
         <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="13" stroke="#4f8ef7" stroke-width="2.5"/><path d="M22 15v14M15 22h14" stroke="#4f8ef7" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="13" stroke="#2b4570" stroke-width="2.5"/><path d="M22 15v14M15 22h14" stroke="#2b4570" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <h4>New-task creation</h4>
         <p>AI spawns tasks and occupations that didn't exist. Who performs them determines who gains.</p>
       </div>
       <div class="channel live" data-goto="expertise">
         <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M7 32h10M7 26h10M7 20h10" stroke="#f7b34f" stroke-width="2.5" stroke-linecap="round"/><path d="M24 32c3-8 8-14 13-18m0 0h-7m7 0v7" stroke="#3ecf8e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M7 32h10M7 26h10M7 20h10" stroke="#b07c2a" stroke-width="2.5" stroke-linecap="round"/><path d="M24 32c3-8 8-14 13-18m0 0h-7m7 0v7" stroke="#3f6d4e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h4>Entry barriers &amp; expertise</h4>
         <p>AI compresses the training needed to do expert work, letting more workers enter high-paid occupations and eroding expertise rents.</p>
       </div>
       <div class="channel soon-ch">
         <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="8" y="24" width="8" height="12" rx="1.5" stroke="#93a0b8" stroke-width="2.5"/><rect x="18" y="16" width="8" height="20" rx="1.5" stroke="#93a0b8" stroke-width="2.5"/><rect x="28" y="8" width="8" height="28" rx="1.5" stroke="#93a0b8" stroke-width="2.5"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="8" y="24" width="8" height="12" rx="1.5" stroke="#7a766c" stroke-width="2.5"/><rect x="18" y="16" width="8" height="20" rx="1.5" stroke="#7a766c" stroke-width="2.5"/><rect x="28" y="8" width="8" height="28" rx="1.5" stroke="#7a766c" stroke-width="2.5"/></svg></div>
         <h4>Capital deepening</h4>
         <p>Massive AI investment raises the capital stock workers use — lifting productivity but also the capital share.</p>
       </div>
@@ -307,13 +391,13 @@
     <div class="channel-grid">
       <div class="channel live" data-goto="market_power">
         <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M22 6l14 8v16l-14 8-14-8V14l14-8z" stroke="#f45b69" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="22" r="5" stroke="#f45b69" stroke-width="2.5"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M22 6l14 8v16l-14 8-14-8V14l14-8z" stroke="#8b1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="22" r="5" stroke="#8b1a1a" stroke-width="2.5"/></svg></div>
         <h4>Compute bottlenecks &amp; AI-supply rents</h4>
         <p>The AI industry's convex supply curve — hard-to-scale factors and slow-to-build compute — decides how fast productivity gains reach prices, and how much is captured as rents along the way. Explored in the Compute Bottlenecks model.</p>
       </div>
       <div class="channel soon-ch">
         <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M10 34c4-2 6-10 12-10s8 8 12 6" stroke="#f7b34f" stroke-width="2.5" stroke-linecap="round"/><path d="M8 10v24h28" stroke="#93a0b8" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M10 34c4-2 6-10 12-10s8 8 12 6" stroke="#b07c2a" stroke-width="2.5" stroke-linecap="round"/><path d="M8 10v24h28" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <h4>Firm markups, wages &amp; prices</h4>
         <p>Do adopting firms pass gains to consumers through prices, to workers through wages, or keep them as profits?</p>
       </div>
@@ -327,7 +411,7 @@
     <div class="channel-grid">
       <div class="channel live" data-goto="demand">
         <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="14" cy="14" r="6" stroke="#4f8ef7" stroke-width="2.5"/><circle cx="32" cy="16" r="4" stroke="#4f8ef7" stroke-width="2.5"/><circle cx="24" cy="32" r="5" stroke="#4f8ef7" stroke-width="2.5"/><path d="M18 18l4 9m3-1 4-11" stroke="#93a0b8" stroke-width="2"/></svg></div>
+        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="14" cy="14" r="6" stroke="#2b4570" stroke-width="2.5"/><circle cx="32" cy="16" r="4" stroke="#2b4570" stroke-width="2.5"/><circle cx="24" cy="32" r="5" stroke="#2b4570" stroke-width="2.5"/><path d="M18 18l4 9m3-1 4-11" stroke="#7a766c" stroke-width="2"/></svg></div>
         <h4>Demand structure &amp; GPT incidence</h4>
         <p>Cheaper AI shifts spending across occupations' outputs: elastic vs. saturated demand, Engel forces, and worker mobility decide who gains. Explored in the Demand Structure model.</p>
       </div>
@@ -346,7 +430,7 @@
     <div class="forces">
       <div class="force up">
         <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 36V26m10 10V18m10 18V22m10 14V10" stroke="#3ecf8e" stroke-width="3.5" stroke-linecap="round"/><path d="M28 10h10v10" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 36V26m10 10V18m10 18V22m10 14V10" stroke="#3f6d4e" stroke-width="3.5" stroke-linecap="round"/><path d="M28 10h10v10" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div><div class="f-tag">FORCE 1 · PUSHES TOP WAGES UP</div><h3>Productivity gains</h3></div>
         </div>
         <p>AI makes workers <b>better at the jobs they already do</b> — drafting contracts, reading scans,
@@ -354,29 +438,29 @@
            high-paid) occupations produce more value per worker, pushing their wages up&hellip; though in
            general equilibrium, extra output also pushes the <i>price</i> of their services down.</p>
         <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
-          <circle cx="38" cy="34" r="11" stroke="#93a0b8" stroke-width="2.5"/>
-          <path d="M38 45v22M26 78l12-11 12 11" stroke="#93a0b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M70 55c22 0 24-24 46-24" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>
-          <path d="M130 58l50-28m0 0h-13m13 0v13" stroke="#3ecf8e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="150" y="80" fill="#3ecf8e" font-size="13" font-family="system-ui" font-weight="600">output per worker</text>
+          <circle cx="38" cy="34" r="11" stroke="#7a766c" stroke-width="2.5"/>
+          <path d="M38 45v22M26 78l12-11 12 11" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M70 55c22 0 24-24 46-24" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>
+          <path d="M130 58l50-28m0 0h-13m13 0v13" stroke="#3f6d4e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="150" y="80" fill="#3f6d4e" font-size="13" font-family="system-ui" font-weight="600">output per worker</text>
         </svg>
       </div>
       <div class="force down">
         <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M6 38h34" stroke="#93a0b8" stroke-width="3" stroke-linecap="round"/><path d="M10 38V22h8v16m4 0V14h8v24m-24-8 28-16" stroke="#f45b69" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M6 38h34" stroke="#7a766c" stroke-width="3" stroke-linecap="round"/><path d="M10 38V22h8v16m4 0V14h8v24m-24-8 28-16" stroke="#8b1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div><div class="f-tag">FORCE 2 · PULLS TOP WAGES DOWN</div><h3>Entry-barrier erosion</h3></div>
         </div>
         <p>AI also <b>shortens the road into expert work</b>: with an AI assistant, tasks that took ten years
            of training become feasible after two. As barriers fall, <b>more workers can enter</b> high-paid
            occupations, expanding supply and competing away the scarcity rents that expertise used to command.</p>
         <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
-          <path d="M14 74h60V30h-60zM14 52h60M34 74V30M54 74V30" stroke="#f45b69" stroke-width="2.5" opacity="0.45"/>
-          <path d="M96 52h34m0 0-9-9m9 9-9 9" stroke="#93a0b8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="152" cy="34" r="8" stroke="#93a0b8" stroke-width="2.5"/>
-          <circle cx="176" cy="34" r="8" stroke="#93a0b8" stroke-width="2.5"/>
-          <circle cx="200" cy="34" r="8" stroke="#93a0b8" stroke-width="2.5"/>
-          <path d="M152 44v18m24-18v18m24-18v18" stroke="#93a0b8" stroke-width="2.5" stroke-linecap="round"/>
-          <text x="118" y="84" fill="#f45b69" font-size="13" font-family="system-ui" font-weight="600">more entrants, lower rents</text>
+          <path d="M14 74h60V30h-60zM14 52h60M34 74V30M54 74V30" stroke="#8b1a1a" stroke-width="2.5" opacity="0.45"/>
+          <path d="M96 52h34m0 0-9-9m9 9-9 9" stroke="#7a766c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="152" cy="34" r="8" stroke="#7a766c" stroke-width="2.5"/>
+          <circle cx="176" cy="34" r="8" stroke="#7a766c" stroke-width="2.5"/>
+          <circle cx="200" cy="34" r="8" stroke="#7a766c" stroke-width="2.5"/>
+          <path d="M152 44v18m24-18v18m24-18v18" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="118" y="84" fill="#8b1a1a" font-size="13" font-family="system-ui" font-weight="600">more entrants, lower rents</text>
         </svg>
       </div>
     </div>
@@ -511,7 +595,7 @@
     <div class="forces">
       <div class="force up">
         <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 38c14 0 12-4 16-12s6-16 14-18" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round"/><path d="M8 38h30M8 38V8" stroke="#93a0b8" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 38c14 0 12-4 16-12s6-16 14-18" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round"/><path d="M8 38h30M8 38V8" stroke="#7a766c" stroke-width="2" stroke-linecap="round"/></svg>
           <div><div class="f-tag">FORCE 1 · CONVEX SUPPLY</div><h3>The AI industry is hard to scale</h3></div>
         </div>
         <p>Expanding AI output isn't like printing software copies: it needs power interconnections,
@@ -523,7 +607,7 @@
       </div>
       <div class="force down">
         <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="15" stroke="#f45b69" stroke-width="2.5"/><path d="M23 13v10l7 5" stroke="#f45b69" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="15" stroke="#8b1a1a" stroke-width="2.5"/><path d="M23 13v10l7 5" stroke="#8b1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div><div class="f-tag">FORCE 2 · TIME TO BUILD</div><h3>Compute scarcity is temporary — but how temporary?</h3></div>
         </div>
         <p>Even the parts that <i>can</i> scale take time: a permanent AI breakthrough hits a
@@ -886,11 +970,11 @@ async function solve() {
 
 // ---------------- Rendering ----------------
 const C = {
-  base:  "#93a0b8",
-  pe:    "#f7b34f",
-  ge:    "#4f8ef7",
-  scar:  "#f45b69",
-  prod:  "#3ecf8e",
+  base:  "#7a766c",
+  pe:    "#b07c2a",
+  ge:    "#2b4570",
+  scar:  "#8b1a1a",
+  prod:  "#3f6d4e",
 };
 
 function mkChart(id, cfg) {
@@ -898,10 +982,11 @@ function mkChart(id, cfg) {
   charts[id] = new Chart(document.getElementById(id), cfg);
 }
 
-const gridColor = "#2a3550";
-Chart.defaults.color = "#93a0b8";
+const gridColor = "#e2ddd2";
+Chart.defaults.color = "#7a766c";
 Chart.defaults.borderColor = gridColor;
-Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.font.family = "'Helvetica Neue', Helvetica, Arial, sans-serif";
+Chart.defaults.font.size = 12;
 
 function render() {
   if (!LAST) return;
@@ -1033,8 +1118,8 @@ init();
 // DEMAND STRUCTURE TAB
 // ============================================================
 let D_INIT = false, D_LAST = null, dDebounce = null;
-const OCC_COLORS = { 0: "#3ecf8e", 1: "#f7b34f", 2: "#f45b69", 3: "#4f8ef7" };
-const GRP_COLORS = ["#f45b69", "#f7b34f", "#4f8ef7"];
+const OCC_COLORS = { 0: "#3f6d4e", 1: "#b07c2a", 2: "#8b1a1a", 3: "#2b4570" };
+const GRP_COLORS = ["#8b1a1a", "#b07c2a", "#2b4570"];
 
 async function initDemand() {
   if (!META) { setTimeout(initDemand, 300); return; }  // meta still loading
@@ -1155,7 +1240,7 @@ function dRenderGroups() {
       scales: { y: { grid:{color:gridColor} }, x: { grid:{display:false} } },
       plugins: {
         legend: { display: false },
-        title: { display: true, color: "#93a0b8",
+        title: { display: true, color: "#7a766c",
                  text: `Aggregate real income: ${(D_LAST.final.dlnI_real>=0?"+":"")}${fmt(D_LAST.final.dlnI_real,3)} log points` },
       },
     }
@@ -1254,7 +1339,7 @@ function mRender() {
     borderWidth: 2.5, pointRadius: 0, tension: 0.15,
   });
   const baseLine = (data) => ({
-    label: "baseline (defaults)", data, borderColor: "#5a6784",
+    label: "baseline (defaults)", data, borderColor: "#9a958a",
     borderWidth: 1.6, pointRadius: 0, tension: 0.15, borderDash: [5,5],
   });
   const opts = (ytitle) => ({
