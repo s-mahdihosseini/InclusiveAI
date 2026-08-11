@@ -105,12 +105,12 @@ PARAM_META = {
                 "fall, and how income shares move all follow in closed form."
             ),
             "parameters": [
-                {"id": "bottleneck", "name": "Bottleneckness — decreasing returns to scale",
+                {"id": "bottleneck", "name": "Supply convexity — share of hard-to-scale factors",
                  "min": 0.05, "max": 0.7, "step": 0.05, "default": 0.2,
-                 "help": "How convex the AI industry's supply curve is: the share of AI revenue tied to factors that are hard to replicate at any speed (proprietary data, organizational capital, sites, licenses). Higher = expansion is harder = productivity gains pass through less into lower prices and more into rents."},
-                {"id": "phi", "name": "φ — adjustment cost (time to build compute)",
+                 "help": "How steep the AI industry's supply curve is: the share of AI revenue tied to factors that cannot be replicated at any speed (proprietary data, organizational capital, sites, licenses). Higher = expansion is harder = productivity gains pass through less into lower prices and more into permanent rents."},
+                {"id": "phi", "name": "Time to build — compute adjustment cost (φ)",
                  "min": 0.5, "max": 50.0, "step": 0.5, "default": 8.0,
-                 "help": "How expensive it is to install compute quickly (data centers, power interconnection, chip supply). Higher φ does not change where the economy ends up — it prolongs the period of compute scarcity and delays the pass-through into prices."},
+                 "help": "How expensive it is to install compute quickly (data centers, power interconnection, chip supply). Doesn't change where the economy ends up — it sets how long compute scarcity and its temporary rents last before productivity fully reaches prices."},
             ],
         },
     ]
