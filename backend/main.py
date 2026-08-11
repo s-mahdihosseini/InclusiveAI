@@ -18,6 +18,7 @@ from fastapi.staticfiles import StaticFiles
 
 import demand_gpt
 import expertise_static
+import market_power
 
 app = FastAPI(title="InclusiveAI API", version="0.1.0")
 
@@ -91,8 +92,42 @@ PARAM_META = {
                  "help": "On: one household per education group — income distribution feeds back into demand composition. Off: pooled representative household."},
             ],
         },
-        {"id": "market_power", "name": "Market Power of AI Providers", "status": "coming_soon",
-         "description": "GE model of concentration and markups in the market for AI services, and their incidence on the income distribution."},
+        {
+            "id": "market_power",
+            "name": "AI Supplier Market Power & Compute",
+            "status": "live",
+            "paper": "AI Productivity, Upward-Sloping Factor Supply, and the Dynamics of Compute Investment (Hosseini & Lichtinger, 2026)",
+            "description": (
+                "Closed-form GE model of the AI supply side: a productivity shock "
+                "raises desired AI scale, which runs into two bottlenecks — "
+                "specialized labor on an upward-sloping supply curve, and compute "
+                "capital that takes time to build. Who gains, how fast prices "
+                "fall, and how income shares move all follow in closed form."
+            ),
+            "parameters": [
+                {"id": "shock", "name": "AI productivity shock (%, permanent)",
+                 "min": 0.5, "max": 20.0, "step": 0.5, "default": 1.0,
+                 "help": "Size of the permanent increase in AI productivity A. All responses scale linearly (first-order solution)."},
+                {"id": "sigma", "name": "σ — substitution: AI services vs. labor",
+                 "min": 0.5, "max": 4.0, "step": 0.05, "default": 2.0,
+                 "help": "Elasticity of substitution in final production. σ > 1: AI and workers are substitutes — AI's income share rises with productivity. σ < 1: complements — the share falls."},
+                {"id": "sx0", "name": "Initial AI revenue share (s_X)",
+                 "min": 0.05, "max": 0.8, "step": 0.01, "default": 0.5,
+                 "help": "AI services' share of final-good revenue at the initial equilibrium. Sets θ = (1−s_X)/σ, the key sufficient statistic: scale effect wins when θ < 1."},
+                {"id": "eta", "name": "η — specialized-labor supply elasticity",
+                 "min": 0.0, "max": 5.0, "step": 0.1, "default": 1.0,
+                 "help": "Slope of the AI-talent supply curve. 0 = fixed supply (all adjustment through wages); large = flat supply (adjustment through employment)."},
+                {"id": "beta", "name": "β — AI-labor share of AI revenue",
+                 "min": 0.05, "max": 0.9, "step": 0.05, "default": 0.4,
+                 "help": "Cobb-Douglas weight on specialized labor in AI production."},
+                {"id": "gamma", "name": "γ — compute share of AI revenue",
+                 "min": 0.05, "max": 0.9, "step": 0.05, "default": 0.4,
+                 "help": "Cobb-Douglas weight on compute capital. The remainder 1−β−γ is the rent to the fixed factor (data, organization). β+γ is capped at 0.95."},
+                {"id": "phi", "name": "φ — compute adjustment cost",
+                 "min": 0.5, "max": 50.0, "step": 0.5, "default": 8.0,
+                 "help": "How costly it is to build compute quickly (data centers, power, chips). Changes the speed of the transition — not the impact response or the long run."},
+            ],
+        },
     ]
 }
 
@@ -114,6 +149,30 @@ def solve(
             round(float(sigma), 2), round(float(scarcity), 2),
             round(float(productivity), 2))
         return out
+    except Exception as e:  # pragma: no cover
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/market/solve")
+def solve_market(
+    sigma: float = Query(2.0, ge=0.1, le=8.0),
+    sx0: float = Query(0.5, ge=0.01, le=0.9),
+    eta: float = Query(1.0, ge=0.0, le=10.0),
+    beta: float = Query(0.4, ge=0.01, le=0.9),
+    gamma: float = Query(0.4, ge=0.01, le=0.9),
+    phi: float = Query(8.0, ge=0.1, le=100.0),
+    shock: float = Query(1.0, ge=0.1, le=50.0),
+):
+    try:
+        out = market_power.solve(
+            round(float(sigma), 3), round(float(sx0), 3), round(float(eta), 3),
+            round(float(beta), 3), round(float(gamma), 3),
+            round(float(phi), 2), round(float(shock), 2))
+        if "error" in out:
+            raise HTTPException(status_code=422, detail=out["error"])
+        return out
+    except HTTPException:
+        raise
     except Exception as e:  # pragma: no cover
         raise HTTPException(status_code=500, detail=str(e))
 

@@ -207,7 +207,7 @@
     <button data-tab="home" class="active">Home</button>
     <button data-tab="expertise">Expertise &amp; Entry Barriers</button>
     <button data-tab="demand">Demand Structure</button>
-    <button data-tab="market_power">AI Market Power <span class="soon">soon</span></button>
+    <button data-tab="market_power">AI Market Power &amp; Compute</button>
     <button data-tab="about">About</button>
   </nav>
 </header>
@@ -275,11 +275,11 @@
     <div class="stage-head"><span class="stage-num">Stage 2</span><h3>Who captures the productivity gains</h3></div>
     <p class="stage-sub">Gains are split among AI suppliers, adopting firms, workers, and consumers — via profits, wages, and prices. Depends on competition along the AI supply chain, firms' market power, and workers' bargaining power.</p>
     <div class="channel-grid">
-      <div class="channel soon-ch">
-        <span class="badge soon-b">under construction</span>
+      <div class="channel live" data-goto="market_power">
+        <span class="badge live-b">interactive model</span>
         <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M22 6l14 8v16l-14 8-14-8V14l14-8z" stroke="#f45b69" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="22" r="5" stroke="#f45b69" stroke-width="2.5"/></svg></div>
-        <h4>Market power of AI suppliers</h4>
-        <p>Concentration and markups in the market for frontier models decide how much of the surplus stays with the providers.</p>
+        <h4>Market power of AI suppliers &amp; compute bottlenecks</h4>
+        <p>An upward-sloping supply of AI talent and slow-to-build compute decide how fast AI's gains reach prices and wages — and how much stays with the providers. Explored in the Market Power model.</p>
       </div>
       <div class="channel soon-ch">
         <span class="badge soon-b">under construction</span>
@@ -468,11 +468,88 @@
 </section>
 
 <section id="tab-market_power" style="display:none">
-  <div class="soon-panel card">
-    <h2>Market Power of AI Providers</h2>
-    <p>A model of concentration and markups in the market for AI services: who captures the surplus
-       AI creates — users, firms, or the providers of frontier models — and what that means for the
-       income distribution. Coming soon.</p>
+  <div class="explainer">
+    <h2>AI gets better — who captures the gains, and how fast?</h2>
+    <p class="lede">
+      When AI productivity jumps, the industry wants to scale up. But scaling runs into two
+      bottlenecks: <b>specialized talent</b> (more of it only at higher wages) and <b>compute</b>
+      (data centers, chips, and power take time to build). Two elasticities and one adjustment cost
+      determine everything: how much prices fall, whose wages rise, and how the income pie is re-cut.
+    </p>
+    <div class="forces">
+      <div class="force up">
+        <div class="f-head">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 38c8 0 8-24 30-24" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round"/><path d="M30 8h8v8" stroke="#3ecf8e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><div class="f-tag">BOTTLENECK 1 · TALENT</div><h3>Upward-sloping supply of AI labor</h3></div>
+        </div>
+        <p>The AI sector hires from a limited pool of specialists. The supply elasticity <b>η</b> decides
+           how expansion splits between <b>hiring more people</b> (flat supply, large η) and
+           <b>bidding up their wages</b> (steep supply, small η). Whether AI-sector wages rise at all
+           depends on the race between scale and the falling AI price — the sufficient statistic is
+           θ = s₁/σ.</p>
+      </div>
+      <div class="force down">
+        <div class="f-head">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="8" y="18" width="12" height="20" rx="2" stroke="#f45b69" stroke-width="2.5"/><rect x="26" y="10" width="12" height="28" rx="2" stroke="#f45b69" stroke-width="2.5" stroke-dasharray="4 4"/><path d="M12 26h4m-4 5h4m14-13h4m-4 5h4m-4 5h4" stroke="#f45b69" stroke-width="2"/></svg>
+          <div><div class="f-tag">BOTTLENECK 2 · COMPUTE</div><h3>Compute takes time to build</h3></div>
+        </div>
+        <p>Compute capital adjusts slowly: the adjustment cost <b>φ</b> governs how expensive it is to
+           build fast. Higher φ doesn't change where the economy ends up — it changes <b>how long
+           compute stays scarce</b>: rental prices and the value of installed compute (Tobin's q) spike
+           and decay slowly, delaying the pass-through of productivity into lower AI prices.</p>
+      </div>
+    </div>
+    <div class="verdict">
+      <b>Market power on top:</b> a monopolist AI supplier prices against the economy-wide demand curve,
+      adding a markup wedge m = 1 − θ. The table below shows how the split of AI revenue between
+      talent, compute owners, and profits changes when the supplier has market power.
+    </div>
+    <div class="cites">
+      Model: Hosseini &amp; Lichtinger (2026), &ldquo;AI Productivity, Upward-Sloping Factor Supply,
+      and the Dynamics of Compute Investment.&rdquo; Solved in closed form (saddle path of a
+      Hayashi-style q model); calibration is quarterly with b = 0.99, δ = 0.025.
+    </div>
+  </div>
+
+  <div class="explore-divider"><hr><span>Explore the model</span><hr></div>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <h3>Parameters</h3>
+        <div id="m-params"></div>
+        <div class="status" id="m-status"></div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <h3>Key statistics</h3>
+        <table class="stats-table" id="m-stats"></table>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <h3>Split of AI revenue <small>(competitive vs. monopolist supplier)</small></h3>
+        <table class="stats-table" id="m-split"></table>
+      </div>
+    </div>
+
+    <div>
+      <div class="grid2">
+        <div class="card">
+          <h3>Compute buildout <small>(installed compute &amp; investment rate)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-build"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Compute scarcity <small>(rental price &amp; Tobin's q)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-scarcity"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Output, price &amp; wages <small>(% deviation)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-prices"></canvas></div>
+        </div>
+        <div class="card">
+          <h3>Income shares <small>(change, pp of GDP)</small></h3>
+          <div class="chartbox"><canvas id="m-chart-shares"></canvas></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -503,7 +580,9 @@
       <a href="https://raw.githack.com/s-mahdihosseini/Website/b99fa2962dcc4c165bbc3c41dd283afa99c5ccfb/Generative%20AI%20and%20Occupational%20Entry%20Barriers.pdf"
          target="_blank" style="color:var(--accent)">Hosseini &amp; Lichtinger 2026</a>) &middot;
       <b style="color:var(--text)">Demand Structure &amp; GPT Incidence</b> (live) &middot;
-      AI Market Power (in development).
+      <b style="color:var(--text)">AI Supplier Market Power &amp; Compute</b> (live, from Hosseini &amp;
+      Lichtinger 2026, &ldquo;AI Productivity, Upward-Sloping Factor Supply, and the Dynamics of
+      Compute Investment&rdquo;).
     </p>
   </div>
 </section>
@@ -531,6 +610,7 @@ function selectTab(name) {
   ALL_TABS.forEach(t =>
     document.getElementById("tab-"+t).style.display = (t===name) ? "" : "none");
   if (name === "demand" && !D_INIT) initDemand();
+  if (name === "market_power" && !M_INIT) initMarket();
   window.scrollTo({ top: 0 });
   setTimeout(() => window.dispatchEvent(new Event("resize")), 60);
 }
@@ -894,6 +974,125 @@ function dRenderShares() {
       plugins: { legend: { labels: { boxWidth: 14 } } },
     }
   });
+}
+
+// ============================================================
+// AI MARKET POWER & COMPUTE TAB
+// ============================================================
+let M_INIT = false, M_LAST = null, mDebounce = null;
+
+async function initMarket() {
+  if (!META) { setTimeout(initMarket, 300); return; }
+  if (M_INIT) return;
+  M_INIT = true;
+  const model = META.models.find(m => m.id === "market_power");
+  const box = document.getElementById("m-params");
+  model.parameters.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "param";
+    div.innerHTML = `
+      <label><span>${p.name}</span><span class="val" id="m-val-${p.id}">${(+p.default).toFixed(2)}</span></label>
+      <input type="range" id="m-in-${p.id}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.default}">
+      <div class="help">${p.help}</div>`;
+    box.appendChild(div);
+    div.querySelector("input").addEventListener("input", ev => {
+      document.getElementById("m-val-"+p.id).textContent = (+ev.target.value).toFixed(2);
+      clearTimeout(mDebounce); mDebounce = setTimeout(mSolve, 300);
+    });
+  });
+  mSolve();
+}
+
+async function mSolve() {
+  if (!document.getElementById("m-in-sigma")) { setTimeout(mSolve, 300); return; }
+  const g = id => +document.getElementById("m-in-"+id).value;
+  const q = `sigma=${g("sigma")}&sx0=${g("sx0")}&eta=${g("eta")}&beta=${g("beta")}` +
+            `&gamma=${g("gamma")}&phi=${g("phi")}&shock=${g("shock")}`;
+  const st = document.getElementById("m-status");
+  st.textContent = "Evaluating closed-form solution…"; st.className = "status solving";
+  try {
+    const r = await fetch(API + `/api/market/solve?${q}`);
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.detail || await r.text());
+    }
+    M_LAST = await r.json();
+    const d = M_LAST.derived;
+    st.textContent = `Closed form: λ = ${fmt(d.lambda,3)} (half-life ${fmt(d.half_life,1)} quarters), ` +
+      `θ = ${fmt(d.theta,3)} — ${d.theta < 1 ? "scale effect dominates" : "price effect dominates"}`;
+    st.className = "status";
+    mRender();
+  } catch (err) {
+    st.textContent = "⚠ " + err.message; st.className = "status solving";
+  }
+}
+
+function mRender() {
+  if (!M_LAST) return;
+  const p = M_LAST.path, t = p.t;
+  const line = (data, label, color, dashed=false, fill=false) => ({
+    label, data, borderColor: color, backgroundColor: color + "22",
+    borderWidth: 2.2, pointRadius: 0, tension: 0.15,
+    borderDash: dashed ? [6,4] : [], fill,
+  });
+  const opts = (ytitle) => ({
+    maintainAspectRatio: false,
+    scales: {
+      x: { title: { display:true, text:"quarters after the shock" },
+           ticks: { maxTicksLimit: 9 }, grid:{color:gridColor} },
+      y: { title: { display:true, text:ytitle }, grid:{color:gridColor} },
+    },
+    plugins: { legend: { labels: { boxWidth: 14 } } },
+  });
+
+  mkChart("m-chart-build", { type: "line",
+    data: { labels: t, datasets: [
+      line(p.K, "Installed compute (%)", C.ge),
+      line(p.i_pp, "Investment rate (pp)", C.pe, true),
+    ]}, options: opts("deviation") });
+
+  mkChart("m-chart-scarcity", { type: "line",
+    data: { labels: t, datasets: [
+      line(p.rK, "Compute rental price (%)", C.scar),
+      line(p.q, "Tobin's q (%)", C.prod, true),
+    ]}, options: opts("% deviation") });
+
+  mkChart("m-chart-prices", { type: "line",
+    data: { labels: t, datasets: [
+      line(p.X, "AI output X", C.ge),
+      line(p.pX, "AI price p_X", C.scar),
+      line(p.w1, "Wage: general labor w₁", C.prod, true),
+      line(p.w2, "Wage: AI specialists w₂", C.pe, true),
+    ]}, options: opts("% deviation") });
+
+  const sh = p.shares;
+  mkChart("m-chart-shares", { type: "line",
+    data: { labels: t, datasets: [
+      line(sh.dsPi, "AI profits (fixed factor)", C.scar),
+      line(sh.dsK, "Compute owners", C.pe),
+      line(sh.ds2, "AI specialists", C.prod),
+      line(sh.ds1, "General labor", C.base, true),
+    ]}, options: opts("Δ share of GDP (pp)") });
+
+  // stats table
+  const d = M_LAST.derived, im = M_LAST.impact, lr = M_LAST.longrun;
+  const row = (name, a, b) => `<tr><td>${name}</td><td>${fmt(a,3)}</td><td>${fmt(b,3)}</td></tr>`;
+  document.getElementById("m-stats").innerHTML =
+    `<tr><th>Response (%)</th><th>Impact</th><th>Long run</th></tr>` +
+    row("AI output X", im.X, lr.X) + row("AI price p_X", im.pX, lr.pX) +
+    row("Wage w₁ (general)", im.w1, lr.w1) + row("Wage w₂ (AI talent)", im.w2, lr.w2) +
+    row("AI employment L₂", im.L2, lr.L2) + row("GDP", im.Y, lr.Y) +
+    row("Compute stock K", im.K, lr.K) + row("Compute rental", im.rK, lr.rK);
+
+  // markup split table
+  const mk = M_LAST.markup, c = mk.competitive, mo = mk.monopoly;
+  const pcnt = x => (100*x).toFixed(1) + "%";
+  document.getElementById("m-split").innerHTML =
+    `<tr><th>AI revenue to…</th><th>Competitive</th><th>Monopolist</th></tr>
+     <tr><td>AI specialists (labor)</td><td>${pcnt(c.labor)}</td><td>${pcnt(mo.labor)}</td></tr>
+     <tr><td>Compute owners</td><td>${pcnt(c.compute)}</td><td>${pcnt(mo.compute)}</td></tr>
+     <tr><td>Profits</td><td>${pcnt(c.profit)}</td><td class="delta-pos">${pcnt(mo.profit)}</td></tr>
+     <tr><td>Markup wedge m = 1−θ</td><td>—</td><td>${fmt(mk.markup_wedge,3)}</td></tr>`;
 }
 
 // ============================================================
