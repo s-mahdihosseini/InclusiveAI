@@ -471,10 +471,12 @@
   <div class="explainer">
     <h2>AI gets better — who captures the gains, and how fast?</h2>
     <p class="lede">
-      When AI productivity jumps, the industry wants to scale up. But scaling runs into two
-      bottlenecks: <b>specialized talent</b> (more of it only at higher wages) and <b>compute</b>
-      (data centers, chips, and power take time to build). Two elasticities and one adjustment cost
-      determine everything: how much prices fall, whose wages rise, and how the income pie is re-cut.
+      When AI productivity jumps, the industry wants to scale up. But the AI industry has
+      <b>convex supply curves</b>: expanding output gets disproportionately expensive, because it
+      depends on things that are hard to scale — power, data centers, chips, proprietary data — and
+      on compute that takes time to build. Convexity is what turns productivity gains into
+      <b>rents</b> instead of lower prices. Two parameters govern it all: how severe the decreasing
+      returns are, and how costly it is to build fast.
     </p>
     <div class="forces">
       <div class="force up">
@@ -553,7 +555,7 @@
         </div>
       </div>
       <div class="card" style="margin-top:24px">
-        <h3>Rents from the bottleneck <small>(% deviation from pre-shock level)</small></h3>
+        <h3>Rents from the bottleneck <small>(change in share of GDP, percentage points)</small></h3>
         <div class="chartbox"><canvas id="m-chart-rents"></canvas></div>
       </div>
     </div>
@@ -1074,13 +1076,14 @@ function mRender() {
   panel("m-chart-rk",  "rK",   "compute rental price", C.scar, "percent");
   panel("m-chart-q",   "q",    "Tobin's q", C.pe, "percent");
 
-  // ---- rents captured because supply is convex ----
+  // ---- rents captured because supply is convex (share of GDP) ----
   const rents = [
-    mainLine(p.Pi, "Rents to hard-to-replicate factors (permanent)", C.scar),
-    mainLine(p.rK, "Compute scarcity rents (temporary)", C.pe),
+    mainLine(p.rents.fixed_pp, "Rents to hard-to-replicate factors (permanent)", C.scar),
+    mainLine(p.rents.compute_scarcity_pp, "Compute scarcity rents (temporary)", C.pe),
   ];
+  if (M_BASE && !isBase) rents.push(baseLine(M_BASE.path.rents.fixed_pp));
   mkChart("m-chart-rents", { type: "line",
-    data: { labels: t, datasets: rents }, options: opts("% deviation") });
+    data: { labels: t, datasets: rents }, options: opts("Δ share of GDP (percentage points)") });
 
   // stats table
   const im = M_LAST.impact, lr = M_LAST.longrun;
@@ -1089,8 +1092,8 @@ function mRender() {
     `<tr><th>Response to a 1% AI productivity gain</th><th>Impact</th><th>Long run</th></tr>` +
     row("AI output (%)", im.X, lr.X) +
     row("AI price (%)", im.pX, lr.pX) +
-    row("Bottleneck rents (%)", im.Pi, lr.Pi) +
-    row("Compute rental price (%)", im.rK, lr.rK) +
+    row("Bottleneck rents (pp of GDP)", im.rents_fixed_pp, lr.rents_fixed_pp) +
+    row("Compute scarcity rents (pp of GDP)", im.rents_scarcity_pp, lr.rents_scarcity_pp) +
     row("Compute stock (%)", im.K, lr.K) +
     row("GDP (%)", im.Y, lr.Y);
 

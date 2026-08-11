@@ -140,6 +140,15 @@ def solve(sigma=2.0, sx0=0.5, eta=1.0, beta=0.4, gamma=0.4,
         "dsPi": ((1.0 - beta - gamma) * ds_x).tolist(),
     }
 
+    # Rents in shares of GDP (percentage points):
+    #  - fixed-factor rents: ds_Pi (share path, already pp)
+    #  - temporary compute scarcity rents: (r^K - r*) K / Y ~= s_K0 * rK_hat
+    sK0 = gamma * sx0
+    path["rents"] = {
+        "fixed_pp": ((1.0 - beta - gamma) * ds_x).tolist(),
+        "compute_scarcity_pp": (sK0 * np.asarray(path["rK"])).tolist(),
+    }
+
     # Market-power extension: split of AI revenue
     m = 1.0 - st["theta"]                               # aggregate-demand markup wedge
     split = {
@@ -152,7 +161,7 @@ def solve(sigma=2.0, sx0=0.5, eta=1.0, beta=0.4, gamma=0.4,
     }
 
     impact = {k: float(np.asarray(v)[0]) for k, v in path.items()
-              if k not in ("t", "shares")}
+              if k not in ("t", "shares", "rents")}
     # True long run (t -> infinity): lambda^t -> 0, K -> K_inf, q,i,rK -> steady state
     scale_inf = 1.0 + gamma * K_inf
     longrun = {
@@ -164,7 +173,12 @@ def solve(sigma=2.0, sx0=0.5, eta=1.0, beta=0.4, gamma=0.4,
         "L2": st["E_L2"] * scale_inf * eps,
         "Y": st["E_Y"] * scale_inf * eps,
         "Pi": (1.0 - st["theta"]) * st["H"] * scale_inf * eps,
+        "rents_fixed_pp": float((1.0 - beta - gamma) * sx0
+                                * st["E_logsX"] * scale_inf * eps),
+        "rents_scarcity_pp": 0.0,
     }
+    impact["rents_fixed_pp"] = path["rents"]["fixed_pp"][0]
+    impact["rents_scarcity_pp"] = path["rents"]["compute_scarcity_pp"][0]
 
     return {
         "params": {"sigma": sigma, "sx0": sx0, "eta": eta, "beta": beta,
