@@ -94,7 +94,7 @@ PARAM_META = {
         },
         {
             "id": "market_power",
-            "name": "AI Supplier Market Power & Compute",
+            "name": "Compute Bottlenecks",
             "status": "live",
             "paper": "AI Productivity, Upward-Sloping Factor Supply, and the Dynamics of Compute Investment (Hosseini & Lichtinger, 2026)",
             "description": (

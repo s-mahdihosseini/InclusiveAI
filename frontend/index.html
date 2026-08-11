@@ -207,7 +207,7 @@
     <button data-tab="home" class="active">Home</button>
     <button data-tab="expertise">Expertise &amp; Entry Barriers</button>
     <button data-tab="demand">Demand Structure</button>
-    <button data-tab="market_power">AI Market Power &amp; Compute</button>
+    <button data-tab="market_power">Compute Bottlenecks</button>
     <button data-tab="about">About</button>
   </nav>
 </header>
@@ -278,8 +278,8 @@
       <div class="channel live" data-goto="market_power">
         <span class="badge live-b">interactive model</span>
         <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M22 6l14 8v16l-14 8-14-8V14l14-8z" stroke="#f45b69" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="22" r="5" stroke="#f45b69" stroke-width="2.5"/></svg></div>
-        <h4>Market power of AI suppliers &amp; compute bottlenecks</h4>
-        <p>An upward-sloping supply of AI talent and slow-to-build compute decide how fast AI's gains reach prices and wages — and how much stays with the providers. Explored in the Market Power model.</p>
+        <h4>Compute bottlenecks &amp; AI-supply rents</h4>
+        <p>The AI industry's convex supply curve — hard-to-scale factors and slow-to-build compute — decides how fast productivity gains reach prices, and how much is captured as rents along the way. Explored in the Compute Bottlenecks model.</p>
       </div>
       <div class="channel soon-ch">
         <span class="badge soon-b">under construction</span>
@@ -530,7 +530,7 @@
         <table class="stats-table" id="m-stats"></table>
       </div>
       <div class="card" style="margin-top:24px">
-        <h3>Split of AI revenue <small>(competitive vs. monopolist supplier)</small></h3>
+        <h3>Split of AI revenue</h3>
         <table class="stats-table" id="m-split"></table>
       </div>
     </div>
@@ -589,7 +589,7 @@
       <a href="https://raw.githack.com/s-mahdihosseini/Website/b99fa2962dcc4c165bbc3c41dd283afa99c5ccfb/Generative%20AI%20and%20Occupational%20Entry%20Barriers.pdf"
          target="_blank" style="color:var(--accent)">Hosseini &amp; Lichtinger 2026</a>) &middot;
       <b style="color:var(--text)">Demand Structure &amp; GPT Incidence</b> (live) &middot;
-      <b style="color:var(--text)">AI Supplier Market Power &amp; Compute</b> (live, from Hosseini &amp;
+      <b style="color:var(--text)">Compute Bottlenecks</b> (live, from Hosseini &amp;
       Lichtinger 2026, &ldquo;AI Productivity, Upward-Sloping Factor Supply, and the Dynamics of
       Compute Investment&rdquo;).
     </p>
@@ -1097,13 +1097,14 @@ function mRender() {
     row("Compute stock (%)", im.K, lr.K) +
     row("GDP (%)", im.Y, lr.Y);
 
-  // markup split table
-  const mk = M_LAST.markup, c = mk.competitive, mo = mk.monopoly;
+  // revenue split table (competitive; rents come from decreasing returns, not markups)
+  const c = M_LAST.markup.competitive;
   const pcnt = x => (100*x).toFixed(1) + "%";
   document.getElementById("m-split").innerHTML =
-    `<tr><th>AI revenue to…</th><th>Competitive</th><th>Monopolist</th></tr>
-     <tr><td>Variable factors (labor + compute)</td><td>${pcnt(c.labor + c.compute)}</td><td>${pcnt(mo.labor + mo.compute)}</td></tr>
-     <tr><td>Rents / profits</td><td>${pcnt(c.profit)}</td><td class="delta-pos">${pcnt(mo.profit)}</td></tr>`;
+    `<tr><th>AI revenue to…</th><th>Share</th></tr>
+     <tr><td>AI labor</td><td>${pcnt(c.labor)}</td></tr>
+     <tr><td>Compute owners</td><td>${pcnt(c.compute)}</td></tr>
+     <tr><td>Rents to hard-to-replicate factors</td><td class="delta-pos">${pcnt(c.profit)}</td></tr>`;
 }
 
 // ============================================================
