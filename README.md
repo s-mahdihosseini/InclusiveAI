@@ -112,7 +112,9 @@ four questions; each maps to one block of parameters:
 | Employer power over wages (low / high wage) | multiplier on pre-AI markdowns: 0.25, 0.6, 1, 1.5, 2 (deciles 1-4 and 9-10; 5-8 geometric mean) |
 
 The aggregate shock size is lambda_A = lambda_P = 0.5 on the T3-T4 tier by default and can be
-changed under "Advanced". The page compares the pre-AI and post-AI balanced-growth steady
+changed under "Advanced", together with c_P (AI capital needed per unit of augmentation relative to
+full automation; default 0.25). The model version has a constant product markup (3% of output) and
+capital-using augmentation, matching ai_mrr_extended as of 2 Oct 2026. The page compares the pre-AI and post-AI balanced-growth steady
 states (about 0.1 s per solve). `mrr_solver.py` is an unmodified copy of the model's
 `solver.py`; if the model changes, copy it again together with the calibration CSV.
 

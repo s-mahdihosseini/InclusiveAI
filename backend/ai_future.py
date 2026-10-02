@@ -2,8 +2,9 @@
 
 The economics is the maintained model in
 ``model/ai_mrr_extended`` (AI extension of Moll, Rachel and Restrepo 2022,
-"Uneven Growth"). ``mrr_solver.py`` is an unmodified copy of that project's
-``solver.py``; the calibration below reproduces ``run_scenarios.base_parameters``.
+"Uneven Growth", with a constant product markup and capital-using augmentation).
+``mrr_solver.py`` is an unmodified copy of that project's ``solver.py``; the
+calibration below reproduces ``run_scenarios.base_parameters``.
 
 A visitor answers four questions. Each answer moves one block of parameters:
 
@@ -51,9 +52,16 @@ MRR = {
 }
 LABOR_SHARE_TARGET = 0.66
 MARKDOWN_PROFIT_SHARE_TARGET = 0.078
-OTHER_BUSINESS_PROFIT_SHARE_TARGET = 0.030
-BASELINE_PHYSICAL_CAPITAL_SHARE = 1.0 - LABOR_SHARE_TARGET - MARKDOWN_PROFIT_SHARE_TARGET
+PRODUCT_MARKUP_PROFIT_SHARE_TARGET = 0.030
+PRODUCT_MARKUP = 1.0 / (1.0 - PRODUCT_MARKUP_PROFIT_SHARE_TARGET)
+BASELINE_ORDINARY_CAPITAL_SHARE = (
+    1.0 - LABOR_SHARE_TARGET - MARKDOWN_PROFIT_SHARE_TARGET - PRODUCT_MARKUP_PROFIT_SHARE_TARGET
+)
+# With no pre-AI augmentation capital, alpha/mu is ordinary capital income.
+BASELINE_AUTOMATION_SHARE = PRODUCT_MARKUP * BASELINE_ORDINARY_CAPITAL_SHARE
 AUTOMATED_TASK_COST_GAP = 1.30
+# Capital intensity of realized augmentation relative to full automation (= 1).
+DEFAULT_AUGMENTATION_COST = 0.25
 SEEGMILLER_INVERSE_MARKDOWN = np.r_[np.full(4, 1.14), np.full(4, 1.16), np.full(2, 1.23)]
 
 # Exposure tier used for the occupation profiles (T3--T4 automation).
@@ -157,10 +165,11 @@ def _base() -> tuple[Parameters, Dict[str, np.ndarray]]:
         productivity=1.0,
         masses=masses,
         eta=revenue / revenue.sum(),
-        alpha=np.full(len(masses), BASELINE_PHYSICAL_CAPITAL_SHARE),
+        alpha=np.full(len(masses), BASELINE_AUTOMATION_SHARE),
+        augmentation_capital_intensity=np.zeros(len(masses)),
         psi=np.ones(len(masses)),
         wage_markdown=markdown,
-        other_profit_share=OTHER_BUSINESS_PROFIT_SHARE_TARGET,
+        product_markup=PRODUCT_MARKUP,
         quadrature_size=QUADRATURE,
     )
     p = normalize_productivity(p, 1.0)
@@ -195,16 +204,19 @@ def markdown_schedule(baseline: np.ndarray, mp_low: int, mp_high: int) -> np.nda
     return np.clip(baseline * multiplier, 0.0, 0.95)
 
 
-def scenario_parameters(auto, aug, own, mp_low, mp_high, lam_a, lam_p):
+def scenario_parameters(auto, aug, own, mp_low, mp_high, lam_a, lam_p,
+                        c_p=DEFAULT_AUGMENTATION_COST):
     base, data = _base()
     a_profile = tilted_profile(data[f"auto_{TIER}"], base.eta, auto)
     q_profile = tilted_profile(data[f"aug_{TIER}"], base.eta, aug)
-    alpha = BASELINE_PHYSICAL_CAPITAL_SHARE + (1.0 - BASELINE_PHYSICAL_CAPITAL_SHARE) * lam_a * a_profile
-    psi_gain = 1.0 / (1.0 - lam_p * q_profile)
+    alpha = BASELINE_AUTOMATION_SHARE + (1.0 - BASELINE_AUTOMATION_SHARE) * lam_a * a_profile
+    realized_augmentation = lam_p * q_profile
+    psi_gain = 1.0 / (1.0 - realized_augmentation)
     p = replace(
         base,
         chi=CHI[int(own)],
         alpha=np.clip(alpha, 1e-6, 1 - 1e-6),
+        augmentation_capital_intensity=np.clip(c_p * realized_augmentation, 0.0, 0.95),
         psi=base.psi * psi_gain,
         wage_markdown=markdown_schedule(base.wage_markdown, mp_low, mp_high),
     )
@@ -259,7 +271,10 @@ def _describe(p: Parameters, e: Equilibrium) -> Dict[str, object]:
             "labor": sh["labor"],
             "ordinary_capital": sh["ordinary_capital"],
             "markdown_profit": sh["markdown_profit"],
-            "other_profit": sh["other_profit"],
+            "product_profit": sh["product_profit"],
+            # ordinary capital income split by use (income shares = task shares / markup)
+            "automation_capital": sh["automation_capital"] / p.product_markup,
+            "augmentation_capital": sh["augmentation_capital"] / p.product_markup,
         },
         "gini": {
             "labor": weighted_gini(labor, w),
@@ -290,16 +305,17 @@ def _baseline_result() -> Dict[str, object]:
 
 @lru_cache(maxsize=512)
 def solve(auto="data", aug="data", own=0, mp_low=0, mp_high=0,
-          lam_a=DEFAULT_LAMBDA_A, lam_p=DEFAULT_LAMBDA_P) -> Dict[str, object]:
+          lam_a=DEFAULT_LAMBDA_A, lam_p=DEFAULT_LAMBDA_P,
+          c_p=DEFAULT_AUGMENTATION_COST) -> Dict[str, object]:
     base, data = _base()
     p, a_profile, q_profile, psi_gain = scenario_parameters(
-        auto, aug, own, mp_low, mp_high, lam_a, lam_p)
+        auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p)
     e = solve_equilibrium(p, compute_distribution=False)
     worst = max(abs(v) for v in e.residuals.values())
     before, after = _baseline_result(), _describe(p, e)
     return {
         "inputs": {"auto": auto, "aug": aug, "own": own, "mp_low": mp_low,
-                   "mp_high": mp_high, "lam_a": lam_a, "lam_p": lam_p},
+                   "mp_high": mp_high, "lam_a": lam_a, "lam_p": lam_p, "c_p": c_p},
         "baseline": before,
         "scenario": after,
         "deciles": {
@@ -311,6 +327,7 @@ def solve(auto="data", aug="data", own=0, mp_low=0, mp_high=0,
             "alpha_baseline": base.alpha.tolist(),
             "alpha": p.alpha.tolist(),
             "productivity_gain": (psi_gain - 1.0).tolist(),
+            "augmentation_capital": p.augmentation_capital_intensity.tolist(),
             "markdown_baseline": base.wage_markdown.tolist(),
             "markdown": p.wage_markdown.tolist(),
             "wage_change": (np.asarray(after["wages"]) / np.asarray(before["wages"]) - 1.0).tolist(),
@@ -324,6 +341,7 @@ def meta() -> Dict[str, object]:
     return {
         "questions": QUESTIONS,
         "defaults": {"auto": "data", "aug": "data", "own": 0, "mp_low": 0, "mp_high": 0,
-                     "lam_a": DEFAULT_LAMBDA_A, "lam_p": DEFAULT_LAMBDA_P},
+                     "lam_a": DEFAULT_LAMBDA_A, "lam_p": DEFAULT_LAMBDA_P,
+                     "c_p": DEFAULT_AUGMENTATION_COST},
         "tier": TIER,
     }

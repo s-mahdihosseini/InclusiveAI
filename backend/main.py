@@ -257,12 +257,13 @@ def future_solve(
     mp_high: str = Query("0"),
     lam_a: float = Query(ai_future.DEFAULT_LAMBDA_A, ge=0.0, le=1.0),
     lam_p: float = Query(ai_future.DEFAULT_LAMBDA_P, ge=0.0, le=1.0),
+    c_p: float = Query(ai_future.DEFAULT_AUGMENTATION_COST, ge=0.0, le=0.9),
 ):
     try:
         return ai_future.solve(
             _answer(auto, True), _answer(aug, True), _answer(own, False),
             _answer(mp_low, False), _answer(mp_high, False),
-            round(float(lam_a), 2), round(float(lam_p), 2))
+            round(float(lam_a), 2), round(float(lam_p), 2), round(float(c_p), 2))
     except HTTPException:
         raise
     except Exception as e:  # pragma: no cover

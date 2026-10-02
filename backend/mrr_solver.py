@@ -3,9 +3,11 @@
 The financial side is the extended model in *Uneven Growth*: a fraction ``chi``
 can hold risky business capital, all other households hold only a zero-net-supply
 safe bond, wealth is reset at Poisson rate ``p``, and the risky portfolio share is
-the closed-form Merton rule.  The production side keeps their task structure but
-allows occupation-specific wage markdowns.  Labor-markdown rents and other business
-profits accrue to the same consolidated risky equity claim.
+the closed-form Merton rule.  The production side keeps their task structure,
+allows occupation-specific wage markdowns, and activates their constant product
+markup.  One risky capital stock is allocated between fully automated tasks and the
+less capital-intensive augmentation of workers.  Labor-markdown rents and product-
+markup profits accrue to the same consolidated risky equity claim.
 
 There is deliberately no Aiyagari asset grid and no transition routine here.  The
 stationary wealth distributions are the exact Pareto and double-Pareto solutions of
@@ -35,9 +37,10 @@ class Parameters:
     masses: np.ndarray
     eta: np.ndarray
     alpha: np.ndarray
+    augmentation_capital_intensity: np.ndarray
     psi: np.ndarray
     wage_markdown: np.ndarray
-    other_profit_share: float
+    product_markup: float
     quadrature_size: int = 20_000
 
 
@@ -59,11 +62,13 @@ class Equilibrium:
     marginal_products_labor: np.ndarray
     labor_bill: float
     markdown_profit: float
-    other_profit: float
+    product_profit: float
     total_profit: float
+    automation_capital_share: float
+    augmentation_capital_share: float
     physical_capital_share: float
     ordinary_capital_share: float
-    other_profit_share: float
+    product_profit_share: float
     risky_payout_share: float
     inverse_tail_households: float
     inverse_tail_investors: float
@@ -74,7 +79,16 @@ class Equilibrium:
 
 def validate(p: Parameters) -> None:
     n = len(p.masses)
-    if n < 1 or any(len(x) != n for x in (p.eta, p.alpha, p.psi, p.wage_markdown)):
+    if n < 1 or any(
+        len(x) != n
+        for x in (
+            p.eta,
+            p.alpha,
+            p.augmentation_capital_intensity,
+            p.psi,
+            p.wage_markdown,
+        )
+    ):
         raise ValueError("Occupation arrays must have the same positive length")
     if np.any(p.masses <= 0) or not np.isclose(p.masses.sum(), 1.0):
         raise ValueError("Occupation masses must be positive and sum to one")
@@ -82,12 +96,16 @@ def validate(p: Parameters) -> None:
         raise ValueError("Task weights must be positive and sum to one")
     if np.any(p.alpha <= 0) or np.any(p.alpha >= 1):
         raise ValueError("Automation shares must lie strictly between zero and one")
+    if np.any(p.augmentation_capital_intensity < 0) or np.any(
+        p.augmentation_capital_intensity >= 1
+    ):
+        raise ValueError("Augmentation capital intensities must lie in [0,1)")
     if np.any(p.psi <= 0):
         raise ValueError("Labor productivity must be positive")
     if np.any(p.wage_markdown < 0) or np.any(p.wage_markdown >= 1):
         raise ValueError("Wage markdowns must lie in [0,1)")
-    if p.other_profit_share < 0:
-        raise ValueError("The other-business-profit share cannot be negative")
+    if p.product_markup < 1:
+        raise ValueError("The product markup must be at least one")
     if not (0 < p.chi < 1 and p.nu > 0 and p.gamma > 0):
         raise ValueError("Risky participation and return-risk parameters are invalid")
     if min(p.sigma, p.dissipation, p.leverage_limit, p.productivity) <= 0:
@@ -97,25 +115,36 @@ def validate(p: Parameters) -> None:
 
 
 def production_shares(p: Parameters) -> Dict[str, np.ndarray | float]:
-    labor_task = p.eta * (1.0 - p.alpha)
-    physical = float(p.eta @ p.alpha)
-    labor = float(np.sum((1.0 - p.wage_markdown) * labor_task))
-    markdown_profit = float(np.sum(p.wage_markdown * labor_task))
-    other_profit = float(p.other_profit_share)
-    ordinary_capital = physical - other_profit
-    if ordinary_capital < -1e-12:
-        raise ValueError("Other business profits cannot exceed the capital-product share")
-    total_profit = markdown_profit + other_profit
-    risky = physical + markdown_profit
+    remaining_task = p.eta * (1.0 - p.alpha)
+    labor_task = remaining_task * (1.0 - p.augmentation_capital_intensity)
+    automation_capital = float(p.eta @ p.alpha)
+    augmentation_capital = float(
+        remaining_task @ p.augmentation_capital_intensity
+    )
+    physical = automation_capital + augmentation_capital
+    inverse_markup = 1.0 / p.product_markup
+    labor = float(
+        inverse_markup * np.sum((1.0 - p.wage_markdown) * labor_task)
+    )
+    markdown_profit = float(
+        inverse_markup * np.sum(p.wage_markdown * labor_task)
+    )
+    product_profit = 1.0 - inverse_markup
+    ordinary_capital = inverse_markup * physical
+    total_profit = markdown_profit + product_profit
+    risky = ordinary_capital + total_profit
     if not np.isclose(labor + ordinary_capital + total_profit, 1.0, atol=1e-12):
         raise AssertionError("Task shares do not exhaust output")
     return {
+        "remaining_task": remaining_task,
         "labor_task": labor_task,
+        "automation_capital": automation_capital,
+        "augmentation_capital": augmentation_capital,
         "physical_capital": physical,
         "ordinary_capital": ordinary_capital,
         "labor": labor,
         "markdown_profit": markdown_profit,
-        "other_profit": other_profit,
+        "product_profit": product_profit,
         "total_profit": total_profit,
         "risky_payout": risky,
     }
@@ -226,11 +255,11 @@ def _production_levels(p: Parameters, state: Dict[str, float]) -> Dict[str, np.n
     )
     output = float((p.productivity * unit) ** (1.0 / (1.0 - alpha)))
     capital = capital_output * output
-    marginal_products = labor_task * output / p.masses
+    marginal_products = labor_task * output / (p.product_markup * p.masses)
     wages = (1.0 - p.wage_markdown) * marginal_products
     labor_bill = float(p.masses @ wages)
     markdown_profit = float(shares["markdown_profit"]) * output
-    other_profit = float(shares["other_profit"]) * output
+    product_profit = float(shares["product_profit"]) * output
     total_profit = float(shares["total_profit"]) * output
     ordinary_capital_income = float(shares["ordinary_capital"]) * output
     human_wealth = labor_bill / (state["r_safe"] - p.growth)
@@ -243,7 +272,7 @@ def _production_levels(p: Parameters, state: Dict[str, float]) -> Dict[str, np.n
         "wages": wages,
         "labor_bill": labor_bill,
         "markdown_profit": markdown_profit,
-        "other_profit": other_profit,
+        "product_profit": product_profit,
         "total_profit": total_profit,
         "ordinary_capital_income": ordinary_capital_income,
         "human_wealth": human_wealth,
@@ -330,12 +359,12 @@ def stationary_atoms(p: Parameters, e: Equilibrium, quadrature_size: int | None 
         for name in (
             "weights", "occupation", "investor", "normalized_effective_wealth",
             "effective_wealth", "net_worth", "equity", "bonds", "labor",
-            "markdown_profit", "other_profit", "profit", "equity_income",
+            "markdown_profit", "product_profit", "profit", "equity_income",
             "bond_income", "capital_income", "total",
         )
     }
     markdown_profit_yield = e.markdown_profit / e.capital
-    other_profit_yield = e.other_profit / e.capital
+    product_profit_yield = e.product_profit / e.capital
     profit_yield = e.total_profit / e.capital
     for j, mass in enumerate(p.masses):
         human = e.wages[j] / (e.r_safe - p.growth)
@@ -351,7 +380,7 @@ def stationary_atoms(p: Parameters, e: Equilibrium, quadrature_size: int | None 
             equity_income = e.r_risky * equity
             bond_income = e.r_safe * bonds
             markdown_profit = markdown_profit_yield * equity
-            other_profit = other_profit_yield * equity
+            product_profit = product_profit_yield * equity
             profit = profit_yield * equity
             capital_income = equity_income + bond_income
             total = labor + capital_income
@@ -366,7 +395,7 @@ def stationary_atoms(p: Parameters, e: Equilibrium, quadrature_size: int | None 
                 "bonds": bonds,
                 "labor": labor,
                 "markdown_profit": markdown_profit,
-                "other_profit": other_profit,
+                "product_profit": product_profit,
                 "profit": profit,
                 "equity_income": equity_income,
                 "bond_income": bond_income,
@@ -478,7 +507,7 @@ def solve_equilibrium(p: Parameters, compute_distribution: bool = True) -> Equil
     factor_residual = float(levels["output"]) - (
         float(levels["labor_bill"])
         + float(levels["markdown_profit"])
-        + float(levels["other_profit"])
+        + float(levels["product_profit"])
         + float(levels["ordinary_capital_income"])
     )
     normalized_capital_residual = float(levels["normalized_capital"]) - state["k"]
@@ -511,11 +540,13 @@ def solve_equilibrium(p: Parameters, compute_distribution: bool = True) -> Equil
         marginal_products_labor=np.asarray(levels["marginal_products"]),
         labor_bill=float(levels["labor_bill"]),
         markdown_profit=float(levels["markdown_profit"]),
-        other_profit=float(levels["other_profit"]),
+        product_profit=float(levels["product_profit"]),
         total_profit=float(levels["total_profit"]),
+        automation_capital_share=float(shares["automation_capital"]),
+        augmentation_capital_share=float(shares["augmentation_capital"]),
         physical_capital_share=float(shares["physical_capital"]),
         ordinary_capital_share=float(shares["ordinary_capital"]),
-        other_profit_share=float(shares["other_profit"]),
+        product_profit_share=float(shares["product_profit"]),
         risky_payout_share=float(shares["risky_payout"]),
         inverse_tail_households=inv_h,
         inverse_tail_investors=inv_p,
