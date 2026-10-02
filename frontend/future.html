@@ -4,228 +4,348 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your AI Future — InclusiveAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    --bg: #f7f5ef;
-    --panel: #fffdf8;
-    --panel2: #efece2;
-    --border: #d9d3c3;
-    --rule: #b9b19e;
-    --text: #24231f;
-    --muted: #605c51;
-    --accent: #8b1a1a;
-    --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /* chart palette (validated: lightness band, chroma, CVD separation) */
-    --c-labor: #3f6ea5;
-    --c-capital: #c18a2c;
-    --c-markdown: #b0392e;
-    --c-other: #4f9a6a;
+    --navy: #0f1d33;
+    --navy2: #172a47;
+    --navy-line: rgba(255,255,255,.12);
+    --paper: #f6f3ec;
+    --card: #ffffff;
+    --line: #e4ded1;
+    --line2: #efeae0;
+    --ink: #1b2230;
+    --ink2: #4a5262;
+    --mute: #7b8291;
+    --accent: #c2410c;
+    --gold: #e0a12f;
+    /* data palette — validated (lightness band, chroma, CVD separation) on white */
+    --labor: #2563a8;
+    --capital: #e0a12f;
+    --markdown: #c2410c;
+    --other: #2f8a63;
+    --serif: "Source Serif 4", Charter, Georgia, serif;
+    --sans: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --r: 14px;
+    --shadow: 0 1px 2px rgba(15,29,51,.05), 0 8px 24px -12px rgba(15,29,51,.18);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--serif); min-height: 100vh; }
-  a { color: var(--accent); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
 
-  header { padding: 30px 36px 0; border-bottom: 3px double var(--rule); }
-  .brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-  .brand h1 { font-size: 1.8rem; font-weight: 700; }
-  .brand h1 a { color: inherit; text-decoration: none; }
-  .brand h1 span { color: var(--accent); }
-  .brand .tagline { color: var(--muted); font-style: italic; font-size: 0.95rem; }
-  nav { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
-  nav a {
-    font-family: var(--sans); text-transform: uppercase; font-size: 0.74rem; letter-spacing: 1.3px;
-    font-weight: 600; padding: 10px 14px; color: var(--muted); text-decoration: none;
-    border-bottom: 2px solid transparent;
+  /* ---------------- top + hero (dark) ---------------- */
+  .top { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .top::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(900px 420px at 85% 10%, rgba(224,161,47,.18), transparent 60%),
+      radial-gradient(700px 380px at 5% 100%, rgba(37,99,168,.35), transparent 60%);
   }
-  nav a.active { color: var(--text); border-bottom-color: var(--accent); }
-  nav a:hover { color: var(--text); }
-
-  main { padding: 28px 36px 60px; max-width: 1320px; margin: 0 auto; }
-  .hero { max-width: 860px; margin: 8px auto 34px; text-align: center; }
-  .hero h2 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 14px; }
-  .hero h2 em { color: var(--accent); }
-  .hero p { color: var(--muted); font-size: 1.08rem; line-height: 1.6; }
-  .hero .cite { margin-top: 12px; font-size: 0.92rem; font-style: italic; }
-
-  .layout { display: grid; grid-template-columns: 400px 1fr; gap: 28px; align-items: start; }
-  @media (max-width: 1050px) { .layout { grid-template-columns: 1fr; } }
-  .questions { position: sticky; top: 16px; }
-  @media (max-width: 1050px) { .questions { position: static; } }
-
-  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 3px; padding: 18px 20px; }
-  .card + .card { margin-top: 14px; }
-  .q-num { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-  .q-title { font-size: 1.08rem; font-weight: 700; margin: 4px 0 4px; line-height: 1.3; }
-  .q-text { color: var(--muted); font-size: 0.88rem; line-height: 1.45; margin-bottom: 10px; }
-  .scale { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
-  .scale button {
-    background: var(--panel); border: none; border-right: 1px solid var(--border);
-    font-family: var(--sans); font-size: 0.7rem; line-height: 1.2; padding: 8px 3px; min-height: 48px;
-    cursor: pointer; color: var(--muted);
+  .top::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .35;
+    background-image: linear-gradient(var(--navy-line) 1px, transparent 1px), linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,.7), transparent 85%);
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.7), transparent 85%);
   }
-  .scale button:last-child { border-right: none; }
-  .scale button:hover { background: var(--panel2); color: var(--text); }
-  .scale button.active { background: var(--accent); color: #fff; }
-  .scale-ends { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.66rem; color: var(--muted); margin-top: 4px; }
-  .data-option { display: flex; align-items: center; gap: 8px; margin-top: 9px; font-family: var(--sans); font-size: 0.78rem; cursor: pointer; }
-  .data-option input { accent-color: var(--accent); }
-  .sub-label { font-family: var(--sans); font-size: 0.74rem; font-weight: 600; margin: 10px 0 5px; }
-  .maps { margin-top: 9px; font-family: var(--sans); font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
-  .maps b { color: var(--text); font-weight: 600; }
+  .bar { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+         padding: 22px 40px; max-width: 1360px; margin: 0 auto; flex-wrap: wrap; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; text-decoration: none; color: #fff; letter-spacing: -.2px; }
+  .brand span { color: var(--gold); }
+  .bar nav { display: flex; gap: 6px; }
+  .bar nav a { font-size: .78rem; font-weight: 600; letter-spacing: .3px; text-decoration: none; color: rgba(255,255,255,.72);
+               padding: 8px 14px; border-radius: 999px; border: 1px solid transparent; }
+  .bar nav a:hover { color: #fff; border-color: var(--navy-line); }
+  .bar nav a.active { color: var(--navy); background: #fff; }
 
-  details.advanced { margin-top: 14px; font-family: var(--sans); font-size: 0.8rem; }
-  details.advanced summary { cursor: pointer; color: var(--accent); }
-  .param { margin-top: 12px; }
-  .param label { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 4px; }
-  .param label .val { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .param input[type=range] { width: 100%; accent-color: var(--accent); }
-  .param .help { color: var(--muted); font-size: 0.7rem; margin-top: 3px; line-height: 1.35; }
-  .actions { display: flex; gap: 8px; margin-top: 14px; }
-  .actions button {
-    flex: 1; font-family: var(--sans); font-size: 0.76rem; padding: 8px; cursor: pointer;
-    background: var(--panel); border: 1px solid var(--border); border-radius: 3px; color: var(--text);
-  }
-  .actions button:hover { border-color: var(--accent); }
-  .status { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-top: 8px; min-height: 1.1em; }
+  .hero { position: relative; z-index: 1; max-width: 1360px; margin: 0 auto; padding: 34px 40px 64px;
+          display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 1000px) { .hero { grid-template-columns: 1fr; gap: 30px; } }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--gold); }
+  .kicker::before { content: ""; width: 22px; height: 2px; background: var(--gold); }
+  .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2.1rem, 4.4vw, 3.5rem); line-height: 1.05;
+             letter-spacing: -1px; margin: 14px 0 18px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 600; }
+  .hero p.lede { font-family: var(--serif); font-size: 1.18rem; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 620px; }
+  .hero .cta { margin-top: 26px; display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--navy);
+               font-weight: 700; font-size: .9rem; padding: 12px 20px; border-radius: 999px; text-decoration: none; }
+  .hero .cta:hover { filter: brightness(1.06); }
 
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  @media (max-width: 700px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
-  .tile { background: var(--panel); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; }
-  .tile .lbl { font-family: var(--sans); font-size: 0.7rem; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); }
-  .tile .val { font-size: 1.7rem; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }
-  .tile .from { font-family: var(--sans); font-size: 0.76rem; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
-  .tile .from b { color: var(--text); }
+  .pipeline { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 10px; }
+  @media (max-width: 560px) { .pipeline { grid-template-columns: 1fr; } .pipeline .arrow { transform: rotate(90deg); justify-self: center; } }
+  .step { background: rgba(255,255,255,.06); border: 1px solid var(--navy-line); border-radius: var(--r); padding: 18px 16px;
+          backdrop-filter: blur(4px); }
+  .step .n { font-size: .68rem; font-weight: 700; letter-spacing: 1.3px; color: var(--gold); }
+  .step h3 { font-family: var(--serif); font-size: 1.12rem; margin: 8px 0 6px; }
+  .step p { font-size: .8rem; line-height: 1.45; color: rgba(255,255,255,.7); }
+  .step svg { display: block; margin-bottom: 10px; }
+  .arrow { align-self: center; color: rgba(255,255,255,.45); font-size: 1.4rem; }
 
-  .summary { margin: 16px 0 0; font-size: 1.02rem; line-height: 1.6; background: var(--panel2); border-left: 4px solid var(--accent); padding: 12px 16px; }
+  /* ---------------- layout ---------------- */
+  main { max-width: 1360px; margin: -34px auto 0; padding: 0 40px 70px; position: relative; z-index: 2; }
+  @media (max-width: 700px) { main, .hero, .bar { padding-left: 16px; padding-right: 16px; } }
+  .layout { display: grid; grid-template-columns: 410px minmax(0,1fr); gap: 28px; align-items: start; }
+  @media (max-width: 1100px) { .layout { grid-template-columns: minmax(0,1fr); } }
+  .questions { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 14px; }
+  @media (max-width: 1100px) { .questions { position: static; } }
 
-  .section-title { font-size: 1.25rem; margin: 30px 0 4px; }
-  .section-sub { color: var(--muted); font-size: 0.93rem; line-height: 1.5; margin-bottom: 12px; max-width: 860px; }
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  @media (max-width: 1250px) { .grid2 { grid-template-columns: 1fr; } }
-  .chartbox { position: relative; height: 300px; }
-  .chartbox.short { height: 170px; }
-  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--sans); font-size: 0.75rem; color: var(--muted); margin-bottom: 8px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); }
+
+  /* ---------------- question cards ---------------- */
+  .q { padding: 18px 20px 18px; }
+  .q-head { display: flex; gap: 14px; align-items: flex-start; }
+  .q-icon { flex: 0 0 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: #eef3fa; color: var(--labor); }
+  .q-icon.c2 { background: #eaf5ef; color: var(--other); }
+  .q-icon.c3 { background: #fcf3e2; color: #a86f0e; }
+  .q-icon.c4 { background: #fbece5; color: var(--markdown); }
+  .q-num { font-size: .66rem; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: var(--mute); }
+  .q-title { font-family: var(--serif); font-size: 1.12rem; font-weight: 700; line-height: 1.25; margin-top: 2px; }
+  .q-text { font-size: .8rem; color: var(--ink2); line-height: 1.45; margin: 10px 0 12px; }
+
+  .dial { position: relative; padding: 6px 4px 0; }
+  .dial.off { opacity: .45; }
+  .dial-track { position: relative; height: 34px; }
+  .dial-track::before { content: ""; position: absolute; left: 14px; right: 14px; top: 16px; height: 2px; background: var(--line); border-radius: 2px; }
+  .dial-fill { position: absolute; top: 16px; height: 2px; background: var(--ink); transition: left .25s, width .25s; }
+  .dial-stops { position: absolute; inset: 0; display: flex; justify-content: space-between; }
+  .dial-stops button { width: 28px; height: 34px; border: none; background: none; cursor: pointer; display: grid; place-items: center; }
+  .dial-stops button i { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 2px solid #c9c2b2; transition: all .18s; }
+  .dial-stops button:hover i { border-color: var(--ink); transform: scale(1.15); }
+  .dial-stops button.active i { width: 22px; height: 22px; background: var(--ink); border-color: var(--ink); box-shadow: 0 0 0 5px rgba(27,34,48,.1); }
+  .dial-stops button:focus-visible { outline: 2px solid var(--labor); outline-offset: 2px; border-radius: 8px; }
+  .dial-ends { display: flex; justify-content: space-between; font-size: .68rem; color: var(--mute); margin-top: 2px; }
+  .dial-value { text-align: center; font-size: .86rem; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
+  .sub { font-size: .74rem; font-weight: 700; margin: 12px 0 2px; color: var(--ink2); }
+
+  .pill { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; padding: 6px 12px 6px 8px; border-radius: 999px;
+          border: 1px solid var(--line); background: var(--paper); font-size: .74rem; font-weight: 600; color: var(--ink2); cursor: pointer; }
+  .pill .box { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #c9c2b2; display: grid; place-items: center; }
+  .pill.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .pill.on .box { border-color: #fff; background: #fff; }
+  .pill.on .box::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+
+  .preview { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .preview .cap { font-size: .68rem; color: var(--mute); display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+  .preview .cap b { color: var(--ink2); font-weight: 600; }
+  .preview svg { display: block; width: 100%; }
+  .key { display: inline-flex; align-items: center; gap: 5px; }
+  .key i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  .mp-row { display: grid; grid-template-columns: 92px 1fr 64px; align-items: center; gap: 8px; font-size: .72rem; color: var(--ink2); margin-top: 6px; }
+  .mp-bar { height: 10px; background: var(--line2); border-radius: 6px; position: relative; overflow: hidden; }
+  .mp-bar span { position: absolute; left: 0; top: 0; bottom: 0; background: var(--markdown); border-radius: 6px; transition: width .35s; }
+  .mp-bar em { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); transition: left .35s; }
+  .mp-row b { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  details.adv { padding: 14px 20px; font-size: .8rem; }
+  details.adv summary { cursor: pointer; font-weight: 600; color: var(--ink2); list-style: none; display: flex; justify-content: space-between; }
+  details.adv summary::after { content: "+"; font-size: 1.1rem; line-height: 1; color: var(--mute); }
+  details.adv[open] summary::after { content: "–"; }
+  .param { margin-top: 14px; }
+  .param label { display: flex; justify-content: space-between; font-size: .76rem; margin-bottom: 6px; color: var(--ink2); }
+  .param label b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .param input { width: 100%; accent-color: var(--ink); }
+  .param .help { color: var(--mute); font-size: .7rem; margin-top: 4px; line-height: 1.35; }
+  .tools { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 20px 16px; }
+  .tools button { font-family: var(--sans); font-size: .76rem; font-weight: 600; padding: 8px 14px; border-radius: 999px; cursor: pointer;
+                  border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+  .tools button:hover { border-color: var(--ink); }
+  .status { font-size: .7rem; color: var(--mute); display: flex; align-items: center; gap: 6px; }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--other); }
+  .status.busy::before { background: var(--gold); animation: pulse .8s infinite alternate; }
+  @keyframes pulse { from { opacity: .3; } to { opacity: 1; } }
+
+  /* ---------------- results ---------------- */
+  .verdict { padding: 26px 28px 24px; }
+  .verdict-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+  @media (max-width: 860px) { .verdict-top { grid-template-columns: 1fr; } }
+  .eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--mute); }
+  .big { display: flex; align-items: baseline; gap: 14px; margin: 4px 0 2px; flex-wrap: wrap; }
+  .big .num { font-family: var(--serif); font-size: 3.6rem; font-weight: 700; line-height: 1; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; }
+  .chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .chip.up { background: #fbe9e1; color: #9a3412; }
+  .chip.down { background: #e3f2ea; color: #1f6b48; }
+  .chip.flat { background: var(--line2); color: var(--ink2); }
+  .gauge { width: 100%; display: block; margin-top: 10px; }
+  .gauge .mk { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .verdict .story { font-family: var(--serif); font-size: 1.12rem; line-height: 1.6; color: var(--ink); }
+  .verdict .story b { font-weight: 700; }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 22px; border-top: 1px solid var(--line); }
+  @media (max-width: 860px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { padding: 16px 16px 2px; border-right: 1px solid var(--line); }
+  .kpi:last-child { border-right: none; }
+  @media (max-width: 860px) { .kpi:nth-child(2) { border-right: none; } }
+  .kpi .lbl { font-size: .7rem; color: var(--mute); font-weight: 600; }
+  .kpi .val { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .kpi .was { font-size: .74rem; color: var(--mute); margin-top: 2px; font-variant-numeric: tabular-nums; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .kpi .chip { font-size: .68rem; padding: 2px 8px; }
+
+  .panel { padding: 22px 24px 20px; margin-top: 18px; }
+  .panel h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; letter-spacing: -.2px; }
+  .panel .dek { font-size: .86rem; color: var(--ink2); line-height: 1.5; margin: 6px 0 14px; max-width: 820px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .74rem; color: var(--ink2); margin-bottom: 10px; }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .legend i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
-  .legend i.dot { border-radius: 50%; width: 9px; height: 9px; background: var(--text); }
-  .card h4 { font-size: 1.0rem; margin-bottom: 4px; }
-  .card .note { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+  .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+  .legend i.dot { border-radius: 50%; background: var(--ink); width: 9px; height: 9px; }
+  .chartbox { position: relative; height: 320px; }
+  .note { font-size: .72rem; color: var(--mute); margin-top: 10px; line-height: 1.45; }
+  .grid2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 18px; }
+  .grid2 .panel { margin-top: 18px; }
+  @media (max-width: 1250px) { .grid2 { grid-template-columns: minmax(0,1fr); } }
+  svg.ribbon { width: 100%; display: block; }
+  svg.ribbon path, svg.ribbon rect { transition: d .5s, x .5s, width .5s; }
 
-  table.t { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
-  table.t th, table.t td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: right; }
-  table.t th:first-child, table.t td:first-child { text-align: left; }
-  table.t th { color: var(--muted); font-weight: 600; }
-  table.t td { white-space: nowrap; }
-  table.t td:first-child { white-space: normal; }
-  @media (max-width: 700px) { table.t td { white-space: normal; } table.t th, table.t td { padding: 5px 4px; } main { padding: 20px 16px 50px; } header { padding: 24px 16px 0; } }
-  .up { color: var(--accent); }
-  .down { color: #2f6b45; }
+  details.hood { margin-top: 18px; }
+  details.hood > summary { cursor: pointer; list-style: none; padding: 18px 24px; font-family: var(--serif); font-size: 1.15rem; font-weight: 700;
+                           display: flex; justify-content: space-between; align-items: center; }
+  details.hood > summary span { font-family: var(--sans); font-size: .76rem; font-weight: 500; color: var(--mute); }
+  details.hood[open] > summary { border-bottom: 1px solid var(--line); }
+  .hood-body { padding: 18px 24px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  @media (max-width: 1000px) { .hood-body { grid-template-columns: 1fr; } }
+  .hood-body h4 { font-size: .8rem; font-weight: 700; margin-bottom: 8px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .78rem; font-variant-numeric: tabular-nums; }
+  table.t th, table.t td { padding: 7px 6px; border-bottom: 1px solid var(--line2); text-align: right; white-space: nowrap; }
+  table.t th:first-child, table.t td:first-child { text-align: left; white-space: normal; }
+  table.t th { color: var(--mute); font-weight: 600; font-size: .72rem; }
+  td.up { color: #9a3412; font-weight: 600; } td.down { color: #1f6b48; font-weight: 600; }
+  @media (max-width: 700px) { table.t td, table.t th { white-space: normal; padding: 6px 3px; } }
 
-  .explain { max-width: 900px; line-height: 1.65; font-size: 0.98rem; }
-  .explain p { margin-bottom: 12px; }
-  .explain ul { margin: 0 0 12px 22px; }
-  .explain li { margin-bottom: 6px; }
-  footer { text-align: center; color: var(--muted); font-family: var(--sans); font-size: 0.76rem; padding: 20px; border-top: 1px solid var(--border); }
+  .how { margin-top: 18px; padding: 24px; }
+  .how h2 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 14px; }
+  .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1100px) { .how-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .how-grid { grid-template-columns: 1fr; } }
+  .how-item h3 { font-family: var(--serif); font-size: 1.02rem; margin: 10px 0 6px; }
+  .how-item p { font-size: .82rem; line-height: 1.55; color: var(--ink2); }
+  .how-item .q-icon { width: 38px; height: 38px; }
+
+  footer { text-align: center; color: var(--mute); font-size: .74rem; padding: 26px; border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="brand">
-    <h1><a href="/">Inclusive<span>AI</span></a></h1>
-    <div class="tagline">Interactive general-equilibrium models of how AI shapes the distribution of prosperity</div>
+<!-- ======================================================= TOP / HERO -->
+<div class="top">
+  <div class="bar">
+    <a class="brand" href="/">Inclusive<span>AI</span></a>
+    <nav>
+      <a href="/">Main site</a>
+      <a href="/future.html" class="active">Your AI Future</a>
+    </nav>
   </div>
-  <nav>
-    <a href="/">Main site</a>
-    <a href="/future.html" class="active">Your AI Future</a>
-  </nav>
-</header>
-
-<main>
   <section class="hero">
-    <h2>What does <em>your</em> view of AI imply for inequality?</h2>
-    <p>Answer four questions about who AI replaces, whom it helps, who owns it, and how much
-      power employers have. Each answer sets parameters of a calibrated general-equilibrium model
-      with risky capital and an unequal wealth distribution. The model then reports what happens
-      to labor income, capital income, and inequality in the long run.</p>
-    <p class="cite">Model: an AI extension of Moll, Rachel &amp; Restrepo (2022), “Uneven Growth,” with
-      occupation-level AI exposure and wage markdowns. Steady-state comparisons, not forecasts.</p>
+    <div>
+      <div class="kicker">Interactive model</div>
+      <h1>What does <em>your</em> view of AI imply for inequality?</h1>
+      <p class="lede">Answer four questions about whose work AI replaces, whom it makes more productive,
+        who owns it, and how much power employers have over wages. A calibrated general-equilibrium
+        model turns your answers into long-run wages, profits, returns, and the distribution of income and wealth.</p>
+      <a class="cta" href="#answers">Start with question 1 <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="pipeline" aria-label="How the page works">
+      <div class="step">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#e0a12f" stroke-width="2"><circle cx="17" cy="17" r="13"/><path d="M12.5 13.5a4.5 4.5 0 1 1 6.3 4.1c-1.2.5-1.8 1.4-1.8 2.6v.8M17 25v.5" stroke-linecap="round"/></svg>
+        <div class="n">01</div><h3>Your beliefs</h3><p>Who is automated, who is augmented, who owns AI, how much employer power.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#e0a12f" stroke-width="2" stroke-linecap="round"><path d="M6 10h22M6 17h22M6 24h22"/><circle cx="12" cy="10" r="2.6" fill="#0f1d33"/><circle cx="22" cy="17" r="2.6" fill="#0f1d33"/><circle cx="15" cy="24" r="2.6" fill="#0f1d33"/></svg>
+        <div class="n">02</div><h3>Model parameters</h3><p>Exposure across ten wage deciles, markdowns, and the share of households that own equity.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#e0a12f" stroke-width="2" stroke-linecap="round"><path d="M5 28h24"/><path d="M8 28V19M14 28V14M20 28V17M26 28V7"/></svg>
+        <div class="n">03</div><h3>Long-run outcome</h3><p>Wages, returns to capital, and who ends up with labor and capital income.</p>
+      </div>
+    </div>
   </section>
+</div>
 
+<!-- ======================================================= MAIN -->
+<main id="answers">
   <div class="layout">
-    <!-- ======================= QUESTIONS ======================= -->
     <aside class="questions" id="questions"></aside>
 
-    <!-- ======================= RESULTS ======================= -->
     <section>
-      <div class="tiles" id="tiles"></div>
-      <div class="summary" id="summary">Solving…</div>
+      <div class="card verdict">
+        <div class="verdict-top">
+          <div>
+            <div class="eyebrow">Total-income Gini, long run</div>
+            <div class="big"><span class="num" id="giniNum">–</span><span class="chip flat" id="giniChip">–</span></div>
+            <svg class="gauge" id="gauge" viewBox="0 0 420 84" aria-label="Gini before and after AI"></svg>
+          </div>
+          <div class="story" id="story">Solving the model…</div>
+        </div>
+        <div class="kpis" id="kpis"></div>
+      </div>
 
-      <h3 class="section-title">Who gains? Income by income group</h3>
-      <p class="section-sub">Change in average income in each group of the income distribution, relative to that
-        group's income before AI. Bars split the change into labor income and capital income. Groups are
-        percentiles of each economy's own income distribution.</p>
-      <div class="card">
+      <div class="card panel">
+        <h2>Who gains, across the income distribution</h2>
+        <p class="dek">Change in average income in each income group, as a percent of that group's income before AI.
+          Each bar splits the change into labor income and capital income; the dot is the total.</p>
         <div class="legend">
-          <span><i style="background:var(--c-labor)"></i>Labor income</span>
-          <span><i style="background:var(--c-capital)"></i>Capital income</span>
+          <span><i style="background:var(--labor)"></i>Labor income</span>
+          <span><i style="background:var(--capital)"></i>Capital income</span>
           <span><i class="dot"></i>Total</span>
         </div>
         <div class="chartbox"><canvas id="chGroups"></canvas></div>
-        <div class="note">Capital income is equity and bond income. Profits (from wage markdowns and other business profits)
-          are paid to equity owners and are included in capital income.</div>
+        <p class="note">Groups are percentiles of each economy's own income distribution. Capital income includes the
+          profits paid to equity owners (markdown profits and other business profits).</p>
       </div>
 
-      <div class="grid2" style="margin-top:18px">
-        <div class="card">
-          <h4>Where output goes</h4>
+      <div class="grid2">
+        <div class="card panel">
+          <h2>Where output goes</h2>
+          <p class="dek">Shares of output before and with AI.</p>
           <div class="legend">
-            <span><i style="background:var(--c-labor)"></i>Labor</span>
-            <span><i style="background:var(--c-capital)"></i>Ordinary capital</span>
-            <span><i style="background:var(--c-markdown)"></i>Markdown profits</span>
-            <span><i style="background:var(--c-other)"></i>Other profits</span>
+            <span><i style="background:var(--labor)"></i>Labor</span>
+            <span><i style="background:var(--capital)"></i>Ordinary capital</span>
+            <span><i style="background:var(--markdown)"></i>Markdown profits</span>
+            <span><i style="background:var(--other)"></i>Other profits</span>
           </div>
-          <div class="chartbox short"><canvas id="chShares"></canvas></div>
-          <div class="note">Shares of output. Markdown profits are the gap between what workers produce and what they are paid.</div>
+          <svg class="ribbon" id="ribbon" viewBox="0 0 440 206" role="img" aria-label="Factor shares before and with AI"></svg>
+          <p class="note">Markdown profits are the gap between what workers produce and what they are paid.</p>
         </div>
-        <div class="card">
-          <h4>Wages by occupation wage decile</h4>
-          <div class="chartbox short" style="height:210px"><canvas id="chWages"></canvas></div>
-          <div class="note">Percent change in the wage of each decile of occupations, ranked by pre-AI wage.</div>
-        </div>
-      </div>
-
-      <div class="grid2" style="margin-top:18px">
-        <div class="card">
-          <h4>Inequality and returns</h4>
-          <table class="t" id="tblIneq"></table>
-        </div>
-        <div class="card">
-          <h4>What your answers set</h4>
-          <table class="t" id="tblParams"></table>
-          <div class="note" id="paramNote"></div>
+        <div class="card panel">
+          <h2>Wages by occupation</h2>
+          <p class="dek">Percent change in each wage decile's wage. Deciles rank occupations by their pre-AI wage.</p>
+          <div class="chartbox" style="height:248px"><canvas id="chWages"></canvas></div>
         </div>
       </div>
 
-      <h3 class="section-title">How the model works</h3>
-      <div class="explain card">
-        <p><b>Production.</b> Ten occupation groups (equal-employment deciles of the wage distribution) each
-          perform a range of tasks. AI can <i>automate</i> tasks, moving them from workers to capital, or
-          <i>augment</i> the tasks that remain with workers, raising their productivity. Which occupations are
-          exposed comes from task-level AI-exposure data (Eloundou et al.); your answers to questions 1–2 can
-          tilt that exposure toward low- or high-wage jobs while keeping its average size fixed.</p>
-        <p><b>Wages and profits.</b> Employers pay workers a markdown below their marginal product, calibrated
-          to Seegmiller's estimates by skill (8–13 percent before AI). The markdown is a profit for the firm.
-          Question 4 scales markdowns for low-wage and high-wage occupations.</p>
-        <p><b>Who owns capital.</b> Capital, AI, and business profits are held as risky equity. Only a fraction
-          of households can hold it (6.6 percent in the calibration); everyone else saves in safe bonds. Investors
-          lever up when the return on risky capital is high, which thickens the top of the wealth distribution.
-          Question 3 sets this fraction.</p>
-        <p><b>What is held fixed.</b> The overall size of the AI shock (adjustable under “Advanced”), preferences,
-          and the asset-market parameters from Moll, Rachel &amp; Restrepo. Every result compares two balanced-growth
-          steady states, so it describes the long run, not the transition.</p>
+      <details class="card hood">
+        <summary>Under the hood <span>inequality measures, returns, and every parameter your answers set</span></summary>
+        <div class="hood-body">
+          <div><h4>Inequality and returns</h4><table class="t" id="tblIneq"></table></div>
+          <div><h4>Parameters by wage decile</h4><table class="t" id="tblParams"></table><p class="note" id="paramNote"></p></div>
+        </div>
+      </details>
+
+      <div class="card how">
+        <h2>How the model works</h2>
+        <div class="how-grid">
+          <div class="how-item"><div class="q-icon"></div><h3>Tasks</h3>
+            <p>Ten occupation groups, one per decile of the wage distribution, perform tasks. AI can automate tasks,
+              moving them from workers to capital, or augment the tasks workers keep. Exposure by occupation comes from
+              task-level AI-exposure data; questions 1–2 tilt it toward low- or high-wage jobs at a fixed average.</p></div>
+          <div class="how-item"><div class="q-icon c4"></div><h3>Wages and profits</h3>
+            <p>Employers pay a markdown below workers' marginal product, 8–13 percent before AI depending on skill.
+              The markdown is a profit for the firm. Question 4 scales it for low- and high-wage occupations.</p></div>
+          <div class="how-item"><div class="q-icon c3"></div><h3>Ownership</h3>
+            <p>Capital, AI, and business profits are held as risky equity that only some households own; the rest
+              save in safe bonds. When the return on capital rises, owners invest more and wealth at the top grows.
+              Question 3 sets the share of owners.</p></div>
+          <div class="how-item"><div class="q-icon" style="background:#eef0f4;color:#4a5262"></div><h3>What is held fixed</h3>
+            <p>The overall size of the AI shock (adjustable under “Advanced”), preferences, and the asset-market
+              calibration. Results compare two long-run steady states; they are not forecasts and say nothing about
+              the transition.</p></div>
+        </div>
       </div>
     </section>
   </div>
@@ -235,142 +355,200 @@
 
 <script>
 const API = "";
-const COLORS = { labor: "#3f6ea5", capital: "#c18a2c", markdown: "#b0392e", other: "#4f9a6a" };
-const INK = "#24231f", MUTED = "#605c51", GRID = "#e6e1d5";
-const SANS = '"Helvetica Neue", Helvetica, Arial, sans-serif';
-Chart.defaults.font.family = SANS;
-Chart.defaults.font.size = 11;
-Chart.defaults.color = MUTED;
+const C = { labor: "#2563a8", capital: "#e0a12f", markdown: "#c2410c", other: "#2f8a63",
+            ink: "#1b2230", ink2: "#4a5262", mute: "#7b8291", line: "#e4ded1", ghost: "#cfc8b8" };
+const SANS = 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif';
+Chart.defaults.font.family = SANS; Chart.defaults.font.size = 11; Chart.defaults.color = C.mute;
+
+const ICONS = {
+  auto: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5M3 12v3M21 12v3"/></svg>',
+  aug: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M18 4l.9 2.1L21 7l-2.1.9L18 10l-.9-2.1L15 7l2.1-.9z"/></svg>',
+  own: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg>',
+  fixed: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  mp: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 21h14M4 8h16"/><path d="M4 8l-2.5 6a3 3 0 0 0 5 0zM20 8l-2.5 6a3 3 0 0 0 5 0z"/></svg>',
+};
+document.querySelectorAll(".how-item .q-icon").forEach((el, i) => el.innerHTML = [ICONS.auto, ICONS.mp, ICONS.own, ICONS.fixed][i]);
 
 const state = { auto: "data", aug: "data", own: 0, mp_low: 0, mp_high: 0, lam_a: 0.5, lam_p: 0.5 };
-let META = null, charts = {}, timer = null, reqId = 0;
+let META = null, LAST = null, charts = {}, timer = null, reqId = 0;
 
 const pct = (x, d = 1) => (x == null || !isFinite(x)) ? "–" : (100 * x).toFixed(d) + "%";
-const pp = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + " pp";
-const signed = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + "%";
+const sgnPct = (x, d = 0) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + "%";
+const sgnPP = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + " pp";
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+function chip(delta, text, eps, goodWhenDown = true) {
+  const cls = Math.abs(delta) < eps ? "flat" : ((delta > 0) === goodWhenDown ? "up" : "down");
+  const arrow = Math.abs(delta) < eps ? "" : (delta > 0 ? "▲ " : "▼ ");
+  return `<span class="chip ${cls}">${arrow}${text}</span>`;
+}
 
-// ------------------------------------------------------------- questions
-function scaleHTML(key, labels) {
-  return `<div class="scale" data-key="${key}">` +
-    labels.map((l, i) => `<button data-v="${i - 2}">${l}</button>`).join("") + `</div>`;
+// ============================================================ questions
+const QSTYLE = { auto: ["", ICONS.auto], aug: ["c2", ICONS.aug], own: ["c3", ICONS.own], mp: ["c4", ICONS.mp] };
+function dialHTML(key, options) {
+  return `<div class="dial" data-key="${key}">
+    <div class="dial-track"><div class="dial-fill"></div><div class="dial-stops">
+      ${options.map((o, i) => `<button type="button" data-v="${i - 2}" aria-label="${esc(o)}" title="${esc(o)}"><i></i></button>`).join("")}
+    </div></div>
+    <div class="dial-ends"><span>${esc(options[0])}</span><span>${esc(options[4])}</span></div>
+    <div class="dial-value"></div></div>`;
 }
 function buildQuestions() {
-  const q = META.questions;
   const box = document.getElementById("questions");
   let html = "";
-  q.forEach((Q, idx) => {
-    html += `<div class="card"><div class="q-num">Question ${idx + 1}</div>
-      <div class="q-title">${Q.title}</div><div class="q-text">${Q.text}</div>`;
+  META.questions.forEach((Q, idx) => {
+    const [cls, icon] = QSTYLE[Q.id];
+    html += `<div class="card q" data-q="${Q.id}">
+      <div class="q-head"><div class="q-icon ${cls}">${icon}</div>
+        <div><div class="q-num">Question ${idx + 1} of 4</div><div class="q-title">${esc(Q.title)}</div></div></div>
+      <div class="q-text">${esc(Q.text)}</div>`;
     if (Q.id === "mp") {
-      html += `<div class="sub-label">Employers of low-wage workers</div>${scaleHTML("mp_low", Q.options)}
-               <div class="sub-label">Employers of high-wage workers</div>${scaleHTML("mp_high", Q.options)}`;
+      html += `<div class="sub">Employers of low-wage workers</div>${dialHTML("mp_low", Q.options)}
+               <div class="sub">Employers of high-wage workers</div>${dialHTML("mp_high", Q.options)}`;
     } else {
-      html += scaleHTML(Q.id, Q.options);
+      html += dialHTML(Q.id, Q.options);
     }
-    if (Q.has_data_option) {
-      html += `<label class="data-option"><input type="checkbox" data-datafor="${Q.id}" checked>
-               Use the pattern measured in the task data</label>`;
-    }
-    html += `<div class="maps" id="maps-${Q.id}"></div></div>`;
+    if (Q.has_data_option) html += `<button type="button" class="pill" data-datafor="${Q.id}"><span class="box"></span>Use the pattern in the task data</button>`;
+    html += `<div class="preview" id="pv-${Q.id}"></div></div>`;
   });
-  html += `<div class="card"><details class="advanced"><summary>Advanced: overall size of the AI shock</summary>
-      <div class="param"><label>Automation realized, λ<sub>A</sub> <span class="val" id="v-lam_a"></span></label>
+  html += `<div class="card"><details class="adv"><summary>Advanced: overall size of the AI shock</summary>
+      <div class="param"><label>Automation realized, λ<sub>A</sub> <b id="v-lam_a"></b></label>
         <input type="range" id="lam_a" min="0" max="1" step="0.05">
-        <div class="help">Fraction of the measured automation potential that is adopted. 0 = no automation.</div></div>
-      <div class="param"><label>Augmentation realized, λ<sub>P</sub> <span class="val" id="v-lam_p"></span></label>
+        <div class="help">Share of the measured automation potential that is adopted.</div></div>
+      <div class="param"><label>Augmentation realized, λ<sub>P</sub> <b id="v-lam_p"></b></label>
         <input type="range" id="lam_p" min="0" max="1" step="0.05">
-        <div class="help">Fraction of the measured productivity gain on remaining tasks that is realized.</div></div>
+        <div class="help">Share of the measured productivity gain on the remaining tasks that is realized.</div></div>
     </details>
-    <div class="actions"><button id="reset">Reset to defaults</button></div>
-    <div class="status" id="status"></div></div>`;
+    <div class="tools"><span class="status" id="status">Ready</span><button type="button" id="reset">Reset answers</button></div></div>`;
   box.innerHTML = html;
 
-  box.querySelectorAll(".scale").forEach(s => s.addEventListener("click", e => {
+  box.querySelectorAll(".dial").forEach(d => d.addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
-    const key = s.dataset.key;
-    state[key] = parseInt(b.dataset.v, 10);
-    const cb = box.querySelector(`[data-datafor="${key}"]`);
-    if (cb) cb.checked = false;
+    state[d.dataset.key] = parseInt(b.dataset.v, 10);
     syncControls(); schedule();
   }));
-  box.querySelectorAll("[data-datafor]").forEach(cb => cb.addEventListener("change", () => {
-    const key = cb.dataset.datafor;
-    state[key] = cb.checked ? "data" : 0;
-    syncControls(); schedule();
+  box.querySelectorAll("[data-datafor]").forEach(p => p.addEventListener("click", () => {
+    const k = p.dataset.datafor; state[k] = state[k] === "data" ? 0 : "data"; syncControls(); schedule();
   }));
   ["lam_a", "lam_p"].forEach(id => document.getElementById(id).addEventListener("input", e => {
     state[id] = parseFloat(e.target.value); syncControls(); schedule();
   }));
-  document.getElementById("reset").addEventListener("click", () => {
-    Object.assign(state, META.defaults); syncControls(); schedule(0);
-  });
+  document.getElementById("reset").addEventListener("click", () => { Object.assign(state, META.defaults); syncControls(); schedule(0); });
+}
+function optionsFor(key) {
+  const id = key.startsWith("mp") ? "mp" : key;
+  return META.questions.find(q => q.id === id).options;
 }
 function syncControls() {
-  document.querySelectorAll(".scale").forEach(s => {
-    const v = state[s.dataset.key];
-    s.querySelectorAll("button").forEach(b =>
-      b.classList.toggle("active", v !== "data" && parseInt(b.dataset.v, 10) === v));
+  document.querySelectorAll(".dial").forEach(d => {
+    const key = d.dataset.key, v = state[key], opts = optionsFor(key);
+    const isData = v === "data";
+    d.classList.toggle("off", isData);
+    d.querySelectorAll("button").forEach(b => b.classList.toggle("active", !isData && parseInt(b.dataset.v, 10) === v));
+    const fill = d.querySelector(".dial-fill");
+    if (isData) { fill.style.width = "0"; } else {
+      const w = d.querySelector(".dial-track").clientWidth - 28, pos = 14 + (v + 2) / 4 * w, mid = 14 + w / 2;
+      fill.style.left = Math.min(pos, mid) + "px"; fill.style.width = Math.abs(pos - mid) + "px";
+    }
+    d.querySelector(".dial-value").textContent = isData ? "Following the task data" : opts[v + 2];
   });
-  document.querySelectorAll("[data-datafor]").forEach(cb => cb.checked = state[cb.dataset.datafor] === "data");
-  ["lam_a", "lam_p"].forEach(id => {
-    document.getElementById(id).value = state[id];
-    document.getElementById("v-" + id).textContent = state[id].toFixed(2);
-  });
+  document.querySelectorAll("[data-datafor]").forEach(p => p.classList.toggle("on", state[p.dataset.datafor] === "data"));
+  ["lam_a", "lam_p"].forEach(id => { document.getElementById(id).value = state[id]; document.getElementById("v-" + id).textContent = state[id].toFixed(2); });
+  renderOwnPreview();
 }
-function schedule(delay = 120) {
-  clearTimeout(timer);
-  timer = setTimeout(solve, delay);
+window.addEventListener("resize", () => { if (META) syncControls(); });
+function schedule(delay = 110) { clearTimeout(timer); timer = setTimeout(solve, delay); }
+
+// ------------------------------------------------------------ previews
+function profileSVG(profile, data, color) {
+  const W = 360, H = 64, n = profile.length, gap = 6, bw = (W - gap * (n - 1)) / n;
+  const max = Math.max(...profile, ...data) * 1.08;
+  let s = `<svg viewBox="0 0 ${W} ${H + 14}" preserveAspectRatio="none">`;
+  for (let i = 0; i < n; i++) {
+    const x = i * (bw + gap), h = H * profile[i] / max, hd = H * data[i] / max;
+    s += `<rect x="${x}" y="${H - h}" width="${bw}" height="${h}" rx="3" fill="${color}"><title>Decile ${i + 1}: ${pct(profile[i], 0)}</title></rect>`;
+    s += `<line x1="${x - 1}" x2="${x + bw + 1}" y1="${H - hd}" y2="${H - hd}" stroke="${C.ink}" stroke-width="2" stroke-linecap="round" opacity=".55"/>`;
+    s += `<text x="${x + bw / 2}" y="${H + 12}" font-size="9" text-anchor="middle" fill="${C.mute}" font-family="Inter, sans-serif">${i + 1}</text>`;
+  }
+  return s + `</svg>`;
+}
+function renderProfilePreviews(D) {
+  document.getElementById("pv-auto").innerHTML =
+    `<div class="cap"><span><b>Share of tasks automated</b>, wage decile 1 → 10</span>
+       <span class="key"><i style="background:${C.labor}"></i>yours</span><span class="key"><i style="background:${C.ink};height:2px"></i>data</span></div>` +
+    profileSVG(D.automation_profile, D.automation_data, C.labor);
+  document.getElementById("pv-aug").innerHTML =
+    `<div class="cap"><span><b>Productivity gain on remaining tasks</b>, decile 1 → 10</span>
+       <span class="key"><i style="background:${C.other}"></i>yours</span><span class="key"><i style="background:${C.ink};height:2px"></i>data</span></div>` +
+    profileSVG(D.augmentation_profile, D.augmentation_data, C.other);
+}
+function renderOwnPreview() {
+  if (!META) return;
+  const chi = META.questions[2].values[state.own + 2], k = Math.round(chi * 100);
+  let s = `<svg viewBox="0 0 360 74">`;
+  for (let i = 0; i < 100; i++) {
+    const col = i % 25, row = Math.floor(i / 25), on = i < k;
+    s += `<circle cx="${7 + col * 14.5}" cy="${8 + row * 17}" r="5.4" fill="${on ? C.capital : "#ebe6da"}" style="transition:fill .3s"/>`;
+  }
+  s += `</svg>`;
+  const el = document.getElementById("pv-own");
+  if (el) el.innerHTML = `<div class="cap"><span><b>${k} of 100 households</b> own business and AI equity</span><span>today: 7</span></div>` + s;
+}
+function renderMPPreview(D) {
+  const max = 0.3, row = (label, base, now) =>
+    `<div class="mp-row"><span>${label}</span><div class="mp-bar"><span style="width:${Math.min(100, 100 * now / max)}%"></span>
+      <em style="left:${Math.min(100, 100 * base / max)}%" title="before AI"></em></div><b>${(100 * now).toFixed(0)}¢</b></div>`;
+  document.getElementById("pv-mp").innerHTML =
+    `<div class="cap"><span><b>Employer keeps, per $1 a worker produces</b></span><span class="key"><i style="background:${C.ink};width:2px"></i>before AI</span></div>` +
+    row("Low-wage jobs", D.markdown_baseline[0], D.markdown[0]) + row("High-wage jobs", D.markdown_baseline[9], D.markdown[9]);
 }
 
-// ------------------------------------------------------------- solve
+// ============================================================ solve
 async function solve() {
-  const id = ++reqId;
-  const status = document.getElementById("status");
-  status.textContent = "Solving the general equilibrium…";
+  const id = ++reqId, status = document.getElementById("status");
+  status.textContent = "Solving equilibrium…"; status.classList.add("busy");
   const qs = new URLSearchParams(Object.entries(state).map(([k, v]) => [k, String(v)]));
   try {
     const r = await fetch(`${API}/api/future/solve?${qs}`);
     if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
     const out = await r.json();
     if (id !== reqId) return;
-    render(out);
-    status.textContent = `Equilibrium solved (max residual ${out.max_residual.toExponential(1)}).`;
-  } catch (err) {
-    status.textContent = "Could not solve: " + err.message;
-  }
+    LAST = out; render(out);
+    status.textContent = "Equilibrium solved"; status.classList.remove("busy");
+  } catch (err) { status.textContent = "Could not solve: " + err.message; status.classList.remove("busy"); }
 }
 
-// ------------------------------------------------------------- render
-function tile(label, after, before, fmt, deltaFmt) {
-  return `<div class="tile"><div class="lbl">${label}</div><div class="val">${fmt(after)}</div>
-    <div class="from">from <b>${fmt(before)}</b> before AI &middot; ${deltaFmt(after, before)}</div></div>`;
-}
+// ============================================================ render
 function render(out) {
   const B = out.baseline, S = out.scenario, D = out.deciles;
-  const g3 = x => x.toFixed(3), dg = (a, b) => (a - b >= 0 ? "+" : "−") + Math.abs(a - b).toFixed(3);
-  const dpp = (a, b) => pp(a - b);
-  document.getElementById("tiles").innerHTML =
-    tile("Total-income Gini", S.gini.total, B.gini.total, g3, dg) +
-    tile("Top 10% income share", S.top10_income, B.top10_income, x => pct(x), dpp) +
-    tile("Top 1% wealth share", S.top1_wealth, B.top1_wealth, x => pct(x), dpp) +
-    tile("Labor share of output", S.shares.labor, B.shares.labor, x => pct(x), dpp) +
-    tile("Capital income, share of household income", S.capital_income_share_of_income, B.capital_income_share_of_income, x => pct(x), dpp) +
-    tile("Output (pre-AI = 100)", 100 * S.output, 100 * B.output, x => x.toFixed(0), (a, b) => signed(a / b - 1, 0));
+  renderProfilePreviews(D); renderMPPreview(D); renderOwnPreview();
 
-  // one-paragraph summary
+  // verdict
   const dG = S.gini.total - B.gini.total;
-  const direction = Math.abs(dG) < 0.003 ? "leaves total-income inequality roughly unchanged"
-    : (dG > 0 ? "raises total-income inequality" : "lowers total-income inequality");
-  const gainLow = S.percentiles.total.slice(0, 5).reduce((s, x, i) => s + x, 0) / B.percentiles.total.slice(0, 5).reduce((s, x) => s + x, 0) - 1;
-  const gainTop = S.percentiles.total[10] / B.percentiles.total[10] - 1;
-  document.getElementById("summary").innerHTML =
-    `Under your answers, AI raises output by <b>${signed(S.output / B.output - 1, 0)}</b> and ${direction}
-     (Gini ${B.gini.total.toFixed(3)} → <b>${S.gini.total.toFixed(3)}</b>). Average income of the bottom half
-     changes by <b>${signed(gainLow, 0)}</b>; the top 1 percent's by <b>${signed(gainTop, 0)}</b>. The labor share
-     moves from ${pct(B.shares.labor)} to ${pct(S.shares.labor)}, and the return on risky capital from
-     ${pct(B.r_risky, 2)} to ${pct(S.r_risky, 2)}.`;
+  document.getElementById("giniNum").textContent = S.gini.total.toFixed(3);
+  document.getElementById("giniChip").outerHTML = chip(dG, `${dG >= 0 ? "+" : "−"}${Math.abs(dG).toFixed(3)} vs before AI`, 0.002).replace('class="chip', 'id="giniChip" class="chip');
+  drawGauge(B.gini.total, S.gini.total);
 
-  // income groups
+  const low = sum(S.percentiles.total.slice(0, 5)) / sum(B.percentiles.total.slice(0, 5)) - 1;
+  const top = S.percentiles.total[10] / B.percentiles.total[10] - 1;
+  const dir = Math.abs(dG) < 0.003 ? "leaves income inequality roughly where it is" : (dG > 0 ? "makes income more unequal" : "makes income more equal");
+  document.getElementById("story").innerHTML =
+    `In the world you describe, AI raises output by <b>${sgnPct(S.output / B.output - 1)}</b> and ${dir}.
+     Average income rises by <b>${sgnPct(low)}</b> for the bottom half and by <b>${sgnPct(top)}</b> for the top 1 percent.
+     Workers' share of output goes from ${pct(B.shares.labor, 0)} to <b>${pct(S.shares.labor, 0)}</b>.`;
+
+  document.getElementById("kpis").innerHTML = [
+    ["Top 10% income share", S.top10_income, B.top10_income, x => pct(x), true],
+    ["Top 1% wealth share", S.top1_wealth, B.top1_wealth, x => pct(x), true],
+    ["Labor share of output", S.shares.labor, B.shares.labor, x => pct(x), false],
+    ["Output (pre-AI = 100)", S.output * 100, B.output * 100, x => x.toFixed(0), null],
+  ].map(([l, a, b, f, goodDown]) => {
+    const d = a - b;
+    const c = goodDown === null ? `<span class="chip flat">${sgnPct(a / b - 1)}</span>`
+      : chip(d, sgnPP(d), 0.001, goodDown);
+    return `<div class="kpi"><div class="lbl">${l}</div><div class="val">${f(a)}</div><div class="was">from ${f(b)} ${c}</div></div>`;
+  }).join("");
+
+  // who gains
   const labels = out.percentile_labels;
   const dl = S.percentiles.labor.map((x, i) => 100 * (x - B.percentiles.labor[i]) / B.percentiles.total[i]);
   const dk = S.percentiles.capital.map((x, i) => 100 * (x - B.percentiles.capital[i]) / B.percentiles.total[i]);
@@ -378,103 +556,132 @@ function render(out) {
   drawChart("chGroups", {
     type: "bar",
     data: { labels, datasets: [
-      { type: "scatter", label: "Total", data: dt.map((y, i) => ({ x: labels[i], y })), backgroundColor: INK,
-        borderColor: "#fffdf8", borderWidth: 2, pointRadius: 5, pointHoverRadius: 7, order: 0 },
-      { label: "Labor income", data: dl, backgroundColor: COLORS.labor, stack: "s", borderRadius: 2, borderSkipped: false, order: 1 },
-      { label: "Capital income", data: dk, backgroundColor: COLORS.capital, stack: "s", borderRadius: 2, borderSkipped: false, order: 1 },
+      { type: "line", label: "Total", data: dt, showLine: false, pointRadius: 6, pointHoverRadius: 8,
+        pointBackgroundColor: C.ink, pointBorderColor: "#fff", pointBorderWidth: 2, order: 0 },
+      { label: "Labor income", data: dl, backgroundColor: C.labor, stack: "s", borderRadius: 4, borderSkipped: false,
+        borderColor: "#fff", borderWidth: 1, order: 1, maxBarThickness: 46 },
+      { label: "Capital income", data: dk, backgroundColor: C.capital, stack: "s", borderRadius: 4, borderSkipped: false,
+        borderColor: "#fff", borderWidth: 1, order: 1, maxBarThickness: 46 },
     ]},
-    options: baseOpts({
-      y: { stacked: true, title: { display: true, text: "Change, % of pre-AI group income" }, grid: { color: GRID },
-           ticks: { callback: v => v + "%" } },
-      x: { stacked: true, grid: { display: false } },
-    }, ctx => `${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
+    options: opts({
+      y: { stacked: true, grid: { color: "#efeae0" }, border: { display: false }, ticks: { callback: v => v + "%" } },
+      x: { stacked: true, grid: { display: false }, border: { color: C.line } },
+    }, ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
   });
 
-  // factor shares
-  const comp = [["labor", "Labor"], ["ordinary_capital", "Ordinary capital"], ["markdown_profit", "Markdown profits"], ["other_profit", "Other profits"]];
-  const ckey = { labor: "labor", ordinary_capital: "capital", markdown_profit: "markdown", other_profit: "other" };
-  drawChart("chShares", {
-    type: "bar",
-    data: { labels: ["Before AI", "With AI"], datasets: comp.map(([k, l]) => ({
-      label: l, data: [100 * B.shares[k], 100 * S.shares[k]], backgroundColor: COLORS[ckey[k]],
-      borderColor: "#fffdf8", borderWidth: { right: 2 }, borderSkipped: false })) },
-    options: Object.assign(baseOpts({
-      x: { stacked: true, max: 100, grid: { color: GRID }, ticks: { callback: v => v + "%" } },
-      y: { stacked: true, grid: { display: false } },
-    }, ctx => `${ctx.dataset.label}: ${ctx.parsed.x.toFixed(1)}%`), { indexAxis: "y" }),
-  });
+  drawRibbon(B.shares, S.shares);
 
-  // wages
+  // wages (lollipop)
+  const wc = D.wage_change.map(x => 100 * x);
   drawChart("chWages", {
     type: "bar",
-    data: { labels: D.wage_change.map((_, i) => "D" + (i + 1)), datasets: [{
-      label: "Wage change", data: D.wage_change.map(x => 100 * x), backgroundColor: COLORS.labor,
-      borderRadius: 2, borderSkipped: false }] },
-    options: baseOpts({
-      y: { grid: { color: GRID }, ticks: { callback: v => v + "%" } },
-      x: { grid: { display: false }, title: { display: true, text: "Occupation wage decile (1 = lowest)" } },
-    }, ctx => `Decile ${ctx.dataIndex + 1}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
+    data: { labels: wc.map((_, i) => String(i + 1)), datasets: [
+      { type: "line", label: "Wage change", data: wc, showLine: false, pointRadius: 7, pointHoverRadius: 9,
+        pointBackgroundColor: wc.map(v => v >= 0 ? C.labor : C.markdown), pointBorderColor: "#fff", pointBorderWidth: 2, order: 0 },
+      { label: "stem", data: wc, backgroundColor: wc.map(v => v >= 0 ? "rgba(37,99,168,.35)" : "rgba(194,65,12,.35)"),
+        barThickness: 3, order: 1 },
+    ]},
+    options: opts({
+      y: { grid: { color: "#efeae0" }, border: { display: false }, ticks: { callback: v => v + "%" } },
+      x: { grid: { display: false }, border: { color: C.line }, title: { display: true, text: "Occupation wage decile (1 = lowest paid)" } },
+    }, ctx => ctx.dataset.label === "stem" ? null : ` Decile ${ctx.dataIndex + 1}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
   });
 
-  // inequality table
+  // tables
+  const g3 = x => x.toFixed(3);
   const rows = [
-    ["Labor-income Gini", B.gini.labor, S.gini.labor, g3, "g", true],
-    ["Capital-income Gini", B.gini.capital, S.gini.capital, g3, "g", true],
-    ["Total-income Gini", B.gini.total, S.gini.total, g3, "g", true],
-    ["Wealth Gini", B.gini.wealth, S.gini.wealth, g3, "g", true],
-    ["Top 1% income share", B.top1_income, S.top1_income, x => pct(x), "p", true],
-    ["Top 10% wealth share", B.top10_wealth, S.top10_wealth, x => pct(x), "p", true],
-    ["Capital share of top-10% income", B.top10_capital_income_share_of_income, S.top10_capital_income_share_of_income, x => pct(x), "p", false],
-    ["Return on risky capital", B.r_risky, S.r_risky, x => pct(x, 2), "p", false],
-    ["Safe interest rate", B.r_safe, S.r_safe, x => pct(x, 2), "p", false],
-    ["Investors' risky share of wealth", B.risky_share, S.risky_share, x => x.toFixed(2), "g", false],
+    ["Labor-income Gini", B.gini.labor, S.gini.labor, g3, 0, true],
+    ["Capital-income Gini", B.gini.capital, S.gini.capital, g3, 0, true],
+    ["Total-income Gini", B.gini.total, S.gini.total, g3, 0, true],
+    ["Wealth Gini", B.gini.wealth, S.gini.wealth, g3, 0, true],
+    ["Top 1% income share", B.top1_income, S.top1_income, x => pct(x), 1, true],
+    ["Top 10% wealth share", B.top10_wealth, S.top10_wealth, x => pct(x), 1, true],
+    ["Capital income, share of household income", B.capital_income_share_of_income, S.capital_income_share_of_income, x => pct(x), 1, false],
+    ["Capital share of top-10% income", B.top10_capital_income_share_of_income, S.top10_capital_income_share_of_income, x => pct(x), 1, false],
+    ["Return on risky capital", B.r_risky, S.r_risky, x => pct(x, 2), 1, false],
+    ["Safe interest rate", B.r_safe, S.r_safe, x => pct(x, 2), 1, false],
+    ["Owners' risky share of wealth", B.risky_share, S.risky_share, x => x.toFixed(2), 0, false],
   ];
-  document.getElementById("tblIneq").innerHTML =
-    `<tr><th></th><th>Before AI</th><th>With AI</th><th>Change</th></tr>` +
-    rows.map(([l, b, s, f, kind, colored]) => {
+  document.getElementById("tblIneq").innerHTML = `<tr><th></th><th>Before AI</th><th>With AI</th><th>Change</th></tr>` +
+    rows.map(([l, b, s, f, isPct, colored]) => {
       const d = s - b, cls = (!colored || Math.abs(d) < 1e-4) ? "" : (d > 0 ? "up" : "down");
-      const dtxt = kind === "p" ? pp(d, 2) : (d >= 0 ? "+" : "−") + Math.abs(d).toFixed(3);
-      return `<tr><td>${l}</td><td>${f(b)}</td><td>${f(s)}</td><td class="${cls}">${dtxt}</td></tr>`;
+      const txt = isPct ? sgnPP(d, 2) : (d >= 0 ? "+" : "−") + Math.abs(d).toFixed(3);
+      return `<tr><td>${l}</td><td>${f(b)}</td><td>${f(s)}</td><td class="${cls}">${txt}</td></tr>`;
     }).join("");
-
-  // parameter table
-  document.getElementById("tblParams").innerHTML =
-    `<tr><th>Decile</th><th>Automated α</th><th>Productivity</th><th>Markdown τ</th></tr>` +
-    D.alpha.map((a, i) => `<tr><td>${i + 1}</td>
-      <td>${pct(D.alpha_baseline[i], 0)} → ${pct(a, 0)}</td>
-      <td>${signed(D.productivity_gain[i], 0)}</td>
-      <td>${pct(D.markdown_baseline[i], 1)} → ${pct(D.markdown[i], 1)}</td></tr>`).join("");
+  document.getElementById("tblParams").innerHTML = `<tr><th>Decile</th><th>Automated α</th><th>Productivity</th><th>Markdown τ</th><th>Wage</th></tr>` +
+    D.alpha.map((a, i) => `<tr><td>${i + 1}</td><td>${pct(D.alpha_baseline[i], 0)} → ${pct(a, 0)}</td>
+      <td>${sgnPct(D.productivity_gain[i])}</td><td>${pct(D.markdown_baseline[i], 1)} → ${pct(D.markdown[i], 1)}</td>
+      <td>${sgnPct(D.wage_change[i], 1)}</td></tr>`).join("");
   document.getElementById("paramNote").innerHTML =
-    `Share of households with access to risky equity (AI ownership): <b>${pct(B.chi, 1)} → ${pct(S.chi, 1)}</b>.
-     Automation and augmentation use the T3–T4 exposure tier; λ<sub>A</sub> = ${state.lam_a.toFixed(2)},
-     λ<sub>P</sub> = ${state.lam_p.toFixed(2)}.`;
-
-  // per-question mapping notes
-  const prof = (v) => v === "data" ? "pattern from the task data" : ["strongly toward low-wage jobs", "somewhat toward low-wage jobs", "uniform across deciles", "somewhat toward high-wage jobs", "strongly toward high-wage jobs"][v + 2];
-  setMap("auto", `Sets the automation profile a<sub>j</sub>: <b>${prof(state.auto)}</b>, average held at the data value.`);
-  setMap("aug", `Sets the augmentation profile q<sub>j</sub>: <b>${prof(state.aug)}</b>, average held at the data value.`);
-  setMap("own", `Sets χ, the share of households owning risky equity: <b>${pct(S.chi, 1)}</b> (6.6% today).`);
-  const mv = META.questions[3].values;
-  setMap("mp", `Multiplies pre-AI markdowns by <b>${mv[state.mp_low + 2]}×</b> (deciles 1–4) and
-    <b>${mv[state.mp_high + 2]}×</b> (deciles 9–10); deciles 5–8 use the geometric mean.`);
+    `Share of households owning risky equity: <b>${pct(B.chi, 1)} → ${pct(S.chi, 1)}</b>. Exposure tier T3–T4;
+     λ<sub>A</sub> = ${state.lam_a.toFixed(2)}, λ<sub>P</sub> = ${state.lam_p.toFixed(2)}. Max equilibrium residual ${out.max_residual.toExponential(1)}.`;
 }
-function setMap(id, html) { const el = document.getElementById("maps-" + id); if (el) el.innerHTML = html; }
+const sum = a => a.reduce((s, x) => s + x, 0);
 
-function baseOpts(scales, label) {
+// ------------------------------------------------------------ gauge
+function drawGauge(before, after) {
+  const svg = document.getElementById("gauge"), lo = 0.25, hi = 0.50, x0 = 14, x1 = 406, y = 40;
+  const X = v => x0 + (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * (x1 - x0);
+  if (!svg.dataset.init) {
+    let ticks = "";
+    for (let v = 0.25; v <= 0.5001; v += 0.05) ticks += `<text x="${X(v)}" y="${y + 30}" font-size="10" text-anchor="middle" fill="${C.mute}" font-family="Inter,sans-serif">${v.toFixed(2)}</text>`;
+    svg.innerHTML = `<defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#2f8a63"/><stop offset=".5" stop-color="#e0a12f"/><stop offset="1" stop-color="#c2410c"/></linearGradient></defs>
+      <rect x="${x0}" y="${y - 5}" width="${x1 - x0}" height="10" rx="5" fill="url(#gg)" opacity=".9"/>
+      ${ticks}
+      <text x="${x0}" y="12" font-size="10" fill="${C.mute}" font-family="Inter,sans-serif">more equal</text>
+      <text x="${x1}" y="12" font-size="10" fill="${C.mute}" text-anchor="end" font-family="Inter,sans-serif">more unequal</text>
+      <g class="mk" id="gBefore"><circle cx="0" cy="${y}" r="8" fill="#fff" stroke="${C.ink}" stroke-width="2.5"/>
+        <text x="0" y="${y - 14}" font-size="10" text-anchor="middle" fill="${C.ink2}" font-family="Inter,sans-serif" font-weight="600">before</text></g>
+      <g class="mk" id="gAfter"><circle cx="0" cy="${y}" r="10" fill="${C.ink}" stroke="#fff" stroke-width="3"/>
+        <text x="0" y="${y - 16}" font-size="10" text-anchor="middle" fill="${C.ink}" font-family="Inter,sans-serif" font-weight="700">with AI</text></g>`;
+    svg.dataset.init = 1;
+  }
+  document.getElementById("gBefore").style.transform = `translate(${X(before)}px, 0)`;
+  document.getElementById("gAfter").style.transform = `translate(${X(after)}px, 0)`;
+  // keep the two labels from colliding
+  const close = Math.abs(X(after) - X(before)) < 46;
+  document.querySelector("#gBefore text").setAttribute("y", close ? y + 22 : y - 14);
+  document.querySelector("#gBefore text").setAttribute("opacity", close ? 0 : 1);
+}
+
+// ------------------------------------------------------------ ribbon
+function drawRibbon(b, s) {
+  const keys = [["labor", C.labor], ["ordinary_capital", C.capital], ["markdown_profit", C.markdown], ["other_profit", C.other]];
+  const svg = document.getElementById("ribbon"), L = 74, R = 438, W = R - L, h = 48, y1 = 10, y2 = 148;
+  const seg = sh => { let acc = 0; return keys.map(([k]) => { const a = acc; acc += sh[k]; return [L + a * W, L + acc * W, sh[k]]; }); };
+  const A = seg(b), Z = seg(s);
+  let g = `<text x="0" y="${y1 + h / 2 + 4}" font-size="13" font-weight="600" fill="${C.ink}" font-family="Inter,sans-serif">Before AI</text>
+           <text x="0" y="${y2 + h / 2 + 4}" font-size="13" font-weight="600" fill="${C.ink}" font-family="Inter,sans-serif">With AI</text>`;
+  keys.forEach(([k, col], i) => {
+    const [a0, a1] = A[i], [z0, z1] = Z[i];
+    g += `<path d="M${a0},${y1 + h} L${a1},${y1 + h} C${a1},${(y1 + h + y2) / 2} ${z1},${(y1 + h + y2) / 2} ${z1},${y2}
+           L${z0},${y2} C${z0},${(y1 + h + y2) / 2} ${a0},${(y1 + h + y2) / 2} ${a0},${y1 + h} Z" fill="${col}" opacity=".16"/>`;
+  });
+  [[A, b, y1], [Z, s, y2]].forEach(([P, sh, yy]) => keys.forEach(([k, col], i) => {
+    const [p0, p1, v] = P[i], w = Math.max(0, p1 - p0 - 2);
+    g += `<rect x="${p0 + 1}" y="${yy}" width="${w}" height="${h}" rx="4" fill="${col}"><title>${pct(v)}</title></rect>`;
+    if (w > 30) g += `<text x="${p0 + 1 + w / 2}" y="${yy + h / 2 + 5}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif">${pct(v, 0)}</text>`;
+  }));
+  svg.innerHTML = g;
+}
+
+// ------------------------------------------------------------ chart helpers
+function opts(scales, label) {
   return {
-    responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
+    responsive: true, maintainAspectRatio: false, animation: { duration: 350 },
     plugins: { legend: { display: false },
-      tooltip: { callbacks: { label }, backgroundColor: "#24231f", titleFont: { family: SANS }, bodyFont: { family: SANS } } },
+      tooltip: { filter: i => i.dataset.label !== "stem", callbacks: { label }, backgroundColor: "#0f1d33", padding: 10,
+                 cornerRadius: 8, titleFont: { family: SANS, weight: "600" }, bodyFont: { family: SANS } } },
     interaction: { mode: "index", intersect: false },
     scales,
   };
 }
 function drawChart(id, cfg) {
-  if (charts[id]) {
-    charts[id].data = cfg.data; charts[id].options = cfg.options; charts[id].update();
-  } else {
-    charts[id] = new Chart(document.getElementById(id), cfg);
-  }
+  // Recreate rather than mutate: mixed bar/point charts mis-position points on in-place updates.
+  const first = !charts[id];
+  if (charts[id]) charts[id].destroy();
+  if (!first) cfg.options.animation = { duration: 0 };
+  charts[id] = new Chart(document.getElementById(id), cfg);
 }
 
 (async function init() {
