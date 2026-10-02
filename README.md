@@ -20,9 +20,13 @@ InclusiveAI/
 ├── backend/
 │   ├── main.py               # FastAPI app: API endpoints + serves the frontend
 │   ├── expertise_static.py   # Static expertise model solver (refactored from Final_Supply.py)
+│   ├── ai_future.py          # "Your AI Future" page: four belief questions -> AI-MRR steady state
+│   ├── mrr_solver.py         # Copy of model/ai_mrr_extended/solver.py (AI extension of Moll-Rachel-Restrepo)
+│   ├── data/ai_occupation_calibration.csv  # Occupation deciles from simple_aiyagari_ge/build_calibration.py
 │   └── requirements.txt
 ├── frontend/
-│   └── index.html            # Single-page app (Chart.js, no build step)
+│   ├── index.html            # Single-page app (Chart.js, no build step)
+│   └── future.html           # Separate "Your AI Future" page (AI-MRR model)
 └── models/
     └── expertise/
         ├── static/           # Reference code + data (Final_Supply.py, Counterfactual.dta,
@@ -93,3 +97,23 @@ API: `GET /api/scenarios`.
 Any host that runs Python works (Render, Railway, Fly.io, a university server):
 `uvicorn main:app --host 0.0.0.0 --port $PORT`. The frontend is static and served by
 FastAPI itself, so a single service is enough.
+
+## "Your AI Future" page (`/future.html`)
+
+A separate page built on the AI extension of Moll, Rachel and Restrepo (2022)
+maintained in `model/ai_mrr_extended` (note: `output/pdf/model.pdf`). Visitors answer
+four questions; each maps to one block of parameters:
+
+| Question | Parameter |
+|---|---|
+| Which jobs will AI automate more? | tilt of the automation profile a_j across wage deciles (mean held at the task-data value) |
+| Which workers will AI make more productive? | tilt of the augmentation profile q_j (mean held fixed) |
+| Who will own AI capital? | chi, share of households with risky equity: 3.5, 5, 6.6 (MRR), 15, 30% |
+| Employer power over wages (low / high wage) | multiplier on pre-AI markdowns: 0.25, 0.6, 1, 1.5, 2 (deciles 1-4 and 9-10; 5-8 geometric mean) |
+
+The aggregate shock size is lambda_A = lambda_P = 0.5 on the T3-T4 tier by default and can be
+changed under "Advanced". The page compares the pre-AI and post-AI balanced-growth steady
+states (about 0.1 s per solve). `mrr_solver.py` is an unmodified copy of the model's
+`solver.py`; if the model changes, copy it again together with the calibration CSV.
+
+API: `GET /api/future/meta`, `GET /api/future/solve?auto=data|-2..2&aug=...&own=-2..2&mp_low=-2..2&mp_high=-2..2&lam_a=0.5&lam_p=0.5`.

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your AI Future — InclusiveAI</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f7f5ef;
+    --panel: #fffdf8;
+    --panel2: #efece2;
+    --border: #d9d3c3;
+    --rule: #b9b19e;
+    --text: #24231f;
+    --muted: #605c51;
+    --accent: #8b1a1a;
+    --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* chart palette (validated: lightness band, chroma, CVD separation) */
+    --c-labor: #3f6ea5;
+    --c-capital: #c18a2c;
+    --c-markdown: #b0392e;
+    --c-other: #4f9a6a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--serif); min-height: 100vh; }
+  a { color: var(--accent); }
+
+  header { padding: 30px 36px 0; border-bottom: 3px double var(--rule); }
+  .brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .brand h1 { font-size: 1.8rem; font-weight: 700; }
+  .brand h1 a { color: inherit; text-decoration: none; }
+  .brand h1 span { color: var(--accent); }
+  .brand .tagline { color: var(--muted); font-style: italic; font-size: 0.95rem; }
+  nav { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
+  nav a {
+    font-family: var(--sans); text-transform: uppercase; font-size: 0.74rem; letter-spacing: 1.3px;
+    font-weight: 600; padding: 10px 14px; color: var(--muted); text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  nav a.active { color: var(--text); border-bottom-color: var(--accent); }
+  nav a:hover { color: var(--text); }
+
+  main { padding: 28px 36px 60px; max-width: 1320px; margin: 0 auto; }
+  .hero { max-width: 860px; margin: 8px auto 34px; text-align: center; }
+  .hero h2 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 14px; }
+  .hero h2 em { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 1.08rem; line-height: 1.6; }
+  .hero .cite { margin-top: 12px; font-size: 0.92rem; font-style: italic; }
+
+  .layout { display: grid; grid-template-columns: 400px 1fr; gap: 28px; align-items: start; }
+  @media (max-width: 1050px) { .layout { grid-template-columns: 1fr; } }
+  .questions { position: sticky; top: 16px; }
+  @media (max-width: 1050px) { .questions { position: static; } }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 3px; padding: 18px 20px; }
+  .card + .card { margin-top: 14px; }
+  .q-num { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .q-title { font-size: 1.08rem; font-weight: 700; margin: 4px 0 4px; line-height: 1.3; }
+  .q-text { color: var(--muted); font-size: 0.88rem; line-height: 1.45; margin-bottom: 10px; }
+  .scale { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .scale button {
+    background: var(--panel); border: none; border-right: 1px solid var(--border);
+    font-family: var(--sans); font-size: 0.7rem; line-height: 1.2; padding: 8px 3px; min-height: 48px;
+    cursor: pointer; color: var(--muted);
+  }
+  .scale button:last-child { border-right: none; }
+  .scale button:hover { background: var(--panel2); color: var(--text); }
+  .scale button.active { background: var(--accent); color: #fff; }
+  .scale-ends { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.66rem; color: var(--muted); margin-top: 4px; }
+  .data-option { display: flex; align-items: center; gap: 8px; margin-top: 9px; font-family: var(--sans); font-size: 0.78rem; cursor: pointer; }
+  .data-option input { accent-color: var(--accent); }
+  .sub-label { font-family: var(--sans); font-size: 0.74rem; font-weight: 600; margin: 10px 0 5px; }
+  .maps { margin-top: 9px; font-family: var(--sans); font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+  .maps b { color: var(--text); font-weight: 600; }
+
+  details.advanced { margin-top: 14px; font-family: var(--sans); font-size: 0.8rem; }
+  details.advanced summary { cursor: pointer; color: var(--accent); }
+  .param { margin-top: 12px; }
+  .param label { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 4px; }
+  .param label .val { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .param input[type=range] { width: 100%; accent-color: var(--accent); }
+  .param .help { color: var(--muted); font-size: 0.7rem; margin-top: 3px; line-height: 1.35; }
+  .actions { display: flex; gap: 8px; margin-top: 14px; }
+  .actions button {
+    flex: 1; font-family: var(--sans); font-size: 0.76rem; padding: 8px; cursor: pointer;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 3px; color: var(--text);
+  }
+  .actions button:hover { border-color: var(--accent); }
+  .status { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-top: 8px; min-height: 1.1em; }
+
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 700px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+  .tile { background: var(--panel); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; }
+  .tile .lbl { font-family: var(--sans); font-size: 0.7rem; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); }
+  .tile .val { font-size: 1.7rem; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .tile .from { font-family: var(--sans); font-size: 0.76rem; color: var(--muted); margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .tile .from b { color: var(--text); }
+
+  .summary { margin: 16px 0 0; font-size: 1.02rem; line-height: 1.6; background: var(--panel2); border-left: 4px solid var(--accent); padding: 12px 16px; }
+
+  .section-title { font-size: 1.25rem; margin: 30px 0 4px; }
+  .section-sub { color: var(--muted); font-size: 0.93rem; line-height: 1.5; margin-bottom: 12px; max-width: 860px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 1250px) { .grid2 { grid-template-columns: 1fr; } }
+  .chartbox { position: relative; height: 300px; }
+  .chartbox.short { height: 170px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--sans); font-size: 0.75rem; color: var(--muted); margin-bottom: 8px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  .legend i.dot { border-radius: 50%; width: 9px; height: 9px; background: var(--text); }
+  .card h4 { font-size: 1.0rem; margin-bottom: 4px; }
+  .card .note { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+  table.t { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+  table.t th, table.t td { padding: 6px 8px; border-bottom: 1px solid var(--border); text-align: right; }
+  table.t th:first-child, table.t td:first-child { text-align: left; }
+  table.t th { color: var(--muted); font-weight: 600; }
+  table.t td { white-space: nowrap; }
+  table.t td:first-child { white-space: normal; }
+  @media (max-width: 700px) { table.t td { white-space: normal; } table.t th, table.t td { padding: 5px 4px; } main { padding: 20px 16px 50px; } header { padding: 24px 16px 0; } }
+  .up { color: var(--accent); }
+  .down { color: #2f6b45; }
+
+  .explain { max-width: 900px; line-height: 1.65; font-size: 0.98rem; }
+  .explain p { margin-bottom: 12px; }
+  .explain ul { margin: 0 0 12px 22px; }
+  .explain li { margin-bottom: 6px; }
+  footer { text-align: center; color: var(--muted); font-family: var(--sans); font-size: 0.76rem; padding: 20px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1><a href="/">Inclusive<span>AI</span></a></h1>
+    <div class="tagline">Interactive general-equilibrium models of how AI shapes the distribution of prosperity</div>
+  </div>
+  <nav>
+    <a href="/">Main site</a>
+    <a href="/future.html" class="active">Your AI Future</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>What does <em>your</em> view of AI imply for inequality?</h2>
+    <p>Answer four questions about who AI replaces, whom it helps, who owns it, and how much
+      power employers have. Each answer sets parameters of a calibrated general-equilibrium model
+      with risky capital and an unequal wealth distribution. The model then reports what happens
+      to labor income, capital income, and inequality in the long run.</p>
+    <p class="cite">Model: an AI extension of Moll, Rachel &amp; Restrepo (2022), “Uneven Growth,” with
+      occupation-level AI exposure and wage markdowns. Steady-state comparisons, not forecasts.</p>
+  </section>
+
+  <div class="layout">
+    <!-- ======================= QUESTIONS ======================= -->
+    <aside class="questions" id="questions"></aside>
+
+    <!-- ======================= RESULTS ======================= -->
+    <section>
+      <div class="tiles" id="tiles"></div>
+      <div class="summary" id="summary">Solving…</div>
+
+      <h3 class="section-title">Who gains? Income by income group</h3>
+      <p class="section-sub">Change in average income in each group of the income distribution, relative to that
+        group's income before AI. Bars split the change into labor income and capital income. Groups are
+        percentiles of each economy's own income distribution.</p>
+      <div class="card">
+        <div class="legend">
+          <span><i style="background:var(--c-labor)"></i>Labor income</span>
+          <span><i style="background:var(--c-capital)"></i>Capital income</span>
+          <span><i class="dot"></i>Total</span>
+        </div>
+        <div class="chartbox"><canvas id="chGroups"></canvas></div>
+        <div class="note">Capital income is equity and bond income. Profits (from wage markdowns and other business profits)
+          are paid to equity owners and are included in capital income.</div>
+      </div>
+
+      <div class="grid2" style="margin-top:18px">
+        <div class="card">
+          <h4>Where output goes</h4>
+          <div class="legend">
+            <span><i style="background:var(--c-labor)"></i>Labor</span>
+            <span><i style="background:var(--c-capital)"></i>Ordinary capital</span>
+            <span><i style="background:var(--c-markdown)"></i>Markdown profits</span>
+            <span><i style="background:var(--c-other)"></i>Other profits</span>
+          </div>
+          <div class="chartbox short"><canvas id="chShares"></canvas></div>
+          <div class="note">Shares of output. Markdown profits are the gap between what workers produce and what they are paid.</div>
+        </div>
+        <div class="card">
+          <h4>Wages by occupation wage decile</h4>
+          <div class="chartbox short" style="height:210px"><canvas id="chWages"></canvas></div>
+          <div class="note">Percent change in the wage of each decile of occupations, ranked by pre-AI wage.</div>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:18px">
+        <div class="card">
+          <h4>Inequality and returns</h4>
+          <table class="t" id="tblIneq"></table>
+        </div>
+        <div class="card">
+          <h4>What your answers set</h4>
+          <table class="t" id="tblParams"></table>
+          <div class="note" id="paramNote"></div>
+        </div>
+      </div>
+
+      <h3 class="section-title">How the model works</h3>
+      <div class="explain card">
+        <p><b>Production.</b> Ten occupation groups (equal-employment deciles of the wage distribution) each
+          perform a range of tasks. AI can <i>automate</i> tasks, moving them from workers to capital, or
+          <i>augment</i> the tasks that remain with workers, raising their productivity. Which occupations are
+          exposed comes from task-level AI-exposure data (Eloundou et al.); your answers to questions 1–2 can
+          tilt that exposure toward low- or high-wage jobs while keeping its average size fixed.</p>
+        <p><b>Wages and profits.</b> Employers pay workers a markdown below their marginal product, calibrated
+          to Seegmiller's estimates by skill (8–13 percent before AI). The markdown is a profit for the firm.
+          Question 4 scales markdowns for low-wage and high-wage occupations.</p>
+        <p><b>Who owns capital.</b> Capital, AI, and business profits are held as risky equity. Only a fraction
+          of households can hold it (6.6 percent in the calibration); everyone else saves in safe bonds. Investors
+          lever up when the return on risky capital is high, which thickens the top of the wealth distribution.
+          Question 3 sets this fraction.</p>
+        <p><b>What is held fixed.</b> The overall size of the AI shock (adjustable under “Advanced”), preferences,
+          and the asset-market parameters from Moll, Rachel &amp; Restrepo. Every result compares two balanced-growth
+          steady states, so it describes the long run, not the transition.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>InclusiveAI &middot; research preview &middot; results are model-based counterfactuals, not forecasts</footer>
+
+<script>
+const API = "";
+const COLORS = { labor: "#3f6ea5", capital: "#c18a2c", markdown: "#b0392e", other: "#4f9a6a" };
+const INK = "#24231f", MUTED = "#605c51", GRID = "#e6e1d5";
+const SANS = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+Chart.defaults.font.family = SANS;
+Chart.defaults.font.size = 11;
+Chart.defaults.color = MUTED;
+
+const state = { auto: "data", aug: "data", own: 0, mp_low: 0, mp_high: 0, lam_a: 0.5, lam_p: 0.5 };
+let META = null, charts = {}, timer = null, reqId = 0;
+
+const pct = (x, d = 1) => (x == null || !isFinite(x)) ? "–" : (100 * x).toFixed(d) + "%";
+const pp = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + " pp";
+const signed = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + "%";
+
+// ------------------------------------------------------------- questions
+function scaleHTML(key, labels) {
+  return `<div class="scale" data-key="${key}">` +
+    labels.map((l, i) => `<button data-v="${i - 2}">${l}</button>`).join("") + `</div>`;
+}
+function buildQuestions() {
+  const q = META.questions;
+  const box = document.getElementById("questions");
+  let html = "";
+  q.forEach((Q, idx) => {
+    html += `<div class="card"><div class="q-num">Question ${idx + 1}</div>
+      <div class="q-title">${Q.title}</div><div class="q-text">${Q.text}</div>`;
+    if (Q.id === "mp") {
+      html += `<div class="sub-label">Employers of low-wage workers</div>${scaleHTML("mp_low", Q.options)}
+               <div class="sub-label">Employers of high-wage workers</div>${scaleHTML("mp_high", Q.options)}`;
+    } else {
+      html += scaleHTML(Q.id, Q.options);
+    }
+    if (Q.has_data_option) {
+      html += `<label class="data-option"><input type="checkbox" data-datafor="${Q.id}" checked>
+               Use the pattern measured in the task data</label>`;
+    }
+    html += `<div class="maps" id="maps-${Q.id}"></div></div>`;
+  });
+  html += `<div class="card"><details class="advanced"><summary>Advanced: overall size of the AI shock</summary>
+      <div class="param"><label>Automation realized, λ<sub>A</sub> <span class="val" id="v-lam_a"></span></label>
+        <input type="range" id="lam_a" min="0" max="1" step="0.05">
+        <div class="help">Fraction of the measured automation potential that is adopted. 0 = no automation.</div></div>
+      <div class="param"><label>Augmentation realized, λ<sub>P</sub> <span class="val" id="v-lam_p"></span></label>
+        <input type="range" id="lam_p" min="0" max="1" step="0.05">
+        <div class="help">Fraction of the measured productivity gain on remaining tasks that is realized.</div></div>
+    </details>
+    <div class="actions"><button id="reset">Reset to defaults</button></div>
+    <div class="status" id="status"></div></div>`;
+  box.innerHTML = html;
+
+  box.querySelectorAll(".scale").forEach(s => s.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const key = s.dataset.key;
+    state[key] = parseInt(b.dataset.v, 10);
+    const cb = box.querySelector(`[data-datafor="${key}"]`);
+    if (cb) cb.checked = false;
+    syncControls(); schedule();
+  }));
+  box.querySelectorAll("[data-datafor]").forEach(cb => cb.addEventListener("change", () => {
+    const key = cb.dataset.datafor;
+    state[key] = cb.checked ? "data" : 0;
+    syncControls(); schedule();
+  }));
+  ["lam_a", "lam_p"].forEach(id => document.getElementById(id).addEventListener("input", e => {
+    state[id] = parseFloat(e.target.value); syncControls(); schedule();
+  }));
+  document.getElementById("reset").addEventListener("click", () => {
+    Object.assign(state, META.defaults); syncControls(); schedule(0);
+  });
+}
+function syncControls() {
+  document.querySelectorAll(".scale").forEach(s => {
+    const v = state[s.dataset.key];
+    s.querySelectorAll("button").forEach(b =>
+      b.classList.toggle("active", v !== "data" && parseInt(b.dataset.v, 10) === v));
+  });
+  document.querySelectorAll("[data-datafor]").forEach(cb => cb.checked = state[cb.dataset.datafor] === "data");
+  ["lam_a", "lam_p"].forEach(id => {
+    document.getElementById(id).value = state[id];
+    document.getElementById("v-" + id).textContent = state[id].toFixed(2);
+  });
+}
+function schedule(delay = 120) {
+  clearTimeout(timer);
+  timer = setTimeout(solve, delay);
+}
+
+// ------------------------------------------------------------- solve
+async function solve() {
+  const id = ++reqId;
+  const status = document.getElementById("status");
+  status.textContent = "Solving the general equilibrium…";
+  const qs = new URLSearchParams(Object.entries(state).map(([k, v]) => [k, String(v)]));
+  try {
+    const r = await fetch(`${API}/api/future/solve?${qs}`);
+    if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+    const out = await r.json();
+    if (id !== reqId) return;
+    render(out);
+    status.textContent = `Equilibrium solved (max residual ${out.max_residual.toExponential(1)}).`;
+  } catch (err) {
+    status.textContent = "Could not solve: " + err.message;
+  }
+}
+
+// ------------------------------------------------------------- render
+function tile(label, after, before, fmt, deltaFmt) {
+  return `<div class="tile"><div class="lbl">${label}</div><div class="val">${fmt(after)}</div>
+    <div class="from">from <b>${fmt(before)}</b> before AI &middot; ${deltaFmt(after, before)}</div></div>`;
+}
+function render(out) {
+  const B = out.baseline, S = out.scenario, D = out.deciles;
+  const g3 = x => x.toFixed(3), dg = (a, b) => (a - b >= 0 ? "+" : "−") + Math.abs(a - b).toFixed(3);
+  const dpp = (a, b) => pp(a - b);
+  document.getElementById("tiles").innerHTML =
+    tile("Total-income Gini", S.gini.total, B.gini.total, g3, dg) +
+    tile("Top 10% income share", S.top10_income, B.top10_income, x => pct(x), dpp) +
+    tile("Top 1% wealth share", S.top1_wealth, B.top1_wealth, x => pct(x), dpp) +
+    tile("Labor share of output", S.shares.labor, B.shares.labor, x => pct(x), dpp) +
+    tile("Capital income, share of household income", S.capital_income_share_of_income, B.capital_income_share_of_income, x => pct(x), dpp) +
+    tile("Output (pre-AI = 100)", 100 * S.output, 100 * B.output, x => x.toFixed(0), (a, b) => signed(a / b - 1, 0));
+
+  // one-paragraph summary
+  const dG = S.gini.total - B.gini.total;
+  const direction = Math.abs(dG) < 0.003 ? "leaves total-income inequality roughly unchanged"
+    : (dG > 0 ? "raises total-income inequality" : "lowers total-income inequality");
+  const gainLow = S.percentiles.total.slice(0, 5).reduce((s, x, i) => s + x, 0) / B.percentiles.total.slice(0, 5).reduce((s, x) => s + x, 0) - 1;
+  const gainTop = S.percentiles.total[10] / B.percentiles.total[10] - 1;
+  document.getElementById("summary").innerHTML =
+    `Under your answers, AI raises output by <b>${signed(S.output / B.output - 1, 0)}</b> and ${direction}
+     (Gini ${B.gini.total.toFixed(3)} → <b>${S.gini.total.toFixed(3)}</b>). Average income of the bottom half
+     changes by <b>${signed(gainLow, 0)}</b>; the top 1 percent's by <b>${signed(gainTop, 0)}</b>. The labor share
+     moves from ${pct(B.shares.labor)} to ${pct(S.shares.labor)}, and the return on risky capital from
+     ${pct(B.r_risky, 2)} to ${pct(S.r_risky, 2)}.`;
+
+  // income groups
+  const labels = out.percentile_labels;
+  const dl = S.percentiles.labor.map((x, i) => 100 * (x - B.percentiles.labor[i]) / B.percentiles.total[i]);
+  const dk = S.percentiles.capital.map((x, i) => 100 * (x - B.percentiles.capital[i]) / B.percentiles.total[i]);
+  const dt = dl.map((x, i) => x + dk[i]);
+  drawChart("chGroups", {
+    type: "bar",
+    data: { labels, datasets: [
+      { type: "scatter", label: "Total", data: dt.map((y, i) => ({ x: labels[i], y })), backgroundColor: INK,
+        borderColor: "#fffdf8", borderWidth: 2, pointRadius: 5, pointHoverRadius: 7, order: 0 },
+      { label: "Labor income", data: dl, backgroundColor: COLORS.labor, stack: "s", borderRadius: 2, borderSkipped: false, order: 1 },
+      { label: "Capital income", data: dk, backgroundColor: COLORS.capital, stack: "s", borderRadius: 2, borderSkipped: false, order: 1 },
+    ]},
+    options: baseOpts({
+      y: { stacked: true, title: { display: true, text: "Change, % of pre-AI group income" }, grid: { color: GRID },
+           ticks: { callback: v => v + "%" } },
+      x: { stacked: true, grid: { display: false } },
+    }, ctx => `${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
+  });
+
+  // factor shares
+  const comp = [["labor", "Labor"], ["ordinary_capital", "Ordinary capital"], ["markdown_profit", "Markdown profits"], ["other_profit", "Other profits"]];
+  const ckey = { labor: "labor", ordinary_capital: "capital", markdown_profit: "markdown", other_profit: "other" };
+  drawChart("chShares", {
+    type: "bar",
+    data: { labels: ["Before AI", "With AI"], datasets: comp.map(([k, l]) => ({
+      label: l, data: [100 * B.shares[k], 100 * S.shares[k]], backgroundColor: COLORS[ckey[k]],
+      borderColor: "#fffdf8", borderWidth: { right: 2 }, borderSkipped: false })) },
+    options: Object.assign(baseOpts({
+      x: { stacked: true, max: 100, grid: { color: GRID }, ticks: { callback: v => v + "%" } },
+      y: { stacked: true, grid: { display: false } },
+    }, ctx => `${ctx.dataset.label}: ${ctx.parsed.x.toFixed(1)}%`), { indexAxis: "y" }),
+  });
+
+  // wages
+  drawChart("chWages", {
+    type: "bar",
+    data: { labels: D.wage_change.map((_, i) => "D" + (i + 1)), datasets: [{
+      label: "Wage change", data: D.wage_change.map(x => 100 * x), backgroundColor: COLORS.labor,
+      borderRadius: 2, borderSkipped: false }] },
+    options: baseOpts({
+      y: { grid: { color: GRID }, ticks: { callback: v => v + "%" } },
+      x: { grid: { display: false }, title: { display: true, text: "Occupation wage decile (1 = lowest)" } },
+    }, ctx => `Decile ${ctx.dataIndex + 1}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
+  });
+
+  // inequality table
+  const rows = [
+    ["Labor-income Gini", B.gini.labor, S.gini.labor, g3, "g", true],
+    ["Capital-income Gini", B.gini.capital, S.gini.capital, g3, "g", true],
+    ["Total-income Gini", B.gini.total, S.gini.total, g3, "g", true],
+    ["Wealth Gini", B.gini.wealth, S.gini.wealth, g3, "g", true],
+    ["Top 1% income share", B.top1_income, S.top1_income, x => pct(x), "p", true],
+    ["Top 10% wealth share", B.top10_wealth, S.top10_wealth, x => pct(x), "p", true],
+    ["Capital share of top-10% income", B.top10_capital_income_share_of_income, S.top10_capital_income_share_of_income, x => pct(x), "p", false],
+    ["Return on risky capital", B.r_risky, S.r_risky, x => pct(x, 2), "p", false],
+    ["Safe interest rate", B.r_safe, S.r_safe, x => pct(x, 2), "p", false],
+    ["Investors' risky share of wealth", B.risky_share, S.risky_share, x => x.toFixed(2), "g", false],
+  ];
+  document.getElementById("tblIneq").innerHTML =
+    `<tr><th></th><th>Before AI</th><th>With AI</th><th>Change</th></tr>` +
+    rows.map(([l, b, s, f, kind, colored]) => {
+      const d = s - b, cls = (!colored || Math.abs(d) < 1e-4) ? "" : (d > 0 ? "up" : "down");
+      const dtxt = kind === "p" ? pp(d, 2) : (d >= 0 ? "+" : "−") + Math.abs(d).toFixed(3);
+      return `<tr><td>${l}</td><td>${f(b)}</td><td>${f(s)}</td><td class="${cls}">${dtxt}</td></tr>`;
+    }).join("");
+
+  // parameter table
+  document.getElementById("tblParams").innerHTML =
+    `<tr><th>Decile</th><th>Automated α</th><th>Productivity</th><th>Markdown τ</th></tr>` +
+    D.alpha.map((a, i) => `<tr><td>${i + 1}</td>
+      <td>${pct(D.alpha_baseline[i], 0)} → ${pct(a, 0)}</td>
+      <td>${signed(D.productivity_gain[i], 0)}</td>
+      <td>${pct(D.markdown_baseline[i], 1)} → ${pct(D.markdown[i], 1)}</td></tr>`).join("");
+  document.getElementById("paramNote").innerHTML =
+    `Share of households with access to risky equity (AI ownership): <b>${pct(B.chi, 1)} → ${pct(S.chi, 1)}</b>.
+     Automation and augmentation use the T3–T4 exposure tier; λ<sub>A</sub> = ${state.lam_a.toFixed(2)},
+     λ<sub>P</sub> = ${state.lam_p.toFixed(2)}.`;
+
+  // per-question mapping notes
+  const prof = (v) => v === "data" ? "pattern from the task data" : ["strongly toward low-wage jobs", "somewhat toward low-wage jobs", "uniform across deciles", "somewhat toward high-wage jobs", "strongly toward high-wage jobs"][v + 2];
+  setMap("auto", `Sets the automation profile a<sub>j</sub>: <b>${prof(state.auto)}</b>, average held at the data value.`);
+  setMap("aug", `Sets the augmentation profile q<sub>j</sub>: <b>${prof(state.aug)}</b>, average held at the data value.`);
+  setMap("own", `Sets χ, the share of households owning risky equity: <b>${pct(S.chi, 1)}</b> (6.6% today).`);
+  const mv = META.questions[3].values;
+  setMap("mp", `Multiplies pre-AI markdowns by <b>${mv[state.mp_low + 2]}×</b> (deciles 1–4) and
+    <b>${mv[state.mp_high + 2]}×</b> (deciles 9–10); deciles 5–8 use the geometric mean.`);
+}
+function setMap(id, html) { const el = document.getElementById("maps-" + id); if (el) el.innerHTML = html; }
+
+function baseOpts(scales, label) {
+  return {
+    responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label }, backgroundColor: "#24231f", titleFont: { family: SANS }, bodyFont: { family: SANS } } },
+    interaction: { mode: "index", intersect: false },
+    scales,
+  };
+}
+function drawChart(id, cfg) {
+  if (charts[id]) {
+    charts[id].data = cfg.data; charts[id].options = cfg.options; charts[id].update();
+  } else {
+    charts[id] = new Chart(document.getElementById(id), cfg);
+  }
+}
+
+(async function init() {
+  const r = await fetch(`${API}/api/future/meta`);
+  META = await r.json();
+  Object.assign(state, META.defaults);
+  buildQuestions(); syncControls(); solve();
+})();
+</script>
+</body>
+</html>

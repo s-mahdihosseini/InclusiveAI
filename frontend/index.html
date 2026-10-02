@@ -307,6 +307,13 @@
   .cites { font-family: var(--serif); font-style: italic; }
   .cites a { color: var(--accent); }
   footer { font-family: var(--sans); letter-spacing: 0.4px; }
+  nav a.navlink {
+    font-family: var(--sans); text-transform: uppercase; font-size: 0.74rem; letter-spacing: 1.3px;
+    font-weight: 600; padding: 10px 14px; color: var(--accent); text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  nav a.navlink:hover { border-bottom-color: var(--accent); }
+  nav a.navlink .new { font-size: 0.6rem; border: 1px solid var(--accent); padding: 0 4px; margin-left: 4px; border-radius: 2px; letter-spacing: 0.6px; }
 </style>
 </head>
 <body>
@@ -323,6 +330,7 @@
     <button data-tab="market_power">Compute Bottlenecks</button>
     <button data-tab="models">Underlying Models</button>
     <button data-tab="about">About</button>
+    <a class="navlink" href="/future.html">Your AI Future <span class="new">new</span></a>
   </nav>
 </header>
 

@@ -7,6 +7,7 @@ Run from the backend/ directory:
 Serves:
   - GET /api/expertise/solve?sigma=&scarcity=&productivity=   -> model results (JSON)
   - GET /api/expertise/meta                                    -> parameter metadata
+  - GET /api/future/solve?auto=&aug=&own=&mp_low=&mp_high=     -> "Your AI Future" page
   -     /                                                      -> frontend (static)
 """
 
@@ -16,6 +17,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+import ai_future
 import demand_gpt
 import expertise_static
 import market_power
@@ -222,6 +224,47 @@ def solve_demand(
             round(float(exposure), 2), round(float(eps_spread), 2),
             round(float(nonhom), 2), round(float(sig_scale), 2),
             bool(hetero))
+    except Exception as e:  # pragma: no cover
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ---------------------------------------------------------------------------
+# "Your AI Future" page: beliefs -> AI-MRR steady state (frontend/future.html)
+# ---------------------------------------------------------------------------
+def _answer(value: str, allow_data: bool):
+    if allow_data and value == "data":
+        return "data"
+    try:
+        v = int(value)
+    except ValueError:
+        raise HTTPException(status_code=422, detail=f"invalid answer {value!r}")
+    if v not in (-2, -1, 0, 1, 2):
+        raise HTTPException(status_code=422, detail="answers must be between -2 and 2")
+    return v
+
+
+@app.get("/api/future/meta")
+def future_meta():
+    return ai_future.meta()
+
+
+@app.get("/api/future/solve")
+def future_solve(
+    auto: str = Query("data"),
+    aug: str = Query("data"),
+    own: str = Query("0"),
+    mp_low: str = Query("0"),
+    mp_high: str = Query("0"),
+    lam_a: float = Query(ai_future.DEFAULT_LAMBDA_A, ge=0.0, le=1.0),
+    lam_p: float = Query(ai_future.DEFAULT_LAMBDA_P, ge=0.0, le=1.0),
+):
+    try:
+        return ai_future.solve(
+            _answer(auto, True), _answer(aug, True), _answer(own, False),
+            _answer(mp_low, False), _answer(mp_high, False),
+            round(float(lam_a), 2), round(float(lam_p), 2))
+    except HTTPException:
+        raise
     except Exception as e:  # pragma: no cover
         raise HTTPException(status_code=500, detail=str(e))
 
