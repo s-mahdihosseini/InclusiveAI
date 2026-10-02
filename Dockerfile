@@ -7,13 +7,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ ./backend/
 COPY frontend/ ./frontend/
-COPY scenarios/rubric.json scenarios/scenarios.json ./scenarios/
-COPY scenarios/extractions/ ./scenarios/extractions/
-COPY models/expertise/static/Counterfactual.dta models/expertise/static/occupation_titles.csv ./models/expertise/static/
 
 WORKDIR /app/backend
 
-# HF Spaces uses 7860; Render/Cloud Run inject $PORT
+# Render/Cloud Run inject $PORT; 7860 is the local/HF default
 ENV PORT=7860
 EXPOSE 7860
 

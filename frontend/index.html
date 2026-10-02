@@ -3,1515 +3,707 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InclusiveAI — How AI Shapes the Income Distribution</title>
+<title>InclusiveAI — What does your view of AI imply for inequality?</title>
+<meta name="description" content="Answer four questions about AI and see what a calibrated general-equilibrium model implies for wages, profits, and inequality.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <style>
   :root {
-    --bg: #0f1420;
-    --panel: #171e2e;
-    --panel2: #1d2638;
-    --border: #e2ddd2;
-    --text: #e8ecf4;
-    --muted: #7a766c;
-    --accent: #2b4570;
-    --accent2: #b07c2a;
-    --green: #3f6d4e;
-    --red: #8b1a1a;
-    --radius: 12px;
-    font-size: 16.5px;
+    --navy: #0f1d33;
+    --navy2: #172a47;
+    --navy-line: rgba(255,255,255,.12);
+    --paper: #f6f3ec;
+    --card: #ffffff;
+    --line: #e4ded1;
+    --line2: #efeae0;
+    --ink: #1b2230;
+    --ink2: #4a5262;
+    --mute: #7b8291;
+    --accent: #c2410c;
+    --gold: #e0a12f;
+    /* data palette — validated (lightness band, chroma, CVD separation) on white */
+    --labor: #2563a8;
+    --capital: #e0a12f;
+    --markdown: #c2410c;
+    --other: #2f8a63;
+    --serif: "Source Serif 4", Charter, Georgia, serif;
+    --sans: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --r: 14px;
+    --shadow: 0 1px 2px rgba(15,29,51,.05), 0 8px 24px -12px rgba(15,29,51,.18);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    min-height: 100vh;
-  }
-  header {
-    padding: 26px 36px 0;
-    border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, #131a2a 0%, var(--bg) 100%);
-  }
-  .brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-  .brand h1 { font-size: 1.8rem; letter-spacing: -0.5px; }
-  .brand h1 span { color: var(--accent); }
-  .brand .tagline { color: var(--muted); font-size: 0.95rem; }
-  nav { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
-  nav button {
-    background: none; border: none; color: var(--muted);
-    padding: 10px 18px; font-size: 0.95rem; cursor: pointer;
-    border-bottom: 2px solid transparent; font-family: inherit;
-  }
-  nav button.active { color: var(--text); border-bottom-color: var(--accent); }
-  nav button .soon {
-    font-size: 0.65rem; background: var(--panel2); color: var(--accent2);
-    border: 1px solid var(--border); border-radius: 8px; padding: 1px 6px; margin-left: 6px;
-    vertical-align: middle;
-  }
-  main { padding: 28px 36px 60px; max-width: 1280px; margin: 0 auto; }
-  .layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
-  @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
 
-  .card {
-    background: var(--panel); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 20px;
+  /* ---------------- top + hero (dark) ---------------- */
+  .top { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .top::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(900px 420px at 85% 10%, rgba(224,161,47,.18), transparent 60%),
+      radial-gradient(700px 380px at 5% 100%, rgba(37,99,168,.35), transparent 60%);
   }
-  .card h3 { font-size: 1.0rem; margin-bottom: 12px; }
-  .card h3 small { color: var(--muted); font-weight: normal; }
-
-  .param { margin-bottom: 20px; }
-  .param label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
-  .param label .val { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .param input[type=range] { width: 100%; accent-color: var(--accent); }
-  .param .help { color: var(--muted); font-size: 0.75rem; margin-top: 4px; line-height: 1.35; }
-
-  .toggle-row { display: flex; gap: 8px; margin-bottom: 14px; }
-  .toggle-row button {
-    flex: 1; background: var(--panel2); color: var(--muted); border: 1px solid var(--border);
-    padding: 7px 0; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.85rem;
+  .top::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .35;
+    background-image: linear-gradient(var(--navy-line) 1px, transparent 1px), linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,.7), transparent 85%);
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.7), transparent 85%);
   }
-  .toggle-row button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .bar { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+         padding: 22px 40px; max-width: 1360px; margin: 0 auto; flex-wrap: wrap; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; text-decoration: none; color: #fff; letter-spacing: -.2px; }
+  .brand span { color: var(--gold); }
+  .bar nav { display: flex; gap: 6px; }
+  .bar nav a { font-size: .78rem; font-weight: 600; letter-spacing: .3px; text-decoration: none; color: rgba(255,255,255,.72);
+               padding: 8px 14px; border-radius: 999px; border: 1px solid transparent; }
+  .bar nav a:hover { color: #fff; border-color: var(--navy-line); }
+  .bar nav a.active { color: var(--navy); background: #fff; }
 
-  .status { font-size: 0.78rem; color: var(--muted); margin-top: 8px; min-height: 1.2em; }
-  .status.solving { color: var(--accent2); }
+  .hero { position: relative; z-index: 1; max-width: 1360px; margin: 0 auto; padding: 34px 40px 64px;
+          display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 1000px) { .hero { grid-template-columns: 1fr; gap: 30px; } }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: 1.6px;
+            text-transform: uppercase; color: var(--gold); }
+  .kicker::before { content: ""; width: 22px; height: 2px; background: var(--gold); }
+  .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2.1rem, 4.4vw, 3.5rem); line-height: 1.05;
+             letter-spacing: -1px; margin: 14px 0 18px; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 600; }
+  .hero p.lede { font-family: var(--serif); font-size: 1.18rem; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 620px; }
+  .hero .cta { margin-top: 26px; display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--navy);
+               font-weight: 700; font-size: .9rem; padding: 12px 20px; border-radius: 999px; text-decoration: none; }
+  .hero .cta:hover { filter: brightness(1.06); }
 
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 1180px) { .grid2 { grid-template-columns: 1fr; } }
+  .pipeline { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 10px; }
+  @media (max-width: 560px) { .pipeline { grid-template-columns: 1fr; } .pipeline .arrow { transform: rotate(90deg); justify-self: center; } }
+  .step { background: rgba(255,255,255,.06); border: 1px solid var(--navy-line); border-radius: var(--r); padding: 18px 16px;
+          backdrop-filter: blur(4px); }
+  .step .n { font-size: .68rem; font-weight: 700; letter-spacing: 1.3px; color: var(--gold); }
+  .step h3 { font-family: var(--serif); font-size: 1.12rem; margin: 8px 0 6px; }
+  .step p { font-size: .8rem; line-height: 1.45; color: rgba(255,255,255,.7); }
+  .step svg { display: block; margin-bottom: 10px; }
+  .arrow { align-self: center; color: rgba(255,255,255,.45); font-size: 1.4rem; }
+
+  /* ---------------- layout ---------------- */
+  main { max-width: 1360px; margin: -34px auto 0; padding: 0 40px 70px; position: relative; z-index: 2; }
+  @media (max-width: 700px) { main, .hero, .bar { padding-left: 16px; padding-right: 16px; } }
+  .layout { display: grid; grid-template-columns: 410px minmax(0,1fr); gap: 28px; align-items: start; }
+  @media (max-width: 1100px) { .layout { grid-template-columns: minmax(0,1fr); } }
+  .questions { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 14px; }
+  @media (max-width: 1100px) { .questions { position: static; } }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); }
+
+  /* ---------------- question cards ---------------- */
+  .q { padding: 18px 20px 18px; }
+  .q-head { display: flex; gap: 14px; align-items: flex-start; }
+  .q-icon { flex: 0 0 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: #eef3fa; color: var(--labor); }
+  .q-icon.c2 { background: #eaf5ef; color: var(--other); }
+  .q-icon.c3 { background: #fcf3e2; color: #a86f0e; }
+  .q-icon.c4 { background: #fbece5; color: var(--markdown); }
+  .q-num { font-size: .66rem; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: var(--mute); }
+  .q-title { font-family: var(--serif); font-size: 1.12rem; font-weight: 700; line-height: 1.25; margin-top: 2px; }
+  .q-text { font-size: .8rem; color: var(--ink2); line-height: 1.45; margin: 10px 0 12px; }
+
+  .dial { position: relative; padding: 6px 4px 0; }
+  .dial.off { opacity: .45; }
+  .dial-track { position: relative; height: 34px; }
+  .dial-track::before { content: ""; position: absolute; left: 14px; right: 14px; top: 16px; height: 2px; background: var(--line); border-radius: 2px; }
+  .dial-fill { position: absolute; top: 16px; height: 2px; background: var(--ink); transition: left .25s, width .25s; }
+  .dial-stops { position: absolute; inset: 0; display: flex; justify-content: space-between; }
+  .dial-stops button { width: 28px; height: 34px; border: none; background: none; cursor: pointer; display: grid; place-items: center; }
+  .dial-stops button i { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 2px solid #c9c2b2; transition: all .18s; }
+  .dial-stops button:hover i { border-color: var(--ink); transform: scale(1.15); }
+  .dial-stops button.active i { width: 22px; height: 22px; background: var(--ink); border-color: var(--ink); box-shadow: 0 0 0 5px rgba(27,34,48,.1); }
+  .dial-stops button:focus-visible { outline: 2px solid var(--labor); outline-offset: 2px; border-radius: 8px; }
+  .dial-ends { display: flex; justify-content: space-between; font-size: .68rem; color: var(--mute); margin-top: 2px; }
+  .dial-value { text-align: center; font-size: .86rem; font-weight: 600; margin-top: 6px; min-height: 1.2em; }
+  .sub { font-size: .74rem; font-weight: 700; margin: 12px 0 2px; color: var(--ink2); }
+
+  .pill { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; padding: 6px 12px 6px 8px; border-radius: 999px;
+          border: 1px solid var(--line); background: var(--paper); font-size: .74rem; font-weight: 600; color: var(--ink2); cursor: pointer; }
+  .pill .box { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #c9c2b2; display: grid; place-items: center; }
+  .pill.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .pill.on .box { border-color: #fff; background: #fff; }
+  .pill.on .box::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+
+  .preview { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .preview .cap { font-size: .68rem; color: var(--mute); display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+  .preview .cap b { color: var(--ink2); font-weight: 600; }
+  .preview svg { display: block; width: 100%; }
+  .key { display: inline-flex; align-items: center; gap: 5px; }
+  .key i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+
+  .mp-row { display: grid; grid-template-columns: 92px 1fr 64px; align-items: center; gap: 8px; font-size: .72rem; color: var(--ink2); margin-top: 6px; }
+  .mp-bar { height: 10px; background: var(--line2); border-radius: 6px; position: relative; overflow: hidden; }
+  .mp-bar span { position: absolute; left: 0; top: 0; bottom: 0; background: var(--markdown); border-radius: 6px; transition: width .35s; }
+  .mp-bar em { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); transition: left .35s; }
+  .mp-row b { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  details.adv { padding: 14px 20px; font-size: .8rem; }
+  details.adv summary { cursor: pointer; font-weight: 600; color: var(--ink2); list-style: none; display: flex; justify-content: space-between; }
+  details.adv summary::after { content: "+"; font-size: 1.1rem; line-height: 1; color: var(--mute); }
+  details.adv[open] summary::after { content: "–"; }
+  .param { margin-top: 14px; }
+  .param label { display: flex; justify-content: space-between; font-size: .76rem; margin-bottom: 6px; color: var(--ink2); }
+  .param label b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .param input { width: 100%; accent-color: var(--ink); }
+  .param .help { color: var(--mute); font-size: .7rem; margin-top: 4px; line-height: 1.35; }
+  .tools { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 20px 16px; }
+  .tools button { font-family: var(--sans); font-size: .76rem; font-weight: 600; padding: 8px 14px; border-radius: 999px; cursor: pointer;
+                  border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+  .tools button:hover { border-color: var(--ink); }
+  .status { font-size: .7rem; color: var(--mute); display: flex; align-items: center; gap: 6px; }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--other); }
+  .status.busy::before { background: var(--gold); animation: pulse .8s infinite alternate; }
+  @keyframes pulse { from { opacity: .3; } to { opacity: 1; } }
+
+  /* ---------------- results ---------------- */
+  .verdict { padding: 26px 28px 24px; }
+  .verdict-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+  @media (max-width: 860px) { .verdict-top { grid-template-columns: 1fr; } }
+  .eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--mute); }
+  .big { display: flex; align-items: baseline; gap: 14px; margin: 4px 0 2px; flex-wrap: wrap; }
+  .big .num { font-family: var(--serif); font-size: 3.6rem; font-weight: 700; line-height: 1; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; }
+  .chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .chip.up { background: #fbe9e1; color: #9a3412; }
+  .chip.down { background: #e3f2ea; color: #1f6b48; }
+  .chip.flat { background: var(--line2); color: var(--ink2); }
+  .gauge { width: 100%; display: block; margin-top: 10px; }
+  .gauge .mk { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .verdict .story { font-family: var(--serif); font-size: 1.12rem; line-height: 1.6; color: var(--ink); }
+  .verdict .story b { font-weight: 700; }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 22px; border-top: 1px solid var(--line); }
+  @media (max-width: 860px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { padding: 16px 16px 2px; border-right: 1px solid var(--line); }
+  .kpi:last-child { border-right: none; }
+  @media (max-width: 860px) { .kpi:nth-child(2) { border-right: none; } }
+  .kpi .lbl { font-size: .7rem; color: var(--mute); font-weight: 600; }
+  .kpi .val { font-family: var(--serif); font-size: 1.75rem; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .kpi .was { font-size: .74rem; color: var(--mute); margin-top: 2px; font-variant-numeric: tabular-nums; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .kpi .chip { font-size: .68rem; padding: 2px 8px; }
+
+  .panel { padding: 22px 24px 20px; margin-top: 18px; }
+  .panel h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; letter-spacing: -.2px; }
+  .panel .dek { font-size: .86rem; color: var(--ink2); line-height: 1.5; margin: 6px 0 14px; max-width: 820px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .74rem; color: var(--ink2); margin-bottom: 10px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+  .legend i.dot { border-radius: 50%; background: var(--ink); width: 9px; height: 9px; }
   .chartbox { position: relative; height: 320px; }
+  .note { font-size: .72rem; color: var(--mute); margin-top: 10px; line-height: 1.45; }
+  .grid2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 18px; }
+  .grid2 .panel { margin-top: 18px; }
+  @media (max-width: 1250px) { .grid2 { grid-template-columns: minmax(0,1fr); } }
+  svg.ribbon { width: 100%; display: block; }
+  svg.ribbon path, svg.ribbon rect { transition: d .5s, x .5s, width .5s; }
 
-  .stats-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  .stats-table th, .stats-table td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
-  .stats-table th:first-child, .stats-table td:first-child { text-align: left; }
-  .stats-table th { color: var(--muted); font-weight: 600; }
-  .delta-pos { color: var(--red); }
-  .delta-neg { color: var(--green); }
+  details.hood { margin-top: 18px; }
+  details.hood > summary { cursor: pointer; list-style: none; padding: 18px 24px; font-family: var(--serif); font-size: 1.15rem; font-weight: 700;
+                           display: flex; justify-content: space-between; align-items: center; }
+  details.hood > summary span { font-family: var(--sans); font-size: .76rem; font-weight: 500; color: var(--mute); }
+  details.hood[open] > summary { border-bottom: 1px solid var(--line); }
+  .hood-body { padding: 18px 24px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  @media (max-width: 1000px) { .hood-body { grid-template-columns: 1fr; } }
+  .hood-body h4 { font-size: .8rem; font-weight: 700; margin-bottom: 8px; }
+  table.t { width: 100%; border-collapse: collapse; font-size: .78rem; font-variant-numeric: tabular-nums; }
+  table.t th, table.t td { padding: 7px 6px; border-bottom: 1px solid var(--line2); text-align: right; white-space: nowrap; }
+  table.t th:first-child, table.t td:first-child { text-align: left; white-space: normal; }
+  table.t th { color: var(--mute); font-weight: 600; font-size: .72rem; }
+  td.up { color: #9a3412; font-weight: 600; } td.down { color: #1f6b48; font-weight: 600; }
+  @media (max-width: 700px) { table.t td, table.t th { white-space: normal; padding: 6px 3px; } }
 
-  .occ-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-  .occ-table td, .occ-table th { padding: 6px 8px; border-bottom: 1px solid var(--border); }
-  .occ-table th { color: var(--muted); text-align: left; }
-  .occ-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .bar { height: 8px; border-radius: 4px; display: inline-block; vertical-align: middle; }
+  .how { margin-top: 18px; padding: 24px; }
+  .how h2 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 14px; }
+  .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1100px) { .how-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .how-grid { grid-template-columns: 1fr; } }
+  .how-item h3 { font-family: var(--serif); font-size: 1.02rem; margin: 10px 0 6px; }
+  .how-item p { font-size: .82rem; line-height: 1.55; color: var(--ink2); }
+  .how-item .q-icon { width: 38px; height: 38px; }
 
-  .scenario-row { margin-bottom: 16px; }
-  .scenario-row select {
-    width: 100%; background: var(--panel2); color: var(--text);
-    border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
-    font-family: inherit; font-size: 0.88rem;
-  }
-  .scenario-card {
-    background: var(--panel2); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px 14px; margin-top: 10px; font-size: 0.8rem; line-height: 1.5;
-    color: var(--muted); display: none;
-  }
-  .scenario-card.show { display: block; }
-  .scenario-card .tagline { color: var(--text); font-weight: 600; margin-bottom: 6px; }
-  .scenario-card .ineq { color: var(--accent2); margin: 6px 0; }
-  .scenario-card details { margin-top: 8px; }
-  .scenario-card summary { cursor: pointer; color: var(--accent); }
-  .scenario-card .src { margin: 8px 0 0 0; padding-left: 0; list-style: none; }
-  .scenario-card .src li { margin-bottom: 8px; }
-  .scenario-card .src b { color: var(--text); font-weight: 600; }
-  .scenario-card .src i { color: var(--muted); }
-
-  /* ---------- UNDERLYING MODELS ---------- */
-  .model-doc { max-width: 900px; margin: 0 auto 26px; }
-  .model-doc details {
-    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
-    margin-bottom: 18px; overflow: hidden;
-  }
-  .model-doc summary {
-    cursor: pointer; padding: 18px 22px; font-size: 1.2rem; font-weight: 600;
-    list-style: none; display: flex; align-items: center; gap: 12px;
-  }
-  .model-doc summary::-webkit-details-marker { display: none; }
-  .model-doc summary .chev { color: var(--accent); transition: transform .2s; }
-  .model-doc details[open] summary .chev { transform: rotate(90deg); }
-  .model-doc summary small { color: var(--muted); font-weight: 400; font-size: 0.85rem; }
-  .model-doc .doc-body { padding: 0 26px 22px; color: var(--muted); line-height: 1.65; font-size: 0.98rem; }
-  .model-doc .doc-body h5 {
-    color: var(--accent); font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase;
-    margin: 22px 0 8px;
-  }
-  .model-doc .doc-body b { color: var(--text); }
-  .eq {
-    background: var(--panel2); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px 16px; margin: 10px 0; overflow-x: auto; color: var(--text);
-  }
-  .model-doc .katex { font-size: 1.02em; }
-
-  .soon-panel { text-align: center; padding: 90px 30px; color: var(--muted); }
-  .soon-panel h2 { color: var(--text); margin-bottom: 12px; }
-  .soon-panel p { max-width: 620px; margin: 0 auto; line-height: 1.6; }
-
-  /* ---------- HOME ---------- */
-  .hero { text-align: center; padding: 48px 20px 36px; max-width: 900px; margin: 0 auto; }
-  .hero h2 { font-size: 2.5rem; line-height: 1.2; letter-spacing: -0.8px; margin-bottom: 18px; }
-  .hero h2 em { font-style: normal; color: var(--accent); }
-  .hero p { color: var(--muted); font-size: 1.15rem; line-height: 1.65; }
-  .hero .paper-cite { margin-top: 18px; font-size: 0.95rem; color: var(--muted); }
-  .hero .paper-cite b { color: var(--text); }
-
-  .decomp { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 30px auto 10px; max-width: 980px; }
-  .decomp .piece {
-    background: var(--panel2); border: 1px solid var(--border); border-radius: 12px;
-    padding: 14px 20px; font-size: 1.0rem; color: var(--text);
-  }
-  .decomp .piece small { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
-
-  .stage { max-width: 1100px; margin: 44px auto 0; }
-  .stage-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
-  .stage-head .stage-num {
-    background: var(--accent); color: #fff; border-radius: 10px; padding: 4px 14px;
-    font-weight: 700; font-size: 1.05rem; flex-shrink: 0;
-  }
-  .stage-head h3 { font-size: 1.45rem; }
-  .stage-sub { color: var(--muted); font-size: 1.0rem; margin: 6px 0 18px; line-height: 1.55; }
-  .channel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-  .channel {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
-    padding: 22px; position: relative; transition: transform .15s, border-color .15s;
-  }
-  .channel.live { cursor: pointer; }
-  .channel.live:hover { transform: translateY(-3px); border-color: var(--accent); }
-  .channel.soon-ch { opacity: 0.62; }
-  .channel .ch-icon { margin-bottom: 12px; }
-  .channel h4 { font-size: 1.15rem; margin-bottom: 8px; }
-  .channel p { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
-  .badge {
-    position: absolute; top: 14px; right: 14px; font-size: 0.72rem; padding: 3px 10px;
-    border-radius: 20px; border: 1px solid var(--border);
-  }
-  .badge.live-b { background: rgba(62,207,142,.12); color: var(--green); border-color: rgba(62,207,142,.4); }
-  .badge.soon-b { background: var(--panel2); color: var(--accent2); }
-  .stage-arrow { text-align: center; color: var(--border); font-size: 2rem; margin: 26px 0 0; }
-
-  /* ---------- EXPLAINER (Expertise) ---------- */
-  .explainer { max-width: 1050px; margin: 0 auto 34px; }
-  .explainer h2 { font-size: 2.0rem; line-height: 1.25; letter-spacing: -0.5px; text-align: center; margin: 10px 0 10px; }
-  .explainer .lede { text-align: center; color: var(--muted); font-size: 1.12rem; line-height: 1.6; max-width: 820px; margin: 0 auto 30px; }
-  .forces { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  @media (max-width: 900px) { .forces { grid-template-columns: 1fr; } }
-  .force {
-    border-radius: 16px; padding: 26px; border: 1px solid var(--border);
-  }
-  .force.up { background: linear-gradient(180deg, rgba(62,207,142,.10), var(--panel)); border-color: rgba(62,207,142,.35); }
-  .force.down { background: linear-gradient(180deg, rgba(244,91,105,.10), var(--panel)); border-color: rgba(244,91,105,.35); }
-  .force .f-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
-  .force h3 { font-size: 1.3rem; }
-  .force .f-tag { font-size: 0.85rem; font-weight: 700; letter-spacing: .4px; }
-  .force.up .f-tag { color: var(--green); }
-  .force.down .f-tag { color: var(--red); }
-  .force p { color: var(--muted); font-size: 1.0rem; line-height: 1.6; }
-  .force svg { display: block; margin: 14px auto 6px; }
-  .verdict {
-    margin: 24px auto 0; max-width: 860px; text-align: center; background: var(--panel2);
-    border: 1px solid var(--border); border-radius: 14px; padding: 18px 24px;
-    color: var(--text); font-size: 1.05rem; line-height: 1.6;
-  }
-  .verdict b { color: var(--accent); }
-  .cites { margin: 26px auto 0; max-width: 860px; font-size: 0.92rem; color: var(--muted); line-height: 1.7; text-align: center; }
-  .cites a { color: var(--accent); text-decoration: none; }
-  .cites a:hover { text-decoration: underline; }
-  .explore-divider {
-    display: flex; align-items: center; gap: 16px; max-width: 1050px; margin: 40px auto 26px;
-  }
-  .explore-divider hr { flex: 1; border: none; border-top: 1px solid var(--border); }
-  .explore-divider span { color: var(--text); font-size: 1.25rem; font-weight: 600; }
-
-  .intro { color: var(--muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 22px; max-width: 950px; }
-  .intro b { color: var(--text); }
-  footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding: 20px; border-top: 1px solid var(--border); }
-
-  /* ================================================================
-     THEME: academic print. Warm paper, serif prose, one dark-red
-     accent, thin rules. Overrides the block above.
-     ================================================================ */
-  :root {
-    --bg: #f7f5ef;
-    --panel: #fffdf8;
-    --panel2: #efece2;
-    --border: #d9d3c3;
-    --text: #24231f;
-    --muted: #605c51;
-    --accent: #8b1a1a;
-    --accent2: #a2762a;
-    --green: #3f6d4e;
-    --red: #8b1a1a;
-    --radius: 3px;
-    --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  body { background: var(--bg); color: var(--text); font-family: var(--serif); }
-  header {
-    background: var(--bg);
-    border-bottom: 3px double #b9b19e;
-    padding-top: 30px;
-  }
-  .brand h1 { font-family: var(--serif); font-weight: 700; letter-spacing: 0; }
-  .brand h1 span { color: var(--accent); }
-  .brand .tagline { font-style: italic; }
-  nav button {
-    font-family: var(--sans); text-transform: uppercase;
-    font-size: 0.74rem; letter-spacing: 1.3px; font-weight: 600;
-    padding: 10px 14px;
-  }
-  nav button.active { border-bottom: 2px solid var(--accent); }
-  nav button .soon { background: none; border: none; color: var(--muted); text-transform: none; letter-spacing: 0; }
-
-  h2, h3, h4 { font-family: var(--serif); }
-  .card { box-shadow: none; }
-  .card h3 small, .stage-sub, .hero p, .intro { font-family: var(--serif); }
-
-  .hero h2 em { color: var(--accent); font-style: italic; }
-  .hero .paper-cite { font-style: italic; }
-  .decomp .piece small { font-family: var(--sans); font-size: 0.76rem; }
-  .stage-num { border-radius: 2px; font-family: var(--sans); font-size: 0.85rem; letter-spacing: 0.8px; text-transform: uppercase; }
-  .channel.live:hover { transform: none; border-color: var(--accent); box-shadow: 2px 2px 0 var(--border); }
-  .channel p { font-family: var(--serif); }
-  .badge { font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.8px; font-size: 0.64rem; border-radius: 2px; }
-  .badge.live-b { background: none; color: var(--green); border-color: var(--green); }
-  .badge.soon-b { background: none; color: var(--muted); border-color: var(--border); }
-  .stage-arrow { color: #b9b19e; }
-
-  .force.up, .force.down {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 3px;
-  }
-  .force.up { border-left: 4px solid var(--green); }
-  .force.down { border-left: 4px solid var(--red); }
-  .force .f-tag { font-family: var(--sans); }
-  .force p { font-family: var(--serif); }
-  .verdict { background: var(--panel2); border-radius: 3px; }
-  .explore-divider span { font-family: var(--serif); font-style: italic; font-weight: 500; }
-
-  .param label, .param .help, .status, .toggle-row button, .scenario-row select,
-  .stats-table, .occ-table, .scenario-card, .badge, .f-tag {
-    font-family: var(--sans);
-  }
-  .param label { font-size: 0.8rem; }
-  .param .help { font-size: 0.72rem; }
-  .param input[type=range] { accent-color: var(--accent); }
-  .toggle-row button.active { background: var(--accent); border-color: var(--accent); }
-  .scenario-row select { background: var(--panel); }
-  .scenario-card { background: var(--panel2); }
-  .scenario-card summary { color: var(--accent); }
-  .scenario-card .ineq { color: #7a5716; }
-  .status.solving { color: #7a5716; }
-
-  .eq { background: var(--panel2); border-radius: 3px; }
-  .model-doc summary { font-family: var(--serif); }
-  .model-doc .doc-body { font-family: var(--serif); }
-  .model-doc .doc-body h5 { font-family: var(--sans); }
-
-  .cites { font-family: var(--serif); font-style: italic; }
-  .cites a { color: var(--accent); }
-  footer { font-family: var(--sans); letter-spacing: 0.4px; }
-  nav a.navlink {
-    font-family: var(--sans); text-transform: uppercase; font-size: 0.74rem; letter-spacing: 1.3px;
-    font-weight: 600; padding: 10px 14px; color: var(--accent); text-decoration: none;
-    border-bottom: 2px solid transparent;
-  }
-  nav a.navlink:hover { border-bottom-color: var(--accent); }
-  nav a.navlink .new { font-size: 0.6rem; border: 1px solid var(--accent); padding: 0 4px; margin-left: 4px; border-radius: 2px; letter-spacing: 0.6px; }
+  footer { text-align: center; color: var(--mute); font-size: .74rem; padding: 26px; border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="brand">
-    <h1>Inclusive<span>AI</span></h1>
-    <div class="tagline">Interactive general-equilibrium models of how AI shapes the distribution of prosperity</div>
+<!-- ======================================================= TOP / HERO -->
+<div class="top">
+  <div class="bar">
+    <a class="brand" href="/">Inclusive<span>AI</span></a>
+    <nav>
+      <a href="#answers" class="active">Explore</a>
+      <a href="#how">How it works</a>
+    </nav>
   </div>
-  <nav id="tabs">
-    <button data-tab="home" class="active">Home</button>
-    <button data-tab="expertise">Expertise &amp; Entry Barriers</button>
-    <button data-tab="demand">Demand Structure</button>
-    <button data-tab="market_power">Compute Bottlenecks</button>
-    <button data-tab="models">Underlying Models</button>
-    <button data-tab="about">About</button>
-    <a class="navlink" href="/future.html">Your AI Future <span class="new">new</span></a>
-  </nav>
-</header>
-
-<main>
-
-<!-- ===================== HOME TAB ===================== -->
-<section id="tab-home">
-  <div class="hero">
-    <h2>How will AI shape the <em>distribution</em> of prosperity?</h2>
-    <p>AI could raise wages across the economy and rebuild the middle class — or concentrate
-       enormous gains among a few firms, asset owners, and top earners. Which way it goes depends
-       on a small set of economic mechanisms. This site turns each mechanism into an interactive
-       general-equilibrium model you can explore under your own assumptions, or under scenarios
-       distilled from what leading economists, technologists, and forecasters actually predict.</p>
-    <div class="paper-cite">Companion site to <b>“AI and the Distribution of Prosperity: A Unified Framework for
-       Understanding How Technology Shapes Inequality”</b> — Guy Lichtinger &amp; Seyed M. Hosseini (Harvard, 2026).</div>
-  </div>
-
-  <div class="decomp">
-    <div class="piece">Wage inequality <small>how unequally labor income is distributed</small></div>
-    <div class="piece">Capital concentration <small>how unequally capital income is distributed</small></div>
-    <div class="piece">Labor vs. capital <small>how national income splits between the two</small></div>
-  </div>
-
-  <div class="stage">
-    <div class="stage-head"><span class="stage-num">Stage 1</span><h3>Direct effects on production</h3></div>
-    <p class="stage-sub">What AI does to tasks and workers. Depends on AI's capabilities and how firms and workers adopt it.</p>
-    <div class="channel-grid">
-      <div class="channel soon-ch">
-        <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="6" y="14" width="20" height="16" rx="3" stroke="#8b1a1a" stroke-width="2.5"/><circle cx="13" cy="22" r="2" fill="#8b1a1a"/><circle cx="19" cy="22" r="2" fill="#8b1a1a"/><path d="M30 22h8m0 0-3-3m3 3-3 3" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-        <h4>Automation</h4>
-        <p>AI performs tasks in place of workers. Displaced labor competes for the remaining work; gains flow to capital.</p>
+  <section class="hero">
+    <div>
+      <div class="kicker">Interactive model</div>
+      <h1>What does <em>your</em> view of AI imply for inequality?</h1>
+      <p class="lede">Answer four questions about whose work AI replaces, whom it makes more productive,
+        who owns it, and how much power employers have over wages. A calibrated general-equilibrium
+        model turns your answers into long-run wages, profits, returns, and the distribution of income and wealth.</p>
+      <a class="cta" href="#answers">Start with question 1 <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="pipeline" aria-label="How the page works">
+      <div class="step">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#e0a12f" stroke-width="2"><circle cx="17" cy="17" r="13"/><path d="M12.5 13.5a4.5 4.5 0 1 1 6.3 4.1c-1.2.5-1.8 1.4-1.8 2.6v.8M17 25v.5" stroke-linecap="round"/></svg>
+        <div class="n">01</div><h3>Your beliefs</h3><p>Who is automated, who is augmented, who owns AI, how much employer power.</p>
       </div>
-      <div class="channel live" data-goto="expertise">
-        <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M8 34V22m9 12V14m9 20V18m9 16V8" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round"/></svg></div>
-        <h4>Augmentation &amp; productivity gains</h4>
-        <p>AI makes workers more productive at what they already do — unevenly across occupations. Explored in the Expertise model.</p>
+      <div class="arrow">→</div>
+      <div class="step">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#e0a12f" stroke-width="2" stroke-linecap="round"><path d="M6 10h22M6 17h22M6 24h22"/><circle cx="12" cy="10" r="2.6" fill="#0f1d33"/><circle cx="22" cy="17" r="2.6" fill="#0f1d33"/><circle cx="15" cy="24" r="2.6" fill="#0f1d33"/></svg>
+        <div class="n">02</div><h3>Model parameters</h3><p>Exposure across ten wage deciles, markdowns, and the share of households that own equity.</p>
       </div>
-      <div class="channel soon-ch">
-        <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="13" stroke="#2b4570" stroke-width="2.5"/><path d="M22 15v14M15 22h14" stroke="#2b4570" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-        <h4>New-task creation</h4>
-        <p>AI spawns tasks and occupations that didn't exist. Who performs them determines who gains.</p>
-      </div>
-      <div class="channel live" data-goto="expertise">
-        <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M7 32h10M7 26h10M7 20h10" stroke="#b07c2a" stroke-width="2.5" stroke-linecap="round"/><path d="M24 32c3-8 8-14 13-18m0 0h-7m7 0v7" stroke="#3f6d4e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4>Entry barriers &amp; expertise</h4>
-        <p>AI compresses the training needed to do expert work, letting more workers enter high-paid occupations and eroding expertise rents.</p>
-      </div>
-      <div class="channel soon-ch">
-        <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="8" y="24" width="8" height="12" rx="1.5" stroke="#7a766c" stroke-width="2.5"/><rect x="18" y="16" width="8" height="20" rx="1.5" stroke="#7a766c" stroke-width="2.5"/><rect x="28" y="8" width="8" height="28" rx="1.5" stroke="#7a766c" stroke-width="2.5"/></svg></div>
-        <h4>Capital deepening</h4>
-        <p>Massive AI investment raises the capital stock workers use — lifting productivity but also the capital share.</p>
+      <div class="arrow">→</div>
+      <div class="step">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#e0a12f" stroke-width="2" stroke-linecap="round"><path d="M5 28h24"/><path d="M8 28V19M14 28V14M20 28V17M26 28V7"/></svg>
+        <div class="n">03</div><h3>Long-run outcome</h3><p>Wages, returns to capital, and who ends up with labor and capital income.</p>
       </div>
     </div>
-    <div class="stage-arrow">↓</div>
-  </div>
+  </section>
+</div>
 
-  <div class="stage">
-    <div class="stage-head"><span class="stage-num">Stage 2</span><h3>Who captures the productivity gains</h3></div>
-    <p class="stage-sub">Gains are split among AI suppliers, adopting firms, workers, and consumers — via profits, wages, and prices. Depends on competition along the AI supply chain, firms' market power, and workers' bargaining power.</p>
-    <div class="channel-grid">
-      <div class="channel live" data-goto="market_power">
-        <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M22 6l14 8v16l-14 8-14-8V14l14-8z" stroke="#8b1a1a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="22" r="5" stroke="#8b1a1a" stroke-width="2.5"/></svg></div>
-        <h4>Compute bottlenecks &amp; AI-supply rents</h4>
-        <p>The AI industry's convex supply curve — hard-to-scale factors and slow-to-build compute — decides how fast productivity gains reach prices, and how much is captured as rents along the way. Explored in the Compute Bottlenecks model.</p>
-      </div>
-      <div class="channel soon-ch">
-        <span class="badge soon-b">under construction</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M10 34c4-2 6-10 12-10s8 8 12 6" stroke="#b07c2a" stroke-width="2.5" stroke-linecap="round"/><path d="M8 10v24h28" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-        <h4>Firm markups, wages &amp; prices</h4>
-        <p>Do adopting firms pass gains to consumers through prices, to workers through wages, or keep them as profits?</p>
-      </div>
-    </div>
-    <div class="stage-arrow">↓</div>
-  </div>
-
-  <div class="stage" style="margin-bottom: 30px">
-    <div class="stage-head"><span class="stage-num">Stage 3</span><h3>General-equilibrium demand effects</h3></div>
-    <p class="stage-sub">The beneficiaries spend and save their gains, reshaping demand for goods, services — and the workers who produce them.</p>
-    <div class="channel-grid">
-      <div class="channel live" data-goto="demand">
-        <span class="badge live-b">interactive model</span>
-        <div class="ch-icon"><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="14" cy="14" r="6" stroke="#2b4570" stroke-width="2.5"/><circle cx="32" cy="16" r="4" stroke="#2b4570" stroke-width="2.5"/><circle cx="24" cy="32" r="5" stroke="#2b4570" stroke-width="2.5"/><path d="M18 18l4 9m3-1 4-11" stroke="#7a766c" stroke-width="2"/></svg></div>
-        <h4>Demand structure &amp; GPT incidence</h4>
-        <p>Cheaper AI shifts spending across occupations' outputs: elastic vs. saturated demand, Engel forces, and worker mobility decide who gains. Explored in the Demand Structure model.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== EXPERTISE TAB ===================== -->
-<section id="tab-expertise" style="display:none">
-  <div class="explainer">
-    <h2>Two forces decide what AI does to the wage distribution</h2>
-    <p class="lede">
-      Expert occupations pay well partly because expertise is <b>scarce</b>: becoming a doctor, engineer,
-      or lawyer takes years of training. Generative AI changes that in two opposing ways.
-    </p>
-    <div class="forces">
-      <div class="force up">
-        <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 36V26m10 10V18m10 18V22m10 14V10" stroke="#3f6d4e" stroke-width="3.5" stroke-linecap="round"/><path d="M28 10h10v10" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><div class="f-tag">FORCE 1 · PUSHES TOP WAGES UP</div><h3>Productivity gains</h3></div>
-        </div>
-        <p>AI makes workers <b>better at the jobs they already do</b> — drafting contracts, reading scans,
-           writing code. Because these gains land unevenly across occupations, the exposed (often
-           high-paid) occupations produce more value per worker, pushing their wages up&hellip; though in
-           general equilibrium, extra output also pushes the <i>price</i> of their services down.</p>
-        <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
-          <circle cx="38" cy="34" r="11" stroke="#7a766c" stroke-width="2.5"/>
-          <path d="M38 45v22M26 78l12-11 12 11" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M70 55c22 0 24-24 46-24" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/>
-          <path d="M130 58l50-28m0 0h-13m13 0v13" stroke="#3f6d4e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="150" y="80" fill="#3f6d4e" font-size="13" font-family="system-ui" font-weight="600">output per worker</text>
-        </svg>
-      </div>
-      <div class="force down">
-        <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M6 38h34" stroke="#7a766c" stroke-width="3" stroke-linecap="round"/><path d="M10 38V22h8v16m4 0V14h8v24m-24-8 28-16" stroke="#8b1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><div class="f-tag">FORCE 2 · PULLS TOP WAGES DOWN</div><h3>Entry-barrier erosion</h3></div>
-        </div>
-        <p>AI also <b>shortens the road into expert work</b>: with an AI assistant, tasks that took ten years
-           of training become feasible after two. As barriers fall, <b>more workers can enter</b> high-paid
-           occupations, expanding supply and competing away the scarcity rents that expertise used to command.</p>
-        <svg width="220" height="90" viewBox="0 0 220 90" fill="none">
-          <path d="M14 74h60V30h-60zM14 52h60M34 74V30M54 74V30" stroke="#8b1a1a" stroke-width="2.5" opacity="0.45"/>
-          <path d="M96 52h34m0 0-9-9m9 9-9 9" stroke="#7a766c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="152" cy="34" r="8" stroke="#7a766c" stroke-width="2.5"/>
-          <circle cx="176" cy="34" r="8" stroke="#7a766c" stroke-width="2.5"/>
-          <circle cx="200" cy="34" r="8" stroke="#7a766c" stroke-width="2.5"/>
-          <path d="M152 44v18m24-18v18m24-18v18" stroke="#7a766c" stroke-width="2.5" stroke-linecap="round"/>
-          <text x="118" y="84" fill="#8b1a1a" font-size="13" font-family="system-ui" font-weight="600">more entrants, lower rents</text>
-        </svg>
-      </div>
-    </div>
-    <div class="verdict">
-      <b>Which force wins?</b> Productivity gains tend to <span style="color:var(--red)">widen</span> the wage
-      distribution; barrier erosion <span style="color:var(--green)">compresses</span> it. The outcome depends on
-      how strong each channel is and how substitutable occupations are (&sigma;). Set those three dials below —
-      or load an expert scenario — and the model solves exact general-equilibrium wages for 885 occupations.
-    </div>
-    <div class="cites">
-      Model &amp; estimates: Hosseini &amp; Lichtinger (2026),
-      <a href="https://raw.githack.com/s-mahdihosseini/Website/b99fa2962dcc4c165bbc3c41dd283afa99c5ccfb/Generative%20AI%20and%20Occupational%20Entry%20Barriers.pdf" target="_blank">&ldquo;Generative AI and Occupational Entry Barriers&rdquo;</a>.
-      On AI and the economics of expertise, see also Autor (2024),
-      <a href="https://www.noemamag.com/how-ai-could-help-rebuild-the-middle-class/" target="_blank">&ldquo;AI Could Actually Help Rebuild the Middle Class&rdquo;</a>
-      and Autor &amp; Thompson (2025), <a href="https://www.nber.org/papers/w33941" target="_blank">&ldquo;Expertise&rdquo;</a>.
-    </div>
-  </div>
-
-  <div class="explore-divider"><hr><span>Explore the model</span><hr></div>
-
+<!-- ======================================================= MAIN -->
+<main id="answers">
   <div class="layout">
-    <div>
-      <div class="card">
-        <h3>Expert scenario</h3>
-        <div class="scenario-row">
-          <select id="scen-select-expertise"><option value="">— Custom (move sliders) —</option></select>
-          <div class="scenario-card" id="scen-card-expertise"></div>
-        </div>
-        <h3>Parameters</h3>
-        <div id="params"></div>
-        <div class="toggle-row" title="Partial equilibrium: wages respond to the shock only. General equilibrium: labor reallocation feeds back into wages.">
-          <button id="btn-pe">PE</button>
-          <button id="btn-ge" class="active">GE (exact)</button>
-        </div>
-        <div class="status" id="status"></div>
-      </div>
-      <div class="card" style="margin-top:24px">
-        <h3>Inequality statistics <small>(log wages, employment-weighted)</small></h3>
-        <table class="stats-table" id="stats-table"></table>
-      </div>
-    </div>
+    <aside class="questions" id="questions"></aside>
 
-    <div>
-      <div class="grid2">
-        <div class="card">
-          <h3>&Delta; log wage vs. initial wage <small>(binned means)</small></h3>
-          <div class="chartbox"><canvas id="chart-bins"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Wage distribution <small>(employment-weighted density)</small></h3>
-          <div class="chartbox"><canvas id="chart-kde"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Channel decomposition <small>(GE effect on inequality)</small></h3>
-          <div class="chartbox"><canvas id="chart-decomp"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Largest wage changes <small>(top gainers &amp; losers)</small></h3>
-          <div style="max-height:320px; overflow-y:auto">
-            <table class="occ-table" id="occ-table"></table>
+    <section>
+      <div class="card verdict">
+        <div class="verdict-top">
+          <div>
+            <div class="eyebrow">Total-income Gini, long run</div>
+            <div class="big"><span class="num" id="giniNum">–</span><span class="chip flat" id="giniChip">–</span></div>
+            <svg class="gauge" id="gauge" viewBox="0 0 420 84" aria-label="Gini before and after AI"></svg>
           </div>
+          <div class="story" id="story">Solving the model…</div>
         </div>
+        <div class="kpis" id="kpis"></div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===================== DEMAND STRUCTURE TAB ===================== -->
-<section id="tab-demand" style="display:none">
-  <p class="intro">
-    A general-purpose technology (like computers, or AI) gets cheap. Which occupations gain?
-    An occupation wins the <b>direct race</b> when the demand elasticity for its output (&epsilon;)
-    exceeds its labor&ndash;GPT substitution elasticity (&sigma;) — cheaper technology expands its market faster
-    than it replaces its workers. On top of that, <b>Engel forces</b> shift spending toward
-    income-elastic services as the economy grows, <b>worker mobility</b> spreads gains and losses,
-    and <b>household heterogeneity</b> feeds the income distribution back into demand.
-    Four occupation-goods: manual services, production, clerical, professional.
-  </p>
-
-  <div class="layout">
-    <div>
-      <div class="card">
-        <h3>Expert scenario</h3>
-        <div class="scenario-row">
-          <select id="scen-select-demand"><option value="">— Custom (move sliders) —</option></select>
-          <div class="scenario-card" id="scen-card-demand"></div>
+      <div class="card panel">
+        <h2>Who gains, across the income distribution</h2>
+        <p class="dek">Change in average income in each income group, as a percent of that group's income before AI.
+          Each bar splits the change into labor income and capital income; the dot is the total.</p>
+        <div class="legend">
+          <span><i style="background:var(--labor)"></i>Labor income</span>
+          <span><i style="background:var(--capital)"></i>Capital income</span>
+          <span><i class="dot"></i>Total</span>
         </div>
-        <h3>Parameters</h3>
-        <div id="d-params"></div>
-        <div class="status" id="d-status"></div>
+        <div class="chartbox"><canvas id="chGroups"></canvas></div>
+        <p class="note">Groups are percentiles of each economy's own income distribution. Capital income includes the
+          profits paid to equity owners (wage-markdown profits and product-markup profits).</p>
       </div>
-      <div class="card" style="margin-top:24px">
-        <h3>Who gains, who loses <small>(at final A<sub>g</sub>)</small></h3>
-        <table class="stats-table" id="d-table"></table>
-      </div>
-    </div>
 
-    <div>
       <div class="grid2">
-        <div class="card">
-          <h3>Real wages along the path <small>(&Delta; log, by occupation)</small></h3>
-          <div class="chartbox"><canvas id="d-chart-path"></canvas></div>
+        <div class="card panel">
+          <h2>Where output goes</h2>
+          <p class="dek">Shares of output before and with AI.</p>
+          <div class="legend">
+            <span><i style="background:var(--labor)"></i>Labor</span>
+            <span><i style="background:var(--capital)"></i>Ordinary capital</span>
+            <span><i style="background:var(--markdown)"></i>Markdown profits</span>
+            <span><i style="background:var(--other)"></i>Markup profits</span>
+          </div>
+          <svg class="ribbon" id="ribbon" viewBox="0 0 440 206" role="img" aria-label="Factor shares before and with AI"></svg>
+          <p class="note" id="ribbonNote">Markdown profits are the gap between what workers produce and what they are paid; markup profits come from firms pricing above cost.</p>
         </div>
-        <div class="card">
-          <h3>Wages &amp; employment at final A<sub>g</sub> <small>(&Delta; log)</small></h3>
-          <div class="chartbox"><canvas id="d-chart-final"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Real income by education group <small>(&Delta; log)</small></h3>
-          <div class="chartbox"><canvas id="d-chart-groups"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Spending composition along the path <small>(budget shares)</small></h3>
-          <div class="chartbox"><canvas id="d-chart-shares"></canvas></div>
+        <div class="card panel">
+          <h2>Wages by occupation</h2>
+          <p class="dek">Percent change in each wage decile's wage. Deciles rank occupations by their pre-AI wage.</p>
+          <div class="chartbox" style="height:248px"><canvas id="chWages"></canvas></div>
         </div>
       </div>
-    </div>
+
+      <details class="card hood">
+        <summary>Under the hood <span>inequality measures, returns, and every parameter your answers set</span></summary>
+        <div class="hood-body">
+          <div><h4>Inequality and returns</h4><table class="t" id="tblIneq"></table></div>
+          <div><h4>Parameters by wage decile</h4><table class="t" id="tblParams"></table><p class="note" id="paramNote"></p></div>
+        </div>
+      </details>
+
+      <div class="card how" id="how">
+        <h2>How the model works</h2>
+        <div class="how-grid">
+          <div class="how-item"><div class="q-icon"></div><h3>Tasks</h3>
+            <p>Ten occupation groups, one per decile of the wage distribution, perform tasks. AI can automate tasks,
+              moving them entirely from workers to capital, or augment the tasks workers keep. Augmentation keeps workers
+              in the task but also needs some AI capital, so it raises the demand for capital too, by less than automation.
+              Exposure by occupation comes from task-level AI-exposure data; questions 1–2 tilt it toward low- or
+              high-wage jobs at a fixed average.</p></div>
+          <div class="how-item"><div class="q-icon c4"></div><h3>Wages and profits</h3>
+            <p>Two sources of profit. Employers pay workers a markdown below what they produce, 8–13 percent before AI
+              depending on skill; question 4 scales it for low- and high-wage occupations. Firms also price above cost,
+              a markup worth 3 percent of output that grows with the economy.</p></div>
+          <div class="how-item"><div class="q-icon c3"></div><h3>Ownership</h3>
+            <p>Capital, AI, and both kinds of profit are held as risky equity that only some households own; the rest
+              save in safe bonds. When the return on capital rises, owners invest more and wealth at the top grows.
+              Question 3 sets the share of owners.</p></div>
+          <div class="how-item"><div class="q-icon" style="background:#eef0f4;color:#4a5262"></div><h3>What is held fixed</h3>
+            <p>The overall size of the AI shock (adjustable under “Advanced”), preferences, and the asset-market
+              calibration. Results compare two long-run steady states; they are not forecasts and say nothing about
+              the transition.</p></div>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
-<section id="tab-market_power" style="display:none">
-  <div class="explainer">
-    <h2>AI gets better — who captures the gains, and how fast?</h2>
-    <p class="lede">
-      When AI productivity jumps, the industry wants to scale up. But the AI industry has
-      <b>convex supply curves</b>: expanding output gets disproportionately expensive, because it
-      depends on things that are hard to scale — power, data centers, chips, proprietary data — and
-      on compute that takes time to build. Convexity is what turns productivity gains into
-      <b>rents</b> instead of lower prices. Two parameters govern it all: how severe the decreasing
-      returns are, and how costly it is to build fast.
-    </p>
-    <div class="forces">
-      <div class="force up">
-        <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M8 38c14 0 12-4 16-12s6-16 14-18" stroke="#3f6d4e" stroke-width="3" stroke-linecap="round"/><path d="M8 38h30M8 38V8" stroke="#7a766c" stroke-width="2" stroke-linecap="round"/></svg>
-          <div><div class="f-tag">FORCE 1 · CONVEX SUPPLY</div><h3>The AI industry is hard to scale</h3></div>
-        </div>
-        <p>Expanding AI output isn't like printing software copies: it needs power interconnections,
-           data centers, chip supply, proprietary data, and organizational capability — factors that get
-           <b>disproportionately expensive to add the more you add</b>. That convex supply curve means a
-           productivity breakthrough does <b>not</b> fully pass through into cheaper AI: part of the gain
-           is retained as <b>rents to whoever owns the hard-to-replicate factors</b>. The
-           <i>supply convexity</i> slider sets how severe these decreasing returns are.</p>
-      </div>
-      <div class="force down">
-        <div class="f-head">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="15" stroke="#8b1a1a" stroke-width="2.5"/><path d="M23 13v10l7 5" stroke="#8b1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div><div class="f-tag">FORCE 2 · TIME TO BUILD</div><h3>Compute scarcity is temporary — but how temporary?</h3></div>
-        </div>
-        <p>Even the parts that <i>can</i> scale take time: a permanent AI breakthrough hits a
-           <b>predetermined compute stock</b>. On impact, the scarcity shows up as a spike in compute
-           rental prices and in the value of installed compute (Tobin's q). Investment then gradually
-           builds the stock and competes the scarcity away. The <b>adjustment cost φ</b> doesn't change
-           the destination — it sets <b>how long the bottleneck rents last</b> before productivity fully
-           reaches prices.</p>
-      </div>
-    </div>
-    <div class="verdict">
-      <b>The punchline:</b> convex supply curves turn productivity gains into <b>rents</b> — permanently
-      for the hard-to-replicate factors, temporarily for installed compute. How big and how persistent
-      those rents are is what the two sliders control.
-    </div>
-    <div class="cites">
-      Model: Hosseini &amp; Lichtinger (2026), &ldquo;AI Productivity, Upward-Sloping Factor Supply,
-      and the Dynamics of Compute Investment.&rdquo; Solved in closed form (saddle path of a
-      Hayashi-style q model); calibration is quarterly with b = 0.99, δ = 0.025.
-    </div>
-  </div>
-
-  <div class="explore-divider"><hr><span>Explore the model</span><hr></div>
-
-  <div class="layout">
-    <div>
-      <div class="card">
-        <h3>Parameters</h3>
-        <div id="m-params"></div>
-        <div class="status" id="m-status"></div>
-      </div>
-      <div class="card" style="margin-top:24px">
-        <h3>Key statistics</h3>
-        <table class="stats-table" id="m-stats"></table>
-      </div>
-      <div class="card" style="margin-top:24px">
-        <h3>Split of AI revenue</h3>
-        <table class="stats-table" id="m-split"></table>
-      </div>
-    </div>
-
-    <div>
-      <div class="grid2">
-        <div class="card">
-          <h3>Investment-rate response <small>(pp)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-inv"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Installed compute <small>(%)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-k"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Compute rental price <small>(%)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-rk"></canvas></div>
-        </div>
-        <div class="card">
-          <h3>Tobin's q <small>(%)</small></h3>
-          <div class="chartbox"><canvas id="m-chart-q"></canvas></div>
-        </div>
-      </div>
-      <div class="card" style="margin-top:24px">
-        <h3>Rents from the bottleneck <small>(change in share of GDP, percentage points)</small></h3>
-        <div class="chartbox"><canvas id="m-chart-rents"></canvas></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="tab-models" style="display:none">
-  <div class="hero" style="padding-bottom:16px">
-    <h2>The models behind the sliders</h2>
-    <p>Every result on this site is solved from an explicit general-equilibrium model.
-       This page states each model: the setup, the AI shock, the equilibrium conditions,
-       and exactly which parameter each slider moves.</p>
-  </div>
-
-  <div class="model-doc">
-
-  <!-- ============ MODEL 1: EXPERTISE ============ -->
-  <details open>
-    <summary><span class="chev">&#9656;</span> Expertise &amp; Entry Barriers
-      <small>&nbsp;— Hosseini &amp; Lichtinger (2026), 885 O*NET occupations</small></summary>
-    <div class="doc-body">
-
-      <h5>Setup: occupations gated by training</h5>
-      <p>Occupations \(o = 1,\dots,J\) are ranked by their entry barrier: the training time \(R_o\)
-         needed to work in them. A worker can enter occupation \(o\) only if their (heterogeneous)
-         training capacity clears the barrier, so the <b>eligible share</b> for each occupation is
-         \(ps_o = 1 - F(R_o)\), where \(F\) is the population distribution of training capacity.
-         Eligibility is hierarchical: anyone who clears a high barrier also clears all lower ones.</p>
-
-      <h5>Labor supply: choice among feasible occupations</h5>
-      <p>Workers draw Type-I extreme-value taste shocks with scale \(\tau\) and choose the best
-         feasible occupation. A worker whose highest feasible occupation is \(k\) chooses \(o \le k\)
-         with logit probability, so employment is</p>
-      <div class="eq">$$L_o \;=\; \bar L \sum_{k \ge o} \mu_k \,
-        \frac{w_o^{1/\tau}}{\sum_{j \le k} w_j^{1/\tau}},
-        \qquad \mu_k = F(R_{k+1}) - F(R_k),$$</div>
-      <p>where \(\mu_k\) is the mass of workers whose highest feasible occupation is \(k\).</p>
-
-      <h5>Labor demand: CES across occupations</h5>
-      <p>Final output aggregates occupational labor with elasticity of substitution \(\sigma\),
-         giving inverse demand</p>
-      <div class="eq">$$w_o \;=\; \psi_o\, A_o^{\frac{\sigma-1}{\sigma}}\, L_o^{-1/\sigma},$$</div>
-      <p>with \(\psi_o\) calibrated so the baseline matches observed wages and employment,
-         and \(A_o\) an occupation-specific productivity shifter.</p>
-
-      <h5>The AI shock: two channels</h5>
-      <p><b>Scarcity channel.</b> AI shortens retraining: barriers fall from \(R_o\) to
-         \(R_o^{AI}\), raising eligibility \(ps_o\) most in high-barrier occupations.
-         <b>Productivity channel.</b> AI raises occupational productivity by \(\pi_o\)
-         (\(A_o = e^{\pi_o}\)). Both \(R_o^{AI}\) and \(\pi_o\) are measured at the occupation level
-         with LLM task-based ratings.</p>
-
-      <h5>Partial equilibrium (holding others' wages fixed)</h5>
-      <div class="eq">$$\Delta \ln w_o^{PE} \;=\;
-        -\frac{1}{\sigma}\,\Delta \ln ps_o \;+\; \frac{\sigma-1}{\sigma}\,\pi_o.$$</div>
-      <p>More eligibility lowers the wage (scarcity rents erode); productivity raises it
-         when \(\sigma > 1\).</p>
-
-      <h5>General equilibrium</h5>
-      <p>Wages solve the fixed point (all 885 occupations simultaneously):</p>
-      <div class="eq">$$w \;=\; \psi \cdot e^{\frac{\sigma-1}{\sigma}\pi} \cdot
-        L(w;\,ps)^{-1/\sigma},$$</div>
-      <p>solved by damped iteration to machine precision. \(\tau\) is calibrated
-         (\(\hat\tau \approx 0.72\)) so the model's baseline employment shares match the data.</p>
-
-      <h5>What the sliders move</h5>
-      <p><b>σ</b> — the CES elasticity above. <b>Scarcity intensity</b> \(s\):
-         \(F^{s} = F_0 + s\,(F_{AI} - F_0)\), interpolating between no barrier change
-         (\(s=0\)) and the estimated AI effect (\(s=1\)). <b>Productivity intensity</b> \(p\):
-         scales \(\pi_o\) to \(p \cdot \pi_o\).</p>
-    </div>
-  </details>
-
-  <!-- ============ MODEL 2: DEMAND STRUCTURE ============ -->
-  <details>
-    <summary><span class="chev">&#9656;</span> Demand Structure &amp; GPT Incidence
-      <small>&nbsp;— 4 occupation-goods + GPT sector, nonhomothetic demand, worker mobility</small></summary>
-    <div class="doc-body">
-
-      <h5>Setup: production with a general-purpose technology input</h5>
-      <p>Each occupation \(i \in \{\text{manual services, production, clerical, professional}\}\)
-         produces its own good using labor and GPT services \(X_i\):</p>
-      <div class="eq">$$Y_i = A_i\Big[(1-\alpha_i)L_i^{\rho_i} + \alpha_i X_i^{\rho_i}\Big]^{1/\rho_i},
-        \qquad \rho_i = \tfrac{\sigma_i - 1}{\sigma_i},$$</div>
-      <p>where \(\sigma_i\) is the labor–GPT substitution elasticity and \(\alpha_i\) is set to match
-         the occupation's baseline GPT cost share \(b_i\) (its <b>exposure</b>). The GPT sector produces
-         \(Y_g = A_g L_g\) with wage numeraire \(w_g = 1\), so the GPT price is \(p_g = 1/A_g\).</p>
-
-      <h5>Households: nonhomothetic demand</h5>
-      <p>Preferences are implicitly additive (Hanoch 1975): the expenditure function solves</p>
-      <div class="eq">$$\sum_j \Omega_j\, (p_j/E)^{1-\varepsilon_j}\, U^{\xi_j (1-\varepsilon_j)} = 1,$$</div>
-      <p>which delivers a <b>good-specific price elasticity</b> \(\varepsilon_j\) and
-         <b>income-elasticity parameter</b> \(\xi_j\) (Engel forces). Budget shares follow from
-         Shephard's lemma. In the heterogeneous version, each education group
-         \(m \in \{\text{low, mid, college}\}\) is its own household with income
-         \(I_m = \sum_i w_i L_{mi}\), so the income <i>distribution</i> feeds back into demand.</p>
-
-      <h5>Workers: Roy/logit mobility</h5>
-      <div class="eq">$$\pi_{mi} = \frac{T_{mi}\, w_i^{\kappa_m}}{\sum_j T_{mj}\, w_j^{\kappa_m}},
-        \qquad L_i = \sum_m N_m \pi_{mi},$$</div>
-      <p>with mobility elasticities \(\kappa_m\); \(\kappa = 0\) is the immobile benchmark.</p>
-
-      <h5>The AI shock and equilibrium</h5>
-      <p>GPT productivity \(A_g\) rises along a path from 1 to its final value. At each point, wages
-         clear all four goods markets, \(C_i(p, I) = Y_i\), with the GPT market clearing by Walras' law.
-         The exact nonlinear system is solved by Newton's method, warm-started along the path.</p>
-
-      <h5>The central incidence result</h5>
-      <p>Cheaper GPT services help occupation \(i\) when the <b>demand elasticity for its output
-         exceeds its substitution elasticity</b>, \(\varepsilon_i > \sigma_i\): the market expands
-         faster than labor is displaced. On top of this race come income effects
-         (via \(\xi_i\)), mobility, and the distributional demand feedback.</p>
-
-      <h5>What the sliders move</h5>
-      <p><b>A_g</b> — final GPT productivity multiplier. <b>Mobility</b> — scales \(\kappa_m\).
-         <b>Exposure</b> — scales baseline GPT cost shares \(b_i\). <b>Demand-elasticity
-         dispersion</b> — compresses/amplifies the spread of \(\varepsilon_i\) around its mean
-         (0 = one common elasticity, the CES benchmark). <b>Nonhomotheticity</b> — scales
-         \(\xi_i - 1\) (0 = homothetic). <b>σ scale</b> — scales \(\ln \sigma_i\).
-         <b>Households</b> — pooled representative household vs. one household per education group.</p>
-    </div>
-  </details>
-
-  <!-- ============ MODEL 3: COMPUTE BOTTLENECKS ============ -->
-  <details>
-    <summary><span class="chev">&#9656;</span> Compute Bottlenecks
-      <small>&nbsp;— Hosseini &amp; Lichtinger (2026), closed-form q-theory of AI supply</small></summary>
-    <div class="doc-body">
-
-      <h5>Setup: final production and AI supply</h5>
-      <p>Final output combines general labor \(L_1\) (fixed) and AI services \(X\) with elasticity
-         \(\sigma\):</p>
-      <div class="eq">$$Y = \Big[\alpha^{1/\sigma} L_1^{\rho} + (1-\alpha)^{1/\sigma} X^{\rho}\Big]^{1/\rho},
-        \qquad \frac{d\ln p_X}{d\ln X} = -\frac{s_1}{\sigma} \equiv -\theta,$$</div>
-      <p>where \(s_1\) is labor's revenue share. The AI sector produces</p>
-      <div class="eq">$$X_t = A_t\, K_t^{\gamma} L_{2t}^{\beta} Z^{1-\beta-\gamma},$$</div>
-      <p>with compute \(K\), variable labor \(L_2\) (supply elasticity \(\eta\)), and a
-         <b>hard-to-scale fixed factor</b> \(Z\) (data, sites, organization). The fixed-factor share
-         \(1-\beta-\gamma\) is the <b>supply convexity</b> slider: it is why the industry's supply
-         curve is convex and why rents exist,
-         \(\Pi_Z = (1-\beta-\gamma)\, p_X X\).</p>
-
-      <h5>Static pass-through of an AI productivity shock</h5>
-      <p>With \(\theta = s_1/\sigma\), \(D = 1 + \eta(1-\beta+\beta\theta)\) and
-         \(H = (1+\eta)/D\):</p>
-      <div class="eq">$$\frac{d\ln X}{d\ln A} = H, \qquad
-        \frac{d\ln p_X}{d\ln A} = -\theta H, \qquad
-        \frac{d\ln \Pi_Z}{d\ln A} = (1-\theta) H.$$</div>
-
-      <h5>Dynamics: compute takes time to build</h5>
-      <p>Compute accumulates with quadratic installation costs
-         \(\Phi = \tfrac{\phi}{2}\big(\tfrac{I}{K}-\delta\big)^2 K\), giving the q-theory
-         investment rule and Euler equation</p>
-      <div class="eq">$$q_t = 1 + \phi\,(i_t - \delta), \qquad
-        q_t = \mathfrak b\,\mathbb E_t\Big[r^K_{t+1} + (1-\delta) q_{t+1} + \tfrac{\phi}{2}(i_{t+1}^2 - \delta^2)\Big].$$</div>
-
-      <h5>Closed-form transition after a permanent shock</h5>
-      <p>With \(B = (1-\theta)H\) and \(a = 1-\gamma B\), the saddle path has stable root</p>
-      <div class="eq">$$\lambda = \tfrac{1}{2}\Big[T - \sqrt{T^2 - 4/\mathfrak b}\Big], \qquad
-        T = 1 + \tfrac{1}{\mathfrak b} + \tfrac{r^K_\star\, a}{\phi},$$</div>
-      <div class="eq">$$\hat K_t = \frac{B}{a}\big(1-\lambda^t\big), \qquad
-        \hat r^K_t = B\,\lambda^t, \qquad
-        \hat q_t = \phi\, \hat K_\infty (1-\lambda)\lambda^t.$$</div>
-      <p>Higher \(\phi\) raises \(\lambda\): it changes <b>how long</b> compute scarcity (and its
-         temporary rents) lasts — not the impact response, and not the long run.</p>
-
-      <h5>What the sliders move</h5>
-      <p><b>Supply convexity</b> \(\zeta = 1-\beta-\gamma\), with the variable-input share split
-         equally between \(\beta\) and \(\gamma\). <b>Time to build</b> \(\phi\). Fixed calibration:
-         \(\sigma = 2\), \(s_X = 0.5\), \(\eta = 1\), \(\mathfrak b = 0.99\), \(\delta = 0.025\)
-         (quarterly), 1% permanent shock.</p>
-    </div>
-  </details>
-
-  </div>
-</section>
-
-<section id="tab-about" style="display:none">
-  <div class="card" style="max-width:820px; margin:0 auto; line-height:1.65; font-size:1.02rem">
-    <h2 style="margin-bottom:14px">About InclusiveAI</h2>
-    <p style="color:var(--muted)">
-      InclusiveAI is the interactive companion to <i>AI and the Distribution of Prosperity: A Unified
-      Framework for Understanding How Technology Shapes Inequality</i> by
-      <a href="https://guylichtinger.github.io" target="_blank" style="color:var(--text); font-weight:600">Guy Lichtinger</a> and
-      <a href="https://sites.google.com/view/mahdi-hosseini/home" target="_blank" style="color:var(--text); font-weight:600">Seyed M. Hosseini</a>
-      (Harvard University, 2026). The paper organizes the mechanisms through which AI affects inequality
-      into three stages — direct effects on production, the division of productivity gains, and
-      general-equilibrium demand effects — and identifies the factors that determine each mechanism's
-      direction and magnitude.
-    </p>
-    <p style="color:var(--muted); margin-top:12px">
-      Authors: <a href="https://guylichtinger.github.io" target="_blank" style="color:var(--accent)">Guy Lichtinger</a>
-      &middot; <a href="https://sites.google.com/view/mahdi-hosseini/home" target="_blank" style="color:var(--accent)">Seyed M. Hosseini</a>.
-    </p>
-    <p style="color:var(--muted); margin-top:12px">
-      Each tab on this site wraps a quantitative general-equilibrium model of one mechanism. Move the
-      parameters yourself, or load scenarios distilled from a growing corpus of expert views (economists,
-      lab leaders, forecasters, skeptics) mapped to model parameters through a fixed extraction rubric.
-    </p>
-    <p style="color:var(--muted); margin-top:12px">
-      Current models: <b style="color:var(--text)">Expertise &amp; Entry Barriers</b> (live, from
-      <a href="https://raw.githack.com/s-mahdihosseini/Website/b99fa2962dcc4c165bbc3c41dd283afa99c5ccfb/Generative%20AI%20and%20Occupational%20Entry%20Barriers.pdf"
-         target="_blank" style="color:var(--accent)">Hosseini &amp; Lichtinger 2026</a>) &middot;
-      <b style="color:var(--text)">Demand Structure &amp; GPT Incidence</b> (live) &middot;
-      <b style="color:var(--text)">Compute Bottlenecks</b> (live, from Hosseini &amp;
-      Lichtinger 2026, &ldquo;AI Productivity, Upward-Sloping Factor Supply, and the Dynamics of
-      Compute Investment&rdquo;).
-    </p>
-  </div>
-</section>
-
 </main>
 
 <footer>InclusiveAI &middot; research preview &middot; results are model-based counterfactuals, not forecasts</footer>
 
 <script>
-const API = "";   // same origin
-let META = null;
-let EQ = "ge";    // "pe" | "ge"
-let LAST = null;  // last payload
-let charts = {};
-let debounceTimer = null;
+const API = "";
+const C = { labor: "#2563a8", capital: "#e0a12f", markdown: "#c2410c", other: "#2f8a63",
+            ink: "#1b2230", ink2: "#4a5262", mute: "#7b8291", line: "#e4ded1", ghost: "#cfc8b8" };
+const SANS = 'Inter, "Helvetica Neue", Helvetica, Arial, sans-serif';
+Chart.defaults.font.family = SANS; Chart.defaults.font.size = 11; Chart.defaults.color = C.mute;
 
-const fmt = (x, d=3) => (x==null || !isFinite(x)) ? "–" : x.toFixed(d);
-const pct = (x, d=1) => (x==null || !isFinite(x)) ? "–" : (100*x).toFixed(d) + "%";
-
-// ---------------- Tabs ----------------
-const ALL_TABS = ["home","expertise","demand","market_power","models","about"];
-function selectTab(name) {
-  document.querySelectorAll("#tabs button").forEach(b =>
-    b.classList.toggle("active", b.dataset.tab === name));
-  ALL_TABS.forEach(t =>
-    document.getElementById("tab-"+t).style.display = (t===name) ? "" : "none");
-  if (name === "demand" && !D_INIT) initDemand();
-  if (name === "market_power" && !M_INIT) initMarket();
-  window.scrollTo({ top: 0 });
-  setTimeout(() => window.dispatchEvent(new Event("resize")), 60);
-}
-document.getElementById("tabs").addEventListener("click", e => {
-  const btn = e.target.closest("button"); if (!btn) return;
-  selectTab(btn.dataset.tab);
-});
-// Home-page channel cards navigate to their model tab
-document.querySelectorAll(".channel.live").forEach(card =>
-  card.addEventListener("click", () => selectTab(card.dataset.goto)));
-
-// ---------------- Controls ----------------
-async function init() {
-  const r = await fetch(API + "/api/expertise/meta");
-  META = await r.json();
-  const model = META.models.find(m => m.id === "expertise");
-  const box = document.getElementById("params");
-  model.parameters.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "param";
-    div.innerHTML = `
-      <label><span>${p.name}</span><span class="val" id="val-${p.id}">${p.default}</span></label>
-      <input type="range" id="in-${p.id}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.default}">
-      <div class="help">${p.help}</div>`;
-    box.appendChild(div);
-    div.querySelector("input").addEventListener("input", ev => {
-      document.getElementById("val-"+p.id).textContent = (+ev.target.value).toFixed(2);
-      scheduleSolve();
-    });
-  });
-  document.getElementById("btn-pe").onclick = () => { EQ="pe"; setEqButtons(); render(); };
-  document.getElementById("btn-ge").onclick = () => { EQ="ge"; setEqButtons(); render(); };
-  solve();
-}
-
-function setEqButtons() {
-  document.getElementById("btn-pe").classList.toggle("active", EQ==="pe");
-  document.getElementById("btn-ge").classList.toggle("active", EQ==="ge");
-}
-
-function scheduleSolve() {
-  clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(solve, 350);
-}
-
-async function solve() {
-  const g = id => +document.getElementById("in-"+id).value;
-  const q = `sigma=${g("sigma")}&scarcity=${g("scarcity")}&productivity=${g("productivity")}`;
-  const st = document.getElementById("status");
-  st.textContent = "Solving general equilibrium…"; st.className = "status solving";
-  try {
-    const r = await fetch(API + `/api/expertise/solve?${q}`);
-    if (!r.ok) throw new Error(await r.text());
-    LAST = await r.json();
-    st.textContent = `Solved: ${LAST.diagnostics.n_occupations} occupations, ` +
-      `${LAST.diagnostics.iters} fixed-point iterations (τ = ${fmt(LAST.params.tau,3)})`;
-    st.className = "status";
-    render();
-  } catch (err) {
-    st.textContent = "Error: " + err.message; st.className = "status solving";
-  }
-}
-
-// ---------------- Rendering ----------------
-const C = {
-  base:  "#7a766c",
-  pe:    "#b07c2a",
-  ge:    "#2b4570",
-  scar:  "#8b1a1a",
-  prod:  "#3f6d4e",
+const ICONS = {
+  auto: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5M3 12v3M21 12v3"/></svg>',
+  aug: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M18 4l.9 2.1L21 7l-2.1.9L18 10l-.9-2.1L15 7l2.1-.9z"/></svg>',
+  own: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg>',
+  fixed: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  mp: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 21h14M4 8h16"/><path d="M4 8l-2.5 6a3 3 0 0 0 5 0zM20 8l-2.5 6a3 3 0 0 0 5 0z"/></svg>',
 };
+document.querySelectorAll(".how-item .q-icon").forEach((el, i) => el.innerHTML = [ICONS.auto, ICONS.mp, ICONS.own, ICONS.fixed][i]);
 
-function mkChart(id, cfg) {
+const state = { auto: "data", aug: "data", own: 0, mp_low: 0, mp_high: 0, lam_a: 0.5, lam_p: 0.5, c_p: 0.25 };
+let META = null, LAST = null, charts = {}, timer = null, reqId = 0;
+
+const pct = (x, d = 1) => (x == null || !isFinite(x)) ? "–" : (100 * x).toFixed(d) + "%";
+const sgnPct = (x, d = 0) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + "%";
+const sgnPP = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(100 * x).toFixed(d) + " pp";
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+function chip(delta, text, eps, goodWhenDown = true) {
+  const cls = Math.abs(delta) < eps ? "flat" : ((delta > 0) === goodWhenDown ? "up" : "down");
+  const arrow = Math.abs(delta) < eps ? "" : (delta > 0 ? "▲ " : "▼ ");
+  return `<span class="chip ${cls}">${arrow}${text}</span>`;
+}
+
+// ============================================================ questions
+const QSTYLE = { auto: ["", ICONS.auto], aug: ["c2", ICONS.aug], own: ["c3", ICONS.own], mp: ["c4", ICONS.mp] };
+function dialHTML(key, options) {
+  return `<div class="dial" data-key="${key}">
+    <div class="dial-track"><div class="dial-fill"></div><div class="dial-stops">
+      ${options.map((o, i) => `<button type="button" data-v="${i - 2}" aria-label="${esc(o)}" title="${esc(o)}"><i></i></button>`).join("")}
+    </div></div>
+    <div class="dial-ends"><span>${esc(options[0])}</span><span>${esc(options[4])}</span></div>
+    <div class="dial-value"></div></div>`;
+}
+function buildQuestions() {
+  const box = document.getElementById("questions");
+  let html = "";
+  META.questions.forEach((Q, idx) => {
+    const [cls, icon] = QSTYLE[Q.id];
+    html += `<div class="card q" data-q="${Q.id}">
+      <div class="q-head"><div class="q-icon ${cls}">${icon}</div>
+        <div><div class="q-num">Question ${idx + 1} of 4</div><div class="q-title">${esc(Q.title)}</div></div></div>
+      <div class="q-text">${esc(Q.text)}</div>`;
+    if (Q.id === "mp") {
+      html += `<div class="sub">Employers of low-wage workers</div>${dialHTML("mp_low", Q.options)}
+               <div class="sub">Employers of high-wage workers</div>${dialHTML("mp_high", Q.options)}`;
+    } else {
+      html += dialHTML(Q.id, Q.options);
+    }
+    if (Q.has_data_option) html += `<button type="button" class="pill" data-datafor="${Q.id}"><span class="box"></span>Use the pattern in the task data</button>`;
+    html += `<div class="preview" id="pv-${Q.id}"></div></div>`;
+  });
+  html += `<div class="card"><details class="adv"><summary>Advanced: overall size of the AI shock</summary>
+      <div class="param"><label>Automation realized, λ<sub>A</sub> <b id="v-lam_a"></b></label>
+        <input type="range" id="lam_a" min="0" max="1" step="0.05">
+        <div class="help">Share of the measured automation potential that is adopted.</div></div>
+      <div class="param"><label>Augmentation realized, λ<sub>P</sub> <b id="v-lam_p"></b></label>
+        <input type="range" id="lam_p" min="0" max="1" step="0.05">
+        <div class="help">Share of the measured productivity gain on the remaining tasks that is realized.</div></div>
+      <div class="param"><label>AI capital needed to augment workers, c<sub>P</sub> <b id="v-c_p"></b></label>
+        <input type="range" id="c_p" min="0" max="0.9" step="0.05">
+        <div class="help">Capital used per unit of augmentation, relative to fully automating a task (= 1). 0 = augmentation needs no capital.</div></div>
+    </details>
+    <div class="tools"><span class="status" id="status">Ready</span><button type="button" id="reset">Reset answers</button></div></div>`;
+  box.innerHTML = html;
+
+  box.querySelectorAll(".dial").forEach(d => d.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    state[d.dataset.key] = parseInt(b.dataset.v, 10);
+    syncControls(); schedule();
+  }));
+  box.querySelectorAll("[data-datafor]").forEach(p => p.addEventListener("click", () => {
+    const k = p.dataset.datafor; state[k] = state[k] === "data" ? 0 : "data"; syncControls(); schedule();
+  }));
+  ["lam_a", "lam_p", "c_p"].forEach(id => document.getElementById(id).addEventListener("input", e => {
+    state[id] = parseFloat(e.target.value); syncControls(); schedule();
+  }));
+  document.getElementById("reset").addEventListener("click", () => { Object.assign(state, META.defaults); syncControls(); schedule(0); });
+}
+function optionsFor(key) {
+  const id = key.startsWith("mp") ? "mp" : key;
+  return META.questions.find(q => q.id === id).options;
+}
+function syncControls() {
+  document.querySelectorAll(".dial").forEach(d => {
+    const key = d.dataset.key, v = state[key], opts = optionsFor(key);
+    const isData = v === "data";
+    d.classList.toggle("off", isData);
+    d.querySelectorAll("button").forEach(b => b.classList.toggle("active", !isData && parseInt(b.dataset.v, 10) === v));
+    const fill = d.querySelector(".dial-fill");
+    if (isData) { fill.style.width = "0"; } else {
+      const w = d.querySelector(".dial-track").clientWidth - 28, pos = 14 + (v + 2) / 4 * w, mid = 14 + w / 2;
+      fill.style.left = Math.min(pos, mid) + "px"; fill.style.width = Math.abs(pos - mid) + "px";
+    }
+    d.querySelector(".dial-value").textContent = isData ? "Following the task data" : opts[v + 2];
+  });
+  document.querySelectorAll("[data-datafor]").forEach(p => p.classList.toggle("on", state[p.dataset.datafor] === "data"));
+  ["lam_a", "lam_p", "c_p"].forEach(id => { document.getElementById(id).value = state[id]; document.getElementById("v-" + id).textContent = state[id].toFixed(2); });
+  renderOwnPreview();
+}
+window.addEventListener("resize", () => { if (META) syncControls(); });
+function schedule(delay = 110) { clearTimeout(timer); timer = setTimeout(solve, delay); }
+
+// ------------------------------------------------------------ previews
+function profileSVG(profile, data, color) {
+  const W = 360, H = 64, n = profile.length, gap = 6, bw = (W - gap * (n - 1)) / n;
+  const max = Math.max(...profile, ...data) * 1.08;
+  let s = `<svg viewBox="0 0 ${W} ${H + 14}" preserveAspectRatio="none">`;
+  for (let i = 0; i < n; i++) {
+    const x = i * (bw + gap), h = H * profile[i] / max, hd = H * data[i] / max;
+    s += `<rect x="${x}" y="${H - h}" width="${bw}" height="${h}" rx="3" fill="${color}"><title>Decile ${i + 1}: ${pct(profile[i], 0)}</title></rect>`;
+    s += `<line x1="${x - 1}" x2="${x + bw + 1}" y1="${H - hd}" y2="${H - hd}" stroke="${C.ink}" stroke-width="2" stroke-linecap="round" opacity=".55"/>`;
+    s += `<text x="${x + bw / 2}" y="${H + 12}" font-size="9" text-anchor="middle" fill="${C.mute}" font-family="Inter, sans-serif">${i + 1}</text>`;
+  }
+  return s + `</svg>`;
+}
+function renderProfilePreviews(D) {
+  document.getElementById("pv-auto").innerHTML =
+    `<div class="cap"><span><b>Share of tasks automated</b>, wage decile 1 → 10</span>
+       <span class="key"><i style="background:${C.labor}"></i>yours</span><span class="key"><i style="background:${C.ink};height:2px"></i>data</span></div>` +
+    profileSVG(D.automation_profile, D.automation_data, C.labor);
+  document.getElementById("pv-aug").innerHTML =
+    `<div class="cap"><span><b>Productivity gain on remaining tasks</b>, decile 1 → 10</span>
+       <span class="key"><i style="background:${C.other}"></i>yours</span><span class="key"><i style="background:${C.ink};height:2px"></i>data</span></div>` +
+    profileSVG(D.augmentation_profile, D.augmentation_data, C.other);
+}
+function renderOwnPreview() {
+  if (!META) return;
+  const chi = META.questions[2].values[state.own + 2], k = Math.round(chi * 100);
+  let s = `<svg viewBox="0 0 360 74">`;
+  for (let i = 0; i < 100; i++) {
+    const col = i % 25, row = Math.floor(i / 25), on = i < k;
+    s += `<circle cx="${7 + col * 14.5}" cy="${8 + row * 17}" r="5.4" fill="${on ? C.capital : "#ebe6da"}" style="transition:fill .3s"/>`;
+  }
+  s += `</svg>`;
+  const el = document.getElementById("pv-own");
+  if (el) el.innerHTML = `<div class="cap"><span><b>${k} of 100 households</b> own business and AI equity</span><span>today: 7</span></div>` + s;
+}
+function renderMPPreview(D) {
+  const max = 0.3, row = (label, base, now) =>
+    `<div class="mp-row"><span>${label}</span><div class="mp-bar"><span style="width:${Math.min(100, 100 * now / max)}%"></span>
+      <em style="left:${Math.min(100, 100 * base / max)}%" title="before AI"></em></div><b>${(100 * now).toFixed(0)}¢</b></div>`;
+  document.getElementById("pv-mp").innerHTML =
+    `<div class="cap"><span><b>Employer keeps, per $1 a worker produces</b></span><span class="key"><i style="background:${C.ink};width:2px"></i>before AI</span></div>` +
+    row("Low-wage jobs", D.markdown_baseline[0], D.markdown[0]) + row("High-wage jobs", D.markdown_baseline[9], D.markdown[9]);
+}
+
+// ============================================================ solve
+async function solve() {
+  const id = ++reqId, status = document.getElementById("status");
+  status.textContent = "Solving equilibrium…"; status.classList.add("busy");
+  const qs = new URLSearchParams(Object.entries(state).map(([k, v]) => [k, String(v)]));
+  try {
+    const r = await fetch(`${API}/api/future/solve?${qs}`);
+    if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+    const out = await r.json();
+    if (id !== reqId) return;
+    LAST = out; render(out);
+    status.textContent = "Equilibrium solved"; status.classList.remove("busy");
+  } catch (err) { status.textContent = "Could not solve: " + err.message; status.classList.remove("busy"); }
+}
+
+// ============================================================ render
+function render(out) {
+  const B = out.baseline, S = out.scenario, D = out.deciles;
+  renderProfilePreviews(D); renderMPPreview(D); renderOwnPreview();
+
+  // verdict
+  const dG = S.gini.total - B.gini.total;
+  document.getElementById("giniNum").textContent = S.gini.total.toFixed(3);
+  document.getElementById("giniChip").outerHTML = chip(dG, `${dG >= 0 ? "+" : "−"}${Math.abs(dG).toFixed(3)} vs before AI`, 0.002).replace('class="chip', 'id="giniChip" class="chip');
+  drawGauge(B.gini.total, S.gini.total);
+
+  const low = sum(S.percentiles.total.slice(0, 5)) / sum(B.percentiles.total.slice(0, 5)) - 1;
+  const top = S.percentiles.total[10] / B.percentiles.total[10] - 1;
+  const dir = Math.abs(dG) < 0.003 ? "leaves income inequality roughly where it is" : (dG > 0 ? "makes income more unequal" : "makes income more equal");
+  document.getElementById("story").innerHTML =
+    `In the world you describe, AI raises output by <b>${sgnPct(S.output / B.output - 1)}</b> and ${dir}.
+     Average income rises by <b>${sgnPct(low)}</b> for the bottom half and by <b>${sgnPct(top)}</b> for the top 1 percent.
+     Workers' share of output goes from ${pct(B.shares.labor, 0)} to <b>${pct(S.shares.labor, 0)}</b>.`;
+
+  document.getElementById("kpis").innerHTML = [
+    ["Top 10% income share", S.top10_income, B.top10_income, x => pct(x), true],
+    ["Top 1% wealth share", S.top1_wealth, B.top1_wealth, x => pct(x), true],
+    ["Labor share of output", S.shares.labor, B.shares.labor, x => pct(x), false],
+    ["Output (pre-AI = 100)", S.output * 100, B.output * 100, x => x.toFixed(0), null],
+  ].map(([l, a, b, f, goodDown]) => {
+    const d = a - b;
+    const c = goodDown === null ? `<span class="chip flat">${sgnPct(a / b - 1)}</span>`
+      : chip(d, sgnPP(d), 0.001, goodDown);
+    return `<div class="kpi"><div class="lbl">${l}</div><div class="val">${f(a)}</div><div class="was">from ${f(b)} ${c}</div></div>`;
+  }).join("");
+
+  // who gains
+  const labels = out.percentile_labels;
+  const dl = S.percentiles.labor.map((x, i) => 100 * (x - B.percentiles.labor[i]) / B.percentiles.total[i]);
+  const dk = S.percentiles.capital.map((x, i) => 100 * (x - B.percentiles.capital[i]) / B.percentiles.total[i]);
+  const dt = dl.map((x, i) => x + dk[i]);
+  drawChart("chGroups", {
+    type: "bar",
+    data: { labels, datasets: [
+      { type: "line", label: "Total", data: dt, showLine: false, pointRadius: 6, pointHoverRadius: 8,
+        pointBackgroundColor: C.ink, pointBorderColor: "#fff", pointBorderWidth: 2, order: 0 },
+      { label: "Labor income", data: dl, backgroundColor: C.labor, stack: "s", borderRadius: 4, borderSkipped: false,
+        borderColor: "#fff", borderWidth: 1, order: 1, maxBarThickness: 46 },
+      { label: "Capital income", data: dk, backgroundColor: C.capital, stack: "s", borderRadius: 4, borderSkipped: false,
+        borderColor: "#fff", borderWidth: 1, order: 1, maxBarThickness: 46 },
+    ]},
+    options: opts({
+      y: { stacked: true, grid: { color: "#efeae0" }, border: { display: false }, ticks: { callback: v => v + "%" } },
+      x: { stacked: true, grid: { display: false }, border: { color: C.line } },
+    }, ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
+  });
+
+  drawRibbon(B.shares, S.shares);
+  document.getElementById("ribbonNote").innerHTML =
+    `With AI, ordinary capital earns ${pct(S.shares.ordinary_capital, 1)} of output: ${pct(S.shares.automation_capital, 1)} from fully automated
+     tasks and <b>${pct(S.shares.augmentation_capital, 1)}</b> from capital that augments workers. Markdown profits are the gap between
+     what workers produce and what they are paid; markup profits come from firms pricing above cost.`;
+
+  // wages (lollipop)
+  const wc = D.wage_change.map(x => 100 * x);
+  drawChart("chWages", {
+    type: "bar",
+    data: { labels: wc.map((_, i) => String(i + 1)), datasets: [
+      { type: "line", label: "Wage change", data: wc, showLine: false, pointRadius: 7, pointHoverRadius: 9,
+        pointBackgroundColor: wc.map(v => v >= 0 ? C.labor : C.markdown), pointBorderColor: "#fff", pointBorderWidth: 2, order: 0 },
+      { label: "stem", data: wc, backgroundColor: wc.map(v => v >= 0 ? "rgba(37,99,168,.35)" : "rgba(194,65,12,.35)"),
+        barThickness: 3, order: 1 },
+    ]},
+    options: opts({
+      y: { grid: { color: "#efeae0" }, border: { display: false }, ticks: { callback: v => v + "%" } },
+      x: { grid: { display: false }, border: { color: C.line }, title: { display: true, text: "Occupation wage decile (1 = lowest paid)" } },
+    }, ctx => ctx.dataset.label === "stem" ? null : ` Decile ${ctx.dataIndex + 1}: ${ctx.parsed.y >= 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`),
+  });
+
+  // tables
+  const g3 = x => x.toFixed(3);
+  const rows = [
+    ["Labor-income Gini", B.gini.labor, S.gini.labor, g3, 0, true],
+    ["Capital-income Gini", B.gini.capital, S.gini.capital, g3, 0, true],
+    ["Total-income Gini", B.gini.total, S.gini.total, g3, 0, true],
+    ["Wealth Gini", B.gini.wealth, S.gini.wealth, g3, 0, true],
+    ["Top 1% income share", B.top1_income, S.top1_income, x => pct(x), 1, true],
+    ["Top 10% wealth share", B.top10_wealth, S.top10_wealth, x => pct(x), 1, true],
+    ["Capital share of household income", B.capital_income_share_of_income, S.capital_income_share_of_income, x => pct(x), 1, false],
+    ["Capital share of top-10% income", B.top10_capital_income_share_of_income, S.top10_capital_income_share_of_income, x => pct(x), 1, false],
+    ["Return on risky capital", B.r_risky, S.r_risky, x => pct(x, 2), 1, false],
+    ["Safe interest rate", B.r_safe, S.r_safe, x => pct(x, 2), 1, false],
+    ["Owners' risky share of wealth", B.risky_share, S.risky_share, x => x.toFixed(2), 0, false],
+    ["Automation capital, % of output", B.shares.automation_capital, S.shares.automation_capital, x => pct(x), 1, false],
+    ["Augmentation capital, % of output", B.shares.augmentation_capital, S.shares.augmentation_capital, x => pct(x), 1, false],
+    ["Markup profits, % of output", B.shares.product_profit, S.shares.product_profit, x => pct(x), 1, false],
+  ];
+  document.getElementById("tblIneq").innerHTML = `<tr><th></th><th>Before AI</th><th>With AI</th><th>Change</th></tr>` +
+    rows.map(([l, b, s, f, isPct, colored]) => {
+      const d = s - b, cls = (!colored || Math.abs(d) < 1e-4) ? "" : (d > 0 ? "up" : "down");
+      const txt = isPct ? sgnPP(d, 2) : (d >= 0 ? "+" : "−") + Math.abs(d).toFixed(3);
+      return `<tr><td>${l}</td><td>${f(b)}</td><td>${f(s)}</td><td class="${cls}">${txt}</td></tr>`;
+    }).join("");
+  document.getElementById("tblParams").innerHTML = `<tr><th>Decile</th><th>Automated α</th><th>Productivity</th><th>Aug. capital θ</th><th>Markdown τ</th><th>Wage</th></tr>` +
+    D.alpha.map((a, i) => `<tr><td>${i + 1}</td><td>${pct(D.alpha_baseline[i], 0)} → ${pct(a, 0)}</td>
+      <td>${sgnPct(D.productivity_gain[i])}</td><td>${pct(D.augmentation_capital[i], 1)}</td><td>${pct(D.markdown_baseline[i], 1)} → ${pct(D.markdown[i], 1)}</td>
+      <td>${sgnPct(D.wage_change[i], 1)}</td></tr>`).join("");
+  document.getElementById("paramNote").innerHTML =
+    `Share of households owning risky equity: <b>${pct(B.chi, 1)} → ${pct(S.chi, 1)}</b>. Exposure tier T3–T4;
+     λ<sub>A</sub> = ${state.lam_a.toFixed(2)}, λ<sub>P</sub> = ${state.lam_p.toFixed(2)}, c<sub>P</sub> = ${state.c_p.toFixed(2)}. Max equilibrium residual ${out.max_residual.toExponential(1)}.`;
+}
+const sum = a => a.reduce((s, x) => s + x, 0);
+
+// ------------------------------------------------------------ gauge
+function drawGauge(before, after) {
+  const svg = document.getElementById("gauge"), lo = 0.25, hi = 0.50, x0 = 14, x1 = 406, y = 40;
+  const X = v => x0 + (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * (x1 - x0);
+  if (!svg.dataset.init) {
+    let ticks = "";
+    for (let v = 0.25; v <= 0.5001; v += 0.05) ticks += `<text x="${X(v)}" y="${y + 30}" font-size="10" text-anchor="middle" fill="${C.mute}" font-family="Inter,sans-serif">${v.toFixed(2)}</text>`;
+    svg.innerHTML = `<defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#2f8a63"/><stop offset=".5" stop-color="#e0a12f"/><stop offset="1" stop-color="#c2410c"/></linearGradient></defs>
+      <rect x="${x0}" y="${y - 5}" width="${x1 - x0}" height="10" rx="5" fill="url(#gg)" opacity=".9"/>
+      ${ticks}
+      <text x="${x0}" y="12" font-size="10" fill="${C.mute}" font-family="Inter,sans-serif">more equal</text>
+      <text x="${x1}" y="12" font-size="10" fill="${C.mute}" text-anchor="end" font-family="Inter,sans-serif">more unequal</text>
+      <g class="mk" id="gBefore"><circle cx="0" cy="${y}" r="8" fill="#fff" stroke="${C.ink}" stroke-width="2.5"/>
+        <text x="0" y="${y - 14}" font-size="10" text-anchor="middle" fill="${C.ink2}" font-family="Inter,sans-serif" font-weight="600">before</text></g>
+      <g class="mk" id="gAfter"><circle cx="0" cy="${y}" r="10" fill="${C.ink}" stroke="#fff" stroke-width="3"/>
+        <text x="0" y="${y - 16}" font-size="10" text-anchor="middle" fill="${C.ink}" font-family="Inter,sans-serif" font-weight="700">with AI</text></g>`;
+    svg.dataset.init = 1;
+  }
+  document.getElementById("gBefore").style.transform = `translate(${X(before)}px, 0)`;
+  document.getElementById("gAfter").style.transform = `translate(${X(after)}px, 0)`;
+  // keep the two labels from colliding
+  const close = Math.abs(X(after) - X(before)) < 46;
+  document.querySelector("#gBefore text").setAttribute("y", close ? y + 22 : y - 14);
+  document.querySelector("#gBefore text").setAttribute("opacity", close ? 0 : 1);
+}
+
+// ------------------------------------------------------------ ribbon
+function drawRibbon(b, s) {
+  const keys = [["labor", C.labor], ["ordinary_capital", C.capital], ["markdown_profit", C.markdown], ["product_profit", C.other]];
+  const svg = document.getElementById("ribbon"), L = 74, R = 438, W = R - L, h = 48, y1 = 10, y2 = 148;
+  const seg = sh => { let acc = 0; return keys.map(([k]) => { const a = acc; acc += sh[k]; return [L + a * W, L + acc * W, sh[k]]; }); };
+  const A = seg(b), Z = seg(s);
+  let g = `<text x="0" y="${y1 + h / 2 + 4}" font-size="13" font-weight="600" fill="${C.ink}" font-family="Inter,sans-serif">Before AI</text>
+           <text x="0" y="${y2 + h / 2 + 4}" font-size="13" font-weight="600" fill="${C.ink}" font-family="Inter,sans-serif">With AI</text>`;
+  keys.forEach(([k, col], i) => {
+    const [a0, a1] = A[i], [z0, z1] = Z[i];
+    g += `<path d="M${a0},${y1 + h} L${a1},${y1 + h} C${a1},${(y1 + h + y2) / 2} ${z1},${(y1 + h + y2) / 2} ${z1},${y2}
+           L${z0},${y2} C${z0},${(y1 + h + y2) / 2} ${a0},${(y1 + h + y2) / 2} ${a0},${y1 + h} Z" fill="${col}" opacity=".16"/>`;
+  });
+  [[A, b, y1], [Z, s, y2]].forEach(([P, sh, yy]) => keys.forEach(([k, col], i) => {
+    const [p0, p1, v] = P[i], w = Math.max(0, p1 - p0 - 2);
+    g += `<rect x="${p0 + 1}" y="${yy}" width="${w}" height="${h}" rx="4" fill="${col}"><title>${pct(v)}</title></rect>`;
+    if (w > 30) g += `<text x="${p0 + 1 + w / 2}" y="${yy + h / 2 + 5}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="Inter,sans-serif">${pct(v, 0)}</text>`;
+  }));
+  svg.innerHTML = g;
+}
+
+// ------------------------------------------------------------ chart helpers
+function opts(scales, label) {
+  return {
+    responsive: true, maintainAspectRatio: false, animation: { duration: 350 },
+    plugins: { legend: { display: false },
+      tooltip: { filter: i => i.dataset.label !== "stem", callbacks: { label }, backgroundColor: "#0f1d33", padding: 10,
+                 cornerRadius: 8, titleFont: { family: SANS, weight: "600" }, bodyFont: { family: SANS } } },
+    interaction: { mode: "index", intersect: false },
+    scales,
+  };
+}
+function drawChart(id, cfg) {
+  // Recreate rather than mutate: mixed bar/point charts mis-position points on in-place updates.
+  const first = !charts[id];
   if (charts[id]) charts[id].destroy();
+  if (!first) cfg.options.animation = { duration: 0 };
   charts[id] = new Chart(document.getElementById(id), cfg);
 }
 
-const gridColor = "#e2ddd2";
-Chart.defaults.color = "#7a766c";
-Chart.defaults.borderColor = gridColor;
-Chart.defaults.font.family = "'Helvetica Neue', Helvetica, Arial, sans-serif";
-Chart.defaults.font.size = 12;
-
-function render() {
-  if (!LAST) return;
-  renderBins(); renderKde(); renderDecomp(); renderStats(); renderOcc();
-}
-
-function renderBins() {
-  const b = LAST.binscatter;
-  const mk = (obj, label, color, dashed=false) => ({
-    label, data: obj.x.map((x,i)=>({x, y: obj.y[i]})),
-    showLine: true, borderColor: color, backgroundColor: color,
-    pointRadius: 3, borderWidth: 2, tension: 0.3,
-    borderDash: dashed ? [6,4] : [],
-  });
-  const ds = (EQ === "ge")
-    ? [mk(b.ge, "GE — both channels", C.ge),
-       mk(b.ge_scarcity_only, "GE — scarcity only", C.scar, true),
-       mk(b.ge_productivity_only, "GE — productivity only", C.prod, true)]
-    : [mk(b.pe, "PE — both channels", C.pe)];
-  mkChart("chart-bins", {
-    type: "scatter",
-    data: { datasets: ds },
-    options: {
-      maintainAspectRatio: false,
-      scales: {
-        x: { title: { display:true, text:"log(initial annual wage)" }, grid:{color:gridColor} },
-        y: { title: { display:true, text:"Δ log wage" }, grid:{color:gridColor} },
-      },
-      plugins: { legend: { labels: { boxWidth: 14 } } },
-    }
-  });
-}
-
-function renderKde() {
-  const k = LAST.kde;
-  const line = (data, label, color, dashed=false) => ({
-    label, data, borderColor: color, borderWidth: 2, pointRadius: 0,
-    borderDash: dashed ? [6,4] : [], fill: false, tension: 0.25,
-  });
-  mkChart("chart-kde", {
-    type: "line",
-    data: {
-      labels: k.grid.map(x => x.toFixed(2)),
-      datasets: [
-        line(k.baseline, "Current", C.base, true),
-        line(EQ==="ge" ? k.ge : k.pe, `Post-AI (${EQ.toUpperCase()})`, EQ==="ge"?C.ge:C.pe),
-      ],
-    },
-    options: {
-      maintainAspectRatio: false,
-      scales: {
-        x: { title: { display:true, text:"log(annual wage)" },
-             ticks: { maxTicksLimit: 9, callback: function(v){ return (+this.getLabelForValue(v)).toFixed(1); } },
-             grid:{color:gridColor} },
-        y: { title: { display:true, text:"density" }, grid:{color:gridColor} },
-      },
-      plugins: { legend: { labels: { boxWidth: 14 } } },
-    }
-  });
-}
-
-function renderDecomp() {
-  const s = LAST.stats;
-  const metrics = ["var_logw", "p90_p10", "p90_p50", "p50_p10"];
-  const names   = ["Var(log w)", "90/10", "90/50", "50/10"];
-  const delta = (sc) => metrics.map(m => s[sc][m] - s.baseline[m]);
-  mkChart("chart-decomp", {
-    type: "bar",
-    data: {
-      labels: names,
-      datasets: [
-        { label: "Scarcity only",     data: delta("ge_scarcity_only"),     backgroundColor: C.scar },
-        { label: "Productivity only", data: delta("ge_productivity_only"), backgroundColor: C.prod },
-        { label: "Both channels",     data: delta("ge"),                   backgroundColor: C.ge },
-      ],
-    },
-    options: {
-      maintainAspectRatio: false,
-      scales: {
-        y: { title: { display:true, text:"Δ vs. baseline" }, grid:{color:gridColor} },
-        x: { grid:{display:false} },
-      },
-      plugins: { legend: { labels: { boxWidth: 14 } } },
-    }
-  });
-}
-
-function renderStats() {
-  const s = LAST.stats;
-  const sc = (EQ === "ge") ? "ge" : "pe";
-  const rows = [
-    ["Var(log w)", "var_logw"], ["p90 − p10", "p90_p10"],
-    ["p90 − p50", "p90_p50"], ["p50 − p10", "p50_p10"], ["p99 − p90", "p99_p90"],
-  ];
-  let html = `<tr><th>Statistic</th><th>Baseline</th><th>Post-AI (${EQ.toUpperCase()})</th><th>Δ</th></tr>`;
-  rows.forEach(([name, key]) => {
-    const b = s.baseline[key], a = s[sc][key], d = a - b;
-    const cls = d > 1e-6 ? "delta-pos" : (d < -1e-6 ? "delta-neg" : "");
-    html += `<tr><td>${name}</td><td>${fmt(b)}</td><td>${fmt(a)}</td>
-             <td class="${cls}">${d>=0?"+":""}${fmt(d)}</td></tr>`;
-  });
-  document.getElementById("stats-table").innerHTML = html;
-}
-
-function renderOcc() {
-  const key = (EQ === "ge") ? "dlogw_ge" : "dlogw_pe";
-  const occ = [...LAST.occupations].sort((a,b) => b[key] - a[key]);
-  const top = occ.slice(0, 10), bot = occ.slice(-10).reverse();
-  const maxAbs = Math.max(...occ.map(o => Math.abs(o[key])), 1e-9);
-  const row = o => {
-    const v = o[key];
-    const wpx = Math.round(60 * Math.abs(v) / maxAbs);
-    const color = v >= 0 ? "var(--green)" : "var(--red)";
-    return `<tr><td title="${o.code}">${o.title}</td>
-      <td class="num">$${Math.round(o.w0).toLocaleString()}</td>
-      <td class="num" style="color:${color}">${pct(v)}</td>
-      <td><span class="bar" style="width:${wpx}px;background:${color}"></span></td></tr>`;
-  };
-  document.getElementById("occ-table").innerHTML =
-    `<tr><th>Occupation</th><th style="text-align:right">Wage</th><th style="text-align:right">Δ log w</th><th></th></tr>` +
-    top.map(row).join("") +
-    `<tr><td colspan="4" style="text-align:center;color:var(--muted)">···</td></tr>` +
-    bot.map(row).join("");
-}
-
-init();
-
-// ============================================================
-// DEMAND STRUCTURE TAB
-// ============================================================
-let D_INIT = false, D_LAST = null, dDebounce = null;
-const OCC_COLORS = { 0: "#3f6d4e", 1: "#b07c2a", 2: "#8b1a1a", 3: "#2b4570" };
-const GRP_COLORS = ["#8b1a1a", "#b07c2a", "#2b4570"];
-
-async function initDemand() {
-  if (!META) { setTimeout(initDemand, 300); return; }  // meta still loading
-  if (D_INIT) return;
-  D_INIT = true;
-  const model = META.models.find(m => m.id === "demand");
-  const box = document.getElementById("d-params");
-  model.parameters.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "param";
-    if (p.type === "toggle") {
-      div.innerHTML = `
-        <div class="toggle-row" style="margin-bottom:4px">
-          <button id="d-tgl-${p.id}-on" class="${p.default ? "active" : ""}">Heterogeneous</button>
-          <button id="d-tgl-${p.id}-off" class="${p.default ? "" : "active"}">Pooled</button>
-        </div>
-        <div class="help">${p.help}</div>`;
-      box.appendChild(div);
-      const on = div.querySelector(`#d-tgl-${p.id}-on`), off = div.querySelector(`#d-tgl-${p.id}-off`);
-      on.onclick = () => { on.classList.add("active"); off.classList.remove("active"); dSchedule(); };
-      off.onclick = () => { off.classList.add("active"); on.classList.remove("active"); dSchedule(); };
-    } else {
-      div.innerHTML = `
-        <label><span>${p.name}</span><span class="val" id="d-val-${p.id}">${(+p.default).toFixed(2)}</span></label>
-        <input type="range" id="d-in-${p.id}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.default}">
-        <div class="help">${p.help}</div>`;
-      box.appendChild(div);
-      div.querySelector("input").addEventListener("input", ev => {
-        document.getElementById("d-val-"+p.id).textContent = (+ev.target.value).toFixed(2);
-        dSchedule();
-      });
-    }
-  });
-  dSolve();
-}
-
-function dSchedule() { clearTimeout(dDebounce); dDebounce = setTimeout(dSolve, 350); }
-
-async function dSolve() {
-  if (!document.getElementById("d-in-ag")) { setTimeout(dSolve, 300); return; }
-  const g = id => +document.getElementById("d-in-"+id).value;
-  const het = document.getElementById("d-tgl-hetero-on").classList.contains("active") ? 1 : 0;
-  const q = `ag=${g("ag")}&mobility=${g("mobility")}&exposure=${g("exposure")}` +
-            `&eps_spread=${g("eps_spread")}&nonhom=${g("nonhom")}&sig_scale=${g("sig_scale")}&hetero=${het}`;
-  const st = document.getElementById("d-status");
-  st.textContent = "Solving exact GE along the path…"; st.className = "status solving";
-  try {
-    const r = await fetch(API + `/api/demand/solve?${q}`);
-    if (!r.ok) throw new Error(await r.text());
-    D_LAST = await r.json();
-    const dg = D_LAST.diagnostics;
-    st.textContent = `Solved (max residual ${dg.max_resid.toExponential(1)}, ` +
-      `Walras gap ${dg.max_walras_gap.toExponential(1)}). GPT Domar weight → ${fmt(D_LAST.final.lam_g,3)}`;
-    st.className = "status";
-    dRender();
-  } catch (err) {
-    st.textContent = "Error: " + err.message; st.className = "status solving";
-  }
-}
-
-function dRender() {
-  if (!D_LAST) return;
-  dRenderPath(); dRenderFinal(); dRenderGroups(); dRenderShares(); dRenderTable();
-}
-
-function dRenderPath() {
-  const p = D_LAST.path, occ = D_LAST.labels.occupations;
-  mkChart("d-chart-path", {
-    type: "line",
-    data: {
-      labels: p.ag.map(a => a.toFixed(1)),
-      datasets: occ.map((name, i) => ({
-        label: name, data: p.dlnw_real.map(row => row[i]),
-        borderColor: OCC_COLORS[i], backgroundColor: OCC_COLORS[i],
-        borderWidth: 2, pointRadius: 0, tension: 0.25,
-      })),
-    },
-    options: {
-      maintainAspectRatio: false,
-      scales: {
-        x: { title: { display:true, text:"GPT productivity multiplier A_g" },
-             ticks: { maxTicksLimit: 8 }, grid:{color:gridColor} },
-        y: { title: { display:true, text:"Δ log real wage" }, grid:{color:gridColor} },
-      },
-      plugins: { legend: { labels: { boxWidth: 14 } } },
-    }
-  });
-}
-
-function dRenderFinal() {
-  const f = D_LAST.final, occ = D_LAST.labels.occupations;
-  mkChart("d-chart-final", {
-    type: "bar",
-    data: {
-      labels: occ,
-      datasets: [
-        { label: "Δ log real wage", data: f.dlnw_real, backgroundColor: C.ge },
-        { label: "Δ log employment", data: f.dlnL, backgroundColor: C.pe },
-      ],
-    },
-    options: {
-      maintainAspectRatio: false,
-      scales: { y: { grid:{color:gridColor} }, x: { grid:{display:false} } },
-      plugins: { legend: { labels: { boxWidth: 14 } } },
-    }
-  });
-}
-
-function dRenderGroups() {
-  const f = D_LAST.final, grp = D_LAST.labels.groups;
-  const ds = [{ label: "Δ log real income", data: f.dlnIm_real,
-                backgroundColor: GRP_COLORS }];
-  mkChart("d-chart-groups", {
-    type: "bar",
-    data: { labels: grp, datasets: ds },
-    options: {
-      maintainAspectRatio: false,
-      scales: { y: { grid:{color:gridColor} }, x: { grid:{display:false} } },
-      plugins: {
-        legend: { display: false },
-        title: { display: true, color: "#7a766c",
-                 text: `Aggregate real income: ${(D_LAST.final.dlnI_real>=0?"+":"")}${fmt(D_LAST.final.dlnI_real,3)} log points` },
-      },
-    }
-  });
-}
-
-function dRenderShares() {
-  const p = D_LAST.path, occ = D_LAST.labels.occupations;
-  mkChart("d-chart-shares", {
-    type: "line",
-    data: {
-      labels: p.ag.map(a => a.toFixed(1)),
-      datasets: occ.map((name, i) => ({
-        label: name, data: p.shares.map(row => row[i]),
-        borderColor: OCC_COLORS[i], backgroundColor: OCC_COLORS[i],
-        borderWidth: 2, pointRadius: 0, tension: 0.25,
-      })),
-    },
-    options: {
-      maintainAspectRatio: false,
-      scales: {
-        x: { title: { display:true, text:"GPT productivity multiplier A_g" },
-             ticks: { maxTicksLimit: 8 }, grid:{color:gridColor} },
-        y: { title: { display:true, text:"budget share" }, grid:{color:gridColor} },
-      },
-      plugins: { legend: { labels: { boxWidth: 14 } } },
-    }
-  });
-}
-
-// ============================================================
-// AI MARKET POWER & COMPUTE TAB
-// ============================================================
-let M_INIT = false, M_LAST = null, mDebounce = null;
-
-async function initMarket() {
-  if (!META) { setTimeout(initMarket, 300); return; }
-  if (M_INIT) return;
-  M_INIT = true;
-  const model = META.models.find(m => m.id === "market_power");
-  const box = document.getElementById("m-params");
-  model.parameters.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "param";
-    div.innerHTML = `
-      <label><span>${p.name}</span><span class="val" id="m-val-${p.id}">${(+p.default).toFixed(2)}</span></label>
-      <input type="range" id="m-in-${p.id}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.default}">
-      <div class="help">${p.help}</div>`;
-    box.appendChild(div);
-    div.querySelector("input").addEventListener("input", ev => {
-      document.getElementById("m-val-"+p.id).textContent = (+ev.target.value).toFixed(2);
-      clearTimeout(mDebounce); mDebounce = setTimeout(mSolve, 300);
-    });
-  });
-  mSolve();
-}
-
-let M_BASE = null;   // baseline run (default sliders) for dashed reference lines
-
-async function mSolve() {
-  if (!document.getElementById("m-in-phi")) { setTimeout(mSolve, 300); return; }
-  const g = id => +document.getElementById("m-in-"+id).value;
-  const st = document.getElementById("m-status");
-  st.textContent = "Evaluating closed-form solution…"; st.className = "status solving";
-  try {
-    if (!M_BASE) {
-      const rb = await fetch(API + `/api/market/solve?bottleneck=0.2&phi=8`);
-      if (rb.ok) M_BASE = await rb.json();
-    }
-    const r = await fetch(API + `/api/market/solve?bottleneck=${g("bottleneck")}&phi=${g("phi")}`);
-    if (!r.ok) {
-      const err = await r.json().catch(() => ({}));
-      throw new Error(err.detail || "solve failed");
-    }
-    M_LAST = await r.json();
-    const d = M_LAST.derived;
-    st.textContent = `Closed form: stable root λ = ${fmt(d.lambda,3)}, ` +
-      `half-life of the bottleneck ≈ ${fmt(d.half_life,1)} quarters. ` +
-      `Long-run compute expansion: ${fmt(d.K_inf,2)}% per 1% productivity gain.`;
-    st.className = "status";
-    mRender();
-  } catch (err) {
-    st.textContent = "⚠ " + err.message; st.className = "status solving";
-  }
-}
-
-function mRender() {
-  if (!M_LAST) return;
-  const p = M_LAST.path, t = p.t;
-  const isBase = M_BASE &&
-    M_LAST.params.phi === M_BASE.params.phi &&
-    M_LAST.params.beta === M_BASE.params.beta;
-
-  const mainLine = (data, label, color) => ({
-    label, data, borderColor: color, backgroundColor: color + "22",
-    borderWidth: 2.5, pointRadius: 0, tension: 0.15,
-  });
-  const baseLine = (data) => ({
-    label: "baseline (defaults)", data, borderColor: "#9a958a",
-    borderWidth: 1.6, pointRadius: 0, tension: 0.15, borderDash: [5,5],
-  });
-  const opts = (ytitle) => ({
-    maintainAspectRatio: false,
-    scales: {
-      x: { title: { display:true, text:"quarters" }, ticks: { maxTicksLimit: 9 }, grid:{color:gridColor} },
-      y: { title: { display:true, text:ytitle }, grid:{color:gridColor} },
-    },
-    plugins: { legend: { labels: { boxWidth: 14 } } },
-  });
-  const panel = (id, key, label, color, ytitle) => {
-    const ds = [mainLine(p[key], label, color)];
-    if (M_BASE && !isBase) ds.push(baseLine(M_BASE.path[key]));
-    mkChart(id, { type: "line", data: { labels: t, datasets: ds }, options: opts(ytitle) });
-  };
-
-  // ---- the note's Figure 1, panel by panel ----
-  panel("m-chart-inv", "i_pp", "investment rate", C.ge, "percentage points");
-  panel("m-chart-k",   "K",    "installed compute", C.ge, "percent");
-  panel("m-chart-rk",  "rK",   "compute rental price", C.scar, "percent");
-  panel("m-chart-q",   "q",    "Tobin's q", C.pe, "percent");
-
-  // ---- rents captured because supply is convex (share of GDP) ----
-  const rents = [
-    mainLine(p.rents.fixed_pp, "Rents to hard-to-replicate factors (permanent)", C.scar),
-    mainLine(p.rents.compute_scarcity_pp, "Compute scarcity rents (temporary)", C.pe),
-  ];
-  if (M_BASE && !isBase) rents.push(baseLine(M_BASE.path.rents.fixed_pp));
-  mkChart("m-chart-rents", { type: "line",
-    data: { labels: t, datasets: rents }, options: opts("Δ share of GDP (percentage points)") });
-
-  // stats table
-  const im = M_LAST.impact, lr = M_LAST.longrun;
-  const row = (name, a, b) => `<tr><td>${name}</td><td>${fmt(a,3)}</td><td>${fmt(b,3)}</td></tr>`;
-  document.getElementById("m-stats").innerHTML =
-    `<tr><th>Response to a 1% AI productivity gain</th><th>Impact</th><th>Long run</th></tr>` +
-    row("AI output (%)", im.X, lr.X) +
-    row("AI price (%)", im.pX, lr.pX) +
-    row("Bottleneck rents (pp of GDP)", im.rents_fixed_pp, lr.rents_fixed_pp) +
-    row("Compute scarcity rents (pp of GDP)", im.rents_scarcity_pp, lr.rents_scarcity_pp) +
-    row("Compute stock (%)", im.K, lr.K) +
-    row("GDP (%)", im.Y, lr.Y);
-
-  // revenue split table (competitive; rents come from decreasing returns, not markups)
-  const c = M_LAST.markup.competitive;
-  const pcnt = x => (100*x).toFixed(1) + "%";
-  document.getElementById("m-split").innerHTML =
-    `<tr><th>AI revenue to…</th><th>Share</th></tr>
-     <tr><td>AI labor</td><td>${pcnt(c.labor)}</td></tr>
-     <tr><td>Compute owners</td><td>${pcnt(c.compute)}</td></tr>
-     <tr><td>Rents to hard-to-replicate factors</td><td class="delta-pos">${pcnt(c.profit)}</td></tr>`;
-}
-
-// ============================================================
-// EXPERT SCENARIOS (shared by both tabs)
-// ============================================================
-let SCENARIOS = null;
-
-async function loadScenarios() {
-  try {
-    const r = await fetch(API + "/api/scenarios");
-    SCENARIOS = (await r.json()).scenarios;
-    ["expertise", "demand"].forEach(tab => {
-      const sel = document.getElementById("scen-select-" + tab);
-      if (!sel) return;
-      SCENARIOS.forEach(s => {
-        const o = document.createElement("option");
-        o.value = s.id; o.textContent = s.name;
-        sel.appendChild(o);
-      });
-      sel.addEventListener("change", () => applyScenario(tab, sel.value));
-    });
-  } catch (e) { console.warn("scenarios unavailable:", e); }
-}
-
-function applyScenario(tab, id) {
-  const card = document.getElementById("scen-card-" + tab);
-  if (!id) { card.className = "scenario-card"; card.innerHTML = ""; solveTab(tab); return; }
-  const s = SCENARIOS.find(x => x.id === id);
-  if (!s) return;
-
-  // set sliders
-  const setP = (elId, valId, v) => {
-    const el = document.getElementById(elId);
-    if (!el) return;
-    el.value = v;
-    const lab = document.getElementById(valId);
-    if (lab) lab.textContent = (+v).toFixed(2);
-  };
-  if (tab === "expertise") {
-    setP("in-sigma", "val-sigma", s.params.expertise.sigma);
-    setP("in-scarcity", "val-scarcity", s.params.expertise.scarcity);
-    setP("in-productivity", "val-productivity", s.params.expertise.productivity);
-  } else {
-    const d = s.params.demand;
-    ["ag","mobility","exposure","eps_spread","nonhom","sig_scale"].forEach(k =>
-      setP("d-in-"+k, "d-val-"+k, d[k]));
-    const on = document.getElementById("d-tgl-hetero-on"), off = document.getElementById("d-tgl-hetero-off");
-    if (on && off) {
-      on.classList.toggle("active", !!d.hetero);
-      off.classList.toggle("active", !d.hetero);
-    }
-  }
-
-  // provenance card
-  const srcs = (s.sources || []).map(x => `
-    <li><b>${x.author || x.id}</b>${x.year ? " (" + x.year + ")" : ""} — ${x.title || ""}
-      ${x.summary ? `<br><i>${x.summary}</i>` : ""}
-      ${x.quote ? `<br>&ldquo;${x.quote}&rdquo;` : ""}</li>`).join("");
-  card.innerHTML = `
-    <div class="tagline">${s.tagline}</div>
-    <div>${s.narrative}</div>
-    <div class="ineq">Inequality outlook: ${s.inequality_outlook}</div>
-    <details><summary>Sources this scenario is consistent with (${(s.sources||[]).length})</summary>
-      <ul class="src">${srcs}</ul></details>`;
-  card.className = "scenario-card show";
-  solveTab(tab);
-}
-
-function solveTab(tab) { (tab === "expertise") ? solve() : dSolve(); }
-
-// mark scenario select as Custom when user moves a slider manually
-document.addEventListener("input", e => {
-  if (e.target.matches('#params input[type=range]')) {
-    const sel = document.getElementById("scen-select-expertise");
-    if (sel && sel.value) { sel.value = ""; document.getElementById("scen-card-expertise").className = "scenario-card"; }
-  }
-  if (e.target.matches('#d-params input[type=range]')) {
-    const sel = document.getElementById("scen-select-demand");
-    if (sel && sel.value) { sel.value = ""; document.getElementById("scen-card-demand").className = "scenario-card"; }
-  }
-});
-
-loadScenarios();
-
-// ---------------- KaTeX for the Underlying Models tab ----------------
-function renderModelMath() {
-  if (typeof renderMathInElement === "undefined") { setTimeout(renderModelMath, 400); return; }
-  renderMathInElement(document.getElementById("tab-models"), {
-    delimiters: [
-      { left: "$$", right: "$$", display: true },
-      { left: "\\(", right: "\\)", display: false },
-    ],
-    throwOnError: false,
-  });
-}
-renderModelMath();
-
-function dRenderTable() {
-  const f = D_LAST.final, occ = D_LAST.labels.occupations;
-  const prim = D_LAST.primitives;
-  let html = `<tr><th>Occupation</th><th>ε</th><th>σ</th><th>b₀</th><th>Δln w</th><th>Δln L</th></tr>`;
-  occ.forEach((name, i) => {
-    const dw = f.dlnw_real[i];
-    const cls = dw >= 0 ? "delta-neg" : "delta-pos";   // green if gaining
-    html += `<tr><td>${name}</td>
-      <td>${fmt(prim.eps_demand[i],2)}</td>
-      <td>${fmt(prim.sigma_labor_gpt[i],2)}</td>
-      <td>${fmt(prim.exposure_b0[i],2)}</td>
-      <td class="${cls}">${dw>=0?"+":""}${fmt(dw,3)}</td>
-      <td>${f.dlnL[i]>=0?"+":""}${fmt(f.dlnL[i],3)}</td></tr>`;
-  });
-  document.getElementById("d-table").innerHTML = html;
-}
+(async function init() {
+  const r = await fetch(`${API}/api/future/meta`);
+  META = await r.json();
+  Object.assign(state, META.defaults);
+  buildQuestions(); syncControls(); solve();
+})();
 </script>
 </body>
 </html>
