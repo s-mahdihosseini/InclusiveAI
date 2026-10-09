@@ -17,7 +17,8 @@ from dataclasses import replace
 import numpy as np
 
 import ai_future
-from mrr_solver import _production_at_capital, solve_equilibrium, stationary_atoms
+from mrr_solver import (_equilibrium_residuals, _production_at_capital, equilibrium_unknowns,
+                        solve_equilibrium, stationary_atoms)
 
 
 # Y, K, R, r_B, r_K, labor share, ordinary-capital share, markdown-rent share,
@@ -329,6 +330,52 @@ class WebsiteModelIntegrationTests(unittest.TestCase):
             self.assertEqual(len(candidates), 1, preset["id"])
             matched.add(candidates[0])
         self.assertEqual(matched, set(REFERENCE))
+
+    def test_warm_start_leaves_equilibria_unchanged(self):
+        # Off-grid inputs: solve from a stored neighbour (or the last solve) and
+        # from the fixed starts; the equilibrium must not depend on the start.
+        inputs = dict(auto=1, aug=-1, own=1, mp_low=0, mp_high=1, lam_a=0.57, lam_p=0.42,
+                      c_p=0.31, tier="modest", xi=0.6, chi=None)
+        p, *_ = ai_future.scenario_parameters(**inputs)
+        cold = solve_equilibrium(p, compute_distribution=False)
+        guess = ai_future.warm_start(**inputs)
+        warm = solve_equilibrium(p, compute_distribution=False, initial_guess=guess)
+        np.testing.assert_allclose([warm.capital, warm.r_safe, warm.r_risky],
+                                   [cold.capital, cold.r_safe, cold.r_risky], rtol=0, atol=1e-9)
+        far = solve_equilibrium(p, compute_distribution=False, initial_guess=np.log([50.0, 40.0, 0.2]))
+        self.assertAlmostEqual(far.capital, cold.capital, delta=1e-9)
+        np.testing.assert_allclose(equilibrium_unknowns(p, cold), np.log([cold.capital,
+            cold.safe_bonds_households * cold.labor_bill / (cold.r_safe - 0.015), cold.r_safe - 0.015]))
+
+    def test_table_key_is_canonical(self):
+        self.assertEqual(ai_future.table_key("data", "data", 0, 0, 0, 0.5, 0.5, 0.25, "modest", 1, None),
+                         "data|data|0|0|0|0.500000|0.500000|0.250000|modest|1.000000|none")
+        # Tilts do not matter without AI intensity, so pre-AI keys collapse.
+        self.assertEqual(ai_future.table_key(2, -2, 1, 0, 0, 0.0, 0.0, 0.25, "modest", 1, None),
+                         ai_future.table_key("data", "data", 1, 0, 0, 0.0, 0.0, 0.25, "modest", 1, None))
+        self.assertIn("|0.250000", ai_future.table_key("data", "data", 0, 0, 0, .65, .35, .25, "modest", .25, .25))
+
+    def test_equilibrium_table_entries_are_equilibria(self):
+        table = ai_future._table()
+        entries = table["entries"]
+        if not entries:
+            self.skipTest("data/equilibrium_table.json not built")
+        keys = sorted(entries)
+        sample = keys[:: max(1, len(keys) // 12)][:12]
+        for key in sample:
+            with self.subTest(key=key):
+                auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi = key.split("|")
+                auto = auto if auto == "data" else int(auto)
+                aug = aug if aug == "data" else int(aug)
+                p, *_ = ai_future.scenario_parameters(
+                    auto, aug, int(own), int(mp_low), int(mp_high), float(lam_a), float(lam_p),
+                    float(c_p), tier, float(xi), None if chi == "none" else float(chi))
+                residual, state = _equilibrium_residuals(np.asarray(entries[key]), p)
+                self.assertLess(float(np.max(np.abs(residual))), 1e-9)
+                self.assertFalse(state.get("invalid", 0.0))
+        # The presets' own grid points are stored, so preset requests are served from the table.
+        for preset in ai_future.PRESETS:
+            self.assertIn(ai_future.table_key(**preset["inputs"]), entries, preset["id"])
 
 
 if __name__ == "__main__":

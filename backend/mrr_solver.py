@@ -327,7 +327,9 @@ def _solve_reduced_equations(p: Parameters) -> tuple[np.ndarray, Dict[str, float
     raise RuntimeError('Reduced financial bisection did not meet the equilibrium tolerance')
 
 
-def _solve_three_equations(p: Parameters) -> tuple[np.ndarray, Dict[str, float]]:
+def _solve_three_equations(
+    p: Parameters, initial_guess: np.ndarray | None = None
+) -> tuple[np.ndarray, Dict[str, float]]:
     # The original MATLAB routine solves these same three equations.  Logs enforce
     # positive capital, household bond holdings, and r_B-g.
     starts = (
@@ -337,6 +339,12 @@ def _solve_three_equations(p: Parameters) -> tuple[np.ndarray, Dict[str, float]]
         np.array([8.0, 5.0, 0.050]),
         np.array([1.0, 0.5, 0.025]),
     )
+    if initial_guess is not None:
+        # A warm start in the log unknowns (log K, log B_S, log(r_B-g)) is tried
+        # first; the fixed starts follow, so the solution does not depend on it.
+        guess = np.asarray(initial_guess, dtype=float)
+        if guess.shape == (3,) and np.all(np.isfinite(guess)):
+            starts = (np.exp(guess),) + starts
     last_residual = np.full(3, np.nan)
     for start in starts:
         u = np.log(start)
@@ -581,9 +589,20 @@ def quantile_bin_means(
     return result
 
 
-def solve_equilibrium(p: Parameters, compute_distribution: bool = True) -> Equilibrium:
+def equilibrium_unknowns(p: Parameters, e: Equilibrium) -> np.ndarray:
+    """Log unknowns (log K, log B_S, log(r_B-g)) of a solved equilibrium.
+
+    They can be passed back to ``solve_equilibrium`` as ``initial_guess``.
+    """
+    human = e.labor_bill / (e.r_safe - p.growth)
+    return np.log(np.array([e.capital, e.safe_bonds_households * human, e.r_safe - p.growth]))
+
+
+def solve_equilibrium(
+    p: Parameters, compute_distribution: bool = True, initial_guess: np.ndarray | None = None
+) -> Equilibrium:
     validate(p)
-    u, state = _solve_three_equations(p)
+    u, state = _solve_three_equations(p, initial_guess)
     equation_residual, state = _equilibrium_residuals(u, p)
     levels = state["levels"]
     inv_h, inv_p, inv_n = _tail_parameters(p, state)

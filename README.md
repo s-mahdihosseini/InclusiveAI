@@ -35,7 +35,9 @@ InclusiveAI/
 │   ├── technology.py         # Task allocation at shadow labor and capital costs
 │   ├── reference_solver.py   # Reproduces the baseline normalization
 │   ├── test_integration.py   # Appendix parity and economic checks
+│   ├── precompute_table.py   # Builds data/equilibrium_table.json (Newton warm starts)
 │   ├── data/ai_occupation_calibration.csv  # Occupation deciles (simple_aiyagari_ge/build_calibration.py)
+│   ├── data/equilibrium_table.json         # Solved equilibria for every question grid
 │   └── requirements.txt
 ├── frontend/
 │   ├── index.html            # The page (Chart.js, no build step)
@@ -72,6 +74,24 @@ API: `GET /api/future/meta` supplies questions, defaults, presets, and parameter
 mappings. `GET /api/future/solve` accepts the existing `auto`, `aug`, `own`,
 `mp_low`, `mp_high`, `lam_a`, `lam_p`, and `c_p` fields, plus optional `tier`,
 `xi`, and `chi`. Existing request URLs continue to work.
+
+## Response time
+
+Each request solves a full balanced-growth equilibrium (about half a second of
+CPU). `backend/data/equilibrium_table.json` stores the solved unknowns for every
+combination of the four question answers under the default advanced settings
+and under each preset's settings (15,425 equilibria). A request on the grid
+starts the Newton solver at the stored solution and returns in tens of
+milliseconds; a request off the grid starts from the nearest stored point.
+Results never depend on the table: the solver verifies every equilibrium to its
+usual tolerance and falls back to its fixed starting points. Rebuild the table
+after changing the solver modules, the calibration file, or the question
+mapping:
+
+```bash
+cd backend && ../.venv/bin/python precompute_table.py        # ~1 hour on two cores; resumable
+../.venv/bin/python precompute_table.py --check 50           # re-solve 50 entries from scratch
+```
 
 ## Verify the integration
 

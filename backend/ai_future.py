@@ -17,6 +17,7 @@ Named presets reproduce the five appendix scenarios.
 from __future__ import annotations
 
 import csv
+import json
 import os
 from dataclasses import replace
 from functools import lru_cache
@@ -28,6 +29,7 @@ from mrr_solver import (
     Equilibrium,
     Parameters,
     _production_at_capital,
+    equilibrium_unknowns,
     production_shares,
     solve_equilibrium,
     stationary_atoms,
@@ -331,6 +333,64 @@ def _baseline_result() -> Dict[str, object]:
     return _describe(base, solve_equilibrium(base, compute_distribution=False))
 
 
+# ---------------------------------------------------------------------------
+# Precomputed equilibrium table (warm starts)
+# ---------------------------------------------------------------------------
+# backend/precompute_table.py solves the question grids for the default advanced
+# settings and for each preset's settings, and stores the three log unknowns of
+# every equilibrium.  At request time the stored point, or the nearest stored
+# point with the same discrete answers, starts the Newton solver, which still
+# verifies the equilibrium to 2e-12.  Results never depend on the table; without
+# it, or for inputs far from it, the solver falls back to its fixed starts.
+TABLE_FILE = os.path.join(HERE, "data", "equilibrium_table.json")
+_LAST_UNKNOWNS: list = []
+
+
+def table_key(auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi) -> str:
+    """Canonical key of an input tuple. Tilts are irrelevant without AI intensity."""
+    if float(lam_a) == 0.0 and float(lam_p) == 0.0:
+        auto, aug = "data", "data"
+    chi_text = "none" if chi is None else f"{float(chi):.6f}"
+    return (f"{auto}|{aug}|{own}|{mp_low}|{mp_high}|{float(lam_a):.6f}|{float(lam_p):.6f}|"
+            f"{float(c_p):.6f}|{tier}|{float(xi):.6f}|{chi_text}")
+
+
+@lru_cache(maxsize=1)
+def _table() -> Dict[str, object]:
+    if not os.path.exists(TABLE_FILE):
+        return {"entries": {}, "index": {}}
+    with open(TABLE_FILE) as stream:
+        table = json.load(stream)
+    entries = table.get("entries", {})
+    index: Dict[tuple, list] = {}
+    for key, unknowns in entries.items():
+        auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi = key.split("|")
+        discrete = (auto, aug, own, mp_low, mp_high, tier)
+        continuous = np.array([float(lam_a), float(lam_p), float(c_p), float(xi),
+                               CHI[int(own)] if chi == "none" else float(chi)])
+        index.setdefault(discrete, []).append((continuous, np.asarray(unknowns, dtype=float)))
+    table["index"] = index
+    return table
+
+
+def warm_start(auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi):
+    """Stored unknowns for these inputs, else the nearest stored point, else the last solve."""
+    table = _table()
+    key = table_key(auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi)
+    exact = table["entries"].get(key)
+    if exact is not None:
+        return np.asarray(exact, dtype=float)
+    if float(lam_a) == 0.0 and float(lam_p) == 0.0:
+        auto, aug = "data", "data"
+    candidates = table["index"].get((str(auto), str(aug), str(own), str(mp_low), str(mp_high), tier), [])
+    if candidates:
+        target = np.array([float(lam_a), float(lam_p), float(c_p), float(xi),
+                           CHI[int(own)] if chi is None else float(chi)])
+        continuous, unknowns = min(candidates, key=lambda item: float(np.sum((item[0] - target) ** 2)))
+        return unknowns
+    return _LAST_UNKNOWNS[-1] if _LAST_UNKNOWNS else None
+
+
 @lru_cache(maxsize=512)
 def solve(auto="data", aug="data", own=0, mp_low=0, mp_high=0,
           lam_a=DEFAULT_LAMBDA_A, lam_p=DEFAULT_LAMBDA_P,
@@ -339,7 +399,9 @@ def solve(auto="data", aug="data", own=0, mp_low=0, mp_high=0,
     base, data = _base()
     p, a_profile, q_profile, psi_gain = scenario_parameters(
         auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi)
-    e = solve_equilibrium(p, compute_distribution=False)
+    guess = warm_start(auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi)
+    e = solve_equilibrium(p, compute_distribution=False, initial_guess=guess)
+    _LAST_UNKNOWNS[:] = [equilibrium_unknowns(p, e)]
     worst = max(abs(v) for v in e.residuals.values())
     before, after = _baseline_result(), _describe(p, e)
     adoption = _production_at_capital(p, e.capital)["technique_details"]

@@ -119,6 +119,24 @@ The wage-sharing-incidence comparison in the appendix varies `xi_j` across
 occupations. The current website supplies a common `xi` and separate low/high
 markdown multipliers, providing an additional way to study wage-setting incidence.
 
+## Precomputed equilibrium table
+
+`backend/data/equilibrium_table.json` holds the three log unknowns
+(`log K`, `log B_S`, `log(r_B-g)`) of the equilibrium for every combination of
+the four question answers (`auto`, `aug`, `own`, `mp_low`, `mp_high`), under the
+default advanced settings and under each preset's advanced settings. Keys are
+the canonical input strings produced by `ai_future.table_key`; with zero AI
+intensity the tilt answers are irrelevant and collapse to `data`, and an exact
+`chi` fixes `own` at its default. The table supplies the Newton starting point
+only. `ai_future.warm_start` uses the stored point when the inputs are on the
+grid, otherwise the nearest stored point with the same discrete answers, and
+otherwise the previous solve. The solver then verifies the equilibrium to
+`2e-12` and falls back to its fixed starting points if needed, so the served
+numbers are the same with or without the table. Rebuild it with
+`backend/precompute_table.py` after any model, calibration, or mapping change;
+`--check N` re-solves `N` entries from scratch and reports the largest
+difference.
+
 ## Income and ownership measures
 
 Household labor income is `w_j`; net capital income is `r_K*a+r_B*b`; total

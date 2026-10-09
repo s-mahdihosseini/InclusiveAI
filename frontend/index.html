@@ -471,9 +471,13 @@ function buildQuestions() {
   box.querySelectorAll("[data-datafor]").forEach(p => p.addEventListener("click", () => {
     const k = p.dataset.datafor; state[k] = state[k] === "data" ? 0 : "data"; markCustom(); syncControls(); schedule();
   }));
-  ["lam_a", "lam_p", "c_p", "xi"].forEach(id => document.getElementById(id).addEventListener("input", e => {
-    state[id] = parseFloat(e.target.value); markCustom(); syncControls(); schedule();
-  }));
+  // Sliders: update the label while dragging, solve once on release. Each solve
+  // is a full general-equilibrium computation, so per-pixel requests queue up.
+  ["lam_a", "lam_p", "c_p", "xi"].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener("input", e => { state[id] = parseFloat(e.target.value); markCustom(); syncControls(); });
+    el.addEventListener("change", () => schedule(0));
+  });
   document.getElementById("tier").addEventListener("change", e => {
     state.tier = e.target.value; markCustom(); syncControls(); schedule();
   });
