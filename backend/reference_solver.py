@@ -7,11 +7,7 @@ the closed-form Merton rule.  The production side keeps their task structure,
 allows occupation-specific wage markdowns, and activates their constant product
 markup.  One risky capital stock is allocated between fully automated tasks and
 fixed-proportions compute used alongside workers.  Labor-markdown rents and product-
-markup profits accrue to the same consolidated risky equity claim. Technology
-choice and physical input allocation use resource shadow values. With fixed
-capital and occupation employment, wage markdowns redistribute labor's resource
-value between workers and owners. Their financial effects can change equilibrium
-capital and thereby affect production and adoption.
+markup profits accrue to the same consolidated risky equity claim.
 
 There is deliberately no Aiyagari asset grid and no transition routine here.  The
 stationary wealth distributions are the exact Pareto and double-Pareto solutions of
@@ -127,11 +123,11 @@ def validate(p: Parameters) -> None:
 def production_shares(p: Parameters, e: Equilibrium) -> Dict[str, np.ndarray | float]:
     """Revenue shares implied by the solved fixed-proportions technology.
 
-    Actual automation is selected within the frontier ``sum eta_j alpha_j``.
+    MRR automation contributes the constant task share ``sum eta_j alpha_j``.
     Augmentation capital is instead a quantity requirement.  Its payment share is
     endogenous because the rental price is determined in general equilibrium.
     """
-    remaining_task = p.eta * (1.0 - p.alpha) # Feasible nonautomation task weights
+    remaining_task = p.eta * (1.0 - p.alpha)
     labor_task = (
         p.product_markup
         * p.masses
@@ -139,7 +135,7 @@ def production_shares(p: Parameters, e: Equilibrium) -> Dict[str, np.ndarray | f
         / e.output
     )
     return {
-        "remaining_task": remaining_task, # Frontier measure, not labor payment share
+        "remaining_task": remaining_task,
         "labor_task": labor_task,
         "automation_capital": e.automation_capital_share,
         "augmentation_capital": e.augmentation_capital_share,
@@ -154,8 +150,96 @@ def production_shares(p: Parameters, e: Equilibrium) -> Dict[str, np.ndarray | f
 
 
 def _production_at_capital(p: Parameters, capital: float) -> Dict[str, np.ndarray | float]:
-    from technology import production_at_capital
-    return production_at_capital(p, capital)
+    """Production and payouts for a candidate aggregate capital stock.
+
+    On MRR automated tasks, one unit of task output requires one unit of capital.
+    On a nonautomated task, effective labor and augmentation compute are required
+    in fixed proportions.  If ``m_j`` is compute per unit of augmented task output,
+    total augmentation capital is ``m_j psi_j^A L_j``.  The remainder of aggregate
+    capital is allocated across automated tasks exactly as in MRR Appendix A.1.
+    """
+    automation_share = float(p.eta @ p.alpha)
+    labor_exponents = p.eta * (1.0 - p.alpha)
+    effective_psi = p.psi * p.augmentation_gain
+    augmentation_capital_by_group = (
+        p.augmentation_compute_requirement * effective_psi * p.masses
+    )
+    augmentation_capital = float(np.sum(augmentation_capital_by_group))
+    automation_capital = capital - augmentation_capital
+    if automation_capital <= 0:
+        raise ValueError("Aggregate capital does not cover augmentation compute")
+
+    unit = (automation_capital / automation_share) ** automation_share * float(
+        np.prod((effective_psi * p.masses / labor_exponents) ** labor_exponents)
+    )
+    output = float(p.productivity * unit)
+    inverse_markup = 1.0 / p.product_markup
+    capital_rental = inverse_markup * automation_share * output / automation_capital
+
+    # The first term is the MRR marginal revenue product of labor.  The second is
+    # the extra compute bill required when one more worker operates at the
+    # augmented productivity level.
+    shadow_wages = (
+        inverse_markup * labor_exponents * output / p.masses
+        - capital_rental * p.augmentation_compute_requirement * effective_psi
+    )
+    if np.any(shadow_wages <= 0):
+        raise ValueError("Augmentation compute makes a labor shadow wage nonpositive")
+    wages = (1.0 - p.wage_markdown) * shadow_wages
+    labor_bill = float(p.masses @ wages)
+    markdown_profit = float(p.masses @ (p.wage_markdown * shadow_wages))
+    product_profit = float((1.0 - inverse_markup) * output)
+    total_profit = markdown_profit + product_profit
+    ordinary_capital_income = capital_rental * capital
+
+    augmentation_capital_share = float(
+        p.product_markup * capital_rental * augmentation_capital / output
+    )
+    physical_capital_share = automation_share + augmentation_capital_share
+    ordinary_capital_share = inverse_markup * physical_capital_share
+    risky_payout = ordinary_capital_income + total_profit
+    risky_payout_share = risky_payout / output
+    r_risky = risky_payout / capital - p.delta
+
+    baseline_psi = p.psi
+    productivity_saving = (
+        shadow_wages / baseline_psi * (1.0 - 1.0 / p.augmentation_gain)
+    )
+    compute_cost = capital_rental * p.augmentation_compute_requirement
+    adoption_slack = productivity_saving - compute_cost
+    inactive = np.isclose(p.augmentation_gain, 1.0) & np.isclose(
+        p.augmentation_compute_requirement, 0.0
+    )
+    adoption_slack = np.where(inactive, np.nan, adoption_slack)
+
+    factor_residual = output - (
+        labor_bill + markdown_profit + product_profit + ordinary_capital_income
+    )
+    if abs(factor_residual) > 5e-10 * max(1.0, output):
+        raise AssertionError("Production payments do not exhaust output")
+    return {
+        "output": output,
+        "capital": capital,
+        "automation_capital": automation_capital,
+        "augmentation_capital": augmentation_capital,
+        "capital_rental": capital_rental,
+        "r_risky": r_risky,
+        "shadow_wages": shadow_wages,
+        "wages": wages,
+        "labor_bill": labor_bill,
+        "markdown_profit": markdown_profit,
+        "product_profit": product_profit,
+        "total_profit": total_profit,
+        "ordinary_capital_income": ordinary_capital_income,
+        "automation_capital_share": automation_share,
+        "augmentation_capital_share": augmentation_capital_share,
+        "physical_capital_share": physical_capital_share,
+        "ordinary_capital_share": ordinary_capital_share,
+        "product_profit_share": 1.0 - inverse_markup,
+        "risky_payout_share": risky_payout_share,
+        "adoption_slack": adoption_slack,
+        "factor_residual": factor_residual,
+    }
 
 
 def _state_from_unknowns(u: np.ndarray, p: Parameters) -> Dict[str, float]:
@@ -222,111 +306,6 @@ def _equilibrium_residuals(u: np.ndarray, p: Parameters) -> tuple[np.ndarray, Di
     return residual, s
 
 
-def _solve_reduced_equations(p: Parameters) -> tuple[np.ndarray, Dict[str, float]]:
-    """Bracket the same financial equilibrium when joint Newton steps stall.
-
-    At a given K, household saving gives bond holdings explicitly as a function
-    of r_B. Portfolio clearing then determines r_B by bisection. The remaining
-    investor-saving equation is a scalar equation in K. No model equation or
-    participation condition changes in this numerical fallback.
-    """
-    safe_floor = p.rho + p.sigma*p.growth
-    safe_ceiling = p.rho + p.sigma*(p.growth+p.dissipation)
-
-    def at_capital(capital):
-        levels = _production_at_capital(p, capital)
-        risky_return = float(levels['r_risky'])
-        payroll = float(levels['labor_bill'])
-        upper = min(risky_return, safe_ceiling)
-        if upper <= safe_floor:
-            return None
-        low = np.nextafter(safe_floor, upper)
-        high = np.nextafter(upper, safe_floor)
-
-        def portfolio_state(safe_return):
-            household_drift = (safe_return-p.rho)/p.sigma-p.growth
-            denominator = p.dissipation-household_drift
-            if denominator <= 0:
-                return None
-            human = payroll/(safe_return-p.growth)
-            bonds = (1-p.chi)*human*household_drift/denominator
-            effective = capital-bonds+p.chi*human
-            share = float(np.clip((risky_return-safe_return)/(p.gamma*p.nu**2),
-                                  0, p.leverage_limit))
-            portfolio_return = share*risky_return+(1-share)*safe_return
-            wealth_return = portfolio_return+.5*(p.sigma-1)*p.gamma*p.nu**2*share**2
-            investor_drift = (wealth_return-p.rho)/p.sigma-p.growth
-            return (share*effective-capital,
-                    investor_drift*effective-p.dissipation*(capital-bonds), bonds)
-
-        left = portfolio_state(low)
-        right = portfolio_state(high)
-        if left is None or right is None or left[0] < 0 or right[0] > 0:
-            return None
-        for _ in range(70):
-            mid = .5*(low+high)
-            trial = portfolio_state(mid)
-            if trial[0] > 0:
-                low = mid
-            else:
-                high = mid
-        candidates = [(safe, portfolio_state(safe)) for safe in (low, .5*(low+high), high)]
-        safe_return, result = min(candidates, key=lambda item: abs(item[1][0]))
-        if result[2] <= 0:
-            return None
-        unknowns = np.log([capital, result[2], safe_return-p.growth])
-        return float(result[1]), unknowns
-
-    def checked_solution(result):
-        residual, state = _equilibrium_residuals(result[1], p)
-        if not state.get('invalid', 0) and np.max(np.abs(residual)) < 2e-12:
-            return result[1], state
-        return None
-
-    previous = None
-    bracket = None
-    # The production normalization puts the principal equilibria around K=1--10;
-    # the wide grid also accommodates the website's more extreme experiments.
-    for capital in np.geomspace(1e-6, 1e6, 145):
-        try:
-            result = at_capital(float(capital))
-        except (ValueError, FloatingPointError):
-            result = None
-        if result is None:
-            continue
-        if abs(result[0]) < 1e-13:
-            solution = checked_solution(result)
-            if solution is not None:
-                return solution
-        if previous is not None and previous[1][0]*result[0] <= 0:
-            bracket = (previous, (float(capital), result))
-            break
-        previous = (float(capital), result)
-    if bracket is None:
-        raise RuntimeError('Could not bracket investor saving in the reduced financial system')
-    (low, left), (high, right) = bracket
-    best = min((left, right), key=lambda result: abs(result[0]))
-    for _ in range(80):
-        mid = np.sqrt(low*high)
-        trial = at_capital(mid)
-        if trial is None:
-            raise RuntimeError('Portfolio clearing left its feasible interval during bisection')
-        if abs(trial[0]) < abs(best[0]):
-            best = trial
-        if abs(trial[0]) < 1e-13:
-            solution = checked_solution(trial)
-            if solution is not None:
-                return solution
-        if left[0]*trial[0] <= 0:
-            high, right = mid, trial
-        else:
-            low, left = mid, trial
-    solution = checked_solution(best)
-    if solution is not None:
-        return solution
-    raise RuntimeError('Reduced financial bisection did not meet the equilibrium tolerance')
-
-
 def _solve_three_equations(p: Parameters) -> tuple[np.ndarray, Dict[str, float]]:
     # The original MATLAB routine solves these same three equations.  Logs enforce
     # positive capital, household bond holdings, and r_B-g.
@@ -373,13 +352,10 @@ def _solve_three_equations(p: Parameters) -> tuple[np.ndarray, Dict[str, float]]
                     break
             if not accepted:
                 break
-    try:
-        return _solve_reduced_equations(p)
-    except RuntimeError as error:
-        raise RuntimeError(
-            "Moll--Rachel--Restrepo equilibrium did not converge from multiple starts; "
-            f"last residual={last_residual}; reduced fallback: {error}"
-        ) from error
+    raise RuntimeError(
+        "Moll--Rachel--Restrepo equilibrium did not converge from multiple starts; "
+        f"last residual={last_residual}"
+    )
 
 
 def _tail_parameters(p: Parameters, state: Dict[str, float]) -> tuple[float, float, float]:
@@ -441,7 +417,7 @@ def _mean_investor_wealth(edges: np.ndarray, inv_p: float, inv_n: float) -> np.n
 def stationary_atoms(p: Parameters, e: Equilibrium, quadrature_size: int | None = None) -> Dict[str, np.ndarray]:
     """Deterministic atoms for exact stationary distributions.
 
-    Exact conditional cell means introduce no simulation noise.  It is used only
+    Midpoint inverse-CDF quadrature introduces no simulation noise.  It is used only
     for mixed-occupation Ginis and percentile decompositions; aggregate equilibrium
     conditions and Pareto tail indices are analytical.
     """
@@ -683,7 +659,11 @@ def solve_equilibrium(p: Parameters, compute_distribution: bool = True) -> Equil
         "top1_equity_share": top_share(atoms["equity"], atoms["equity"], weights, 0.01),
         "top10_total_income_share": top_share(atoms["total"], atoms["total"], weights, 0.10),
     }
-    stats["top10_labor_concentration"] = top_share(atoms["total"],atoms["labor"],weights,0.10)
-    stats["top10_capital_concentration"] = top_share(atoms["total"],atoms["capital_income"],weights,0.10)
-    stats["net_capital_income_share"] = provisional.r_risky*provisional.capital/(provisional.output-p.delta*provisional.capital)
     return replace(provisional, statistics=stats)
+
+
+def normalize_productivity(p: Parameters, target_output: float = 1.0) -> Parameters:
+    e = solve_equilibrium(p, compute_distribution=False)
+    alpha = e.automation_capital_share
+    adjusted = p.productivity * (target_output / e.output) ** (1.0 - alpha)
+    return replace(p, productivity=float(adjusted))

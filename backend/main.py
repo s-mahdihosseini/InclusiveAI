@@ -7,7 +7,7 @@ Run from the backend/ directory:
 Serves:
   - GET /api/future/meta                                        -> questions and defaults
   - GET /api/future/solve?auto=&aug=&own=&mp_low=&mp_high=      -> steady-state comparison
-                         &lam_a=&lam_p=&c_p=
+                         &lam_a=&lam_p=&c_p=&tier=&xi=&chi=
   -     /                                                       -> frontend (static)
 
 The earlier models (expertise, demand structure, compute bottlenecks) and their
@@ -15,6 +15,7 @@ endpoints are archived in ../archive/v1.
 """
 
 import os
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -22,7 +23,7 @@ from fastapi.staticfiles import StaticFiles
 
 import ai_future
 
-app = FastAPI(title="InclusiveAI API", version="0.2.0")
+app = FastAPI(title="InclusiveAI API", version="0.3.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -59,14 +60,20 @@ def future_solve(
     lam_a: float = Query(ai_future.DEFAULT_LAMBDA_A, ge=0.0, le=1.0),
     lam_p: float = Query(ai_future.DEFAULT_LAMBDA_P, ge=0.0, le=1.0),
     c_p: float = Query(ai_future.DEFAULT_AUGMENTATION_COST, ge=0.0, le=0.9),
+    tier: Literal["limited", "modest", "broad"] = Query(ai_future.TIER),
+    xi: float = Query(ai_future.DEFAULT_WAGE_SHARING, ge=0.0, le=1.0),
+    chi: float | None = Query(None, ge=0.035, le=0.6),
 ):
     try:
         return ai_future.solve(
             _answer(auto, True), _answer(aug, True), _answer(own, False),
             _answer(mp_low, False), _answer(mp_high, False),
-            round(float(lam_a), 2), round(float(lam_p), 2), round(float(c_p), 2))
+            round(float(lam_a), 6), round(float(lam_p), 6), round(float(c_p), 6),
+            tier, round(float(xi), 6), None if chi is None else round(float(chi), 6))
     except HTTPException:
         raise
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:  # pragma: no cover
         raise HTTPException(status_code=500, detail=str(e))
 

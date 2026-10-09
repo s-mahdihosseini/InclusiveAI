@@ -15,9 +15,13 @@ prosperity. Visitors answer four questions about AI; the site solves the model
 and compares the pre-AI and post-AI long-run steady states.
 Companion site to *AI and the Distribution of Prosperity*.
 
-The model is the AI extension of Moll, Rachel and Restrepo (2022) maintained in
-`model/ai_mrr_extended` (note: `output/pdf/model.pdf`), with a constant product
-markup and capital-using augmentation. The first version of the site (expertise,
+The model builds on Moll, Rachel and Restrepo (2022) and uses the reviewed
+`model/ai_mrr_reviewed` implementation: automation and fixed-proportions worker
+augmentation with compute. Firms choose techniques by comparing capital costs
+with labor’s shadow value. Wage markdowns redistribute income between workers
+and owners; the financial equilibrium determines their effect on capital
+accumulation. The revised appendix and website use the same
+calibration and five scenario presets. The first version of the site (expertise,
 demand-structure and compute-bottleneck models) is archived in `archive/v1`.
 
 ## Structure
@@ -27,7 +31,10 @@ InclusiveAI/
 ├── backend/
 │   ├── main.py               # FastAPI app: /api/future/* + serves the frontend
 │   ├── ai_future.py          # Four belief questions -> parameters -> steady state
-│   ├── mrr_solver.py         # Copy of model/ai_mrr_extended/solver.py
+│   ├── mrr_solver.py         # Copy of model/ai_mrr_reviewed/solver.py
+│   ├── technology.py         # Task allocation at shadow labor and capital costs
+│   ├── reference_solver.py   # Reproduces the baseline normalization
+│   ├── test_integration.py   # Appendix parity and economic checks
 │   ├── data/ai_occupation_calibration.csv  # Occupation deciles (simple_aiyagari_ge/build_calibration.py)
 │   └── requirements.txt
 ├── frontend/
@@ -47,24 +54,33 @@ bash run.sh
 
 Render (Docker) builds from this repo; every push to GitHub `main` redeploys.
 
-## The model page
+## Model controls and appendix connection
 
-A separate page built on the AI extension of Moll, Rachel and Restrepo (2022)
-maintained in `model/ai_mrr_extended` (note: `output/pdf/model.pdf`). Visitors answer
-four questions; each maps to one block of parameters:
+The four questions change the incidence of automation and augmentation,
+participation in risky equity, and wage markdowns. Advanced controls set the task
+tier, automation feasibility, augmentation time savings, compute requirement,
+wage sharing, and optional exact equity participation. The preset selector
+reproduces all five revised appendix cases.
 
-| Question | Parameter |
-|---|---|
-| Which jobs will AI automate more? | tilt of the automation profile a_j across wage deciles (mean held at the task-data value) |
-| Which workers will AI make more productive? | tilt of the augmentation profile q_j (mean held fixed) |
-| Who will own AI capital? | chi, share of households with risky equity: 3.5, 5, 6.6 (MRR), 15, 30% |
-| Employer power over wages (low / high wage) | multiplier on pre-AI markdowns: 0.25, 0.6, 1, 1.5, 2 (deciles 1-4 and 9-10; 5-8 geometric mean) |
+[MODEL_PARAMETERS.md](MODEL_PARAMETERS.md) maps every control to its equation,
+explains the units and adoption decisions, and gives settings for reproducing
+the appendix's comparative statics. The existing employer-power controls apply
+additional markdown multipliers; the new `xi` control implements the appendix's
+wage-sharing rule.
 
-The aggregate shock size is lambda_A = lambda_P = 0.5 on the T3-T4 tier by default and can be
-changed under "Advanced", together with c_P (AI capital needed per unit of augmentation relative to
-full automation; default 0.25). The model version has a constant product markup (3% of output) and
-capital-using augmentation, matching ai_mrr_extended as of 2 Oct 2026. The page compares the pre-AI and post-AI balanced-growth steady
-states (about 0.1 s per solve). `mrr_solver.py` is an unmodified copy of the model's
-`solver.py`; if the model changes, copy it again together with the calibration CSV.
+API: `GET /api/future/meta` supplies questions, defaults, presets, and parameter
+mappings. `GET /api/future/solve` accepts the existing `auto`, `aug`, `own`,
+`mp_low`, `mp_high`, `lam_a`, `lam_p`, and `c_p` fields, plus optional `tier`,
+`xi`, and `chi`. Existing request URLs continue to work.
 
-API: `GET /api/future/meta`, `GET /api/future/solve?auto=data|-2..2&aug=...&own=-2..2&mp_low=-2..2&mp_high=-2..2&lam_a=0.5&lam_p=0.5`.
+## Verify the integration
+
+```bash
+.venv/bin/python -m unittest discover -s backend -p 'test_*.py' -v
+```
+
+Tests verify all five appendix equilibria, bounded fixed-mean task profiles,
+shadow-cost adoption conditions, fixed-capital markdown invariance, factor
+payments, household income accounting, and control
+extremes. The reviewed solver and its two supporting modules are vendored into
+this repository so Docker deployments remain self-contained.

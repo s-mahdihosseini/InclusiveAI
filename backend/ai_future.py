@@ -1,23 +1,17 @@
-"""'Your AI future': beliefs -> parameters -> steady state of the AI--MRR model.
+"""Website controls and appendix scenarios for the reviewed AI model.
 
-The economics is the maintained model in
-``model/ai_mrr_extended`` (AI extension of Moll, Rachel and Restrepo 2022,
-"Uneven Growth", with a constant product markup and capital-using augmentation).
-``mrr_solver.py`` is an unmodified copy of that project's ``solver.py``; the
-calibration below reproduces ``run_scenarios.base_parameters``.
+The backend vendors ai_mrr_reviewed/solver.py and technology.py. Augmentation
+combines workers with compute in fixed proportions. Firms compare capital
+costs with the shadow value of labor when choosing tasks and techniques. With
+fixed occupation employment, wage markdowns redistribute labor income to owners
+and affect capital accumulation through the financial equilibrium. The reference
+solver reproduces the baseline calibration. Existing fields remain available.
 
-A visitor answers four questions. Each answer moves one block of parameters:
-
-1. Who does AI automate?      -> the cross-decile profile of automation a_j
-2. Whom does AI augment?      -> the cross-decile profile of augmentation q_j
-3. Who owns AI capital?       -> chi, the share of households with risky equity
-4. Employer market power      -> wage markdowns tau_j for low- and high-wage work
-
-The aggregate size of the shock (lambda_A, lambda_P) is held at a benchmark and
-can be changed under "advanced". Questions 1--2 change only *who* is exposed:
-the value-added-weighted mean of the profile equals its value in the task data.
-Every result compares two balanced-growth steady states: the calibrated pre-AI
-economy and the economy implied by the visitor's answers.
+Automation/augmentation questions tilt task opportunities d_j/e_j at a fixed
+production-weighted mean. Advanced controls set lambda_A, lambda_P, c_P, xi,
+the task tier, and optional exact participation chi. Employer-power answers
+apply additional multipliers to the wage markdown after the xi sharing rule.
+Named presets reproduce the five appendix scenarios.
 """
 
 from __future__ import annotations
@@ -33,18 +27,20 @@ import numpy as np
 from mrr_solver import (
     Equilibrium,
     Parameters,
-    normalize_productivity,
+    _production_at_capital,
     production_shares,
     solve_equilibrium,
     stationary_atoms,
     weighted_gini,
 )
 
+from reference_solver import normalize_productivity, solve_equilibrium as solve_baseline_equilibrium
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 CALIBRATION_FILE = os.path.join(HERE, "data", "ai_occupation_calibration.csv")
 
 # ---------------------------------------------------------------------------
-# Calibration (identical to ai_mrr_extended/run_scenarios.py)
+# Calibration (identical to ai_mrr_reviewed/run_scenarios.py)
 # ---------------------------------------------------------------------------
 MRR = {
     "rho": 0.01, "sigma": 2.0, "gamma": 2.0, "nu": 0.077, "chi": 0.066,
@@ -60,12 +56,16 @@ BASELINE_ORDINARY_CAPITAL_SHARE = (
 # With no pre-AI augmentation capital, alpha/mu is ordinary capital income.
 BASELINE_AUTOMATION_SHARE = PRODUCT_MARKUP * BASELINE_ORDINARY_CAPITAL_SHARE
 AUTOMATED_TASK_COST_GAP = 1.30
-# Capital intensity of realized augmentation relative to full automation (= 1).
+# Compute requirement per augmented task output: m_j = c_P * s_j.
 DEFAULT_AUGMENTATION_COST = 0.25
 SEEGMILLER_INVERSE_MARKDOWN = np.r_[np.full(4, 1.14), np.full(4, 1.16), np.full(2, 1.23)]
 
 # Exposure tier used for the occupation profiles (T3--T4 automation).
 TIER = "modest"
+TIERS = ("limited", "modest", "broad")
+DEFAULT_WAGE_SHARING = 1.0
+# Keep gains finite and task frontiers interior at full shock intensity.
+PROFILE_MAX = 1.0 - 1e-8
 DEFAULT_LAMBDA_A = 0.5
 DEFAULT_LAMBDA_P = 0.5
 
@@ -84,13 +84,13 @@ QUESTIONS = [
     {
         "id": "auto",
         "title": "Which jobs will AI automate more?",
-        "text": "Think of tasks that AI and machines take over completely.",
+        "text": "Which jobs have more tasks that AI could carry out? Firms choose whether to automate at equilibrium costs.",
         "has_data_option": True,
         "options": [
             "Mostly low-wage jobs", "Somewhat more low-wage jobs", "Evenly across jobs",
             "Somewhat more high-wage jobs", "Mostly high-wage jobs",
         ],
-        "maps_to": "Cross-occupation profile of automation a_j (mean held at the task-data value)",
+        "maps_to": "Automation opportunity d_j; its production-weighted mean is held at the task-data value",
     },
     {
         "id": "aug",
@@ -101,15 +101,15 @@ QUESTIONS = [
             "Mostly low-wage workers", "Somewhat more low-wage workers", "Evenly across workers",
             "Somewhat more high-wage workers", "Mostly high-wage workers",
         ],
-        "maps_to": "Cross-occupation profile of augmentation q_j (mean held at the task-data value)",
+        "maps_to": "Time-saving opportunity e_j; its production-weighted mean is held at the task-data value",
     },
     {
         "id": "own",
         "title": "Who will own the companies and capital that run AI?",
-        "text": "Today roughly 7 percent of households hold most risky business equity.",
+        "text": "The baseline gives 6.6 percent of households access to risky business equity. Wider access changes saving and ownership concentration.",
         "has_data_option": False,
         "options": [
-            "Even fewer people than today", "Somewhat fewer than today", "About as few as today",
+            "Much narrower access", "Narrower access", "Baseline access",
             "Broader ownership", "Much broader ownership",
         ],
         "values": [CHI[k] for k in range(-2, 3)],
@@ -119,11 +119,11 @@ QUESTIONS = [
         "id": "mp",
         "title": "How much power will employers have over wages?",
         "text": "Employers with market power pay workers less than the value they produce. "
-                "Answer separately for low-wage and high-wage workers.",
+                "Answer separately for low-wage and high-wage workers. Wage markdowns shift income from workers to owners and can change capital accumulation.",
         "has_data_option": False,
-        "options": ["Much weaker", "Weaker", "Same as today", "Stronger", "Much stronger"],
+        "options": ["Much weaker", "Weaker", "Baseline multiplier", "Stronger", "Much stronger"],
         "values": [MARKDOWN_MULTIPLIER[k] for k in range(-2, 3)],
-        "maps_to": "Wage markdowns tau_j, scaled relative to the Seegmiller-based pre-AI schedule",
+        "maps_to": "Additional multipliers on wage markdowns after the augmentation wage-sharing rule",
     },
 ]
 
@@ -166,15 +166,16 @@ def _base() -> tuple[Parameters, Dict[str, np.ndarray]]:
         masses=masses,
         eta=revenue / revenue.sum(),
         alpha=np.full(len(masses), BASELINE_AUTOMATION_SHARE),
-        augmentation_capital_intensity=np.zeros(len(masses)),
+        augmentation_compute_requirement=np.zeros(len(masses)),
+        augmentation_gain=np.ones(len(masses)),
         psi=np.ones(len(masses)),
         wage_markdown=markdown,
         product_markup=PRODUCT_MARKUP,
         quadrature_size=QUADRATURE,
     )
     p = normalize_productivity(p, 1.0)
-    e = solve_equilibrium(p, compute_distribution=False)
-    psi = e.wages / (AUTOMATED_TASK_COST_GAP * (e.r_risky + p.delta))
+    e = solve_baseline_equilibrium(p, compute_distribution=False)
+    psi = e.wages / (AUTOMATED_TASK_COST_GAP * e.capital_rental)
     p = normalize_productivity(replace(p, psi=psi), 1.0)
     return p, data
 
@@ -183,19 +184,28 @@ def _base() -> tuple[Parameters, Dict[str, np.ndarray]]:
 # Beliefs -> parameters
 # ---------------------------------------------------------------------------
 def tilted_profile(observed: np.ndarray, eta: np.ndarray, answer) -> np.ndarray:
-    """Exposure profile across wage deciles with the eta-weighted mean held fixed.
+    """Bounded opportunity profile with the production-weighted mean preserved.
 
-    ``answer == 'data'`` returns the measured profile. Otherwise the profile is
-    linear in wage rank, mean * (1 + s z_j), with z_j running from -1 (lowest
-    decile) to +1 (highest) and s set by the answer.
+    A positive answer tilts toward high-wage occupations. For profiles that reach
+    the upper bound, rescale the uncapped groups to preserve the same mean.
     """
     if answer == "data":
         return observed.copy()
     mean = float(eta @ observed)
     n = len(observed)
-    z = (np.arange(n) - (n - 1) / 2) / ((n - 1) / 2)
-    profile = 1.0 + TILT[int(answer)] * z
-    return profile * mean / float(eta @ profile)
+    rank = np.linspace(-1.0, 1.0, n)
+    shape = 1.0 + TILT[int(answer)] * rank
+    linear = shape * mean / float(eta @ shape)
+    if np.max(linear) <= PROFILE_MAX:
+        return linear
+    low, high = 0.0, PROFILE_MAX / float(np.min(shape))
+    for _ in range(80):
+        scale = .5 * (low + high)
+        if float(eta @ np.minimum(scale * shape, PROFILE_MAX)) < mean:
+            low = scale
+        else:
+            high = scale
+    return np.minimum(.5 * (low + high) * shape, PROFILE_MAX)
 
 
 def markdown_schedule(baseline: np.ndarray, mp_low: int, mp_high: int) -> np.ndarray:
@@ -205,22 +215,33 @@ def markdown_schedule(baseline: np.ndarray, mp_low: int, mp_high: int) -> np.nda
 
 
 def scenario_parameters(auto, aug, own, mp_low, mp_high, lam_a, lam_p,
-                        c_p=DEFAULT_AUGMENTATION_COST):
+                        c_p=DEFAULT_AUGMENTATION_COST, tier=TIER,
+                        xi=DEFAULT_WAGE_SHARING, chi=None):
     base, data = _base()
-    a_profile = tilted_profile(data[f"auto_{TIER}"], base.eta, auto)
-    q_profile = tilted_profile(data[f"aug_{TIER}"], base.eta, aug)
+    if tier not in TIERS:
+        raise ValueError("task tier must be limited, modest, or broad")
+    if not all(np.isfinite(v) for v in (lam_a, lam_p, c_p, xi)):
+        raise ValueError("scenario parameters must be finite")
+    if not (0 <= lam_a <= 1 and 0 <= lam_p <= 1 and 0 <= c_p <= .9 and 0 <= xi <= 1):
+        raise ValueError("scenario parameter is outside its supported range")
+    participation = CHI[int(own)] if chi is None else float(chi)
+    if not np.isfinite(participation) or not (.035 <= participation <= .6):
+        raise ValueError("participation must be between .035 and .6")
+    a_profile = tilted_profile(data[f"auto_{tier}"], base.eta, auto)
+    q_profile = tilted_profile(data[f"aug_{tier}"], base.eta, aug)
     alpha = BASELINE_AUTOMATION_SHARE + (1.0 - BASELINE_AUTOMATION_SHARE) * lam_a * a_profile
-    realized_augmentation = lam_p * q_profile
-    psi_gain = 1.0 / (1.0 - realized_augmentation)
+    time_saving = lam_p * q_profile
+    gain = 1.0 / (1.0 - time_saving)
+    sharing_markdown = 1.0 - (1.0 - base.wage_markdown) * gain ** (xi - 1.0)
     p = replace(
         base,
-        chi=CHI[int(own)],
-        alpha=np.clip(alpha, 1e-6, 1 - 1e-6),
-        augmentation_capital_intensity=np.clip(c_p * realized_augmentation, 0.0, 0.95),
-        psi=base.psi * psi_gain,
-        wage_markdown=markdown_schedule(base.wage_markdown, mp_low, mp_high),
+        chi=participation,
+        alpha=alpha,
+        augmentation_compute_requirement=c_p * time_saving,
+        augmentation_gain=gain,
+        wage_markdown=markdown_schedule(sharing_markdown, mp_low, mp_high),
     )
-    return p, a_profile, q_profile, psi_gain
+    return p, a_profile, q_profile, gain
 
 
 # ---------------------------------------------------------------------------
@@ -257,11 +278,13 @@ def _describe(p: Parameters, e: Equilibrium) -> Dict[str, object]:
     atoms = stationary_atoms(p, e)
     w = atoms["weights"]
     total, labor, cap, nw = atoms["total"], atoms["labor"], atoms["capital_income"], atoms["net_worth"]
-    sh = production_shares(p)
+    sh = production_shares(p, e)
     top10_cap = _top_share(total, cap, w, 0.10) * float(np.sum(cap * w))
     top10_tot = _top_share(total, total, w, 0.10) * float(np.sum(total * w))
     return {
         "output": e.output,
+        "capital": e.capital,
+        "capital_rental": e.capital_rental,
         "r_risky": e.r_risky,
         "r_safe": e.r_safe,
         "risky_share": e.risky_share,
@@ -272,7 +295,7 @@ def _describe(p: Parameters, e: Equilibrium) -> Dict[str, object]:
             "ordinary_capital": sh["ordinary_capital"],
             "markdown_profit": sh["markdown_profit"],
             "product_profit": sh["product_profit"],
-            # ordinary capital income split by use (income shares = task shares / markup)
+            # Capital-service payments by use, as shares of gross output.
             "automation_capital": sh["automation_capital"] / p.product_markup,
             "augmentation_capital": sh["augmentation_capital"] / p.product_markup,
         },
@@ -281,13 +304,18 @@ def _describe(p: Parameters, e: Equilibrium) -> Dict[str, object]:
             "capital": weighted_gini(cap, w),
             "total": weighted_gini(total, w),
             "wealth": weighted_gini(nw, w),
+            "equity": weighted_gini(atoms["equity"], w),
         },
         "top10_income": _top_share(total, total, w, 0.10),
         "top1_income": _top_share(total, total, w, 0.01),
+        "top1_equity": _top_share(atoms["equity"], atoms["equity"], w, 0.01),
+        "top10_equity": _top_share(atoms["equity"], atoms["equity"], w, 0.10),
         "top1_wealth": _top_share(nw, nw, w, 0.01),
         "top10_wealth": _top_share(nw, nw, w, 0.10),
         "top10_capital_income_share_of_income": top10_cap / top10_tot,
         "capital_income_share_of_income": float(np.sum(cap * w) / np.sum(total * w)),
+        "top10_labor_concentration": _top_share(total, labor, w, .10),
+        "top10_capital_concentration": _top_share(total, cap, w, .10),
         "wages": e.wages.tolist(),
         "percentiles": {
             "labor": _bin_means(total, labor, w, PERCENTILE_EDGES).tolist(),
@@ -306,28 +334,40 @@ def _baseline_result() -> Dict[str, object]:
 @lru_cache(maxsize=512)
 def solve(auto="data", aug="data", own=0, mp_low=0, mp_high=0,
           lam_a=DEFAULT_LAMBDA_A, lam_p=DEFAULT_LAMBDA_P,
-          c_p=DEFAULT_AUGMENTATION_COST) -> Dict[str, object]:
+          c_p=DEFAULT_AUGMENTATION_COST, tier=TIER,
+          xi=DEFAULT_WAGE_SHARING, chi=None) -> Dict[str, object]:
     base, data = _base()
     p, a_profile, q_profile, psi_gain = scenario_parameters(
-        auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p)
+        auto, aug, own, mp_low, mp_high, lam_a, lam_p, c_p, tier, xi, chi)
     e = solve_equilibrium(p, compute_distribution=False)
     worst = max(abs(v) for v in e.residuals.values())
     before, after = _baseline_result(), _describe(p, e)
+    adoption = _production_at_capital(p, e.capital)["technique_details"]
     return {
         "inputs": {"auto": auto, "aug": aug, "own": own, "mp_low": mp_low,
-                   "mp_high": mp_high, "lam_a": lam_a, "lam_p": lam_p, "c_p": c_p},
+                   "mp_high": mp_high, "lam_a": lam_a, "lam_p": lam_p, "c_p": c_p,
+                   "tier": tier, "xi": xi, "chi": chi},
         "baseline": before,
         "scenario": after,
         "deciles": {
             "mean_wage_data": data["mean_wage"].tolist(),
             "automation_profile": a_profile.tolist(),
-            "automation_data": data[f"auto_{TIER}"].tolist(),
+            "automation_data": data[f"auto_{tier}"].tolist(),
             "augmentation_profile": q_profile.tolist(),
-            "augmentation_data": data[f"aug_{TIER}"].tolist(),
+            "augmentation_data": data[f"aug_{tier}"].tolist(),
             "alpha_baseline": base.alpha.tolist(),
             "alpha": p.alpha.tolist(),
             "productivity_gain": (psi_gain - 1.0).tolist(),
-            "augmentation_capital": p.augmentation_capital_intensity.tolist(),
+            "augmentation_capital": p.augmentation_compute_requirement.tolist(),
+            "augmentation_gain": p.augmentation_gain.tolist(),
+            "time_saving": (1.0 - 1.0 / p.augmentation_gain).tolist(),
+            "automation_adoption": adoption["automation_adoption"].tolist(),
+            "employer_labor_cost": e.wages.tolist(),
+            "labor_resource_value": e.marginal_products_labor.tolist(),
+            "private_labor_cost_ratio": ((1.0 - p.wage_markdown) * adoption["v"]).tolist(),
+            "shadow_labor_cost_ratio": adoption["v"].tolist(),
+            "realized_automation": (p.alpha * adoption["automation_adoption"]).tolist(),
+            "augmentation_adoption": adoption["augmentation_adoption"].tolist(),
             "markdown_baseline": base.wage_markdown.tolist(),
             "markdown": p.wage_markdown.tolist(),
             "wage_change": (np.asarray(after["wages"]) / np.asarray(before["wages"]) - 1.0).tolist(),
@@ -337,11 +377,46 @@ def solve(auto="data", aug="data", own=0, mp_low=0, mp_high=0,
     }
 
 
+PRESET_DEFAULTS = {
+    "auto": "data", "aug": "data", "own": 0, "mp_low": 0, "mp_high": 0,
+    "lam_a": DEFAULT_LAMBDA_A, "lam_p": DEFAULT_LAMBDA_P,
+    "c_p": DEFAULT_AUGMENTATION_COST, "tier": TIER,
+    "xi": DEFAULT_WAGE_SHARING, "chi": None,
+}
+PRESETS = [
+    {"id": "pre_ai", "label": "Pre-AI baseline",
+     "inputs": {**PRESET_DEFAULTS, "lam_a": 0., "lam_p": 0.}},
+    {"id": "concentrated", "label": "Concentrated AI",
+     "inputs": {**PRESET_DEFAULTS, "lam_a": .65, "lam_p": .35, "xi": .25}},
+    {"id": "wage_sharing", "label": "Higher wage sharing",
+     "inputs": {**PRESET_DEFAULTS, "lam_a": .65, "lam_p": .35}},
+    {"id": "ownership", "label": "Broader ownership",
+     "inputs": {**PRESET_DEFAULTS, "lam_a": .65, "lam_p": .35, "xi": .25, "chi": .25}},
+    {"id": "combined", "label": "Combined scenario",
+     "inputs": {**PRESET_DEFAULTS, "tier": "limited", "lam_a": .5, "lam_p": 1., "chi": .25}},
+]
+
+
 def meta() -> Dict[str, object]:
     return {
         "questions": QUESTIONS,
-        "defaults": {"auto": "data", "aug": "data", "own": 0, "mp_low": 0, "mp_high": 0,
-                     "lam_a": DEFAULT_LAMBDA_A, "lam_p": DEFAULT_LAMBDA_P,
-                     "c_p": DEFAULT_AUGMENTATION_COST},
+        "defaults": PRESET_DEFAULTS,
         "tier": TIER,
+        "tiers": [{"id": "limited", "label": "Limited: T4"},
+                  {"id": "modest", "label": "Modest: T3–T4"},
+                  {"id": "broad", "label": "Broad: T2–T4"}],
+        "presets": PRESETS,
+        "model_version": "ai_mrr_reviewed-shadow-adoption-2026-10-09",
+        "parameter_mapping": {
+            "auto": "d_j: automation opportunities; sum(eta_j*d_j) held fixed",
+            "aug": "e_j: time-saving opportunities; sum(eta_j*e_j) held fixed",
+            "lam_a": "alpha_j = alpha_0 + (1-alpha_0)*lambda_A*d_j",
+            "lam_p": "s_j = lambda_P*e_j; G_j = 1/(1-s_j)",
+            "c_p": "m_j = c_P*s_j",
+            "xi": "tau_sharing_j = 1-(1-tau_0_j)*G_j**(xi-1)",
+            "mp_low,mp_high": "tau_j = min(.95, multiplier_j*tau_sharing_j)",
+            "own,chi": "chi overrides the ownership answer when supplied",
+            "adoption": "shadow-cost rule: R < omega_j/psi_j0; R*m_j < omega_j/psi_j0*(1-1/G_j)",
+        },
+        "task_sources": ["O*NET", "Eloundou et al. (2024)", "Hosseini and Lichtinger (2026)"],
     }
